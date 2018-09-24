@@ -1,0 +1,13 @@
+<form class="user-detail font-sm" [formGroup]="freightFormMain">
+    <div formArrayName="freightCostMatrixDto">
+        <div *ngFor="let freight of getfreightList(this.freightFormMain); let i=index" class="panel panel-default">
+            <div [formGroupName]="i">
+                <app-add-freight-cost-matrix [group]="freightFormMain.controls.freightCostMatrixDto.controls[i]" [freightData]=freightData [addEditId]=addEditId [arrIndex]=i></app-add-freight-cost-matrix>
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 accessories-block">
+                    <span class="pull-left add-icon"><i class="plus-icn-md" (click)="addFreightCost(i)"> &nbsp; </i></span>
+                    <span class="pull-left"><i class="delete-icn-md" (click)="removeFreightCost(i)"> &nbsp; </i></span>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</form>

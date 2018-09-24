@@ -1,0 +1,23 @@
+<!--<div class="container-fluid">
+    <div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">Add	Warehouse Cost Matrix </h4>	-->
+                <form  class="user-detail font-sm" [formGroup]="wareHouseFormMain">
+                    <div formArrayName="wareHouseMatrix">
+                        <div *ngFor="let ware of getWarehouseList(this.wareHouseFormMain); let i=index" class="panel panel-default">
+                            <div [formGroupName]="i">
+                                <app-add-warehouse [group]="wareHouseFormMain.controls.wareHouseMatrix.controls[i]" [wareHouseData]=wareHouseData [addEditId]=addEditId [arrIndex]=i></app-add-warehouse>
+                                    <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 accessories-block">
+                                    <span class="pull-left add-icon"><i class="plus-icn-md" (click)="addWarehouse(i)"> &nbsp; </i></span>
+                                    <span class="pull-left"><i class="delete-icn-md" (click)="removeWarehouse(i)"> &nbsp; </i></span>
+                                </div>-->
+                          </div>
+                        </div>
+                    </div>
+                </form>
+			<!--</div>
+        </div>
+    </div>
+</div>-->

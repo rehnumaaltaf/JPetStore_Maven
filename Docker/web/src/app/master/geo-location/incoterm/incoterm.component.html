@@ -1,0 +1,207 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Master.IncoTermLocale.Title</h4>
+				</div>
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<!--a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a-->
+
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+						<!-- Kendo Grid starts -->
+						<div class="party-grade_block">
+							<kendo-grid [data]="gridView" [kendoGridBinding]="incotermService.incotermDetails" [selectable]="true" [groupable]="true"
+							 [sortable]="true" [scrollable]="true" [editable]="true" [pageSize]="state.take" [skip]="state.skip" [filter]="state.filter"
+							 [filterable]="true" (dataStateChange)="dataStateChange($event)" [pageable]="false" (pageChange)="pageChange($event)"
+							 (sortChange)="sortChange($event)">
+
+								<kendo:grid-editable mode="inline" />
+								<ng-template kendoGridToolbarTemplate>
+									<span class="k-i-file-excel" kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+									<img src="../../assets/image/add.png" (click)="changeShowStatus()" />
+								</ng-template>
+								<kendo-grid-column media="xs" title="Inco Term List">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<!-- template for mobile -->
+										<h4>
+											{{ dataItem.contractTermsCode}}
+										</h4>
+										<dl>
+											<dt>Incoterm Name</dt>
+											<dd>{{ dataItem.contractTermsName}}</dd>
+
+											<!--<dt>Incoterm Desc</dt>
+											<dd>{{ dataItem.contractTermsDesc }}</dd>-->
+
+											<dt>Base Term</dt>
+											<dd>{{ dataItem.contractTermsBaseName }}</dd>
+
+											<dt>Basis</dt>
+											<dd>{{ dataItem.contractTermsBasisName }}</dd>
+										</dl>
+										<!-- template for mobile Ends-->
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column field='' title='' [width]="40">
+									<ng-template kendoGridHeaderTemplate let-dataItem>
+										<input type="checkbox" id="checkall" class="k-checkbox" (change)="checkorUnCheckAll($event)" />
+										<label class="k-checkbox-label chk_head" for="checkall"></label>
+									</ng-template>
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<input type="checkbox" class="k-checkbox" id="dataItem.contractTermsCode" name="dataItem.contractTermsCode" ng-model="dataItem.contractTermsCode"
+										/>
+										<label class="k-checkbox-label" for="dataItem.contractTermsCode"></label>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="contractTermsCode" title={{headerTermsCode}}>
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<div class="view-all"><a href="javascript:void(0)" [routerLink]="['view',dataItem.contractTermsId]">{{dataItem.contractTermsCode}}</a></div>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column media="sm" field="contractTermsName" title={{headerTermsName}}>
+									<!--<ng-template kendoGridCellTemplate let-dataItem>
+												<div >{{dataItem.contractTermsName}}</div>
+											</ng-template>-->
+								</kendo-grid-column>
+								<!--	<kendo-grid-column media="sm" field="contractTermsDesc" title="Incoterm Desc">
+											  <ng-template kendoGridCellTemplate let-dataItem>
+												<div >{{dataItem.contractTermsDesc}}</div>
+											</ng-template>
+								</kendo-grid-column>-->
+								<kendo-grid-column media="sm" field="contractTermsBaseName" title={{headerTermsbaseName}}>
+									<!--  <ng-template kendoGridCellTemplate let-dataItem>
+												<div >{{dataItem.contractTermsBaseRefId}}</div>
+											</ng-template>-->
+								</kendo-grid-column>
+								<kendo-grid-column media="sm" field="contractTermsBasisName" title={{headerTermsbasisName}}>
+									<!--  <ng-template kendoGridCellTemplate let-dataItem>
+												<div >{{dataItem.contractTermsBasisRefId}}</div>
+											</ng-template>-->
+								</kendo-grid-column>
+								<kendo-grid-column media="lg" field="statusName" title={{headerStatus}}>
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<label field="statusName" [ngClass]="{'status-draft': dataItem.statusName=='Draft','status-active': dataItem.statusName=='Active','status-inactive': dataItem.statusName=='InActive'}">{{dataItem.statusName}}</label>
+									</ng-template>
+								</kendo-grid-column>
+
+
+								<kendo-grid-column field="" title="">
+									<!--	<ng-template kendoGridCellTemplate let-dataItem>
+												<div class="show" style="float:left" (click)="editOutturn(dataItem.outturnRawGradeDto.outturnRawGradeId)"><span id="e1" data-attr="draft">
+													<img src="../../../assets/image/Edit_Icon_Hover.png.svg"><span style="display:none;">draft</span></span></div>											
+													<div class=""   [ngClass]="[dataItem.statusName=='Draft' ? 'displayblock' : 'displaynone']">
+                                            <span id="d1" class="confirm-delete ">
+                                                    <img src="../../../assets/image/Activeicon.svg" (click)="incoterm_status_change(dataItem,'Active')">
+                                                    <img src="../../../assets/image/Delete icon.svg" (click)="incoterm_delete(dataItem)">
+                                                    </span>
+                                        </div>
+                                        <div class="" [ngClass]="[dataItem.statusName=='Active' ? 'displayblock' : 'displaynone']">
+                                            <span id="d1" class="confirm-delete">
+                                                    <img src="../../../assets/image/Deactiveicon2.svg"  (click)="incoterm_status_change(dataItem,'InActive')" >
+                                                    </span>
+                                        </div>
+                                        <div class=""   [ngClass]="[dataItem.statusName=='InActive' ? 'displayblock' : 'displaynone']">
+                                            <span id="d1" class="confirm-delete" >
+                                                    <img src="../../../assets/image/Reactivate2.svg" (click)="incoterm_status_change(dataItem,'Active')">
+                                                    </span>
+                                        </div>
+<a href="javascript:void(0)" [routerLink]="['edit',dataItem.holidayCalId]"><img src="../../../assets/image/Edit_Icon_Hover.png.svg"></a><span style="display:none;">draft</span></span>
+											</ng-template>-->
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<div class="show" style="float:left"><span id="e1" data-attr="draft" >
+													<a href="javascript:void(0)" [routerLink]="['edit',dataItem.contractTermsId]"><img src="../../../assets/image/Edit_Icon_Hover.png.svg"><span style="display:none;">draft</span></a>
+											</span>
+										</div>
+										<div class=""  (click)="incoterm_delete(dataItem)" [ngClass]="{'displaynone': dataItem.statusName=='InActive' || dataItem.statusName=='Active'}">
+											<span id="d1" class="confirm-delete" >
+													<img src="../../../assets/image/Delete icon.svg"></span></div>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-excel fileName="Incoterm.xlsx"></kendo-grid-excel>
+							</kendo-grid>
+						</div>
+						<!--Kendo grid Ends-->
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Delete Success Modal -->
+<div *ngIf="isincotermdelete" class="modal fade success-modal" (onHidden)="onHidden()" bsModal #incotermdelete="bs-modal"
+ [config]="{backdrop: 'false', show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg" />Success : {{statusMsg}} Inco Term {{incotermName}} </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Delete Success Modal - End -->
+
+<!--Confirm Delete Pop up-->
+<div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #confirmdel="bs-modal" [config]="{backdrop: 'false'}"
+ tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog ">
+		<div class="modal-content  del-modal">
+			<div class="modal-header text-center">
+				<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>
+
+			<div class="modal-body">
+				<div class="col-md-12 product_img text-center font-14 font-regular">
+					Please confirm to {{deleteStatus}} {{incotermName}}
+				</div>
+			</div>
+			<div class="del-btn-group modal-window-footer btn-shodow">
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="confirmdel.hide()">Cancel</button></div>
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="deleteIncoterm($event)">Confirm</button></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Confirm Delete End-->
+
+
+<!--success Popup start-->
+<div *ngIf="isShowModal" (onHidden)="onHidden()" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal"
+ bsModal #SuccessModal="bs-modal" [config]="{backdrop: true,show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+ aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg" />{{successDialog}}</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--success Popup End-->
+
+<!--Update Popup Start-->
+<div *ngIf="isupdatesuccessModal" (onHidden)="onHidden()" class="modal fade success-modal" bsModal #updatesuccessModal="bs-modal"
+ [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg" />{{statusMsg}}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Update Popup End-->

@@ -1,0 +1,212 @@
+
+<div class="container-fluid"><!--<loading-animation [loadingData]="loadingData"></loading-animation>-->   
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">{{pagetitle}}</h4>			 			
+				<form [formGroup]="permissionGroupForm"  method="POST"  class="user-detail font-sm"  id="permissionGropForm"  >
+				
+				
+
+					<accordion>
+						 <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading  class="font-semibold">
+							Permission Group 
+							
+							  <i class="pull-right float-xs-right glyphicon"
+								 [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-detail">
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate >Permission Group Name</label>
+										<input type="text" class="form-control font-15 font-regular " maxlength="50" [style.border-color]="getStyle()" formControlName="permissionGroupName" [(ngModel)]="permissionGroup.permissionGroupName"  name="permissionGroupName" id="permissionName" required  value="" placeholder="">
+										<small *ngIf="req_permisiongrpname" class="colr-red font-regular font-14" l10nTranslate>Enter Permission Group Name</small>
+									</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Description</label>
+										<input type="text" class="form-control font-15 font-regular " maxlength="2000" formControlName="permissionGroupDesc" [(ngModel)]="permissionGroup.permissionGroupDesc"  name="permissionGroup.permissionGroupDesc" id="permissionDescription" required  value="" placeholder="">
+										
+									</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Group Owner</label>
+										<input type="text" class="form-control font-15 font-regular " maxlength="200" [style.border-color]="getStyleowner()" formControlName="permissionOwner" [(ngModel)]="permissionGroup.permissionOwner"  name="permissionOwner" id="permissionOwner" required  value="" placeholder="">
+										<small *ngIf="req_permisiongrpowner" class="colr-red font-regular font-14" l10nTranslate>Enter Group Owber</small>
+										<input type="hidden"  formControlName="statusName" [(ngModel)]="permissionGroup.statusName"  name="statusName" id="statusName"   value="" placeholder="">
+										
+										<input type='hidden' formControlName='updateStatusName' [ngModel]="0" ng-init="updateStatusName=0" value="0" >
+									</div>
+							</div>	
+						</accordion-group>
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading  class="font-semibold">
+							User Role Mapping
+							  <i class="pull-right float-xs-right glyphicon"
+								 [ngClass]="{'acc-down': group1?.isOpen, 'acc-up': !group1?.isOpen}"></i>
+							</div>
+							<div class="plants-detail-Stp">	
+								<div formArrayName="permissionGroupRoleMapping">
+									<div *ngFor="let permissionGroupRoleMapping of getPermissionList(permissionGroupForm); let i=index" >
+										<span style="display: none" > {{i + 1}}</span>										 
+										<div  [formGroupName]="i">
+											
+												<app-permission-mapping [group]="permissionGroupForm.controls.permissionGroupRoleMapping.controls[i]" [title]="i"
+												[permissionGroup]="permissionGroup"  ></app-permission-mapping>
+
+												
+												<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+														
+														<span class="pull-left"  ><i class="plus-icn-md" (click)="addPermissionMapping()" > &nbsp; </i></span>
+														<span class="pull-left"><i class="delete-icn-md" (click)="removePermissionMapping(i) " > &nbsp; </i></span>
+														<span class="pull-left role_more"  (click)="showroleinfo(i)"><i class="view-icn-md"  > &nbsp; </i></span>
+														
+												</div>
+										</div>
+									</div>
+								</div>	
+							</div>
+		
+					</accordion-group>
+						<!--<accordion-group #group>
+							<div accordion-heading>
+							  I can have markup, too!
+							  <i class="pull-right float-xs-right glyphicon"
+								 [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-up': !group?.isOpen}"></i>
+							</div>
+						This is just some content to illustrate fancy headings.
+					  </accordion-group>
+					  <accordion-group heading="Content 1">
+						<p>Content 1</p>
+					  </accordion-group>
+					  <accordion-group heading="Content 2">
+						<p>Content 2</p>
+					  </accordion-group>-->
+					</accordion>
+				
+						
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="addpage">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="clear()" >Reset</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_mastersave" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="savedata()">Save</button>					
+							<button type="button" id="save_party_mastersubmit" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="saveandsubmit()" >Submit</button>					
+						</div>						
+					</div>
+
+					<div  *ngIf="editpage" >
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()" >Cancel</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_mastersaveedit" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="savedata()">Save</button>					
+							<button type="button" id="save_party_mastersubmitedit" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="saveandsubmit()" >Submit</button>					
+						</div>							
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()">Cancel</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" (click)="saveactive()"   id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18">Update</button>					
+							<button type="button" (click)="submitactivetodeactive()"  id="save_party_master1" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18">Deactivate</button>					
+						</div>							
+					</div>
+
+					
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()">Cancel</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" (click)="savedeactive()"   id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18">Update</button>					
+							<button type="button" (click)="submitdeactivetoreactive()"  id="save_party_master1" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18">Reactivate</button>					
+						</div>							
+					</div>
+					</div>
+					
+				</form>
+			</div>
+		</div>
+		<!-- ngx bootstrap - Accordion End -->
+
+		<div class="modal fade delete-popup" *ngIf="isError" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog " style="height:440px !important; color:white !important;">
+		<div class="modal-content  del-modal">
+		
+		<div class="col-md-12 product_img text-center padt15 padb15">
+						<img src="../../assets/image/Confirm_Delete.svg" />
+		</div>
+		<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12 product_img text-center">
+							{{errorMessageForPermission}}
+					</div>
+					<div class="col-md-12 product_img text-center"></div>
+								
+				</div>
+			</div>
+			<div class="del-btn-group">
+				<div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="closeIsError()">Cancel</button></div>
+				<div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="closeIsError()">Ok</button></div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div *ngIf="errormodal" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHidden()" class="modal fade something_wrong"  bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">   
+                    <div class="modal-title"><span><img src="../../assets/image/Error Message_Icon.svg"/></span>This page contains {{checkdropdown}} errors.Please correct the highlighted fields.</div>
+				</div>       
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade edit-popup" id="edit" *ngIf="roleFeatures" [style.display]="editModal ? 'block' : 'none'" bsModal #Edit="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="Edit UOM" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content modal-edit" style="height:440px !important;">
+						<div class="modal-header mod-head">
+							<a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="close()"></span></a>
+							<h3 class="modal-title font-semibold">ROLE DETAILS</h3>
+						</div>
+		<div class="modal-edit-body mod-body">
+
+			<kendo-grid [data]="permissionGroupService.roleFeatures" [height]="400">
+            <kendo-grid-column field="roleName" title="ROLE NAME">
+            </kendo-grid-column>
+            <kendo-grid-column field="roleDesc" title="DESCRIPTION" >
+            </kendo-grid-column>
+            <kendo-grid-column field="features.featureDesc" title="FEATURES">
+            </kendo-grid-column>
+            
+        </kendo-grid> 
+
+						
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-right text-right pad0 primary-btn" style="position: fixed;bottom: 0 !important;left:200px;">
+					<button  id="update" type="button" class="btn btn-default navbar-btn update-cancel-btn cancel-btn" (click)="close()">Close</button>					
+				</div>
+			
+			</div>
+		</div>
+</div>
+
+
+
+
+
+	</div>
+
+
+
+
+</div>

@@ -1,0 +1,26 @@
+<div [formGroup]="holidayCalendarMultipleForm">
+  <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 pad0 plants-detail borderTop">
+    <input type='hidden' formControlName='holidayListId' [ngModel]="holidayMappingId || '0'" ng-init="holidayMappingId=0">
+    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.HolidayCalendarLocale.HolidayName</label>
+      <input type="text" class="form-control font-15" maxlength="50" [style.border-color]="getStyleHolidayName(this.title)" formControlName="holidayListName"
+        [(ngModel)]="holidayListName" name="holidayListName_{{this.title}}" placeholder="">
+      <span *ngIf=" !reqholidayName && !holidayCalendarMultipleForm.controls.holidayListName.value " class="colr-red font-regular font-14">{{msgHolidayName}}</span>
+    </div>
+
+    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 holidaycalendar-date-input" [ngClass]="{'certification-add-mandatory': reqholidayDate==false,'': reqholidayDate==true}" >
+      <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.HolidayCalendarLocale.Date</label>
+
+
+      <br>
+
+      <kendo-datepicker [style.border-color]="getStyleHolidayDate(this.title)" [min]="min"  [max]="max" formControlName="holidayListDate" [format]="'dd/MM/yyyy'"
+         [(ngModel)]="holidayListDate"  [ngModelOptions]="{standalone: true}"></kendo-datepicker>
+        <br />
+
+        <span *ngIf=" !reqholidayDate && !holidayCalendarMultipleForm.controls.holidayListDate.value" class="colr-red font-regular font-14">{{msgHolidayName}}</span>
+
+    </div>
+
+  </div>
+</div>

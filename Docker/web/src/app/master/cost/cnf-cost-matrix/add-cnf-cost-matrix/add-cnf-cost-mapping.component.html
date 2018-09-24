@@ -1,0 +1,78 @@
+	<div [formGroup]="cnfMappingForm" >							
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clear_forward_block">
+	<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<label for="usr-field" class="colr-red font-regular font-14">From Incoterm</label>
+		<div class="dropdown">
+			<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="fkFromContractTermsId" formControlName="fkFromContractTermsId" name="fkFromContractTermsId">
+				
+				<option *ngFor="let option of fromIncoterm" value="{{option.value}}">{{option.label}}</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<label for="usr-field" class="colr-red font-regular font-14">To Incoterm</label>
+		<div class="dropdown">
+			<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="fkToContractTermsId" formControlName="fkToContractTermsId" name="fkToContractTermsId">
+				
+				<option *ngFor="let option of toIncoterm" value="{{option.value}}">{{option.label}}</option>
+			</select>
+		</div>
+	</div>			
+								
+	<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<label for="usr-field" class="colr-lblue font-regular font-14">To Country / Region</label>
+		<div class="dropdown">
+			<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="fkToCountryId" formControlName="fkToCountryId" name="fkToCountryId">
+				
+				<option *ngFor="let option of fromIncoterm" value="{{option.value}}">{{option.label}}</option>
+			</select>
+		</div>
+	</div>
+	<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<label for="usr-field" class="colr-lblue font-regular font-14">To Location</label>
+		<div class="dropdown">
+			<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="fkToLocationId" formControlName="fkToLocationId" name="fkToLocationId">
+				
+				<option *ngFor="let option of fromIncoterm" value="{{option.value}}">{{option.label}}</option>
+			</select>
+		</div>
+	</div>
+	<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<label for="usr-field" class="colr-red font-regular font-14">Rate Basis</label>
+		<div class="dropdown">
+			<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="fkRateBasisRefId" formControlName="fkRateBasisRefId" name="fkRateBasisRefId">
+				
+				<option *ngFor="let option of toIncoterm" value="{{option.value}}">{{option.label}}</option>
+			</select>
+		</div>
+	</div>
+	<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<label for="usr-field" class="colr-red font-regular font-14">Rate UOM</label>
+		<div class="dropdown">
+			<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="fkRateUomId" formControlName="fkRateUomId" name="fkRateUomId">
+				<option *ngFor="let option of toIncoterm" value="{{option.value}}">{{option.label}}</option>
+			</select>
+		</div>
+	</div> 
+	<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<label for="usr-field" class="colr-red font-regular font-14">Rate</label>
+		<input type="Number" class="form-control font-15 font-regular " id="" value="" placeholder="" formControlName="rate" name="rate">
+	</div>
+	<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<label for="usr-field" class="colr-lblue font-regular font-14">Rate Currency</label>
+	<!-- 	<input type="Number" class="form-control font-15 font-regular " id="" value="" placeholder="" formControlName="fkRateCurrencyId" name="fkRateCurrencyId"> -->
+		<div class="dropdown">
+			<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="fkRateUomId" formControlName="fkRateUomId" name="fkRateUomId">
+				<option *ngFor="let option of toIncoterm" value="{{option.value}}">{{option.label}}</option>
+			</select>
+		</div>
+	</div>
+	<div class="form-group col-lg-2 col-md-4 col-sm-6 col-xs-12">
+		<label for="usr-field" class="colr-lblue font-regular font-14">Transit Days</label>
+		<input type="number" class="form-control font-15 font-regular " id="" value="" placeholder="" formControlName="transitDays" name="transitDays">
+	</div>
+</div>
+
+</div>
+			 

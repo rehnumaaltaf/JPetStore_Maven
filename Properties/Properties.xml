@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+    <vstsAccount>automationhub</vstsAccount>
+	<vstsUser>ankit.gupta89@infosys.com</vstsUser>
+    <token>y7yrbz7tcdaecsy6bflppgemdl2mgxyn2z3s454mvapbxsrbjdya</token>
+    <SourceBranch>master</SourceBranch>
+	<timeout>1800</timeout>
+	<Severity>3 - Medium</Severity>
+	<Priority>2</Priority>
+	<serviceUserName>ankit.gupta89</serviceUserName>
+</properties>

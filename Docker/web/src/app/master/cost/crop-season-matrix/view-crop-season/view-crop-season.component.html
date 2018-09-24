@@ -1,0 +1,123 @@
+<!--<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">	Crop Season Matrix</h4>			 		 			
+				<form  class="user-detail font-sm">
+					<accordion>
+						 <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                            <div accordion-heading  class="font-semibold">
+                                                Basic Details
+                                <i class="pull-right float-xs-right glyphicon"
+                                [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">								
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Company</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">OLAM LAMCO</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Product</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Coffee</span>
+										</div>
+									</div>
+								</div>
+                			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Unit</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Olam Brazil</span>
+										</div>
+									</div>
+								</div>
+							</div>							
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Origin</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Agro Brazil</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Base Crop Season</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">92-93</span>
+										</div>
+									</div>
+								</div>
+							</div>				
+
+
+
+
+						 </accordion-group>
+                         <accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                            <div accordion-heading  class="font-semibold">
+                                              Crop Season 
+                                <i class="pull-right float-xs-right glyphicon"
+                                [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666"> Current  Plus/Minus</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">+4</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Premium</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">10</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Discount</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">10</span>
+										</div>
+									</div>
+								</div>								
+							</div>
+                         </accordion-group>
+					</accordion>
+
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+              <button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18">Back</button>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+              <button type="button" id="update16" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18">Edit</button>
+              <button type="button" id="update13" class="btn default-btn tertiary-btn singlebtn-width edit-form1 font-semibold font-18">Update</button>
+
+            </div>
+          </div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>-->
+            

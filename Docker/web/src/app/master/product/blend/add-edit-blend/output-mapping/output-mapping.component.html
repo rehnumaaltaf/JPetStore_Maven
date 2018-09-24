@@ -1,0 +1,54 @@
+<div [formGroup]="OutputMappingForm">
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 pad0 plants-detail blend-output-container">
+        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Blend.Product</label>
+            <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkProdId"
+              type="button" data-toggle="dropdown" name="fkProdId" (change)="getOtherDropdowns($event.target.value)" [ngClass]="{'valred': blendService.reqOutProduct[arrOutIndex]== true,'val': blendService.reqOutProduct[arrOutIndex]== false}"> 
+                <option [ngValue]="undefined" selected>Select</option>
+                <option *ngFor="let prod of blendService.blendProductList" value="{{prod.prodId}}">{{prod.prodName}}</option>                
+            </select>
+            <span *ngIf="blendService.reqOutProduct[arrOutIndex]== true" class="font-12 colr-red">* Please select Product</span>
+        </div> 
+                        
+        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate >Master.Blend.Origin</label>
+          <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkOriginId"
+              type="button" data-toggle="dropdown" name="fkOriginId" [ngClass]="{'valred': blendService.reqOutOrigin[arrOutIndex]== true,'val': blendService.reqOutOrigin[arrOutIndex]== false}">
+                <option [ngValue]="undefined" selected>Select</option>
+                <option *ngFor="let origin of blendService.blendOriginList" value="{{origin.pkOriginId}}">{{origin.originName}}</option>                
+          </select>
+          <span *ngIf="blendService.reqOutOrigin[arrOutIndex]== true" class="font-12 colr-red">* Please select Origin</span>
+      </div>
+
+      <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <label for="usr-field" class="colr-red font-regular font-14"  l10nTranslate>Master.Blend.ProductGrade</label>
+        <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkGradeId"
+              type="button" data-toggle="dropdown" name="fkGradeId" [ngClass]="{'valred': blendService.reqOutGrade[arrOutIndex]== true,'val': blendService.reqOutGrade[arrOutIndex]== false}">
+                <option [ngValue]="undefined" selected>Select</option>
+                <option *ngFor="let gr of blendService.blendGradeList" value="{{gr.gradeId}}">{{gr.gradeName}}</option>                
+          </select>
+          <span *ngIf="blendService.reqOutGrade[arrOutIndex]== true" class="font-12 colr-red">* Please select Grade</span>
+      </div> 
+
+      <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <label for="usr-field" class="colr-red  font-regular font-14" l10nTranslate>Master.Blend.OutputPercentage</label>
+        <input type="text" class="form-control font-15 font-regular"  id="quantityPercentage" value="" placeholder="" formControlName="quantityPercentage" name="quantityPercentage" [ngClass]="{'valred': blendService.reqOutPer[arrOutIndex]== true,'val': blendService.reqOutPer[arrOutIndex]== false}">
+        <span *ngIf="blendService.reqOutPer[arrOutIndex]== true" class="font-12 colr-red">* Please fill Output Quantity Percentage</span>
+      </div>  
+
+      <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Blend.ValRatio</label>
+          <input type="text" class="form-control font-15 font-regular"  id="abilityToBearRatio" value="" placeholder="" formControlName="abilityToBearRatio" name="abilityToBearRatio" [ngClass]="{'valred': blendService.reqOutRatio[arrOutIndex]== true,'val': blendService.reqOutRatio[arrOutIndex]== false}">
+          <span *ngIf="blendService.reqOutRatio[arrOutIndex]== true" class="font-12 colr-red">* Please fill Value Ratio</span>
+      </div> 
+
+      <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <label for="usr-field" class="colr-lblue font-regular font-14"  l10nTranslate>Master.Blend.Certification</label>
+        <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkProdCertId"
+              type="button" data-toggle="dropdown" name="fkProdCertId" >
+                <option [ngValue]="undefined" selected>Select</option>
+                <option *ngFor="let cer of blendService.blendCertificationList" value="{{cer.pkProdCertId}}">{{cer.prodCertName}}</option>                
+          </select>
+      </div> 
+  </div>
+</div>

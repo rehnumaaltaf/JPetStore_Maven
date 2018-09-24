@@ -1,0 +1,296 @@
+<div class="container-fluid">
+    <!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+    <div class="row row-background">
+        <app-nav-bar></app-nav-bar>
+        <!-- ngx bootstrap - Accordion -->
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div view-page">
+                <h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">GL Account</h4>
+                <form class="user-detail font-sm">
+                    <accordion>
+                        <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                            <div accordion-heading class="font-semibold">
+                                Basic Details
+
+                                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                            </div>
+                            <div class="plants-detail-Stp">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Legal Entity</div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                                                    <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                                               {{glData.glBasicDto.partyName}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+									 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">GL Code</div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{glData.glBasicDto.glCode}}</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">GL Name</div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{glData.glBasicDto.glName}}</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">GL Description</div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{glData.glBasicDto.glDesc}}</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">GL Type</div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{glData.glBasicDto.glTypeRefId}}</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Is Group GL</div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{glData.glBasicDto.glIsGroup}}</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Parent GL</div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{glData.glBasicDto.parentGl}}</span></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </accordion-group>
+                        <!--</accordion>-->
+                        <!--<h3 class="font-semibold colr-lblue">Outturn Ratio </h3>-->
+                        <!--<accordion>-->
+                        <accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                            <div accordion-heading class="font-semibold">
+                                External System Mapping
+
+                                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+                            </div>
+                            <div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 brdb"
+                                                    style="border-bottom: 1px solid #ccc;padding-bottom: 8px;
+margin-bottom: 0px;">Destination System</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 brdb"
+                                                    style="border-bottom: 1px solid #ccc;padding-bottom: 8px;
+margin-bottom: 0px;">Type</label></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 brdb"
+                                                    style="border-bottom: 1px solid #ccc;padding-bottom: 8px;
+margin-bottom: 0px;">Mapping</label></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!--drh-->
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngFor="let option1 of  featureList1">
+                                            <label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option1}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngFor="let option of moduleNameList">
+                                            <label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngFor="let option2 of NameList">
+                                            <label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option2}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--gfh-->
+
+
+                        </accordion-group>
+                    </accordion>
+
+                    <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn e-draft" data-attr="footer-edraft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn btn-default navbar-btn cancel-btn font-semibold font-14" (click)='backtoPrev()'>BACK</button>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="update13"  class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" style="width:20% !important;">EDIT</button>					
+							<button type="button" id="update14"   class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" style="width:20% !important;margin-right:20px;">SUBMIT</button>					
+							<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" style="width:20% !important;">DELETE</button>					
+						</div>							
+					</div>-->
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer e-draft " *ngIf="draft">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                            <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtoPrev()">Back</button>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-8 pull-right text-right pad0">
+                            <a href="javascript:void(0)"><button type="button" id="e-draft"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="editGlAccount(glData.glBasicDto.glId)">Edit</button></a>
+                            <button type="button" id="update1" class="btn default-btn secondary-btn multiplebtn-width marr20edit-form font-semibold font-18" (click)="confirm('Active')"
+                                >Submit</button>
+                            <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                                (click)="outturn_delete(outturnratioData)">Delete</button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="active">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                            <button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtoPrev()">Back</button>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                            <a href="javascript:void(0)"><button type="button" id="update15"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="editGlAccount(glData.glBasicDto.glId)">Edit</button></a>
+
+                            <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                                (click)="confirm('InActive')"> Deactivate</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="inactive">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                            <button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtoPrev()">Back</button>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                            <a href="javascript:void(0)"><button type="button" id="update15"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="editGlAccount(glData.glBasicDto.glId)">Edit</button></a>
+                            <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="confirm('Active')">Reactivate</button>
+                        </div>
+                    </div>
+                </form>
+
+
+                <!--Confirm Delete Pop up-->
+                <div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #statusChangeConfirm="bs-modal" [config]="{backdrop: 'false'}"
+                    tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog ">
+                        <div class="modal-content  del-modal">
+                            <div class="modal-header">
+                                <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                 <img src="../../assets/image/Confirm_Delete.svg" />
+                            </div>
+                            <div class="modal-body">
+                                    <div class="col-md-12 product_img text-center font-14 font-regular">
+                                        Are you sure you want to {{statusMsg}} the GL Name {{glData.glBasicDto.glName}} in {{status}} status ?
+                                    </div>
+                            </div>
+                            <div class="del-btn-group modal-window-footer btn-shodow">
+                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="statusChangeConfirm.hide()">Cancel</button></div>
+                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary"
+                                        (click)="conf_status_change($event)">Confirm</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Confirm Delete End-->
+                <!-- Add Success Modal -->
+                <!--<div class="modal fade success-modal" bsModal #cropadded="bs-modal" [config]="{backdrop: 'false'}" tabindex="-1" role="dialog"
+                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+
+                                    <div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>Success : outurn ratio {{rawGradeName}}
+                                        Added</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <!-- Add Success Modal - End -->
+                <!-- Delete Success Modal -->
+               <!-- <div class="modal fade success-modal" bsModal #outturnratiodelete="bs-modal" [config]="{backdrop: 'false'}" tabindex="-1"
+                    role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+
+                                    <div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>Success : {{deleteMsg}} raw grade
+                                        {{rawGradeName}} </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <!-- Delete Success Modal - End -->
+
+                <!--Error Pop up-->
+                <div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #errormsg="bs-modal" [config]="{backdrop: 'false'}"
+                    tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content  del-modal">
+                            <div class="modal-header">
+                                <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                <img src="../../assets/image/Confirm_Delete.svg" />
+                            </div>
+                            <div class="modal-body">
+                                    <div class="col-md-12 product_img text-center font-14 font-regular">
+                                        {{glAccountService.errorMessage}}
+                                    </div>
+                            </div>
+                            <div class="del-btn-group modal-window-footer btn-shodow">
+                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="errormsg.hide()">Cancel</button></div>
+                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary"
+                                        (click)="errormsg.hide()">Ok</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Error Popup End-->
+                <!--Delete Pop Up-->
+                <div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #deletepopup="bs-modal" [config]="{backdrop: 'false'}"
+                    tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content  del-modal">
+                            <div class="modal-header">
+                                <img src="../../assets/image/Confirm_Delete.svg" />
+                            </div>
+                            <div class="modal-body">
+                                    <div class="col-md-12 product_img text-center font-14 font-regular">
+                                        Are you sure you want to {{statusMsg}} the GL Name {{glData.glBasicDto.glName}} in {{status}} status ?
+                                    </div>
+                            </div>
+                            <div class="del-btn-group modal-window-footer btn-shodow">
+                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" type="button"
+                                        (click)="deletepopup.hide()">Cancel</button></div>
+                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary"
+                                        type="button" (click)="conf_delete($event)">Confirm</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Delete pop Up-->
+
+
+            </div>
+        </div>
+    </div>
+</div>

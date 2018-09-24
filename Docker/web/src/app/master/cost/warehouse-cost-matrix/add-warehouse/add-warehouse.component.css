@@ -1,0 +1,73 @@
+
+.multi-select .treeview-header .row{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.inValid, .inValid > div{
+    border-bottom-color:#d43c3c !important;
+}
+
+.white-bg{
+    background:#ffffff !important;
+}
+.popup-btn{
+  width:33% !important;  
+}
+
+.save-btn{
+    margin:0px !important;
+}
+
+.dropdown[_ngcontent-c2]   .dropdown-menu[_ngcontent-c2]   .dropdown-container[_ngcontent-c2]{padding:0px;} 
+.dropdown-container label {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    width: 100%;
+}
+.dropdown-container{padding:0px !important;}
+.dropdown-container label:hover{color: #262626;text-decoration: none; background-color: #f5f5f5;}
+ngx-treeview-item {width: 110%;}
+
+.treeview-header .row-filter input{
+    width: 90%;
+    margin: 0 auto;
+}
+.ngxdropdown button{
+border:0;
+border-radius: 0px;
+border-bottom: 1px solid #cfdee7;
+outline: none;
+background-image:url("../../../../../assets/image/Dropdown_btn.svg");
+background-position: 99% 68%;
+background-repeat: no-repeat;
+background-color: #ffffff;
+}
+.ngxdropdown.inValid button{
+border:0;
+border-radius: 0px;
+border-bottom: 1px solid #d43c3c;
+outline: none;
+background-image:url("../../../../../assets/image/Dropdown_btn.svg");
+background-position: 99% 68%;
+background-repeat: no-repeat;
+background-color: #ffffff;
+}
+.ui-state-highlight a{
+    color:#337ab7;
+}
+
+.k-multiselect-wrap .k-input{
+    display:none !important;
+}
+.k-list{
+    margin-top:0px !important;
+}
+.k-multiselect-wrap.k-floatwrap {
+    border:0px;
+    border-bottom:1px solid #cfdee7;
+}

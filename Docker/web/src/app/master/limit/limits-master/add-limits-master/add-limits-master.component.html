@@ -1,0 +1,295 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">
+					<div *ngIf="addpage" l10nTranslate>Master.LimitMaster.addtitle</div>
+					<div *ngIf="editpage" l10nTranslate>Master.LimitMaster.edittitle </div>
+
+				</h4>
+				<form class="user-detail font-sm" method="post" [formGroup]="limitMasterForm">
+					<accordion>
+						<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold" l10nTranslate>
+								Master.LimitMaster.subtitle1
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.LimitMaster.limitBasis</label>
+										<div class="dropdown ">
+											
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" name="limitbasis" 
+												(change)="onLimitBasisChange($event)"
+												formControlName="limitBasisTypeId" name="limitBasisTypeId" 
+												 [(ngModel)] = "limitDetailsObj.limitBasisTypeId"
+												[style.border-color]="getStyletebasis()"
+												disabled *ngIf="disableDropDown" >
+												<option  [ngValue] = "-1" selected disabled>Select</option>
+													<option *ngFor="let option of limitBasisArr" 
+													  value="{{option.limitBasisTypeId}}">
+														{{option.limitBasisTypeName}}
+													  </option>
+													
+											</select>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" name="limitbasis" 
+												(change)="onLimitBasisChange($event)"
+												formControlName="limitBasisTypeId" name="limitBasisTypeId" 
+												 [(ngModel)] = "limitDetailsObj.limitBasisTypeId"
+												[style.border-color]="getStyletebasis()" *ngIf="!disableDropDown">
+												<option value="-1" selected disabled >Select</option>
+													<option *ngFor="let option of limitBasisArr" 
+													  value="{{option.limitBasisTypeId}}">
+														{{option.limitBasisTypeName}}
+													  </option>
+											</select>
+											<small *ngIf="req_limitbasis" class="colr-red font-regular font-14" l10nTranslate>Master.LimitMaster.errlimitbasis</small>			
+										</div>
+									</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.LimitMaster.basisName</label>
+										<div class="dropdown">
+											
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" 
+											formControlName="limitBasisId" name="limitBasisId"
+										 [style.border-color]="getStyletebasisName()"
+										 [(ngModel)] = "limitDetailsObj.limitBasisId"
+										 disabled *ngIf="disableDropDown"
+										>
+										  	<option value this.limitmasterService.limitMaster.limitDetails[value] selected >Select</option>
+													<option *ngFor="let option of limitBasisNameArr" 
+													  value="{{option.value}}">
+														{{option.label}}
+											</option>
+										</select>
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" 
+											formControlName="limitBasisId" name="limitBasisId"
+										 [style.border-color]="getStyletebasisName()"
+										 [(ngModel)] = "limitDetailsObj.limitBasisId"
+										 *ngIf="!disableDropDown"
+										>
+										  	<option value="-1" selected disabled>Select</option>
+													<option *ngFor="let option of limitBasisNameArr" 
+													  value="{{option.value}}">
+														{{option.label}}
+											</option>
+										</select>
+										
+										<small *ngIf="req_limitBasisId" class="colr-red font-regular font-14" l10nTranslate>Master.LimitMaster.errlimitbasisname</small>			
+										</div>
+									</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.LimitMaster.additionalBasis</label>
+										<div class="dropdown positionrel">
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"
+											 formControlName="additionallimitBasisTypeId" name="additionallimitBasisTypeId"
+										     [(ngModel)] = "limitDetailsObj.additionallimitBasisTypeId"
+											 (change)="onAdditionalBasisChange($event)">
+												<option value="-1" selected disabled>Select</option>
+												<option value="{{basisTypeProductId}}">
+														 {{basisTypeProduct}}
+												</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.LimitMaster.additionalbasisName</label>
+										<div class="dropdown">
+										  
+										  <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" name="" 
+											formControlName="additionallimitBasisId" name="additionallimitBasisId" 
+											 [(ngModel)] = "limitDetailsObj.additionallimitBasisId"
+										   >
+											  <option value="-1" selected disabled>Select</option>
+											 <option *ngFor="let option of limitAdditionalBasisName" 
+													  value="{{option.value}}">
+														{{option.label}}
+											</option>	
+											
+										   </select>
+										</div>
+									</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.LimitMaster.comments</label>
+									
+											<input type="text"  formControlName="commentText"  [(ngModel)] = "commentsText" id="commentsText" name="commentsText"
+										class="form-control font-15 font-regular " 
+										value=""
+										 placeholder="" 
+									    >
+									
+										
+									</div>
+								</div>
+							</div>
+
+						</accordion-group>
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" >
+							<div accordion-heading class="font-semibold" l10nTranslate >
+								Master.LimitMaster.subtitle2
+								<i class="pull-right float-xs-right glyphicon" 
+								[ngClass]="{'acc-down': group1?.isOpen, 'acc-up': !group1?.isOpen}"></i>
+							</div>
+							<!-- <template #limitsclone> -->
+							<div class="plants-detail-Stp">	
+								<div formArrayName="limitDetails">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+
+
+									<div *ngFor="let limitDetails  of getUserRoleArray(limitMasterForm); let i=index"  >
+										
+									
+										<div  [formGroupName]="i">
+												<app-base-payment-mapping  [group]="limitMasterForm.controls.limitDetails.controls[i]" [title]="i" 
+											    [limitDetailsList] = "limitDetailsObj" [optionText] = "optionTextlimit" >
+											   </app-base-payment-mapping>
+											  
+												<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">	
+														<span class="pull-left"><i class="plus-icn-md" (click)="addPermissionMapping()" > &nbsp; </i></span>
+														<span class="pull-left"><i class="delete-icn-md" (click)="removePermissionMapping(i) " > &nbsp; </i></span>
+												</div>
+												
+										</div>
+									</div>
+									
+
+
+									</div>
+								</div>	
+							</div>
+
+
+						</accordion-group>
+						
+					</accordion>
+					
+					
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="addpage">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="reset"  class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18"  l10nTranslate >Master.LimitMaster.resetbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_mastersave" class="btn default-btn secondary-btn marr20 multiplebtn-width edit-form font-semibold font-18" (click)="savedata()" l10nTranslate>Master.LimitMaster.savebutton</button>					
+							<button type="button" id="save_party_mastersubmit" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="saveactive()" l10nTranslate >Master.LimitMaster.submitbutton</button>					
+						</div>						
+
+
+						
+													
+					
+					</div>
+
+					
+					
+				
+					<div  *ngIf="editpage" >
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()" l10nTranslate>Master.LimitMaster.cancelbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_mastersaveedit" class="btn default-btn secondary-btn marr20 multiplebtn-width edit-form font-semibold font-18" (click)="savedata()" l10nTranslate>Master.LimitMaster.updatebutton</button>					
+							<button type="button" id="save_party_mastersubmitedit" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="drafttoactive()" l10nTranslate>Master.LimitMaster.submitbutton</button>					
+						</div>							
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()" l10nTranslate>Master.LimitMaster.cancelbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" (click)="saveactive()"   id="save_party_master" class="btn default-btn secondary-btn marr20 multiplebtn-width edit-form font-semibold font-18" l10nTranslate>Master.LimitMaster.updatebutton</button>					
+							<button type="button" (click)="submitactivetodeactive()"  id="save_party_master1" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" l10nTranslate>  Master.LimitMaster.deactivebutton</button>					
+						</div>							
+					</div>
+
+					
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()" l10nTranslate>Master.LimitMaster.cancelbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" (click)="savedeactive()"   id="save_party_master" class="btn default-btn secondary-btn marr20 multiplebtn-width edit-form font-semibold font-18" l10nTranslate>Master.LimitMaster.updatebutton</button>					
+							<button type="button" (click)="submitdeactivetoreactive()"  id="save_party_master1" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" l10nTranslate> Master.LimitMaster.reactivebutton</button>					
+						</div>							
+					</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+
+
+ 
+				<div *ngIf="errormodalflag" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHidden()" class="modal fade something_wrong"
+					bsModal #errorModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+							<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title"><span><img src="../../assets/image/Error Message_Icon.svg"/></span>This page contains {{checkerrcount}} errors.Please
+										correct the highlighted fields.</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div  *ngIf="servererrorflag" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHidden()" class="modal fade something_wrong"
+					bsModal #serverErrorModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+							<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title"><span><img src="../../assets/image/Error Message_Icon.svg"/></span>{{errorMessage}} </div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+
+
+	<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" (onHidden) ="hide()" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #deletePopUpModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog " style=" color:white !important;">
+		<div class="modal-content  del-modal">
+			<div class="modal-header">
+                <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a> -->
+			</div>
+			<div class="col-md-12 product_img text-center" style="padding-top:15px;">
+                <img src="../../assets/image/Confirm_Delete.svg" />
+			</div>
+			<div class="modal-body">
+				<div class="row">
+								
+					<div class="col-md-12 product_img text-center" *ngIf="deactiveStatus" >
+							{{statusmsg}} {{limitName}}  
+					</div>
+
+                     <div class="col-md-12 product_img text-center" *ngIf="isActiveStatus" >
+                           {{statusmsg}} {{limitName}}   
+                    </div>
+					<div class="col-md-12 product_img text-center"></div>
+								
+				</div>
+			</div>
+				<div class="del-btn-group">
+					<div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="deletePopUpModal.hide()">Cancel</button></div>
+					<div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="conf_deactive_reactive($event)">Confirm</button></div>
+				</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+</div>
+	
+

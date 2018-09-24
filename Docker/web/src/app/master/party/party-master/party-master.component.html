@@ -1,0 +1,185 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt30 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Party List</h4>
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<!--<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<!--a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a-->
+					<!--<img src="../../assets/image/add.png" (click)="changeShowStatus()" />-->
+
+
+				<!--</div>-->
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+                            <!-- Kendo Grid starts-- [kendoGridBinding]="unitMeasurementService.uomDetails" --> 
+							<div class="party-grade_block">
+									<kendo-grid  
+									    [kendoGridBinding]="partyMasterService.partyDetails"
+										[selectable]="true" 
+										[groupable]="true" 
+										[group]="state.group"
+										[scrollable]="true" 
+										[editable]="true" 
+										
+										[sortable]="true" 
+										[filterable]="true" 
+										[height]="640" 
+										[pageable]="false"
+										
+										>
+										<kendo:grid-editable mode="inline"/>
+										<ng-template kendoGridToolbarTemplate>
+										<img src="../../assets/image/add.png" (click)="changeShowStatus()" />
+										<button type="button" kendoGridExcelCommand><span class="k-icon k-i-file-excel"></span></button>
+										
+										
+										 <kendo-grid-excel fileName="Party.xlsx" [data]="partyMasterService.partyDetails">
+												<kendo-excelexport-column field="partyBasicDetails.partyInternalExternal" title={{headerPartyCode}}>
+												</kendo-excelexport-column>
+												<kendo-excelexport-column field="partyBasicDetails.partyName" title={{headerPartyname}}>
+												</kendo-excelexport-column>
+												<kendo-excelexport-column field="partyBasicDetails.country" title={{headerPartyCountry}}>
+												</kendo-excelexport-column>
+												<kendo-excelexport-column field="partyBasicDetails.marketingDesk" title={{headerPartyMarketingDesk}}>
+												</kendo-excelexport-column>
+												<kendo-excelexport-column field="partyBasicDetails.statusName" title={{headerStatus}}>
+												</kendo-excelexport-column>
+										</kendo-grid-excel>
+										</ng-template>
+										<kendo-grid-column media="xs" title="PARTY">
+										<ng-template kendoGridCellTemplate let-dataItem>
+											<h4>
+											{{ dataItem.partyInternalOrExternal }}
+											</h4>
+											<dl>
+											<dt>Name</dt>
+											<dd>{{ dataItem.partyName }}</dd>
+
+											<dt>Full Name</dt>
+											<dd>{{ dataItem.country }}</dd>
+
+											<dt>Conversion</dt>
+											<dd>{{ dataItem.marketingDeskName }}</dd>
+											</dl>
+											 
+										</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field='' title=''  width="80">
+												<ng-template kendoGridHeaderTemplate let-dataItem>
+												<input type="checkbox" id="checkall" class="k-checkbox" (change)="checkorUnCheckAll($event)" />
+												<label class="k-checkbox-label chk_head" for="checkall"></label>
+											</ng-template> 
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<input type="checkbox" class="k-checkbox" id="dataItem.partyInternalExternal" name="dataItem.partyInternalExternal" ng-model="dataItem.partyInternalOrExternalId"/>
+												<label class="k-checkbox-label" for=""></label>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="sm" field="partyInternalExternal" title={{headerPartyCode}}>
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<div (click)="viewById(dataItem)"  class="view-all">{{dataItem.partyBasicDetails.partyInternalExternal}}</div>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="sm" field="partyBasicDetails.partyName" title={{headerPartyname}}>
+											<ng-template kendoGridCellTemplate let-dataItem>
+												{{dataItem.partyBasicDetails.partyName}}
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="partyBasicDetails.geoCountry" title={{headerPartyCountry}}>
+											<ng-template kendoGridCellTemplate let-dataItem>
+												{{dataItem.partyBasicDetails.country}}
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="partyBasicDetails.marketingDesk" title={{headerPartyMarketingDesk}}>
+											<ng-template kendoGridCellTemplate let-dataItem>
+												{{dataItem.partyBasicDetails.marketingDeskName}}
+											</ng-template>
+										</kendo-grid-column>
+										
+										<!--<kendo-grid-column media="lg" field="statusName" title="Status">
+										</kendo-grid-column>-->
+										<kendo-grid-column media="lg" field="statusName" title={{headerStatus}}>
+										<ng-template kendoGridCellTemplate let-dataItem>
+												<label field="statusName" [ngClass]="{'status-draft': dataItem.partyBasicDetails.statusName=='Draft' || dataItem.partyBasicDetails.statusName=='L2 Approved' || dataItem.partyBasicDetails.statusName=='L1 Approved','status-active': dataItem.partyBasicDetails.statusName=='Active'}">{{dataItem.partyBasicDetails.statusName}}</label>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field="" title="" width="150">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<div class="show" style="float:left" (click)="editparty(dataItem)"><span id="e1" data-attr="draft" style="font-size:8px !important;">
+													<img src="../../../assets/image/Edit_Icon_Hover.png.svg"><span style="display:none;">draft</span></span></div>
+												<div class="" style="padding-left:30px;" [ngClass]="{'displaynone': dataItem.statusName=='InActive'}" >
+													<span id="d1" class="confirm-delete" style="font-size:8px !important;" >
+													<!--<img src="../../../assets/image/Delete icon.svg">-->
+													</span></div>
+											</ng-template>
+										</kendo-grid-column>										
+										<!--<kendo-grid-excel fileName="PARTY.xlsx"></kendo-grid-excel>-->
+									</kendo-grid>
+									</div>
+									<!--Kendo grid Ends-->
+                     </div>
+				</div>
+
+    
+	<!--<div *ngIf="isShowModal" [config]="{backdrop: 'static', show: false }" (onHidden)="hide()"  bsModal #successmodal="bs-modal" class="modal fade success-modal" tabindex="-1"	 role="dialog" aria-hidden="true">-->
+		<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="hide()" bsModal #successmodal="bs-modal" class="modal fade success-modal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-content">
+						<div class="modal-header">        
+							<div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>Success : Party name {{partyCode}} updated</div>
+						</div>       
+					</div>
+				</div>
+			</div>
+		</div>
+		<div  *ngIf="isModalShownForAdd" [config]="{ show: true }" (onHidden)="hide()"  bsModal #successmodalAdd="bs-modal" class="modal fade success-modal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-content">
+						<div class="modal-header">        
+							<div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>{{errorMessgae}}</div>
+						</div>       
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Success Modal -->
+<!--<div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>Success : Added Base Payment Code {{basePaymentCode}}</div>
+				</div>       
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="isupdateModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #updateModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>Success : Updated Base Payment {{basePaymentCode}}</div>
+				</div>       
+			</div>
+		</div>
+	</div>
+</div>-->
+
+
+			</div>
+		</div>
+	</div>
+</div>

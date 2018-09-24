@@ -1,0 +1,405 @@
+<div class="container-fluid ">
+  <div class="row row-background">
+    <app-nav-bar></app-nav-bar>
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content  pad0 certification-add">
+
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div single-block create-view">
+
+        <h4 class="padb10 padt10  colr-1e2f4d font-18 font-bold head-show" *ngIf="createview">Add Certification</h4>
+        <h4 class="padb10 padt10  colr-1e2f4d font-18 font-bold head-show" *ngIf="editview">Edit Certification</h4>
+        <form class="user-detail font-sm">
+          <div class="panel-group" id="accordion" *ngIf="createview">
+                     
+                
+                  <div class="container-fluid-block marb30">
+                   <h3 class="font-semibold colr-lblue">Basic Details</h3>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                    <div class="form-group col-lg-4 col-md-4 col-sm-3 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Certifying Body</label>
+                      <div class="dropdown ">
+                        <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [ngClass]="{'valred': party_name==true,'val': party_name==false}"
+                          [(ngModel)]='create_certify.fkCertfBodyPartyId' name="create_certify.fkCertfBodyPartyId">
+                          <option value="">Select</option>
+												   <option *ngFor="let option of parties" value="{{option.partyId}}">{{option.partyName}}</option>
+                        </select>
+
+                        <span *ngIf="party_name" class="colr-red font-regular font-14">Select Certifying Body</span>
+
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14">Certification Code</label>
+                      <input type="text" maxlength=20 [(ngModel)]='create_certify.prodCertCode' name='create_certify.prodCertCode' [ngClass]="{'valred': cert_code==true,'val': cert_code==false}"
+                        class="form-control font-15" id="certify_code" value="" placeholder="">
+                      <span *ngIf="cert_code" class="colr-red font-regular font-14">Enter the Certification Code </span>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14">Certification Name</label>
+                      <input type="text" maxlength=200 [(ngModel)]='create_certify.prodCertName' name='create_certify.prodCertName' [ngClass]="{'valred': cert_name==true,'val': cert_name==false}"
+                        class="form-control font-15" id="CertificationFullName" value="" placeholder="">
+                      <span *ngIf="cert_name" class="colr-red font-regular font-14">Enter the Certification Name </span>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-lblue font-regular font-14">Certification Description</label>
+                      <input type="text" maxlength=500 [(ngModel)]='create_certify.prodCertDescription' name='create_certify.prodCertDescription'
+                        class="form-control font-15 font-regular " id="CertificationName" value="" placeholder="">
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-lblue font-regular font-14 padr20">Logo</label><br>
+                      <span data-toggle="modal" (click)="browse()" class="brows-btn btn btn-default marl30">File browser</span>
+                      <input type="hidden" [(ngModel)]='create_certify.prodCertLogo' name='create_certify.prodCertLogo' accept="image/jpeg, image/png"
+                        class="form-control font-15 font-regular " id="CertificationName" value="" placeholder="">
+                      <br>
+                      <div class="col-lg-6 col-md-6 image-show" *ngIf='flag'><span><img src="{{src}}" style="max-width:100%;height:auto;"/></span><span class="preview-image"><img src="../../../../assets/image/Delete_icon.svg" (click)="clearimg()"></span></div>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14">Registration Number</label>
+                      <input type="text" maxlength=200 (keypress) = "numberonly($event)" [(ngModel)]='create_certify.registrationNumber' name='create_certify.registrationNumber'
+                        [ngClass]="{'valred': reg_no==true,'val': reg_no==false}" class="form-control font-15 font-regular "
+                        id="CertificationName" value="" placeholder="">
+                      <span *ngIf="reg_no" class="colr-red font-regular font-14">Enter the Registration Number</span>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 certification-add-mandatory" [ngClass]="{'certification-add-mandatory': from==true,'': from==false}">
+                      <label for="usr-field" class="colr-red font-regular font-14">Validity From Date</label>
+                      <!--<input type="Date" [(ngModel)]='create_certify.validFrom' name='create_certify.validFrom' [ngClass]="{'valred': from==true,'val': from==false}" class="form-control font-15" id="" value="" placeholder="">-->
+                      <br>
+                      <kendo-datepicker [min]="min" [max]="max" [(ngModel)]="create_certify.validFrom" [ngModelOptions]="{standalone: true}" [format]="'dd/MM/yyyy'"></kendo-datepicker>
+                      <br />
+                      <span *ngIf="from" class="colr-red font-regular font-14">Select the From date</span>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 certification-add-mandatory" [ngClass]="{'certification-add-mandatory': to==true,'': to==false}">
+                      <label for="usr-field" class="colr-red font-regular font-14">Validity To Date</label>
+                      <!--<input type="Date" [(ngModel)]='create_certify.validTo' name='create_certify.validTo' [ngClass]="{'valred': to==true,'val': to==false}" class="form-control font-15" id="" value="" placeholder="">-->
+                      <br>
+                      <kendo-datepicker [min]="min" [max]="max" [(ngModel)]="create_certify.validTo" [ngModelOptions]="{standalone: true}" [format]="'dd/MM/yyyy'"></kendo-datepicker>
+                      <br />
+                      <span *ngIf="to" class="colr-red font-regular font-14">Select the To date</span>
+                      <span *ngIf="datevalidationmsg" class="colr-red font-regular font-14">To date should be greater than From date</span>
+                    </div>
+                  </div>
+                
+               
+              
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="createview">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+              <button type="reset" (click)="clearimage(create_certify)" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" *ngIf="createview">Reset</button>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+              <button (click)="gotolistingPage()" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" *ngIf="editview">Cancel</button>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+              <button type="button" (click)="savecertify('DRAFT')" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18">Save</button>
+              <!-- <button type="button" (click)="submitcertify()" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18">Submit</button> -->
+              <button type="button" (click)="savecertify('SAVE')" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18">Submit</button>
+            </div>
+          </div>
+
+          <div class="panel-group" id="accordion" *ngIf="editview">
+             <div class="container-fluid-block marb30">
+               <h3 class="font-semibold colr-lblue">Basic Details</h3>
+                <div class="panel-body">
+                  
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                    <div class="form-group col-lg-4 col-md-3 col-sm-3 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Certifying Body</label>
+                      <div class="dropdown ">
+                        <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [ngClass]="{'valred': party_name==true,'val': party_name==false}"
+                          [(ngModel)]='editcertificationdata.fkCertfBodyPartyId' name="editcertificationdata.fkCertfBodyPartyId">
+                           <option *ngFor="let option of parties" [selected]="editcertificationdata.fkCertfBodyPartyId === option.partyId" value="{{option.partyId}}">{{option.partyName}}</option>
+                        </select>
+                        <span *ngIf="party_name" class="colr-red font-regular font-14">Select Certifying Body</span>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14">Certification Code</label>
+                      <input type="text" maxlength="20" [(ngModel)]='editcertificationdata.prodCertCode' name='editcertificationdata.prodCertCode'
+                        [ngClass]="{'valred': cert_code==true,'val': cert_code==false}" class="form-control font-15" id="certify_code"
+                        value="" placeholder="">
+                      <span *ngIf="cert_code" class="colr-red font-regular font-14">Enter the Certification Code </span>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14">Certification Name</label>
+                      <input type="text" maxlength="200" [(ngModel)]='editcertificationdata.prodCertName' name='editcertificationdata.prodCertName'
+                        [ngClass]="{'valred': cert_name==true,'val': cert_name==false}" class="form-control font-15" id="CertificationFullName"
+                        value="" placeholder="">
+                      <span *ngIf="cert_name" class="colr-red font-regular font-14">Enter the Certification Name </span>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-lblue font-regular font-14">Certification Description</label>
+                      <input type="text" maxlength="500" [(ngModel)]='editcertificationdata.prodCertDescription' name='editcertificationdata.prodCertDescription'
+                        class="form-control font-15 font-regular " id="CertificationName" value="" placeholder="">
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-lblue font-regular font-14 padr20">Logo</label>
+                      <span data-toggle="modal" (click)="browse()" class="brows-btn btn btn-default marl30">File browser</span>
+                      <br>
+                      <span *ngIf="defaultimg"> 
+															<img id="profileImage" alt="logo" *ngIf="!imgFlag" src="data:image/png;base64,{{editcertificationdata.prodCertLogo}}"  />
+															<img src="../../../../assets/image/Delete_icon.svg" *ngIf='defaultflag' (click)="cleardefaultimg()">	 
+											</span>
+                      <br>
+                      <div class="col-lg-6 col-md-6 image-show" *ngIf='flag'><span><img src="{{src}}" style="max-width:100%;height:auto;"/></span><span class="preview-image"><img src="../../../../assets/image/Delete_icon.svg" (click)="clearimg()"></span></div>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14">Registration Number</label>
+                      <input type="text" maxlength="200" [(ngModel)]='editcertificationdata.registrationNumber' name='editcertificationdata.registrationNumber'
+                        [ngClass]="{'valred': reg_no==true,'val': reg_no==false}" class="form-control font-15 font-regular "
+                        id="CertificationName" value="" placeholder="">
+                      <span *ngIf="reg_no" class="colr-red font-regular font-14">Enter the Registration Number</span>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 certification-add-mandatory" [ngClass]="{'certification-add-mandatory': from==true,'': from==false}">
+                      <label for="usr-field" class="colr-red font-regular font-14">Validity From Date</label>
+                      <br>
+                      <kendo-datepicker [(value)]="validFromDate" [format]="'dd/MM/yyyy'">
+                      </kendo-datepicker>
+                      <input type="hidden" [(ngModel)]='editcertificationdata.validFrom' [ngModelOptions]="{standalone: true}" value="{{validFromDate}}">
+                      <br />
+
+                      <!-- <input type="text" id="datepicker"  kendo-datepicker k-ng-model="editcertificationdata.validFrom" value="{{validFromDate}}" /> -->
+                      <span *ngIf="from" class="colr-red font-regular font-14">Select the From date</span>
+                      <!--input type="Date" [(ngModel)]='editcertificationdata.validFrom' name='editcertificationdata.validFrom' [ngClass]="{'valred': from==true,'val': from==false}" class="form-control font-15" id="" value="editcertificationdata.validFrom | Date:'MM/dd/yyyy'" placeholder=""-->
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 certification-add-mandatory" [ngClass]="{'certification-add-mandatory': to==true,'': to==false}">
+                      <label for="usr-field" class="colr-red font-regular font-14">Validity To Date</label>
+                      <!--input type="Date" [(ngModel)]='editcertificationdata.validTo' name='editcertificationdata.validTo' [ngClass]="{'valred': to==true,'val': to==false}" class="form-control font-15" id="" value="editcertificationdata.validTo | Date:'MM/dd/yyyy'" placeholder=""-->
+                      <br>
+                      <kendo-datepicker [(value)]="validToDate" [format]="'dd/MM/yyyy'">
+                      </kendo-datepicker>
+                      <input type="hidden" [(ngModel)]='editcertificationdata.validTo' [ngModelOptions]="{standalone: true}" value="{{validToDate}}">
+                      <br />
+                      <span *ngIf="to" class="colr-red font-regular font-14">Select the To date</span>
+                      <span *ngIf="datevalidationmsg" class="colr-red font-regular font-14">To date should be greater than From date</span>
+
+                    </div>
+                  </div>
+                </div>
+                </div>
+              
+            
+          </div>
+
+          <div class="panel-group" *ngIf="editview">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="draft">
+              <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                <button type="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" *ngIf="createview" (click)="clearimage(editcertificationdata)">Reset</button>
+                <button type="reset" (click)="gotolistingPage()" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" *ngIf="editview">Cancel</button>
+              </div>
+              <div class="col-lg-10 col-md-10 col-sm-12 col-xs-8 pull-right text-right pad0">
+                <button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"
+                  (click)="enableEdit()" *ngIf="editMode">Edit</button>
+                <button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"
+                  (click)="update(editcertificationdata,validFromDate,validToDate)">Update</button>
+                <button type="button" id="update14" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+                  (click)="updatewithstatus(editcertificationdata,validFromDate,validToDate)">Submit</button>
+                <!--update(uomdata.uomCode,uomdata.uomName,uomdata.uomFullname,uomdata.baseUom,uomdata.uomConversionFactor,uomdata.statusName)-->
+                <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                 (click)="delete()">Delete</button>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="active">
+              <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                <button type="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" *ngIf="createview">Reset</button>
+                <button type="reset" (click)="gotolistingPage()" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" *ngIf="editview">Cancel</button>
+              </div>
+
+              <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                <button type="button" id="update15" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="enableEdit()"
+                  *ngIf="editMode">Edit</button>
+                <button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"
+                  (click)="update(editcertificationdata,validFromDate,validToDate)">Update</button>
+                <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                  (click)="updatewithstatus(editcertificationdata,validFromDate,validToDate)">Deactivate</button>
+                <!--update(uomdata.uomCode,uomdata.uomName,uomdata.uomFullname,uomdata.baseUom,uomdata.uomConversionFactor,'InActive')-->
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="inactive">
+              <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                <button type="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" *ngIf="createview">Reset</button>
+                <button type="reset" (click)="gotolistingPage()" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" *ngIf="editview">Cancel</button>
+              </div>
+              <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                <button type="button" id="update16" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="enableEdit()"
+                  *ngIf="editMode">Edit</button>
+                <button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"
+                  (click)="update(editcertificationdata,validFromDate,validToDate)">Update</button>
+                <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                  (click)="updatewithstatus(editcertificationdata,validFromDate,validToDate)">Reactivate</button>
+                <!--update(uomdata.uomCode,uomdata.uomName,uomdata.uomFullname,uomdata.baseUom,uomdata.uomConversionFactor,'Active')-->
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- new code end -->
+<!--<div class="modal right fade in" id="Attach" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" style="opacity:1;">-->
+<div class="modal right fade in" bsModal #filebrowse="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+  aria-labelledby="mySmallModalLabel" aria-hidden="true" (onHide)="handler('onHide', $event)">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pad0 col-lg-9 col-md-9 pull-left mart0 font-semibold font-15" id="Att-Title">ATTACHMENTS</h4>
+        <button type="button" (click)="filebrowse.hide()" class="close pull-right" data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class="glyphicon glyphicon-remove font-14">&nbsp;</i></button>
+      </div>
+      <div class="modal-body">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 padr0">
+          <div class="content">
+            <!--<div class="title upload">Drag Drop Document</div>-->
+            <!--<span class="filename"></span>
+								<input type="text" class="input">-->
+            <kendo-upload [autoUpload]="false" [saveUrl]="uploadSaveUrl" [removeUrl]="uploadRemoveUrl" [restrictions]="uploadRestrictions"
+              (select)="selectEventHandler($event)" (clear)="clearEventHandler($event)">
+            </kendo-upload>
+            <div *ngIf="imagePreviews.length" class="img-preview example-config">
+              <img *ngFor="let image of imagePreviews" [src]="image.src" alt="image preview" class="preview-image" />
+            </div>
+          </div>
+          <br>
+          <div *ngIf="imagePreviews.length" class="imageupload-btn"><button id="add-addr-save"
+              type="button" class="btn btn-default navbar-btn save-btn popup-save font-14 font-regular upload-btn" (click)="upload()">Upload</button> </div>
+
+
+
+
+          <div class="col-lg-12 col-md-12 padl10 padr110 ovr-flw upload-block displaynone">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pad0 pull-left">
+              <span class="font-regular font-15 file-name">Inventory List.doc <i class="delete-icn">&nbsp;</i></span>
+              <span class="font-regular font-14 colr-lblue add-descrip"> Add Description</span>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pad0 pull-left">
+              <button type="button" 
+                class="popup-cancel btn btn-default navbar-btn cancel-btn" id="upload-file">Upload</button>
+            </div>
+          </div>
+          <div class="attachment-block displaynone">
+            <div class="addition-info">
+              <p class="font-regular font-15 colr-666666" contentEditable=true data-text="Enter Addition information on uploading files."></p>
+              <div class="add-inner-info font-regular font-15">15/50 Characters</div>
+            </div>
+            <div class="modal-window-footer">
+              <button type="button" class="btn btn-default bw-cancel col-lg-6 col-md-6 col-sm-6" id="add-addr-cancel">CANCEL</button>
+              <button id="add-addr-save" type="button" class="btn btn-default primary col-lg-6 col-md-6 col-sm-6">SAVE</button>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 padt20 file-list">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal-content -->
+  </div>
+  <!-- modal-dialog -->
+</div>
+<!-- modal -->
+
+<div *ngIf="errormodal" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHidden()" class="modal fade something_wrong"
+  bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>This page contains {{counter}} errors.Please
+            correct the highlighted fields.</div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="errormodalList" class="modal fade something_wrong" (onHidden)="onHiddenErrorMsg()" bsModal #errorMsgModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">   
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>{{errorMsg}}</div>
+				</div> 
+        </div>
+    </div>
+</div>
+
+<!--Duplicate UOM code Pop up-->
+<div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #duplicate="bs-modal" [config]="{backdrop: 'static'}"
+  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content  del-modal">
+      <div class="modal-header text-center">
+        <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+        <img src="../../assets/image/Confirm_Delete.svg" />
+      </div>     
+      <div class="modal-body">
+         <div class="col-md-12 product_img text-center font-14 font-regular">
+            {{message}}
+          </div>
+      </div>
+      <div class="del-btn-group modal-window-footer btn-shodow">
+        <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="duplicate.hide()">Cancel</button></div>
+        <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="duplicate.hide()">Ok</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!---->
+
+<!--Confirm Update -->
+<div class="modal fade delete-popup" *ngIf="status_change" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup"
+  bsModal #statusChange="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content  del-modal">
+      <div class="modal-header text-center">
+        <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+        <img src="../../assets/image/Confirm_Delete.svg" />
+      </div>      
+      <div class="modal-body">
+          <div class="col-md-12 product_img text-center font-14 font-regular">
+            Are you sure you want to {{statusMsg}} the Certification Name {{editcertificationdata.prodCertName}} in {{status}} status
+            ?
+          </div>
+      </div>
+      <div class="del-btn-group modal-window-footer btn-shodow">
+        <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+        <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_status_change(editcertificationdata)">Confirm</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!---->
+<!--Delete Pop up-->
+<div class="modal fade delete-popup" *ngIf="deletebyid" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup"
+  bsModal #delete="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+
+  <div class="modal-dialog">
+    <div class="modal-content  del-modal">
+      <div class="modal-header">
+        <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+        <img src="../../assets/image/Confirm_Delete.svg" />
+      </div>      
+      <div class="modal-body">
+          <div class="col-md-12 product_img text-center font-14 font-regular">
+            Are you sure you want to {{statusMsg}} the Certificate Name {{editcertificationdata.prodCertName}} in {{status}} status ?
+          </div>
+      </div>
+      <div class="del-btn-group modal-window-footer btn-shodow">
+        <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+        <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete(editcertificationdata.pkProdCertId,editcertificationdata.prodCertName,editcertificationdata.statusName)">Confirm</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!---->

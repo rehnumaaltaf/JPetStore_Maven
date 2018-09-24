@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="39" height="39" viewBox="0 0 39 39">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #a0c800;
+      }
+
+      .cls-2, .cls-3 {
+        font-size: 32px;
+      }
+
+      .cls-3 {
+        fill: #fff;
+        font-family: "Roboto-Bold";
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    </style>
+  </defs>
+  <g>
+    <rect width="39" height="39" rx="3" ry="3" class="cls-1"/>
+    <text x="11" y="30" class="cls-2"><tspan class="cls-3">+</tspan></text>
+  </g>
+</svg>

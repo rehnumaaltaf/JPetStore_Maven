@@ -1,0 +1,227 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Product Grade List</h4>
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<!--a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a-->
+				
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+						<!-- Kendo Grid starts-- [kendoGridBinding]="unitMeasurementService.uomDetails" -->
+						<div class="party-grade_block">
+							<kendo-grid [kendoGridBinding]="productGradeService.productGradeDetails" [selectable]="true" [groupable]="true" [group]="state.group"
+										[scrollable]="true" [editable]="true" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [filter]="state.filter"
+										[sortable]="true" [filterable]="true" (dataStateChange)="dataStateChange($event)"  [pageable]="false"
+										(pageChange)="pageChange($event)">
+
+										<ng-template kendoGridToolbarTemplate>
+										 <span class="k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+											<img src="../../assets/image/add.png" (click)="redirecttoadd()" />
+										</ng-template>
+								
+								<kendo-grid-column media="xs" title="Product Grade">
+									<ng-template kendoGridCellTemplate let-productGrade>
+										<!-- template for mobile -->
+											
+											<h4>
+											{{ productGrade.gradeCode}}
+											</h4>
+											<dl>
+											<dt>Grade Name</dt>
+											<dd>{{ productGrade.gradeName }}</dd>
+											</dl>
+                      <dl>
+											<dt>Product Name</dt>
+											<dd>{{ productGrade.prodName }}</dd>
+											</dl>
+                      <dl>
+											<dt>Origin Name</dt>
+											<dd>{{ productGrade.originName }}</dd>
+											</dl>
+                      <dl>
+											<dt>Is Blended</dt>
+											<dd>{{ productGrade.isBlended }}</dd>
+											</dl>
+                      <dl>
+                      <dt>Is Base</dt>
+											<dd>{{ productGrade.isBase }}</dd>
+											</dl>
+                     <dl>
+                      <dt>Hedge Ratio</dt>
+											<dd>{{ productGrade.hedgeRatio }}</dd>
+											</dl> 
+											<!-- template for mobile Ends-->
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column field='' title='' [width]="40">
+									<ng-template kendoGridHeaderTemplate let-productGrade>
+										<input type="checkbox" id="checkall" class="k-checkbox" (change)="checkorUnCheckAll($event)" />
+										<label class="k-checkbox-label chk_head" for="checkall"></label>
+									</ng-template>
+									<ng-template kendoGridCellTemplate let-productGrade>
+												<input type="checkbox" class="k-checkbox" id="productGrade.gradeCode" name="productGrade.gradeCode" ng-model="productGrade.gradeCode"/>
+												<label class="k-checkbox-label" for="productGrade.gradeCode"></label>
+											</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column media="sm" field="gradeCode" title="{{headerGradeCode}}">
+											<ng-template kendoGridCellTemplate let-productGrade>
+												<a href="javascript:void(0)" [routerLink]="['view',productGrade.gradeId]"><div   class="view-all">{{productGrade.gradeCode}}</div></a>
+
+												
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="sm" field="gradeName" title={{headerGradeName}}>
+										</kendo-grid-column>
+                    <kendo-grid-column media="sm" field="product.prodName" title={{headerProductName}}>
+										</kendo-grid-column>
+                    <kendo-grid-column media="sm" field="item.originName" title={{headerOriginName}}>
+					<ng-template kendoGridCellTemplate let-productGrade>
+											<span *ngFor="let item of productGrade.originList; let isLast=last">
+														{{item.originName}}{{isLast ? '' : ', '}}
+													</span>
+										</ng-template>
+										</kendo-grid-column>
+                    <kendo-grid-column media="sm" field="isBlended" title={{headerBlended}}>
+										</kendo-grid-column>
+                    <kendo-grid-column media="sm" field="isBase" title={{headerBase}}>
+										</kendo-grid-column>
+                    <!--<kendo-grid-column media="sm" field="hedgeRatio" title={{headerHedgeRatio}}>
+										</kendo-grid-column>-->
+										<!--<kendo-grid-column media="lg" field="statusName" title="Status">
+										</kendo-grid-column>-->
+										<kendo-grid-column media="lg" field="statusName" title="Status"  >
+											<ng-template kendoGridCellTemplate let-productGrade>
+												<label field="statusName" [ngClass]="{'status-draft': productGrade.statusName=='Draft','status-active': productGrade.statusName=='Active','status-inactive': productGrade.statusName=='InActive'}">{{productGrade.statusName}}</label>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field="" title="">
+											<ng-template kendoGridCellTemplate let-productGrade>
+										
+										<div class="show" style="float:left" ><span id="e1" data-attr="draft">
+													
+													<a href="javascript:void(0)" [routerLink]="['edit',productGrade.gradeId]"><img src='../../../assets/image/Edit_Icon_Hover.png.svg'/></a>
+													
+													<span style="display:none;">draft</span></span></div>
+
+													
+												<div class=""  (click)="product_grade_delete(productGrade)" *ngIf='productGrade.statusName=="Draft"' > <span id="d1" class="confirm-delete" >
+													
+													<img src="../../../assets/image/Delete icon.svg">
+													
+													</span></div>
+
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-excel fileName="PRODUCT GRADE.xlsx" [fetchData]="allData"></kendo-grid-excel>
+							</kendo-grid>
+						</div>
+						<!--Kendo grid Ends-->
+					</div>
+				</div>
+			
+ 
+<div *ngIf="isShowModals" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" (onHidden) ="hide()" bsModal #successModals="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">        
+                    <div class="modal-title  font-14 font-regular"><img src="../../assets/image/Ok.jpg"/> <span l10nTranslate>{{ msgsuccess}}  {{mastername}}  {{gradeName}}  {{statusmsg}}</span> </div>
+                </div> 
+        </div>
+    </div>
+	
+    </div>
+
+
+
+
+	<!--<div class="modal fade in error-modal" [style.display]="ErrorModal ? 'block' : 'none'" id="ErrorModal" role="dialog">
+        <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">        
+                    <div class="modal-title"><span><img src="../../../assets/image/Confirm_Delete.svg"/></span>Error : {{errorMessage}}!!!</div>
+                </div>       
+                </div>
+        </div>
+    </div>-->
+	
+</div> 
+
+</div>
+		
+
+
+
+			<!-- Delete Success Modal -->
+
+
+
+
+<div *ngIf="deleteSuccessModals" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" (onHidden) ="hide()" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular" *ngIf="isDraftStatus" ><img src="../../assets/image/Ok.jpg"/>{{ msgsuccess}}  {{mastername}}  {{gradeName}}  {{statusmsg}} </div>
+                    <div class="modal-title font-14 font-regular" *ngIf="isActiveStatus"><img src="../../assets/image/Ok.jpg"/>Success : InActivated Product Grade Name {{prodgradeName}}</div>
+				</div>  
+		</div>
+	</div>
+</div>
+<!-- Delete Success Modal - End -->
+<!--Delete Pop up-->
+<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" (onHidden) ="hide()" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #deletePopUpModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content  del-modal">
+			<div class="modal-header text-center">
+                <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a> -->
+				<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>
+			<div class="modal-body">
+								
+					<div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isDraftStatus" >
+							{{statusmsg}} {{gradeName}}  
+					</div>
+
+                     <div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isActiveStatus" >
+                           {{statusmsg}} {{gradeName}}   
+                    </div>
+			</div>
+				<div class="del-btn-group modal-window-footer btn-shodow">
+					<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="deletePopUpModal.hide()">Cancel</button></div>
+					<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+				</div>
+		</div>
+	</div>
+</div>
+<!---->
+
+
+
+
+	<div class="modal fade delete-popup" *ngIf="isError" [style.display]="showModal ? 'block' : 'none'" (onHidden) ="onHiddenIsError()" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'static',show: false}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content  del-modal text-center">
+			<img src="../../assets/image/Confirm_Delete.svg" />		
+		<div class="modal-body">
+				<div class="col-md-12 col-lg-12 product_img text-center font-14 font-regular">
+					Error : {{errorMessageForProductGrade}}!!!
+				</div>
+				
+			<div class="col-lg-12 col-md-12 col-sm-8 col-xs-8 pull-right text-center padl0 padr0 mart20 primary-btn">
+				<button type="button"  (click)="clickToClosePop()"  id="save_party_master1" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14">Ok</button>					
+			</div>
+		</div>
+		</div>
+	</div>
+</div>

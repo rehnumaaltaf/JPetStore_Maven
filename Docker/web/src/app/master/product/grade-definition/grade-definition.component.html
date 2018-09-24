@@ -1,0 +1,72 @@
+<!--div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<!--div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt30 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Grade LIST</h4>
+
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<!--div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a>
+					<img src="../../assets/image/add.png" (click)="changeShowStatus()" />
+
+
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+ <div id="grid" data-role="grid" class="k-grid k-widget k-display-block k-editable" style="height: 100%;">
+   <div class="k-grid-header" style="padding-right: 17px;">
+      <div class="k-grid-header-wrap k-auto-scrollable">
+         <table role="grid">
+            <thead role="rowgroup">
+               <tr role="row">
+                  <th style="width:5%;" align="center" scope="col" role="columnheader" aria-haspopup="true" rowspan="1" data-title="Select All" data-index="0" id="e181d774-5a99-4cab-8d5f-6a152a3a959c" class="k-header"><input type="checkbox" id="header-chb" class="k-checkbox"><label class="k-checkbox-label" for="header-chb"></label></th>
+                  <th scope="col" role="columnheader" data-field="ref" aria-haspopup="true" rowspan="1" data-title="REFERENCE" data-index="1" id="86f9254c-6e46-4a26-8517-119acdf79faf" class="k-header" data-role="columnsorter"><a class="k-link" >PRODUCT GRADE CODE</a></th>
+                  <th scope="col" role="columnheader" data-field="p_code" aria-haspopup="true" rowspan="1" data-title="PARTY CODE" data-index="2" id="3c83b705-9e92-4bf3-9534-63b35ac8f326" class="k-header" data-role="columnsorter"><a class="k-link" >PRODUCT</a></th>
+                  <th scope="col" role="columnheader" data-field="p_name" aria-haspopup="true" rowspan="1" data-title="PARTY NAME" data-index="3" id="8e58fe48-c6b3-4524-b0b9-1124bef39fe3" class="k-header" data-role="columnsorter"><a class="k-link" >ORIGIN</a></th>
+                  <th scope="col" role="columnheader" data-field="p_group" aria-haspopup="true" rowspan="1" data-title="PARTY GROUP" data-index="4" id="f8c31cbc-bd25-4ae3-89de-776988d17957" class="k-header" data-role="columnsorter"><a class="k-link" >ORIGIN REGION</a></th>                     
+                  <th scope="col" role="columnheader" data-field="p_group" aria-haspopup="true" rowspan="1" data-title="PARTY GROUP" data-index="4" id="f8c31cbc-bd25-4ae3-89de-776988d17957" class="k-header" data-role="columnsorter"><a class="k-link" >GRADE NAME</a></th>    
+                  <th scope="col" role="columnheader" data-field="p_group" aria-haspopup="true" rowspan="1" data-title="PARTY GROUP" data-index="4" id="f8c31cbc-bd25-4ae3-89de-776988d17957" class="k-header" data-role="columnsorter"><a class="k-link" >GRADE FULL NAME</a></th>                      
+                 <th scope="col" role="columnheader" data-field="p_group" aria-haspopup="true" rowspan="1" data-title="PARTY GROUP" data-index="4" id="f8c31cbc-bd25-4ae3-89de-776988d17957" class="k-header" data-role="columnsorter"><a class="k-link" >BASE GRADE</a></th>
+                 <th scope="col" role="columnheader" aria-haspopup="true" rowspan="1" data-title="STATUS" data-index="8" id="3c939252-1ed7-4099-8e98-9356b645dda4" class="k-header">STATUS</th>
+               </tr>
+            </thead>
+         </table>
+      </div>
+   </div>
+   <div class="k-grid-content k-auto-scrollable">
+      <table role="grid" style="height: auto;">
+         <tbody role="rowgroup" *ngFor="let gradeDetails of gradeDefinitionService.gradeDetails">		
+        <tr  role="row">
+							
+				<td style="width:3%;" align="center" role="gridcell"><input type="checkbox" class="k-checkbox" ><label class="k-checkbox-label"></label></td>								
+				<td role="gridcell" style="padding-left:3%;">{{gradeDetails.gradeCode}}</td>	
+				<td role="gridcell" style="padding-left:3%;" class="view-all" style="padding-left:3%;color:#0000EE !important;cursor: pointer;">{{gradeDetails.product}}</td>
+				<td role="gridcell" style="padding-left:3%;">{{gradeDetails.origin}}</td>
+				<td role="gridcell" style="padding-left:3%;">{{gradeDetails.region}}</td>
+				<td role="gridcell" style="padding-left:3%;">{{gradeDetails.gradeName}}</td>
+				<td role="gridcell" style="padding-left:3%;">{{gradeDetails.gradeFullName}}</td>
+				<td role="gridcell" style="padding-left:3%;">{{gradeDetails.baseGrade}}</td>
+				<td role="gridcell"><label class="text-center" [ngClass]="{'status-draft': gradeDetails.statusName=='Draft','status-active': gradeDetails.statusName=='Active','status-inactive': gradeDetails.statusName=='InActive'}">{{gradeDetails.statusName}}</label></td>	
+				<td role="gridcell" style="padding-left:3%;">
+					<div><span id="e1"><img src="../../assets/image/Edit_Icon_Hover.png.svg"></span>
+					<span class="confirm-delete" data-toggle="modal"  data-target="#product_view" id="d1" style="font-size:8px !important;"><img [ngClass]="{'displaynone': gradeDetails.statusName=='InActive'}"  src="../../assets/image/Delete%20icon.svg"></span></div>
+				</td>
+							
+				</tr>   
+         </tbody>
+      </table>
+   </div>
+</div>
+</div>
+</div>		
+	</div>
+</div-->

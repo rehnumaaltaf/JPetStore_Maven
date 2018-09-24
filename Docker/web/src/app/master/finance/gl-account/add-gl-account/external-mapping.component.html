@@ -1,0 +1,32 @@
+<div [formGroup]="externalMappingForm">
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 pad0 plants-detail">
+		<input type='hidden' formControlName='externalGlMappingId' [ngModel]="externalMappingId || '0'" ng-init="externalMappingId=0">
+        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+           <label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Destination System</label>
+				<div class="dropdown "> 
+					<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  formControlName="externalGlMappingName" [(ngModel)]="externalSystemRefId" name="externalSystemRefId" >
+					<option [ngValue]="undefined" selected>Select</option>
+					<option *ngFor="let option of glAccountService.externalSystemRefName" [value]="option.externalSystemRefId">{{option.externalSystemRefName}}</option>
+				</select>
+					
+				
+
+				</div>
+         </div>
+       <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Type</label>
+			<input type="text" class="form-control font-15 font-regular "  formControlName="mappingType" [(ngModel)]="mappingType" name="mappingType" placeholder="">
+	  </div>
+
+         <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Mapping</label>
+			<input type="text" class="form-control font-15 font-regular "  formControlName="externalGlMappingCode" [(ngModel)]="externalGlMappingCode" name="externalGlMappingCode" placeholder="">
+		 </div>
+        
+  
+       
+ </div>
+
+
+
+</div>

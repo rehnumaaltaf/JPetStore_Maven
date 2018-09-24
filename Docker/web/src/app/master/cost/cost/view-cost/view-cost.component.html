@@ -1,0 +1,267 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">Cost Master</h4>
+				<form class="user-detail font-sm">
+					<accordion>
+						<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf="costdata">
+							<div accordion-heading class="font-semibold">
+								Basic Details
+								<i class="pull-right float-xs-right glyphicon" ></i>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Cost code</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.costCode}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Cost Name</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.costName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Cost Description</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.costFullName}}</span>
+										</div>
+									</div>
+								</div>							
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Cost Group</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.fkCostGroupName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Cost Type</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{(costdata?.CostTypeIsPrimaryInd=='1')?'Primary': 'Secondary'}} </span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Matrix Applicable </div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{(costdata?.matrixApplicableInd=='Y')?'Yes': 'No'}}</span>
+										</div>
+									</div>
+								</div>							
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0" *ngIf="costdata?.matrixApplicableInd=='N'">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Default Value Type </div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.fkcostDefValueTypeName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0" *ngIf="costdata?.matrixApplicableInd=='N'">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Default Value </div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.costDefaultValue}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0" *ngIf="costdata?.matrixApplicableInd ==='N' && costdata?.fkCostGroupName !== 'Freight' && costdata?.fkCostGroupName !== 'Warehouse' && costdata?.fkCostGroupName !== 'Clearing & Forwarding'">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Default Unit Basis</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.fkDefaultValueBasisRefName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0" *ngIf="costdata?.fkDefaultValueBasisRefId == defaultUnit.uom">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Default Unit Uom</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.fkDefaultValueUomName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0"  *ngIf="costdata?.fkDefaultValueBasisRefId ==defaultUnit.primaryPack">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Default Unit Primary Packing</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.fkDefValPrimaryPackingName}}</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0" *ngIf="costdata?.fkDefaultValueBasisRefId ==defaultUnit.secondaryPack">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Default Unit Secondary Packing</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.fkDefValSecondaryPackingName}}</span>
+										</div>
+									</div>
+								</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0" *ngIf="costdata?.matrixApplicableInd ==='N' && costdata?.fkCostGroupName !== 'Freight' && costdata?.fkCostGroupName !== 'Warehouse' && costdata?.fkCostGroupName !== 'Clearing & Forwarding'">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Default currency </div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.fkCurrencyName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Netted For MTM </div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{(costdata?.nettedForMtmInd=='Y')?'Yes': 'No'}}</span>
+										</div>
+									</div>
+								</div>							
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Realized </div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{(costdata?.realizedInd=='Y')?'Yes': 'No'}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Capitalize the cost In Inventory</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{(costdata?.capitalizeCostInd=='Y')?'Yes': 'No'}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Revenue GL Account </div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.fkRevenueGlName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Expense GL Account </div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.fkExpenseGlName}}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								External System Mapping
+								<i class="pull-right float-xs-right glyphicon" ></i>
+							</div>
+							 <div *ngFor="let externalsystem of externalsysArray; let i=index">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                              
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Destination System</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{externalsystem?.fkExternalSystemRefName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Type</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{externalsystem?.mappingType}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Mapping</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{externalsystem?.externalCode}}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>
+						</accordion-group>
+					</accordion>
+
+					<!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer e-draft displayblock" data-attr="footer-edraft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtoView()">Back</button>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" [routerLink]="['../edit-financial-cal',this.financialCal?.pkFinCalId]">Edit</button>					
+						<span id="status-draft" *ngIf="financialCal?.pkFinCalId && financialCal?.statusName === 'Draft'">
+							<button type="button" id="update14" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)='onSubmitBtnClick(Active)' >Submit</button>					
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)='openConfirmAction(this.financialCal?.statusName)' >Delete</button>					
+						</span>
+						<span id="status-active" *ngIf="financialCal?.pkFinCalId && financialCal?.statusName ==='Active'">
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)='openConfirmAction(this.financialCal?.statusName)'>Deactivate</button>					
+						</span>
+						<span id="status-inactive" *ngIf="financialCal?.pkFinCalId && financialCal?.statusName ==='InActive'">
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)='openConfirmAction(this.financialCal?.statusName)' >Reactivate</button>					
+						</span>
+						</div>						
+					</div>-->
+
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn e-draft displayblock" data-attr="footer-edraft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtoPrev()">BACK</button>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 pull-right text-right pad0 ">
+							<button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" style="width:20% !important;" (click)='edit()'>EDIT</button>					
+						<span id="status-draft" *ngIf="costdata?.fkStatusName === 'Draft'">
+							<button type="button" id="update14" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" style="width:20% !important;" (click)='onSubmitBtnClick(this.costdata)' >SUBMIT</button>					
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" style="width:20% !important;" (click)='openConfirmAction(this.costdata,this.costdata?.fkStatusName)' >DELETE</button>					
+						</span>
+						<span id="status-active" *ngIf="costdata?.fkStatusName === 'Active'">
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" style="width:20% !important;" (click)='openConfirmAction(this.costdata,this.costdata?.fkStatusName)'>DEACTIVATE</button>					
+						</span>
+						<span id="status-inactive" *ngIf="costdata?.fkStatusName === 'InActive'">
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" style="width:20% !important;" (click)='openConfirmAction(this.costdata,this.costdata?.fkStatusName)' >REACTIVATE</button>					
+						</span>
+						</div>							
+					</div>
+
+
+					
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<app-message [(msgs)]="messages"></app-message>

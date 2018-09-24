@@ -1,0 +1,310 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+			<span *ngIf="errorMessage" style="color:red">{{errorMessage}}</span>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div view-page">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padt10 padb10">
+						<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+						<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 padr0">
+							
+						</div>
+					</div>
+				</div>
+				<form class="user-detail font-sm">
+					
+						<!-- <div class="accordion-content"> -->
+				<accordion>
+						<accordion-group #group  [isOpen]="statuses.isFirstOpen" [isDisabled]="statuses.isFirstDisabled">
+							
+							<div accordion-heading  class="font-semibold">
+							 Origin Base Details
+							  <i class="pull-right float-xs-right glyphicon"
+								 [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div class="panel panel-default marb30">
+								
+								<div >
+									<div class="panel-body origin_region_block">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.OriginLocale.Code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{originDefinitionDetails.originDto.originCode}}</span></div></div>
+											</div>
+											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.OriginLocale.Name</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{originDefinitionDetails.originDto.originName}}</span></div></div>
+											</div>
+											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.OriginLocale.FullName</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{originDefinitionDetails.originDto.originFullName}}</span></div></div>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.OriginLocale.Country</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{originDefinitionDetails.originDto.geoName}}</span></div></div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+
+							<accordion-group #group2  [isOpen]="statuses.isFirstOpen" [isDisabled]="statuses.isFirstDisabled">
+							
+							<div accordion-heading  class="font-semibold">
+							Origin Grade Group
+							  <i class="pull-right float-xs-right glyphicon"
+								 [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+							</div>
+							<div class="panel panel-default marb30">
+								
+							<div>
+									<div class="panel-body origin_region_block">	
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 origin_region_def">								
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666">
+												<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.OriginLocale.GradeGroupCode</label>
+												<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.OriginLocale.GradeGroupName</label>
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15">
+												<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">HCUP</label>
+												<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> HardCup</label>
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15">
+												<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">HCUP</label>
+												<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> HardCup</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+
+						<accordion-group #group3  [isOpen]="statuses.isFirstOpen" [isDisabled]="statuses.isFirstDisabled">
+							<div accordion-heading  class="font-semibold">
+							Default Packing
+							  <i class="pull-right float-xs-right glyphicon"
+								 [ngClass]="{'acc-down': group3?.isOpen, 'acc-up': !group3?.isOpen}"></i>
+							</div>
+							<div class="panel panel-default marb30">
+							
+							<div>
+									<div class="panel-body defaultPack_region_block">	
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 ">								
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666">
+												<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.OriginLocale.Product</label>
+												<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.OriginLocale.Packing</label>
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15">
+												<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">Robusta</label>
+												<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val">50 KG Bag</label>
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15">
+												<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">Arabica</label>
+												<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val">100 KG Bag</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								</div>
+							</accordion-group>
+
+							<accordion-group #group4  [isOpen]="statuses.isFirstOpen" [isDisabled]="statuses.isFirstDisabled">
+							<div accordion-heading  class="font-semibold">
+							External System Packing
+							  <i class="pull-right float-xs-right glyphicon"
+								 [ngClass]="{'acc-down': group4?.isOpen, 'acc-up': !group4?.isOpen}"></i>
+							</div>
+								<div class="panel panel-default marb30">
+							
+							<div>
+								<div class="panel-body origin_region_block">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.OriginLocale.DestinationSystem</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">SAP</span></div></div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.OriginLocale.Type</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">GL Code</span></div></div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.OriginLocale.Mapping</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">001456</span></div></div>
+										</div>							
+											
+									</div>
+								</div>
+							</div>
+						</div>
+						</accordion-group>
+						
+						
+						</accordion>
+						
+						<!-- </div>     div accordion content  -->
+
+
+						
+						
+						
+
+
+
+						<!-- <div class="accordion  no-accordion">-->
+					
+
+					
+					<!-- </div>-->
+				
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)='backtoPrev()'>Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"
+							  *ngIf="editMode">Edit</button>
+							<button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"
+							 *ngIf="isEdit">Update</button>
+							<button type="button" id="update14" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+							 >Submit</button>
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+							 >Delete</button>
+						</div>
+					</div>
+
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)='backtoPrev()'>Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update15" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" 
+							 *ngIf="editMode">Edit</button>
+							<button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"
+							 *ngIf="isEdit">Update</button>
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="confirm()"
+							 >Deactivate</button>
+						</div>
+					</div>
+
+					 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)='backtoPrev()'>Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update16" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"
+							 *ngIf="editMode">Edit</button>
+							<button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"
+							*ngIf="isEdit">Update</button>
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="confirm()"
+							 >Reactivate</button>
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+
+
+					<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn" *ngIf="draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn btn-default navbar-btn cancel-btn font-semibold font-14" (click)='backtoPrev()'>BACK</button>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="update13" class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" style="width:20% !important;"
+							 (click)="enableEdit()" *ngIf="editMode">EDIT</button>
+							<button type="button" id="update13" class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" style="width:20% !important;"
+							 (click)="update(glData.glBasicDto.partyName,glData.glBasicDto.glCode,glData.glBasicDto.glName,glData.glBasicDto.glDesc,glData.glBasicDto.glIsGroup,'update')"
+							 *ngIf="isEdit">UPDATE</button>
+							<button type="button" id="update14" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" style="width:20% !important;margin-right:20px;"
+							 (click)="confirm()">SUBMIT</button>
+							<button type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14"
+							 style="width:20% !important;" (click)="delete(glData)">DELETE</button>
+						</div>
+					</div> -->
+					<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn" *ngIf="Active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn btn-default navbar-btn cancel-btn font-semibold font-14" (click)='backtoPrev()'>BACK</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="update15" class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" (click)="enableEdit()"
+							 *ngIf="editMode">EDIT</button>
+							<button type="button" id="update13" class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" style="width:20% !important;"
+							 (click)="update(glData.glBasicDto.partyName,glData.glBasicDto.glCode,glData.glBasicDto.glName,glData.glBasicDto.glDesc,glData.glBasicDto.glIsGroup,'update')"
+							 *ngIf="isEdit">UPDATE</button>
+							<button type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14"
+							 (click)="confirm()">UPDATE & DEACTIVATE</button>
+						</div>
+					</div> -->
+					<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn" *ngIf="InActive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn btn-default navbar-btn cancel-btn font-semibold font-14" (click)='backtoPrev()'>BACK</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="update16" class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" (click)="enableEdit()"
+							 *ngIf="editMode">EDIT</button>
+							<button type="button" id="update13" class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" style="width:20% !important;"
+							 (click)="update(glData.glBasicDto.partyName,glData.glBasicDto.glCode,glData.glBasicDto.glName,glData.glBasicDto.glDesc,glData.glBasicDto.glIsGroup,'update')"
+							 *ngIf="isEdit">UPDATE</button>
+							<button type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14"
+							 (click)="confirm()">UPDATE & REACTIVATE</button>
+						</div>
+					</div> -->
+				</form>
+
+			</div>
+
+
+		
+
+
+			<!-- Success Updated Modal -->
+			<!-- <div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal"
+			 [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-content">
+							<div class="modal-header">
+								<div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>Success : {{statusMsg}} GL Code {{glCode}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+			
+				<!--Confirm Update -->
+<div class="modal fade delete-popup" *ngIf="status_change" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #statusChange="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                        			<img src="../../assets/image/Confirm_Delete.svg" />
+										           <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                    	        </div>
+                                                                <div class="modal-body">
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     Are you sure you want to {{statusMsg}} the Origin Name {{originDefinitionDetails.originDto.originName}} in {{status}} status ?
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_status_change()">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+
+
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: reference-service
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ctrm-config:8761/eureka
+      
+db:
+  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  url: jdbc:sqlserver://CTRMSQL:1433;DataBaseName=SCORE_DEV_002
+  username: reference_service_user
+  password: Infy123+
+
+server:
+  port: 8090
+  
+reference:
+  name: reference-service
+  
+party:
+  name: party-service
+  
+product:
+  name: product-service
+  
+authorization:
+  name: authorization-config-service
+  
+finance:
+  name: finance-service
+  
+packing:
+  name: packing-service
+  
+marketdata:
+  name: marketdata-service
+  
+location:
+  name: location-service
+  
+limit:
+  name: limit-service
+  
+forex:
+  name: forex-service
+  
+cost:
+  name: cost-service
+  
+terms:
+  name: terms-service
+    
+entitymanager:
+  packagesToScan: com.olam.score
+  
+hibernate:
+  dialect: org.hibernate.dialect.SQLServer2012Dialect
+  show_sql: true
+  
+ 

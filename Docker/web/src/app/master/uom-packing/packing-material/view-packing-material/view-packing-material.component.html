@@ -1,0 +1,192 @@
+ <div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		
+ <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 usr-div view-page single-block">			
+		<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">Packing Material Details</h4>
+			<form class="user-detail font-sm">
+					<div class="accordion">
+					<h3 class="font-semibold colr-lblue ">Basic Details</h3>
+							<div class="container-fluid-block marb30">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padt15">
+							
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+						
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Packing Material Code</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{packingDetail?.packingMaterialCode}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Packing Material Name</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{packingDetail?.packingMaterialName}} </span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Packing Material Description</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{packingDetail?.packingMaterialDesc}}</span>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Bulk</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{(packingDetail?.packingMaterialIsBulk=='1')?'Yes': 'No'}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Package Weight</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{packingDetail?.packingMaterialWeight}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Package UOM</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{packingDetail?.uomName}}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+											
+							
+							
+						</div>
+					</div>
+				
+				
+					
+					
+					</div>
+         <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn e-draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn btn-default navbar-btn cancel-btn font-semibold font-14">BACK</button>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="update13"  class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" style="width:20% !important;">EDIT</button>					
+							<button type="button" id="update14"   class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" style="width:20% !important;margin-right:20px;">SUBMIT</button>					
+							<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" style="width:20% !important;">DELETE</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn e-draft displaynone" data-attr="footer-edraft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn btn-default navbar-btn cancel-btn font-semibold font-14">BACK</button>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="update13"  class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" style="width:20% !important;">EDIT</button>					
+							<button type="button" id="update14"   class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" style="width:20% !important;margin-right:20px;">SUBMIT</button>					
+							<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" style="width:20% !important;">DELETE</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn e-active displaynone" data-attr="footer-eactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn btn-default navbar-btn cancel-btn font-semibold font-14">BACK</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="update15"  class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14">EDIT</button>					
+							<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14">DEACTIVATE</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn e-inactive displaynone" data-attr="footer-einactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn btn-default navbar-btn cancel-btn font-semibold font-14">BACK</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="update16" class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14">EDIT</button>					
+							<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14">REACTIVATE</button>					
+						</div>							
+					</div>-->
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer e-draft displayblock" data-attr="footer-edraft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtoView()">Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                <button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="editPack()">Edit</button>					
+              <span id="status-draft" *ngIf="packingDetail?.pkPackingMaterialId && packingDetail?.statusName === 'Draft'">
+                <button type="button" id="update14" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)='onSubmitBtnClick(Active)' >Submit</button>					
+                <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)='openConfirmAction(this.packingDetail?.statusName)' >Delete</button>					
+              </span>
+              <span id="status-active" *ngIf="packingDetail?.pkPackingMaterialId && packingDetail?.statusName ==='Active'">
+                <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)='openConfirmAction(this.packingDetail?.statusName)'>Deactivate</button>					
+              </span>
+              <span id="status-inactive" *ngIf="packingDetail?.pkPackingMaterialId && packingDetail?.statusName ==='InActive'">
+                <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"  (click)='openConfirmAction(this.packingDetail?.statusName)' >Reactivate</button>					
+              </span>
+						</div>						
+					</div>
+
+	<!--Edit modal pop-up-->
+<div  *ngIf="openEdit" [config]="{backdrop:'static',show: true }"
+ (onHidden)="onHideEditModal()" bsModal  #editModal="bs-modal"
+  class="modal fade edit-popup" 
+  tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-edit" style="height:440px !important;">
+				<div class="modal-header mod-head"> 
+					<a class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="editModal.hide()"></span></a>
+					<h3 class="modal-title font-semibold">Edit Packing Material Details</h3>
+				</div>
+				<div class="modal-edit-body mod-body">
+					<app-add-packing-material [packModel]=packingDetail (onSubmit)="closeEditModal($event)" ></app-add-packing-material>
+				</div>			
+			</div>
+		</div>
+</div>
+<!--End of Edit modal pop up-->	
+
+            <div class="modal fade delete-popup"  (onHidden)="onHiddenpopup()" *ngIf="isConfirmPopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: true,show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog " style="height:440px !important; color:white !important;">
+		<div class="modal-content  del-modal">
+		   <div class="modal-header text-center">
+				<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+				<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>			
+			<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular">							
+						{{dialogValue}}
+					</div>
+			</div>
+			<div class="del-btn-group modal-window-footer btn-shodow">
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="status_update()">Confirm</button></div>
+			</div>
+		</div>
+	</div>
+</div>	
+
+<div *ngIf="isconfirmSuccessModal" (onHidden)="onHidden()" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #confirmSuccessModal="bs-modal" [config]="{backdrop: true,show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>{{successDialog}}</div>
+				</div>
+		</div>
+	</div>
+</div>
+			</form>
+			</div>	
+      </div>
+      </div>

@@ -1,0 +1,11 @@
+﻿Browser("JPetStore Demo").Page("JPetStore Demo").Image("sign-in").Click @@ hightlight id_;_Browser("JPetStore Demo").Page("JPetStore Demo").Image("sign-in")_;_script infofile_;_ZIP::ssf1.xml_;_
+Browser("JPetStore Demo").Page("JPetStore Demo_2").Image("button_submit").Click 32,11 @@ hightlight id_;_Browser("JPetStore Demo").Page("JPetStore Demo 2").Image("button submit")_;_script infofile_;_ZIP::ssf2.xml_;_
+Browser("JPetStore Demo").Page("JPetStore Demo_3").WebArea("Fish").Click @@ hightlight id_;_Browser("JPetStore Demo").Page("JPetStore Demo 3").WebArea("Fish")_;_script infofile_;_ZIP::ssf3.xml_;_
+Browser("JPetStore Demo").Page("JPetStore Demo_4").Link("FI-FW-01").Click @@ hightlight id_;_Browser("JPetStore Demo").Page("JPetStore Demo 4").Link("FI-FW-01")_;_script infofile_;_ZIP::ssf4.xml_;_
+Browser("JPetStore Demo").Page("JPetStore Demo_5").Link("EST-4").Click @@ hightlight id_;_Browser("JPetStore Demo").Page("JPetStore Demo 5").Link("EST-4")_;_script infofile_;_ZIP::ssf5.xml_;_
+Browser("JPetStore Demo").Page("JPetStore Demo_6").Image("button_add_to_cart").Click @@ hightlight id_;_Browser("JPetStore Demo").Page("JPetStore Demo 6").Image("button add to cart")_;_script infofile_;_ZIP::ssf6.xml_;_
+Browser("JPetStore Demo").Page("JPetStore Demo_7").Image("button_checkout").Click @@ hightlight id_;_Browser("JPetStore Demo").Page("JPetStore Demo 7").Image("button checkout")_;_script infofile_;_ZIP::ssf7.xml_;_
+Browser("JPetStore Demo").Page("JPetStore Demo_8").Image("button_continue").Click @@ hightlight id_;_Browser("JPetStore Demo").Page("JPetStore Demo 8").Image("button continue")_;_script infofile_;_ZIP::ssf8.xml_;_
+Browser("JPetStore Demo").Page("JPetStore Demo_9").Image("button_submit").Click 36,7 @@ hightlight id_;_Browser("JPetStore Demo").Page("JPetStore Demo 9").Image("button submit")_;_script infofile_;_ZIP::ssf9.xml_;_
+Browser("JPetStore Demo").Page("JPetStore Demo_10").Image("button_continue").Click @@ hightlight id_;_Browser("JPetStore Demo").Page("JPetStore Demo 10").Image("button continue")_;_script infofile_;_ZIP::ssf10.xml_;_
+Browser("JPetStore Demo").Page("JPetStore Demo_11").Image("sign-out").Click @@ hightlight id_;_Browser("JPetStore Demo").Page("JPetStore Demo 11").Image("sign-out")_;_script infofile_;_ZIP::ssf11.xml_;_

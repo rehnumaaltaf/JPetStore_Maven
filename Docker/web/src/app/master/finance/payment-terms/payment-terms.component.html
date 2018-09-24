@@ -1,0 +1,233 @@
+<!--  <app-header></app-header>-->
+<div class="container-fluid">
+<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->   
+<div class="row row-background">
+<app-nav-bar></app-nav-bar>
+      
+  
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0" >
+       	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div currency-container create-view" *ngIf="showHide">
+               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+						<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Payment Terms List</h4>
+
+					</div>
+			
+					<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+				
+				
+				</div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+                            <!-- Kendo Grid starts-->
+							<div class="party-grade_block">
+									<kendo-grid [kendoGridBinding]="paymentTermsService.paymentTermsDetails" [selectable]="true" [groupable]="true" [group]="state.group"
+										[scrollable]="true" [editable]="true" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [filter]="state.filter"
+										[sortable]="true" [filterable]="true" (dataStateChange)="dataStateChange($event)"  [pageable]="false"
+										(pageChange)="pageChange($event)">
+
+										<ng-template kendoGridToolbarTemplate>
+										 <span class="k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+											<img src="../../assets/image/add.png" (click)="redirecttoadd()" />
+										</ng-template>
+									
+										<kendo-grid-column media="xs" title="Payment Terms">
+										<ng-template kendoGridCellTemplate let-paymentTerms>
+											<!-- template for mobile -->
+											
+											<h4>
+											{{ paymentTerms.payTermCode}}
+											</h4>
+											<dl>
+											<dt>Term Name</dt>
+											<dd>{{ paymentTerms.payTermName }}</dd>
+											</dl>
+                      <dl>
+											<dt>Term Basis Ref</dt>
+											<dd>{{ paymentTerms.paymentBasisRef }}</dd>
+											</dl>
+                      <dl>
+											<dt>Due Days</dt>
+											<dd>{{ paymentTerms.dueDays }}</dd>
+											</dl>
+                      <dl>
+											<dt>Contingency Days</dt>
+											<dd>{{ paymentTerms.contingencyDays }}</dd>
+											</dl>
+											<!-- template for mobile Ends-->
+										</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field='' title='' [width]="40">
+												<ng-template kendoGridHeaderTemplate let-paymentTerms>
+												<input type="checkbox" id="checkall" class="k-checkbox" ng-model="allItemsChecked" (change)="checkAllClicked($event)" />
+												<label class="k-checkbox-label chk_head" for="checkall"></label>
+											</ng-template> 
+											<ng-template kendoGridCellTemplate let-paymentTerms>
+												<input type="checkbox" class="k-checkbox" id="paymentTerms.payTermCode" name="paymentTerms.payTermCode" ng-model="paymentTerms.payTermCode"/>
+												<label class="k-checkbox-label" for="paymentTerms.payTermCode"></label>
+											</ng-template>
+										</kendo-grid-column>
+
+									<kendo-grid-column media="sm" field="payTermCode" title="Payment Terms">
+											<ng-template kendoGridCellTemplate let-paymentTerms>
+												<div (click)="viewById(paymentTerms.paymentTermId)"  class="view-all">{{paymentTerms.payTermCode}}</div>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="sm" field="payTermName" title="Term Name">
+										</kendo-grid-column>
+                    <kendo-grid-column media="sm" field="paymentBasisRef" title="BasisRef">
+										</kendo-grid-column>
+                    <kendo-grid-column media="sm" field="dueDays" filter="numeric" title="Due Days">
+										</kendo-grid-column>
+                    <kendo-grid-column media="sm" field="contingencyDays" filter="numeric" title="Contingency Days">
+										</kendo-grid-column>
+										<!--<kendo-grid-column media="lg" field="statusName" title="Status">
+										</kendo-grid-column>-->
+										<kendo-grid-column media="lg" field="statusName" title="Status">
+											<ng-template kendoGridCellTemplate let-paymentTerms>
+												<label field="statusName" [ngClass]="{'status-draft': paymentTerms.statusName=='Draft','status-active': paymentTerms.statusName=='Active','status-inactive': paymentTerms.statusName=='InActive'}">{{paymentTerms.statusName}}</label>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field="" title="">
+											<ng-template kendoGridCellTemplate let-paymentTerms>
+												<div class="show" style="float:left" ><span id="e1" data-attr="draft">
+													
+													<a href="javascript:void(0)" [routerLink]="['edit',paymentTerms.paymentTermId]"><img src='../../../assets/image/Edit_Icon_Hover.png.svg'/></a>
+													
+													<span style="display:none;">draft</span></span></div>
+												<div class=""  (click)="payment_delete(paymentTerms.paymentTermId,paymentTerms.payTermName,paymentTerms.statusName)" [ngClass]="{'displaynone': paymentTerms.statusName=='InActive'}"  *ngIf='paymentTerms.statusName=="Draft"'><span id="d1" class="confirm-delete" >
+													<img src="../../../assets/image/Delete icon.svg"></span></div>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-excel fileName="paymentTerms.xlsx" [fetchData]="allData"></kendo-grid-excel>
+									</kendo-grid>
+									</div>
+									<!--Kendo grid Ends-->
+                     </div>
+				</div>
+
+  <div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'"   (onHidden) = "onHiddenshowmodel()" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">        
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : {{paytemname}}  {{addoreditpagemsg}} with status {{statusmsg}} </div>
+                </div> 
+        </div>
+    </div>
+	
+    </div>
+
+	<div class="modal fade in error-modal" [style.display]="ErrorModal ? 'block' : 'none'" id="ErrorModal" role="dialog">
+        <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">        
+                    <div class="modal-title font-14 font-regular"><img src="../../../assets/image/Confirm_Delete.svg"/>Error : {{errorMessage}}!!!</div>
+                </div>       
+                </div>
+        </div>
+    </div>
+	
+</div> 
+
+</div>
+		
+
+
+
+			<!-- Delete Success Modal -->
+<div *ngIf="deleteSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular" *ngIf="isDraftStatus" ><img src="../../assets/image/Ok.jpg"/>Success :  Deleted Payment Terms Code: {{paytemname}} </div>
+                    <div class="modal-title font-14 font-regular" *ngIf="isActiveStatus"><img src="../../assets/image/Ok.jpg"/>Success : InActivated Payment Terms Code {{paytemname}}</div>
+				</div>
+		</div>
+	</div>
+</div>
+<!-- Delete Success Modal - End -->
+<!--Delete Pop up-->
+<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" (onHidden) ="onHiddenisDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content  del-modal">
+			<div class="modal-header text-center">
+                <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a> -->
+				<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>			
+			<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isDraftStatus" >
+							Are you sure you want to Delete the Payment Terms {{paytemname}} in {{status}} status ?
+					</div>
+                     <div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isActiveStatus" >
+                            Are you sure you want to De-Activate the Payment Terms {{paytemname}} in {{status}} status ?
+                    </div>
+			</div>
+				<div class="del-btn-group modal-window-footer btn-shodow">
+					<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+					<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+				</div>
+		</div>
+	</div>
+</div>
+<!---->
+
+
+
+<div class="modal fade delete-popup" *ngIf="isReactivatePopupModal" [style.display]="isReactivatePopupModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog " style="height:650px !important; color:white !important;">
+          <div class="modal-content  del-modal">
+              <div class="modal-header text-center">
+                	<img src="../../assets/image/Confirm_Delete.svg" />      
+              </div>
+              <div class="modal-body">                              
+                      <div class="col-md-12 product_img text-center font-14 font-regular">
+                           Are you sure you want to reactivate this?
+                      </div>
+              </div>
+              <div class="del-btn-group modal-window-footer btn-shodow">
+                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closereactivatepopup()">Cancel</button></div>
+                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="confirmReactivate($event)">Confirm</button></div>
+              </div>
+          </div>
+      </div>
+</div>
+
+	<div class="modal fade delete-popup" *ngIf="isError" [style.display]="showModal ? 'block' : 'none'" (onHidden) ="onHiddenIsError()" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog ">
+		<div class="modal-content  del-modal">
+		
+		<div class="col-md-12 product_img text-center">
+						<img src="../../assets/image/Confirm_Delete.svg" />
+		</div>
+		<div class="modal-body">
+				<div class="col-md-12 col-lg-12 product_img text-center">
+					Error : {{errorMessageForPaymentTerms}}!!!
+				</div>
+				
+			<div class="col-lg-12 col-md-12 col-sm-8 col-xs-8 pull-right text-center padl0 padr0 mart20 primary-btn">
+				<button type="button"  (click)="clickToClosePop()"  id="save_party_master1" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14">Ok</button>					
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade delete-popup" *ngIf="isCancelUpdatePopupModal" [style.display]="isCancelUpdatePopupModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog ">
+          <div class="modal-content del-modal">
+              <div class="modal-header text-center">
+                       <img src="../../assets/image/Confirm_Delete.svg" />                   
+              </div>
+              <div class="modal-body">                              
+                      <div class="col-md-12 product_img text-center font-14 font-regular">
+                          Do you really want to cancel the changes you have made?
+                      </div>
+              </div>
+              <div class="del-btn-group modal-window-footer btn-shodow">
+                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closeCancelUpdatePopupModal()">Cancel</button></div>
+                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="confirmUpdatePopupModal($event)">Confirm</button></div>
+              </div>
+          </div>
+      </div>
+</div>  

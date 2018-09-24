@@ -1,0 +1,153 @@
+
+.add_Currency_Detail .ui-widget-content:hover{
+background: #dceffd !important;
+}
+.add_Currency_Detail .ui-datatable tbody > tr.ui-widget-content.ui-datatable-odd {
+    background-color: white;
+}  
+.add_Currency_Detail .ui-chkbox-box {
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 0px !important; 
+    background: white;
+    border-color: #7f7f7f;
+    margin-left: 15px !important;
+}
+.add_Currency_Detail .ui-state-active:before{
+    content: "\2713";
+    color: #4F89AD;
+    font-size: 13px;    
+    position: relative;
+}
+.add_Currency_Detail .ui-chkbox-box.ui-state-active, .ui-radiobutton-box.ui-state-active{
+    background: white;
+}
+.add_Currency_Detail .ui-chkbox-box.ui-state-active, .ui-radiobutton-box.ui-state-active{
+     border-color: #7f7f7f;
+}
+.add_Currency_Detail .ui-datatable .ui-datatable-thead>tr>th, .origin_detail .ui-datatable .ui-datatable-tfoot>tr>td,.origin_detail  .ui-datatable .ui-datatable-data>tr>td {
+     border-color: white !important; 
+    box-sizing: border-box;   
+    border-width: 0px !important; 
+     border-style: none; 
+}
+.add_Currency_Detail .ui-inputtext{
+    background-color: transparent;
+    font-size: 15px;
+  
+}
+.add_Currency_Detail input, .origin_detail input:focus{
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 0px;
+    box-shadow: none;   
+}
+.add_Currency_Detail .ui-datatable .ui-editable-column input{
+    width:75%;    
+}
+.add_Currency_Detail table tr{
+    border:0px solid #ffffff !important;
+}
+.add_Currency_Detail .ui-cell-data{
+       color: #333333;
+    font-size: 15px;
+    font-family: "Roboto-Regular";
+}
+.add_Currency_Detail .ui-datatable .ui-datatable-data>tr>td.ui-editable-column{
+    padding-top:19px;
+    padding-bottom:19px;
+}
+.add_Currency_Detail .ui-datatable-odd{
+    background: #fbfcfe !important;
+}
+.add_Currency_Detail .ui-datatable th.ui-state-default{
+    background: #ffffff;
+}
+.add_Currency_Detail .ui-column-title{
+    color: #648b99;
+    font-size: 14px;
+    font-family: "Roboto-Medium";
+}
+.add_Currency_Detail .ui-chkbox-box:not(.ui-state-disabled):not(.ui-state-active):hover{
+border-color: #70acd1;
+background: #ffffff;
+}
+.add_Currency_Detail .ui-chkbox-box{
+border-color: #70acd1;
+background: #ffffff;
+}
+.add_Currency_Detail table .ui-state-default{
+    text-align: left;
+}
+.add_Currency_Detail .ui-datatable th.ui-sortable-column:not(.ui-state-active):hover {
+    background: #ffffff;
+    border-color: #ffffff;
+}  
+  .create-view{
+      padding-left:30px !important;
+      padding-right: 30px !important;
+
+  }
+ .currency-container .add-icon-index{
+    /*z-index: 9999 !important;*/
+    }
+
+.grid-container{
+    clear:both;
+}
+.suggestion-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.suggestion-dropdown .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 2px;
+    background: #EEE;
+    z-index:2;
+    max-height:100px;
+    overflow:auto;
+}
+.suggestion-dropdown .dropdown div {
+    cursor: pointer;
+    padding: 2px 5px;
+}
+.suggestion-dropdown input:focus + .dropdown {
+    display: block;
+}
+.dropdown select option{
+    color:#333;
+}
+
+.alertCurrencycode{
+    border:  0.5px solid #d43c3c;
+    margin-top: -2px;
+}
+/*.ui-growl-item{       
+     position: absolute;
+  
+    width: 100%;
+ 
+    right: 120%;
+    background: red;
+}*/
+
+.error-modal .modal-title,.error-modal .modal-header{
+	color:#ffffff;
+	background: #d43c3c !important;
+	border-bottom:0 !important;
+	font-family: "Roboto-Medium";
+	text-align:center;
+	left:0%;
+  }
+
+.tbl-action{
+    display:none;
+}
+.add_Currency_Detail .ui-widget-content:hover >  td:last-child .tbl-action{
+    display: block !important;
+}

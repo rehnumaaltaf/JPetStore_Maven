@@ -1,0 +1,468 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">
+					<div *ngIf="addpage" l10nTranslate> Master.ProductGrade.addTitle</div>
+					<div *ngIf="editpage" l10nTranslate>Master.ProductGrade.editTitle </div>
+					</h4>			 			
+				<form  [formGroup] ="gradeForm" class="user-detail font-sm">
+			<accordion>
+						 <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold" l10nTranslate>Master.ProductGrade.subtitle1
+                  <i class="pull-right float-xs-right glyphicon"
+                  [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+                <div class="panel-body">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+					<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.ProductGrade.gradecode</label>
+							<input type="text" class="form-control font-15 font-regular " formControlName="gradeCode" [(ngModel)] = "productGrade.gradeCode"  id="gradeCode" maxlength="20" value="" placeholder="" name="gradeCode" [style.border-color]="getStylecode()" (keypress) = "changeStylecode()" />
+							<small *ngIf="req_gradecode" id="" class="colr-red font-regular font-14" l10nTranslate >Master.ProductGrade.errgradecode</small>
+						</div>
+						<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.ProductGrade.gradename</label>
+							<input type="text" class="form-control font-15 font-regular " formControlName="gradeName" [(ngModel)] = "productGrade.gradeName" id="gradeName" maxlength="200" value="" placeholder="" name="gradeName" [style.border-color]="getStylename()" (keypress) = "changeStylename()"/>
+							<small *ngIf="req_gradename" id="" class="colr-red font-regular font-14" l10nTranslate >Master.ProductGrade.errgradename</small>
+						</div>
+						<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.ProductGrade.gradefullname</label>
+							<input type="text" class="form-control font-15" id="gradeFullName" formControlName="gradeFullName" [(ngModel)] = "productGrade.gradeFullName" maxlength="200" name="gradeFullName" value="" placeholder="">
+						</div>								
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+						<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.ProductGrade.product</label>
+							<div class="dropdown">
+							  <div formGroupName="product">
+								<select formControlName="prodId" [(ngModel)] = "productId" [style.border-color]="getStyleproduct()" (change)= "onProductChange()"   id="prodId"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="prodId"  >
+								
+									<option *ngFor="let product of productlist"  [value]=product.value>
+									{{product.label}}
+									</option>
+									
+								</select>
+								<small *ngIf="req_product" id="" class="colr-red font-regular font-14" l10nTranslate >Master.ProductGrade.errproduct</small>
+								</div>
+								</div>
+						</div>
+						<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.ProductGrade.gradegrouping</label>
+							<div class="dropdown">
+								<select formControlName="gradeGroupId" [(ngModel)] = "productGrade.gradeGroupId" [style.border-color]="getStylegradegroup()" (change) = "changegradegroup()"  id="gradeGroupId"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="gradeGroupId"  >
+									
+									<option *ngFor="let group of gradeGrouplist"  [value]=group.value>
+									{{group.label}}
+									</option>
+									
+								</select>
+								<small *ngIf="req_gradegroup" id="" class="colr-red font-regular font-14" l10nTranslate >Master.ProductGrade.errgradegrouping</small>
+							</div>
+						</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.ProductGrade.origin</label>
+							<div class="dropdown">
+								
+							
+								<kendo-multiselect   [data]="originlist" formControlName="originList" [(ngModel)] = "productGrade.originList"
+												[textField]="'originName'" [valueField]="'originId'" name="originList"  [style.border-color]="getStyleproduct()" (change) = "changeStyleorigin()" ></kendo-multiselect>
+								
+							<small *ngIf="req_product" id="" class="colr-red font-regular font-14" l10nTranslate >Master.ProductGrade.errorigin</small>	
+						
+						</div>
+						
+					
+					</div>
+				</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">	
+						
+						<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 padt20">
+							<span class="pull-left padr20 padl0 colr-lblue font-regular font-14" l10nTranslate>Master.ProductGrade.isblend</span>
+								<span class="radio pricing-details">
+									<input type="radio" name="isBlended" id="isBlendedy" value="Y" class="raw_displ_yes" formControlName="isBlended" [(ngModel)] = "productGrade.isBlended"  >
+									<label for="radio1215" class="font-regular colr-4b536 font-14" l10nTranslate>Master.ProductGrade.yes</label>
+								</span>
+								<span class="radio pricing-details">
+									<input type="radio" name="isBlended" id="isBlendedn" value="N" class="raw_displ_no" formControlName="isBlended" [(ngModel)] = "productGrade.isBlended"  >
+									<label for="radio1215" class="font-regular colr-4b536 font-14" l10nTranslate>Master.ProductGrade.no</label>
+								</span>								
+							</div>
+						<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 padt20">
+							<span class="pull-left padr20 padl0 colr-lblue font-regular font-14" l10nTranslate>Master.ProductGrade.isbrand</span>
+								<span class="radio pricing-details">
+									<input type="radio" name="isBrand" id="isBrandy" value="Y" class="raw_displ_yes" formControlName="isBrand" [(ngModel)] = "productGrade.isBrand" (change) ="brandchanged($event.target.value)">
+									<label for="radio1213" class="font-regular colr-4b536 font-14" l10nTranslate>Master.ProductGrade.yes</label>
+								</span>
+								<span class="radio pricing-details">
+									<input type="radio" name="isBrand" id="isBrandn" value="N" class="raw_displ_no" formControlName="isBrand" [(ngModel)] = "productGrade.isBrand" (change) ="brandchanged($event.target.value)" >
+									<label for="radio1213" class="font-regular colr-4b536 font-14" l10nTranslate>Master.ProductGrade.no</label>
+								</span>								
+							</div>
+
+					<div *ngIf="brandcheck">
+						<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 prod_name">
+							<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.ProductGrade.brandname</label>
+							<div class="dropdown">
+								 <div formGroupName="brand">
+								<select   formControlName="brandId" (change) ="changeStylebrandname()" [style.border-color]="getStylebrandname()" [(ngModel)] = "brandId" id="brandId"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="brandId"  >
+								
+								<option *ngFor="let brand of brandlist"  [value]=brand.value>
+									{{brand.label}}
+									</option>
+									
+								</select>
+									<small *ngIf="req_gradebrand" id="" class="colr-red font-regular font-14" l10nTranslate >Master.ProductGrade.errbrandname</small>						
+								</div>
+						</div>
+						</div>
+					</div>							
+					
+													
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+						<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<div class="ovr-flw padt20">
+								<span class="pull-left padr20 padl0 colr-red font-regular font-14 " l10nTranslate>Master.ProductGrade.isbase</span>
+								<span class="radio pricing-details">
+									<input type="radio" name="isBase" id="isBasey" value="Y"  class="brand_displ_yes" formControlName="isBase" [(ngModel)] = "productGrade.isBase" (change) ="basegradechanged($event.target.value)">
+									<label for="radio1216" class="font-regular colr-4b536 font-14" l10nTranslate>Master.ProductGrade.yes</label>
+								</span>
+								<span class="radio pricing-details">
+									<input type="radio" name="isBase" id="isBasen" value="N" class="brand_displ_no" formControlName="isBase" [(ngModel)] = "productGrade.isBase" (change) ="basegradechanged($event.target.value)" >
+									<label for="radio1216" class="font-regular colr-4b536 font-14" l10nTranslate>Master.ProductGrade.no</label>
+								</span>	
+								<small *ngIf="req_isbase" id="" class="colr-red font-regular font-14" l10nTranslate >Master.ProductGrade.errisbase</small>							
+							</div>
+						</div>
+						<div *ngIf="basegradecheck" >
+						<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+							<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.ProductGrade.basegradname</label>
+							<div class="dropdown">
+								<select   formControlName="baseGradeId" [style.border-color]="getStylebasename()" (change)="changeStylebasename()"  id="baseGradeId" [(ngModel)] = "productGrade.baseGradeId"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="baseGradeId"  >
+									
+								<option *ngFor="let base of baseGradelist"  [value]=base.value>
+									{{base.label}}
+									</option>
+									
+								</select>
+								<small *ngIf="req_basegradename" id="" class="colr-red font-regular font-14" l10nTranslate >Master.ProductGrade.errbasename</small>							
+							</div>
+						</div>
+						</div>	
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.ProductGrade.processingtype</label>
+							<div class="dropdown">
+								<div formGroupName="processingType">
+								<select   formControlName="pkProductProcessId" (change) = 'changeProcessingType()'  [(ngModel)] = "pkProductProcessId" id="pkProductProcessId"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="pkProductProcessId"  >
+								
+									<option *ngFor="let type of processtypelist"  [value]=type.value>
+									{{type.label}}
+									</option>
+									
+								</select>
+
+								</div>
+							</div>
+						</div>
+						
+							
+					
+						
+				
+					</div>
+					
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+						<div *ngIf="processingsubtype">
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.ProductGrade.processingsubtype</label>
+								<div class="dropdown">
+									<div formGroupName="processingSubType">
+									<select   formControlName="processSubTypeRefId" (change) = "changeStyleprocessingsubtype()" [style.border-color]="getStyleprocessingsubtype()"  id="processSubTypeRefId" [(ngModel)] = "processingSubTypeId" class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="processSubTypeRefId"  >
+										
+										<option *ngFor="let subtype of processsubtypelist"  [value]=subtype.value>
+										{{subtype.label}}
+										</option>
+										
+									</select>
+									<small *ngIf="req_prosuptype" id="" class="colr-red font-regular font-14" l10nTranslate >Master.ProductGrade.errprocessingsubtype</small>							
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+							<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.ProductGrade.icoindex</label>
+							<div class="dropdown">
+									<select   formControlName="icoIndexId"   id="icoIndexId" [(ngModel)] = "productGrade.icoIndexId"   class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="icoIndexId"  >
+								
+									<option *ngFor="let ico of icoindexlist"  [value]=ico.value>
+									{{ico.label}}
+									</option>
+									
+								</select>
+							</div>
+						</div>					
+						<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 padt20">
+							<span class="pull-left padr20 padl0 colr-lblue font-regular font-14" l10nTranslate>Master.ProductGrade.rawfinishedgrad</span>
+								<span class="radio pricing-details">
+									<input type="radio" name="gradeIsRaw" id="gradeIsRawy" value="Y" class="raw_displ_yes" formControlName="gradeIsRaw" [(ngModel)] = "productGrade.gradeIsRaw" >
+									<label for="radio1219" class="font-regular colr-4b536 font-14" l10nTranslate>Master.ProductGrade.yes</label>
+								</span>
+								<span class="radio pricing-details">
+									<input type="radio" name="gradeIsRaw" id="gradeIsRawn" value="N" class="raw_displ_no" formControlName="gradeIsRaw" [(ngModel)] = "productGrade.gradeIsRaw" >
+									<label for="radio1219" class="font-regular colr-4b536 font-14" l10nTranslate>Master.ProductGrade.no</label>
+								</span>								
+							</div>
+								
+					
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">									
+						<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 padt20">
+							<span class="pull-left padr20 padl0 colr-lblue font-regular font-14" l10nTranslate>Master.ProductGrade.istenderable</span>
+								<span class="radio pricing-details">
+									<input type="radio" name="isTenderable" id="isTenderabley" value="Y" class="tener_displ_yes" formControlName="isTenderable" [(ngModel)] = "productGrade.isTenderable">
+									<label for="radio1219" class="font-regular colr-4b536 font-14" l10nTranslate>Master.ProductGrade.yes</label>
+								</span>
+								<span class="radio pricing-details">
+									<input type="radio" name="isTenderable" id="isTenderablen" value="N" class="tener_displ_no"   formControlName="isTenderable" [(ngModel)] = "productGrade.isTenderable" >
+									<label for="radio1219" class="font-regular colr-4b536 font-14" l10nTranslate>Master.ProductGrade.no</label>
+								</span>								
+							</div>
+						<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.ProductGrade.hedgeratio</label>
+							<input type="text" class="form-control font-15 font-regular "  (keypress) = "numberonly($event)" id="hedgeRatio" value="" placeholder="" formControlName="hedgeRatio" name="hedgeRatio" [(ngModel)] = "productGrade.hedgeRatio" [style.border-color]="getStyleratio()" >
+							<small *ngIf="req_hedgeratio" id="" class="colr-red font-regular font-14" l10nTranslate >Master.ProductGrade.errhedgeratio</small>
+							<small *ngIf="req_hedgeratiolimit" id="" class="colr-red font-regular font-14" l10nTranslate >Master.ProductGrade.errhedgeratiolimit</small>
+						</div>
+							
+
+						<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                         <label for="usr-field" class="colr-lblue font-regular font-14 width-full clr-both" l10nTranslate >Master.ProductGrade.discount</label>
+
+						<div class="pull-left col-lg-4 col-md-4 pad0">
+							
+							<input type="dropdown" style="width:90% !important" class="form-control pull-left fix-wid" (keypress) = "numberonlyPlussym($event)" id="premiumOrDiscount" value=""formControlName="premiumOrDiscount" name="premiumOrDiscount" [(ngModel)] = "productGrade.premiumOrDiscount"  placeholder="">
+						</div>
+
+						<div class="dropdown pull-left col-lg-4 col-md-4 pad0">
+							<select   formControlName="currencyId"   id="currencyId"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="currencyId" [(ngModel)] = "productGrade.currencyId" >
+									
+									<option *ngFor="let currency of currencyList"  [value]=currency.value>
+									{{currency.label}}
+									</option>
+									
+								</select>
+
+						</div>
+
+ 
+
+						<div class="dropdown pull-left col-lg-4 col-md-4 pad0 input-grp">
+
+							<select   formControlName="uomId"  id="uomId"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="uomId" [(ngModel)] = "productGrade.uomId" >
+									
+									<option *ngFor="let uom of uomlist"  [value]=uom.value>
+									{{uom.label}}
+									</option>
+									
+								</select>
+
+						</div>
+					</div>				
+					
+					</div>
+					
+					
+							</div>
+						</accordion-group>
+           
+        <accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading  class="font-semibold" l10nTranslate>Master.ProductGrade.subtitle2
+							  <i class="pull-right float-xs-right glyphicon"
+							  [ngClass]="{'acc-down': group1?.isOpen, 'acc-up': !group1?.isOpen}"></i>
+							</div>
+              <div class="panel-body">	
+					<div formArrayName="intlGradeList">
+						<div *ngFor="let intlGradeList of getIntlGrade(gradeForm); let i=index" >
+							<span style="display: none" > {{i + 1}}</span>										 
+							<div  [formGroupName]="i">
+								
+									<app-grade-international-mapping [group]="gradeForm.controls.intlGradeList.controls[i]" [title]="i" [productGrade] ="productGrade"
+										></app-grade-international-mapping>
+
+									
+									<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+										<span class="pull-left"  ><i class="plus-icn-md" (click)="addGradeIntlMapping()" > &nbsp; </i></span>
+										<span class="pull-left"><i class="delete-icn-md" (click)="removeGradeIntlMapping(i) " > &nbsp; </i></span>
+											
+											
+									</div>
+
+									
+							</div>
+						</div>
+					</div>	
+               </div>
+            </accordion-group>
+            <accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+				<div accordion-heading  class="font-semibold" l10nTranslate>Master.ProductGrade.subtitle3
+								
+					<i class="pull-right float-xs-right glyphicon"
+					[ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+				</div>
+				<div class="panel-body">	
+					<div formArrayName="externalSystemList">
+						<div *ngFor="let externalSystemList of getExternalSysGrade(gradeForm); let i=index" >
+							<span style="display: none" > {{i + 1}}</span>										 
+							<div  [formGroupName]="i">
+								
+									<app-grade-external-system-mapping [group]="gradeForm.controls.externalSystemList.controls[i]"  [title]="i" [productGrade] ="productGrade"
+										></app-grade-external-system-mapping>
+
+								
+									<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+										<span class="pull-left"  ><i class="plus-icn-md" (click)="addExternalMapping()" > &nbsp; </i></span>
+										<span class="pull-left"><i class="delete-icn-md" (click)="removeExternalMapping(i) " > &nbsp; </i></span>
+											
+											
+									</div>
+
+									
+							</div>
+						</div>
+					</div>	
+               </div>
+            </accordion-group>
+   
+             
+             
+              
+            
+					</accordion>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="addpage">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="clear()" l10nTranslate >Master.ProductGrade.resetbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_mastersave" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="savedata()" l10nTranslate>Master.ProductGrade.savebutton</button>					
+							<button type="button" id="save_party_mastersubmit" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="saveactive()" l10nTranslate >Master.ProductGrade.submitbutton</button>					
+						</div>						
+						
+					</div>
+
+					<div  *ngIf="editpage" >
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()" l10nTranslate>Master.ProductGrade.cancelbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_mastersaveedit" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="savedata()" l10nTranslate>Master.ProductGrade.updatebutton</button>					
+							<button type="button" id="save_party_mastersubmitedit" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="drafttoactive()" l10nTranslate>Master.ProductGrade.submitbutton</button>					
+						</div>							
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()" l10nTranslate>Master.ProductGrade.cancelbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" (click)="saveactive()"   id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" l10nTranslate>Master.ProductGrade.updatebutton</button>					
+							<button type="button" (click)="submitactivetodeactive()"  id="save_party_master1" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" l10nTranslate>  Master.ProductGrade.deactivebutton</button>					
+						</div>							
+					</div>
+
+					
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()" l10nTranslate>Master.ProductGrade.cancelbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" (click)="savedeactive()"   id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" l10nTranslate>Master.ProductGrade.updatebutton</button>					
+							<button type="button" (click)="submitdeactivetoreactive()"  id="save_party_master1" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" l10nTranslate> Master.ProductGrade.reactivebutton</button>					
+						</div>							
+					</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		
+<div  class="modal fade something_wrong" [style.display]="showModal ? 'block' : 'none'"   bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'static',show: false}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>This page contains {{checkdropdown}} errors.Please correct the highlighted fields.</div>
+                 </div> 
+        </div>
+    </div>
+</div>
+	<div class="modal fade delete-popup" [style.display]="showModal ? 'block' : 'none'"  bsModal #serverErrorModal="bs-modal" [config]="{backdrop: 'static',show: false}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content  del-modal">		
+		<div class="col-md-12 product_img text-center">
+						<img src="../../assets/image/Confirm_Delete.svg" />
+		</div>
+		<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular">
+							{{errorMessageForGrade}}
+					</div>
+			</div>
+			<div class="del-btn-group modal-window-footer btn-shodow">
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closeIsError()">Cancel</button></div>
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="closeIsError()">Ok</button></div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+</div>
+
+<div *ngIf="errormodal1" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHidden()" class="modal fade something_wrong"
+					 bsModal #duplicatemodel="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					 aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">								
+									<div class="modal-header">
+										<div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>
+										{{errorMsg}}
+											</div>
+									</div>
+							
+							</div>
+						</div>
+					</div>
+  
+
+
+
+
+<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" (onHidden) ="hide()" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #deletePopUpModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content  del-modal">
+			<div class="modal-header text-center">
+                <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a> -->
+				 <img src="../../assets/image/Confirm_Delete.svg" />
+			</div>
+			<div class="modal-body">								
+					<div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="deactiveStatus" >
+							{{statusmsg}} {{gradeName}}  
+					</div>
+                     <div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isActiveStatus" >
+                           {{statusmsg}} {{gradeName}}   
+                    </div>
+			</div>
+				<div class="del-btn-group modal-window-footer btn-shodow">
+					<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="deletePopUpModal.hide()">Cancel</button></div>
+					<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_deactive_reactive($event)">Confirm</button></div>
+				</div>
+		</div>
+	</div>
+</div>
+	
+	</div>
+</div>
+            

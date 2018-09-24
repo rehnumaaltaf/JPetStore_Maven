@@ -1,0 +1,43 @@
+<div [formGroup]="userMappingform">  
+    <div class="col-lg-8 col-md-8 col-sm-11 col-xs-12" *ngIf="whentoEdit">
+       
+    <input type='hidden' formControlName='mappingId' [ngModel]="featureDataList.mappingId || '0'" ng-init="featureDataList.mappingId=0">
+        <div class="form-group col-lg-6 col-md-2 col-sm-2 col-xs-6">
+            <label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Module</label>
+            <div class="dropdown positionrel">
+                	<select (change)="onChange($event.target.value,this.title)" formControlName="module" [(ngModel)]="modalDataList.id"  class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" >
+											
+                                            	<option *ngFor="let module of  this.userRoleService.userRole12" [ngValue]="module.id" >{{module.value}}</option>
+											</select>
+    
+            </div>
+        </div>
+           <div class="form-group col-lg-6 col-md-2 col-sm-2 col-xs-12" *ngIf="ToShowFeatureDrop">
+            <label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Feature</label>
+                    <select formControlName="feature" [(ngModel)]="featureDataList.id" class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  >
+											<option *ngFor="let obj of featureList" [ngValue]="obj.id">{{obj.value}}</option>
+					</select>
+                    <!--small *ngIf="req_feature" class="colr-red font-regular font-14">Feature</small-->
+            </div>
+     </div>
+    <div class="col-lg-8 col-md-8 col-sm-11 col-xs-12" *ngIf="whentoAdd">
+        <div class="form-group col-lg-6 col-md-2 col-sm-2 col-xs-6">
+            <label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Module</label>
+            <div class="dropdown positionrel">
+                	<select (change)="onChangeduringAdd($event)" formControlName="module" class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" >
+												<option [ngValue]="null" selected>Select</option>
+                                                <option *ngFor="let module of  this.userRoleService.userRole12" [ngValue]="module" >{{module.value}}</option>
+											</select>
+    
+            </div>
+        </div>
+           <div class="form-group col-lg-6 col-md-2 col-sm-2 col-xs-12" *ngIf="ToShowFeatureDrop">
+            <label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Feature</label>
+                	<select formControlName="feature"  class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  >
+											<option *ngFor="let obj of featureList" [ngValue]="obj">{{obj.value}}</option>
+					</select>
+                    <!--small *ngIf='req_feature' class="colr-red font-regular font-14">{{reqmsg3}}</small-->
+            </div>
+     </div>
+
+</div>

@@ -1,0 +1,207 @@
+<!--<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">Freight Cost Matrix </h4>			 		 			
+				<form  class="user-detail font-sm">
+					<accordion>
+						 <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                            <div accordion-heading  class="font-semibold">
+                                                Basic Details
+                                <i class="pull-right float-xs-right glyphicon"
+                                [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">								
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Legal Entity</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">OIL</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Product</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Arabica</span>
+										</div>
+									</div>
+								</div>
+                			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Group or Detailed Cost Level</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Group </span>
+										</div>
+									</div>
+								</div>
+							</div>							
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Warehouse</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">List of warehouses</span>
+										</div>
+									</div>
+								</div>
+                								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Warehouse Location</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Helsinki</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Contract Reference</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">023768DT070717</span>
+										</div>
+									</div>
+								</div>
+                		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Valid from Date</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">7-July-17</span>
+										</div>
+									</div>
+								</div>
+                		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Valid To Date</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">10-oct-17</span>
+										</div>
+									</div>
+								</div>
+                 		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Remarks</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">500</span>
+										</div>
+									</div>
+								</div>
+                                 		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Free Period Type</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Short term</span>
+										</div>
+									</div>
+								</div>
+                                 		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Number of free days</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">10</span>
+										</div>
+									</div>
+								</div>
+							</div>				
+
+
+
+
+						 </accordion-group>
+                         <accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                            <div accordion-heading  class="font-semibold">
+                                            Warehouse Cost  
+                                <i class="pull-right float-xs-right glyphicon"
+                                [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Cost Name</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Storage Changes</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate Basis</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">MT</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate UOM</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">MT</span>
+										</div>
+									</div>
+								</div>
+                		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate Currency</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">$</span>
+										</div>
+									</div>
+								</div>
+                	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">50</span>
+										</div>
+									</div>
+								</div>		
+                		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Time Basis</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Daily</span>
+										</div>
+									</div>
+								</div>
+                
+                	
+              							
+							</div>
+                         </accordion-group>
+					</accordion>
+
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+              <button type="button" id="" class="back default-btn tertiary-btn singlebtn-width font-semibold font-18">Back</button>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+              <button type="button" id="update16" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18">Edit</button>
+              <button type="button" id="update13" class="btn default-btn primary-btn multiplebtn-width edit-form1 font-semibold font-18">Update</button>
+
+            </div>
+          </div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+            -->

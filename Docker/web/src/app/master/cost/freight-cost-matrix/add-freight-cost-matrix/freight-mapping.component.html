@@ -1,0 +1,106 @@
+<div [formGroup]="freightMappingForm">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">From Country / Region</label>
+									<!--	<div class="dropdown positionrel">
+									     <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="fkSourceGeoId" name="fkSourceGeoId" formControlName="fkSourceGeoId">
+                                         <option [ngValue]="undefined" selected>Select</option>
+                                         <option value="1">Finland</option>
+                                         <option value="2">India</option>
+                                         </select>
+									</div>-->
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkSourceGeoId"
+                                         type="button" data-toggle="dropdown" id="fkSourceGeoId" name="fkSourceGeoId">
+                                          <option *ngFor="let defaultgeo of costMatrixService.defaultGeoList" value="{{defaultgeo.pkGeoId}}">{{defaultgeo.geoName}}</option>                
+                                        </select>
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">From Port / Location</label>
+										<div class="dropdown positionrel">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="fkSourceLocationId" name="fkSourceLocationId" formControlName="fkSourceLocationId">
+                                         <option [ngValue]="undefined" selected>Select</option>
+                                         <option value="1">USA</option>
+                                         <option value="2">Helsinki</option>
+                                         </select>
+									</div>
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">To Country / Region</label>
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkDestinationGeoId"
+                                         type="button" data-toggle="dropdown" id="fkDestinationGeoId" name="fkDestinationGeoId">
+                                          <option *ngFor="let defaultgeo of costMatrixService.defaultGeoList" value="{{defaultgeo.pkGeoId}}">{{defaultgeo.geoName}}</option>                
+                                        </select>
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">To Port / Location</label>
+										<div class="dropdown positionrel">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="fkDestinationLocationId" name="fkDestinationLocationId" formControlName="fkDestinationLocationId">
+                                         <option [ngValue]="undefined" selected>Select</option>
+                                         <option value="1">Singapore</option>
+                                         <option value="2">Helsinki</option>
+                                         </select>
+									</div>
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Rate Basis</label>
+										<div class="dropdown positionrel">
+										
+                                        <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="fkRateBasisRefId" name="fkRateBasisRefId" formControlName="fkRateBasisRefId">
+                                         <option [ngValue]="undefined" selected>Select</option>
+                                         <option value="1">MT</option>
+                                         <option value="2">Primary Packaging </option>
+                                         <option value="2">Secondary Packaging </option>
+                                         </select>
+									</div>
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngIf="freightMappingForm.value.fkRateBasisRefId == defaultUnit.uom">
+									<label for="usr-field" class="colr-red font-regular font-14">Rate UOM</label>
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkRateUomId"
+                                         type="button" data-toggle="dropdown" id="fkRateUomId" name="fkRateUomId">
+                                          <option *ngFor="let defaultUnitUom of costMatrixService.defaultUnitUomList" value="{{defaultUnitUom.uomId}}">{{defaultUnitUom.uomName}}</option>                
+                                        </select>
+								</div>
+			                     <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngIf="freightMappingForm.value.fkRateBasisRefId == defaultUnit.primaryPack">
+									<label for="usr-field" class="colr-red font-regular font-14">Primary Packing</label>
+										 <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkRatePrimaryPackingId"
+                                          type="button" data-toggle="dropdown" name="fkRatePrimaryPackingId">
+                                         <option *ngFor="let defaultUnitPrimaryPack of costMatrixService.defaultUnitPrimaryPackList" value="{{defaultUnitPrimaryPack.internalPackingTypeId}}">{{defaultUnitPrimaryPack.internalPackingTypeName}}</option>                
+                                         </select>
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngIf="freightMappingForm.value.fkRateBasisRefId == defaultUnit.secondaryPack">
+									<label for="usr-field" class="colr-red font-regular font-14">Secondary Packing</label>
+										 <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkRateSecondaryPacking"
+                                          type="button" data-toggle="dropdown" name="fkRateSecondaryPacking">
+                                          <option *ngFor="let defaultUnitSecondatryPack of costMatrixService.defaultUnitSecondaryPackList" value="{{defaultUnitSecondatryPack.internalPackingTypeId}}">{{defaultUnitSecondatryPack.internalPackingTypeName}}</option>                
+										 </select>
+								</div>
+								
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue  font-regular font-14">Rate</label>
+									<input type="text" class="form-control font-15 font-regular " id="rate" value=""  name="rate" formControlName="rate" placeholder="">
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Rate Currency</label>
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkRateCurrencyId"
+									 type="button" data-toggle="dropdown" name="fkRateCurrencyId">
+												<option *ngFor="let currency of costMatrixService.currencyList" value="{{currency.pkCurrencyId}}">{{currency.currencyName}}</option>
+											</select>
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Transit Days</label>
+									<input type="number" class="form-control font-15 font-regular " id="transitDays"  name="transitDays" value="" formControlName="transitDays" placeholder="">
+								</div>
+                                <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Free Days- Load port</label>
+									<input type="number" class="form-control font-15 font-regular " id="freeDaysAtLoadPort"  name="freeDaysAtLoadPort" value="" formControlName="freeDaysAtLoadPort" placeholder="">
+								</div>
+                                <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Free Days- Destination port</label>
+									<input type="number" class="form-control font-15 font-regular " id="freeDaysAtLoadPort"  name="freeDaysAtDestiantionPort" value="" formControlName="freeDaysAtDestiantionPort" placeholder="">
+								</div>
+								<!--<div class="col-lg-1 col-md-2 col-sm-6 col-xs-1 accessories-block mart30 padt10">
+									<span class="pull-left add-icon"><i class="plus-icn-md"> &nbsp; </i></span>
+									<span class="pull-left"><i class="delete-icn-md"> &nbsp; </i></span>
+								</div>-->
+							</div>
+							</div>

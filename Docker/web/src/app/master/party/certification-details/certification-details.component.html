@@ -1,0 +1,191 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Certification List</h4>
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<!--a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a-->
+
+
+
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+						<!-- Kendo Grid starts-- [kendoGridBinding]="unitMeasurementService.uomDetails" -->
+						<div class="party-grade_block">
+							<kendo-grid [kendoGridBinding]="certifyMeasurementService.certifyCodeParam" [selectable]="true" [groupable]="true" [group]="state.group"
+								[scrollable]="'virtual'" [editable]="true" [pageSize]="state.take" [filter]="state.filter" [rowHeight]="36" [sortable]="true"
+								[filterable]="true"  [pageable]="false">
+
+								<kendo:grid-editable mode="inline" />
+
+								<ng-template kendoGridToolbarTemplate>
+									<span class=" k-i-file-excel" kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+									<img src="../../assets/image/add.png" (click)="addcertify()" />
+								</ng-template>
+
+								<kendo-grid-column media="xs" title="Certification List">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<!-- template for mobile -->
+
+										<h4>
+											{{ dataItem.prodCertCode }}
+										</h4>
+										<dl>
+											<dt>Name</dt>
+											<dd>{{ dataItem.prodCertName }}</dd>
+
+											<dt>Full Name</dt>
+											<dd>{{ dataItem.prodCertDescription }}</dd>
+
+											<dt>Conversion</dt>
+											<dd>{{ dataItem.prodCertLogo }}</dd>
+										</dl>
+										<!-- template for mobile Ends-->
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column field='' title='' [width]="40">
+									<ng-template kendoGridHeaderTemplate let-dataItem>
+										<input type="checkbox" id="checkall" class="k-checkbox" (change)="checkorUnCheckAll($event)" />
+										<label class="k-checkbox-label chk_head" for="checkall"></label>
+									</ng-template>
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<input type="checkbox" class="k-checkbox" id="dataItem.uomCode" name="dataItem.uomCode" ng-model="dataItem.uomCode" />
+										<label class="k-checkbox-label" for="dataItem.uomCode"></label>
+									</ng-template>
+								</kendo-grid-column>
+
+								<!--<kendo-grid-column field="checked" title="">
+											<ng-template kendoGridHeaderTemplate let-dataItem>
+											<input type="checkbox" 	(change)="checkAllClicked($event)" />
+											
+											</ng-template> 
+										</kendo-grid-column>-->
+								<!--<kendo-grid-column media="sm" field="uomCode" title="Code">
+										</kendo-grid-column>-->
+								<kendo-grid-column media="sm" field="fkCertfBodyPartyName" title="Certifying Body">
+								</kendo-grid-column>
+								<kendo-grid-column media="sm" field="prodCertCode" title="Certification Code">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<div (click)="viewById(dataItem)" class="view-all">{{dataItem.prodCertCode}}</div>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column media="sm" field="prodCertName" title="Name">
+									<template kendoHeaderTemplate let-column let-columnIndex="columnIndex">
+										<span title={{column.field}}>{{column.field}}({{columnIndex}})</span>
+									</template>
+
+								</kendo-grid-column>
+								<!-- <kendo-grid-column media="md" field="prodCertDescription" title="Description">
+										</kendo-grid-column> -->
+								<kendo-grid-column media="md" field="registrationNumber" title="Reg Number">
+								</kendo-grid-column>
+								<!-- <kendo-grid-column media="md" field="prodCertLogo" title="Logo">
+											<ng-template kendoGridCellTemplate let-dataItem class="logoimage">
+												<img id="profileImage" src="data:image/png;base64,{{dataItem.prodCertLogo}}" />	
+											</ng-template>
+										</kendo-grid-column> -->
+
+								<kendo-grid-column media="md" field="validFrom" title="Valid From" filter="date" [format]="'dd/MM/yyyy'">
+
+									<ng-template kendoGridCellTemplate let-dataItem="dataItem">
+										{{dataItem.validFrom | date: 'dd/MM/yyyy'}}
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="validTo" title="Valid To" filter="date" [format]="'dd/MM/yyyy'">
+									<ng-template kendoGridCellTemplate let-dataItem="dataItem" title="validTo">
+										{{dataItem.validTo | date: 'dd/MM/yyyy'}}
+									</ng-template>
+								</kendo-grid-column>
+								<!--<kendo-grid-column media="lg" field="uomConversionFactor" title="Product">
+										</kendo-grid-column>-->
+								<!--<kendo-grid-column media="lg" field="statusName" title="Status">
+										</kendo-grid-column>-->
+								<kendo-grid-column media="md" field="statusName" title="Status" width="150">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<label field="statusName" [ngClass]="{'status-draft': dataItem.statusName=='Draft','status-active': dataItem.statusName=='Active','status-inactive': dataItem.statusName=='InActive'}">{{dataItem.statusName}}</label>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column field="" title="">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<div class="show" style="float:left" (click)="editcertificate(dataItem)"><span id="e1" data-attr="draft">
+													<img src="../../../assets/image/Edit_Icon_Hover.png.svg"><span style="display:none;">draft</span></span>
+										</div>
+										<div class="" (click)="certificate_delete(dataItem.pkProdCertId,dataItem.prodCertCode,dataItem.prodCertName,dataItem.statusName)"
+											[ngClass]="{'displaynone': dataItem.statusName=='InActive'}" *ngIf='dataItem.statusName=="Draft"'>
+											<span id="d1" class="confirm-delete">
+													<img src="../../../assets/image/Delete icon.svg"></span></div>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-excel fileName="Certification.xlsx"></kendo-grid-excel>
+							</kendo-grid>
+						</div>
+						<!--Kendo grid Ends-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Success Modal -->
+<!--<div class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{ show: true }" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">-->
+<!--<div *ngIf="isModalShown" [config]="{ show: true }" bsModal #autoShownModal="bs-modal" class="modal fade success-modal" (onHidden)="onHidden()" tabindex="-1" role="dialog" aria-hidden="true">-->
+<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal" class="modal fade  success-modal"
+	tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="modal-title font-14 font-regular" *ngIf="isDraftStatus"><img src="../../assets/image/Ok.jpg" />Success : Added {{certnamepopup}}</div>
+				<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg" />Success : Updated {{certnamepopup}}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Success Modal - End -->
+<div *ngIf="deleteshown" [config]="{ show: true }" bsModal #deletemodal="bs-modal" class="modal fade delete-popup" (onHidden)="onHidden()"
+	tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog ">
+		<div class="modal-content  del-modal">
+			<div class="modal-header text-center">
+				<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+				<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>
+			<div class="modal-body">
+
+				<div class="col-md-12 product_img text-center font-14 font-regular">
+					Are you sure you want to {{deleteStatus}} the Certificate Name {{certName}} in {{status}} status ?
+				</div>
+			</div>
+			<div class="del-btn-group modal-window-footer btn-shodow">
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Delete Success Modal -->
+<div *ngIf="successdelete" class="modal fade success-modal" (onHidden)="onHidden()" bsModal #deletesuccessModals="bs-modal"
+	[config]="{ show: true }" (onHidden)="onHidden()" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="modal-title font-14 font-regular" *ngIf="isUpdate"><img src="../../assets/image/Ok.jpg" />Success :  {{ccode}} Updated</div>
+				<div class="modal-title font-14 font-regular" *ngIf="isDraftStatus"><img src="../../assets/image/Ok.jpg" />Success :  {{ccode}} Deleted</div>
+				<div class="modal-title font-14 font-regular" *ngIf="isActiveStatus"><img src="../../assets/image/Ok.jpg" />Success :  {{ccode}} Deactivated</div>
+				<div class="modal-title font-14 font-regular" *ngIf="isInActiveStatus"><img src="../../assets/image/Ok.jpg" />Success :  {{ccode}} Activated</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Delete Success Modal - End -->

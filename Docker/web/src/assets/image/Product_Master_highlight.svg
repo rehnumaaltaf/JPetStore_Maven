@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="251 -236 513 512" style="enable-background:new 251 -236 513 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#698714;}
+	.st1{clip-path:url(#SVGID_2_);}
+	.st2{opacity:0.4;enable-background:new    ;}
+	.st3{fill:#FFFFFF;}
+</style>
+<title>Product Master_highlight</title>
+<g id="Layer_2">
+	<circle id="_Path_" class="st0" cx="507" cy="20" r="256"/>
+	<g id="_Clip_Group_">
+		<g>
+			<defs>
+				<circle id="SVGID_1_" cx="507" cy="20" r="256"/>
+			</defs>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+			</clipPath>
+			<g class="st1">
+				<polygon id="_Path_2" class="st2" points="427,144 590,276 740,215 792,149 591,-83 439,-79 				"/>
+			</g>
+		</g>
+	</g>
+</g>
+<g id="Layer_4">
+	<path id="_Path_3" class="st3" d="M416-68"/>
+	<path id="_Compound_Path_" class="st3" d="M595-81l-22-41l-154-1l-11,33l31,10l-12,223l21,26l161-5L595-81z M514.3,39
+		c-9.7,13.7-26.4,18.5-37.4,10.9l-0.3-1.5c-2-28.4,33.5-14.1,36.5-47.7C523.2,8.8,523.8,25.7,514.3,39z M468.2,8
+		c9.7-13.7,26.4-18.5,37.4-10.9l0.2,1.6c-1.6,28.5-36.9,16.4-36.4,47.6C459.3,38.3,458.8,21.4,468.2,8L468.2,8z M470.5,117.3
+		c-10.2-8-10.7-24.9-1.3-38.3c9.7-13.7,26.4-18.5,37.4-10.9l0.2,1.6C505.3,98.2,469.9,86.2,470.5,117.3L470.5,117.3z M515.3,110
+		c-9.7,13.7-26.4,18.5-37.4,10.9l-0.3-1.5c-2-28.4,33.5-14.1,36.5-47.7C524.2,79.8,524.8,96.7,515.3,110z M535.5,65.3
+		c-10.2-8-10.7-24.9-1.3-38.3c9.7-13.7,26.4-18.5,37.4-10.9l0.2,1.6C570.3,46.2,534.9,34.2,535.5,65.3L535.5,65.3z M580.3,58
+		c-9.7,13.7-26.4,18.5-37.4,10.9l-0.3-1.5c-2-28.4,33.5-14.1,36.5-47.7C589.2,27.8,589.8,44.7,580.3,58z"/>
+</g>
+</svg>

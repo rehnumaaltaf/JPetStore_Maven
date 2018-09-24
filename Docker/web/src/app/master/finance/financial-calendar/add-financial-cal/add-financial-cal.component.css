@@ -1,0 +1,49 @@
+.add-financial-calendar .panel.card.panel-default {
+border:none!important;
+box-shadow: none;
+}
+
+.financial-cal-container .panel.panel-default {
+border:none!important;
+box-shadow: none;
+}
+
+.error-modal .modal-title,.error-modal .modal-header{
+	color:#ffffff;
+	background: #d43c3c !important;
+	border-bottom:0 !important;
+	font-family: "Roboto-Medium";
+	text-align:center;
+	left:0%;
+  }
+
+	.suggestion-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.suggestion-dropdown .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 2px;
+    background: #EEE;
+    z-index:2;
+    max-height:100px;
+    overflow:auto;
+}
+.suggestion-dropdown .dropdown div {
+    cursor: pointer;
+    padding: 2px 5px;
+}
+.suggestion-dropdown input:focus + .dropdown {
+    display: block;
+}
+.dropdown select option{
+    color:#333;
+}
+
+.inValid{
+    border-color:#d43c3c !important;
+}

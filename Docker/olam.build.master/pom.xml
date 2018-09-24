@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>olam.build.master</groupId>
+	<artifactId>olam.build.master</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
+	<name>parent</name>
+
+	<modules>
+	    <module>../ctrm-config</module>
+	    <module>../ctrm-registry</module>
+	    <module>../ctrm-gateway</module>
+		<module>../common-service</module>
+		<module>../reference-service</module>
+		<module>../terms-service</module>
+		<module>../authorization-config-service</module>
+		<module>../cost-service</module>
+		<module>../finance-service</module>
+		<module>../limit-service</module>
+		<module>../location-service</module>
+		<module>../marketdata-service</module>
+		<module>../packing-service</module>
+		<module>../party-service</module>
+		<module>../product-service</module>
+		<!-- <module>../forex-service</module> -->
+	</modules>
+</project>

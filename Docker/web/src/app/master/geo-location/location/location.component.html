@@ -1,0 +1,190 @@
+<!--  <app-header></app-header>-->
+<div class="container-fluid">
+  <!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+  <div class="row row-background">
+    <app-nav-bar></app-nav-bar>
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div padt15 location-container create-view">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+          <h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Location Details</h4> <!-- Master.Location.Title -->
+        </div>
+        <!-- Serach Icon pannel-->
+        <div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+         <!-- <a href="#"><img src="../../assets/image/filter.png"/></a>
+          <a href="#"><img src="../../assets/image/search.png"/></a>-->
+        
+          <span id="delete" data-toggle="modal" data-target="#product_view" style="display:none;"><img src="../../../assets/image/delete.png"/></span>
+        </div>
+        <div class="grid-container">
+          <div class="location_detail">
+              <kendo-grid [kendoGridBinding]="locationDetails" 
+                   [selectable]="true" [groupable]="true" [group]="state.group"
+										[scrollable]="true" [editable]="true" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [filter]="state.filter"
+										[sortable]="true" [filterable]="true" (dataStateChange)="dataStateChange($event)" [height]="640" [pageable]="false"
+										(pageChange)="pageChange($event)" >
+
+                  <ng-template kendoGridToolbarTemplate>
+                       <span class="k-icon k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+                        <img src="../../assets/image/add.png" (click)="goToAddLocation()" />
+          
+                  </ng-template>
+
+                  <kendo-grid-column media="xs" title="Location">
+                  <ng-template kendoGridCellTemplate let-dataItem>
+                    <!-- template for mobile -->
+                    <!--
+                    <h4>
+                    {{ dataItem.locCode }}
+                    </h4>-->
+
+                    <dl>
+                    <dt>Port/Location Code</dt>
+                    <dd>  {{ dataItem.locCode }}</dd>
+                    <dt>Port/Location Name</dt>
+                    <dd>{{ dataItem.locName }}</dd>
+
+                    <!--<dt>Port/Location Full Name</dt>
+                    <dd>{{ dataItem.locFullName }}</dd>-->
+
+                    <dt>Port/Location Country</dt>
+                    <dd>{{ dataItem.fkGeoName }}</dd>
+
+                    <dt>Port/Location Type</dt>
+                    <dd>{{ dataItem?.fkLocTypeName?.join() }}</dd>
+
+                    <!-- <dt>Terminal Handling Charges (THC)</dt>
+                    <dd>{{ dataItem?.thc }}</dd>
+
+                    <dt>Currency</dt>
+                    <dd>{{ dataItem?.fkCurrencyName }}</dd>
+
+                    <dt>Rate UOM</dt>
+                    <dd>{{ dataItem?.rateUOMName }}</dd>
+
+                    <dt>Rate Basis</dt>
+                    <dd>{{ dataItem?.rateBasis }}</dd> -->
+
+                    <dt>Status</dt>
+                    <dd>{{ dataItem?.statusName }}</dd>
+                    
+                    </dl>
+
+                    <!-- template for mobile Ends-->
+                  </ng-template>
+                  </kendo-grid-column>
+                  <kendo-grid-column field='' title=''>
+                      <ng-template kendoGridHeaderTemplate let-dataItem>                       
+                      <input type="checkbox"  id="checkall" class="k-checkbox" [(ngModel)]="allItemsChecked" (change)="checkAllClicked($event)" />
+                      <label class="k-checkbox-label chk_head" for="checkall"></label>
+                    </ng-template> 
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                      <input type="checkbox"  class="k-checkbox" id="dataItem.pkLocId" name="dataItem.pkLocId" (change)="selectUnSelectAllChecked($event)" [(ngModel)]="dataItem.checked"/>
+                      <label class="k-checkbox-label" for="dataItem.pkLocId"></label>
+                    </ng-template>
+                  </kendo-grid-column>
+                  <kendo-grid-column media="sm" title="Port/Location Code"  field="locCode">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                     <a href="javascript:void(0)" class="view-all" [routerLink]="['view',dataItem.pkLocId]"  > <!-- (click)="goToViewPage(dataItem)" -->
+                       {{dataItem?.locCode}}</a>
+                    </ng-template>
+                  </kendo-grid-column>
+                  <kendo-grid-column media="sm" field="locName" title="Port/Location Name">
+                  </kendo-grid-column>
+                  <!--<kendo-grid-column media="md" field="locFullName" title="Port/Location Full Name">
+                  </kendo-grid-column>-->
+                  <kendo-grid-column media="md" field="fkGeoName" title="Port/Location Country">
+                  </kendo-grid-column>
+                  <kendo-grid-column media="lg"   field="fkLocTypeName" title="Port/Location Type">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                      <div class="break-word">{{dataItem?.fkLocTypeName}}</div>
+                    </ng-template>
+                  </kendo-grid-column>
+                 <!-- <kendo-grid-column media="md" field="thc" title="Terminal Handling Charges (THC)">
+                  </kendo-grid-column>
+                  <kendo-grid-column media="md" field="fkCurrencyName" title="Currency">
+                  </kendo-grid-column>
+                  <kendo-grid-column media="md" field="rateUOMName" title="Rate UOM ">
+                  </kendo-grid-column>
+                  <kendo-grid-column media="md" field="rateBasis" title="Rate Basis">
+                  </kendo-grid-column>-->
+                  <kendo-grid-column media="lg" field="statusName"  title="Status">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                      <label [ngClass]="{'status-draft': dataItem.fkStatusId===status.Draft, 'status-active': dataItem.fkStatusId===status.Active,'status-inactive': dataItem.fkStatusId===status.Inactive}">{{dataItem.statusName}}</label>
+												<!--<img *ngIf="dataItem.fkStatusId===status.Draft" class="status-image" src='../../../assets/image/reactivate.svg' />
+												<img *ngIf="dataItem.fkStatusId===status.Active" class="status-image" src='../../../assets/image/activate.svg' />
+												<img *ngIf="dataItem.fkStatusId===status.Inactive" class="status-image" src='../../../assets/image/deactivate.svg' />-->
+                    </ng-template>
+                  </kendo-grid-column>
+                  <kendo-grid-column field="" title="">
+                    <ng-template kendoGridCellTemplate let-dataItem let-i="rowIndex">
+                      <div class="show" style="float:left" (click)="editRow(i)"><span id="e1" class="pointer" data-attr="draft">
+                        <img src="../../../assets/image/Edit_Icon_Hover.png.svg"></span></div>
+                      <div *ngIf="dataItem.fkStatusId===status.Draft" class="" style="display:block;padding-left:30px;"  (click)="openConfirmAction(i)" [ngClass]="{'displaynone': dataItem.fkStatusId===status.Draft}" >
+                        <span id="d1" class="confirm-delete pointer" style="font-size:8px !important;" >
+                        <img src="../../../assets/image/Delete icon.svg"></span></div>
+                      <!--<div *ngIf="dataItem.fkStatusId===status.Active" class="" style="display:block;padding-left:30px;"  (click)="openConfirmAction(i)" [ngClass]="{'displaynone': dataItem.fkStatusId===status.Inactive}" >
+                        <span id="d1" class="confirm-delete pointer" style="font-size:8px !important;" >
+                        <img src="../../../assets/image/activate.svg"></span></div>
+                      <div *ngIf="dataItem.fkStatusId===status.Inactive" class="" style="display:block;padding-left:30px;"  (click)="openConfirmAction(i)" [ngClass]="{'displaynone': dataItem.fkStatusId===status.Active}" >
+                        <span id="d1" class="confirm-delete pointer" style="font-size:8px !important;" >
+                        <img src="../../../assets/image/deactivate.svg"></span></div>-->
+                    </ng-template>
+                  </kendo-grid-column>
+                
+                  
+                  <kendo-grid-excel fileName="location.xlsx" [fetchData]="allData"></kendo-grid-excel>
+                </kendo-grid>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--<div class="modal fade in edit-popup" id="edit"
+ *ngIf="openEdit" [style.display]="openEdit ? 'block' : 'none'">-->
+ <div  *ngIf="openEdit" [config]="{backdrop:'static',show: true }"
+ (onHidden)="onHideEditModal()" bsModal  #editModal="bs-modal"
+  class="modal fade edit-popup" 
+  tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-edit">
+				<div class="modal-header mod-head"> 
+					<a class="class pull-right"><span class="glyphicon glyphicon-remove" (click)="editModal.hide()"></span></a>
+					<h3 class="modal-title font-semibold"> Update Location Details</h3>
+				</div>
+				<div class="modal-edit-body mod-body">
+							<app-add-edit-location [locDetail]="locationDetail" (onSubmit)="closeEditModal($event)" ></app-add-edit-location>
+				</div>			
+			</div>
+		</div>
+</div>
+
+<app-message [msgs]="locationService.messages" ></app-message>
+
+ <!--<div  *ngIf="confirmBoxConfigure && confirmBoxConfigure?.isVisible" [config]="{backdrop:'static',show: true }"
+ (onHidden)="onHiddenConfirm()" bsModal  #confirmModal="bs-modal"
+  class="modal fade confirm-box delete-popup" 
+  tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog ">
+          <div class="modal-content  del-modal"> 
+              <div class="modal-header text-center">
+                       <img src="../../assets/image/Confirm_Delete.svg" />           
+              </div>
+              <div class="modal-body">                              
+                      <div class="col-md-12 product_img text-center font-14 font-regular">
+                          {{ confirmBoxConfigure?.message }}
+                      </div>
+                      <div class="col-md-12 product_img text-center" *ngIf="confirmBoxConfigure?.isCommentPresent">
+                          <input type="text" placeholder="comments" class="form-control font-15 font-regular " name="comment" id="comment" [(ngModel)]="confirmBoxConfigure.comment" >
+                      </div> 
+              </div>
+              <div class="del-btn-group modal-window-footer btn-shodow">
+                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closeConfirmBox($event)">Cancel</button></div>
+                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="confirmCancelation($event)">Confirm</button></div>
+              </div>
+          </div>
+      </div>
+</div>-->

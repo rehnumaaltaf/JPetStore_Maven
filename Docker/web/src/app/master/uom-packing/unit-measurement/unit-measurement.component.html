@@ -1,0 +1,340 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Master.Uom.Title</h4>
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+		
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+						<!-- Kendo Grid starts-- [kendoGridBinding]="unitMeasurementService.uomDetails" -->
+						<div class="party-grade_block">
+							<kendo-grid [kendoGridBinding]="data" [selectable]="true" [groupable]="true" [group]="state.group" [scrollable]="'virtual'"
+							 [editable]="true" [pageSize]="state.take" [filter]="state.filter"  [sortable]="true" [filterable]="true"
+							 [pageable]="false" (pageChange)="pageChange($event)">
+
+								<kendo:grid-editable mode="inline" />
+
+								<ng-template kendoGridToolbarTemplate>
+									<span class="k-i-file-excel" kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+									<img src="../../assets/image/add.png" (click)="changeShowStatus()" />
+								</ng-template>
+
+								<kendo-grid-column media="xs" title="UOM">
+									<ng-template kendoGridCellTemplate let-dataItem>									
+
+										<h4>
+											{{ dataItem.uomCode }}
+										</h4>
+										<dl>
+											<dt>Name</dt>
+											<dd>{{ dataItem.uomName }}</dd>
+
+											<dt>Full Name</dt>
+											<dd>{{ dataItem.uomFullname }}</dd>
+
+											<dt>Conversion</dt>
+											<dd>{{ dataItem.uomConversionFactor }}</dd>
+										</dl>
+									
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column field='' title=''  [width]="40">
+									<ng-template kendoGridHeaderTemplate let-dataItem>
+										<input type="checkbox" id="checkall" class="k-checkbox" (change)="checkorUnCheckAll($event)" />
+										<label class="k-checkbox-label chk_head" for="checkall"></label>
+									</ng-template>
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<input type="checkbox" class="k-checkbox" id="dataItem.uomCode" name="dataItem.uomCode" ng-model="dataItem.uomCode" />
+										<label class="k-checkbox-label" for="dataItem.uomCode"></label>
+									</ng-template>
+								</kendo-grid-column>
+
+								<!--<kendo-grid-column field="checked" title="">
+											<ng-template kendoGridHeaderTemplate let-dataItem>
+											<input type="checkbox" 	(change)="checkAllClicked($event)" />
+											
+											</ng-template> 
+										</kendo-grid-column>-->
+								<!--<kendo-grid-column media="sm" field="uomCode" title="Code">
+										</kendo-grid-column>-->
+								<kendo-grid-column media="sm" field="uomCode" title="UOM Code">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<div (click)="viewById(dataItem)" class="view-all">{{dataItem.uomCode}}</div>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column media="sm" field="uomName" title="UOM Name">
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="uomFullname" title="Long Name">
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="uomBasis" title="Basis">
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="baseUomCode" title="Target UOM">
+								</kendo-grid-column>
+								<kendo-grid-column media="lg" field="uomConversionFactor" title="Conversion" filter="numeric">
+								</kendo-grid-column>
+								<!--<kendo-grid-column media="lg" field="statusName" title="Status">
+										</kendo-grid-column>-->
+								<kendo-grid-column media="lg" field="statusName" title="Status">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<label field="statusName" [ngClass]="{'status-draft': dataItem.statusName=='Draft','status-active': dataItem.statusName=='Active','status-inactive': dataItem.statusName=='InActive'}">{{dataItem.statusName}}</label>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column field="" title="" media="sm">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<div class="show" style="float:left" (click)="edituom(dataItem)"><span id="e1" data-attr="draft">
+													<img src="../../../assets/image/Edit_Icon_Hover.png.svg"><span style="display:none;">draft</span></span>
+										</div>
+										<div class=""  (click)="uom_delete(dataItem.uomId,dataItem.uomCode,dataItem.uomName,dataItem.statusName)"
+										 *ngIf='dataItem.statusName=="Draft"'>
+											<span id="d1" class="confirm-delete" >
+													<img src="../../../assets/image/Delete icon.svg"></span></div>
+									</ng-template>
+								</kendo-grid-column>
+
+								<!--kendo-grid-command-column title="command" width="220">
+																			<ng-template kendoGridCellTemplate let-isNew="isNew">
+																				<button kendoGridEditCommand class="k-primary">Edit</button>
+																				<button kendoGridSaveCommand [disabled]="formGroup?.invalid">{{ isNew ? 'Add' : 'Update' }}</button>
+																			</ng-template>
+                                       </kendo-grid-command-column-->
+
+								<!--kendo:dataSource pageSize="10">
+												<kendo:dataSource-transport>
+													<kendo:dataSource-transport-read url="http://localhost:8090/uomservice/uom" dataType="json" type="GET" contentType="application/json" />
+												</kendo:dataSource-transport>
+												<kendo:dataSource-schema>
+													<kendo:dataSource-schema-model id="uom">
+														<kendo:dataSource-schema-model-fields>
+															<kendo:dataSource-schema-model-field name="uomId" type="number">
+															</kendo:dataSource-schema-model-field>
+															<kendo:dataSource-schema-model-field name="uomCode" type="string">
+															</kendo:dataSource-schema-model-field>
+															<kendo:dataSource-schema-model-field name="uomName" type="string">
+															</kendo:dataSource-schema-model-field>
+															<kendo:dataSource-schema-model-field name="uomFullname" type="string">
+															</kendo:dataSource-schema-model-field>
+															<kendo:dataSource-schema-model-field name="baseUom" type="number">
+															</kendo:dataSource-schema-model-field>
+															<kendo:dataSource-schema-model-field name="uomConversionFactor" type="string">
+															</kendo:dataSource-schema-model-field>
+															<kendo:dataSource-schema-model-field name="uomBasis" type="string">
+															</kendo:dataSource-schema-model-field>
+															<kendo:dataSource-schema-model-field name="statusName" type="string">
+															</kendo:dataSource-schema-model-field>
+														    </kendo:dataSource-schema-model-fields>
+													</kendo:dataSource-schema-model>
+												</kendo:dataSource-schema>
+                                           </kendo:dataSource-->
+
+
+								<kendo-grid-excel fileName="UOM.xlsx"></kendo-grid-excel>
+							</kendo-grid>
+						</div>
+						<!--Kendo grid Ends-->
+					</div>
+				</div>
+
+    <!-- Success Modal -->
+<div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Added UOM Name {{uomCode}}</div>
+				</div> 
+		</div>
+	</div>
+</div>
+<!-- Success Modal - End -->
+<!--Update message Modal - start -->
+<div *ngIf="isupdateModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #updateModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular" *ngIf="isUpdate"><img src="../../assets/image/Ok.jpg"/>Success : Updated UOM Name {{uomName}}</div>
+					<div class="modal-title font-14 font-regular" *ngIf="isActivated"><img src="../../assets/image/Ok.jpg"/>Success : Activated UOM Name {{uomName}}</div>
+					<div class="modal-title font-14 font-regular" *ngIf="isInActivated"><img src="../../assets/image/Ok.jpg"/>Success : InActivated UOM Name {{uomName}}</div>
+				</div> 
+		</div>
+	</div>
+</div>
+<!--Update message Modal - end -->
+<!-- Edit Modal -->
+<div class="modal fade edit-popup" id="edit" *ngIf="iseditModal" [style.display]="editModal ? 'block' : 'none'" bsModal #Edit="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="Edit UOM" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-edit">
+				<div class="modal-header">					
+					<h3 class="modal-title col-lg-8 col-md-8 pull-left">Edit UOM</h3>
+					<a data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove" (click)="close()"></span></a>
+				</div>
+				<div class="modal-body">
+							<form class="user-detail font-lg">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Uom.Code</label>
+											<input type="text" class="form-control font-15 font-regular " maxlength="20" [style.border-color]="getStyle1()" [(ngModel)]="uomedit.uomCode"
+											 name="UomCode" placeholder="" required>
+											<small *ngIf="req_uomcode" class="colr-red font-regular font-14">Enter UOM Code</small>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Uom.Name</label>
+											<input type="text" class="form-control font-15 font-regular " maxlength="200" [style.border-color]="getstyle2()" [(ngModel)]="uomedit.uomName"
+											 name="UOMName" placeholder="" required>
+											<small *ngIf="req_uomname" class="colr-red font-regular font-14">Enter UOM Name</small>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="font-regular colr-lblue font-14" l10nTranslate>Master.Uom.FullName</label>
+											<input type="text" class="form-control font-15 font-regular " maxlength="500" [(ngModel)]="uomedit.uomFullname" name="UOMFullName"
+											 placeholder="">
+										</div>
+
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.Uom.Base</label>
+											<div class="dropdown ">
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="uomedit.parentUomId"
+												 name="uomedit.parentUomId" id="uomedit.parentUomId">
+												<option *ngFor="let option of UomCodeDropDown" [selected]="uomedit.parentUomId === option.label" value="{{option.value}}">{{option.label}}</option>
+											</select>
+											</div>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.Uom.Basis</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="uomedit.uomBasis" name="uomBasis" placeholder="">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.Uom.Conversion</label>
+											<input type="text" class="form-control font-15 font-regular " (keydown)="validateNumericsOnly($event)" [(ngModel)]="uomedit.uomConversionFactor"
+											 name="conversion" placeholder="">
+										</div>
+									</div>
+									<div class="modal-window-footer update-modal-btn mod-bottom displaynone">
+										<button type="button" class="btn btn-default bw-cancel col-lg-6 col-md-6 col-sm-6" (click)="close()">CANCEL</button>
+										<button  id="update" type="button" class="btn btn-default primary col-lg-6 col-md-6 col-sm-6">SAVE</button>					
+									</div>
+									<div class="modal-window-footer update-modal-btn mod-bottom" *ngIf="draft">
+										<button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4" (click)="close()">CANCEL</button>
+										<button type="button" class="btn btn-default primary col-lg-4 col-md-4 col-sm-4" (click)="updateUOM(uomedit.uomName)">SAVE</button>
+										<button  id="update" type="button" class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4" (click)="updateUOMwithStatus(uomedit.uomName,'Active')"> SUBMIT</button>					
+									</div>
+									<div class="modal-window-footer update-modal-btn mod-bottom" *ngIf="active">
+										<button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4" (click)="close()">CANCEL</button>
+										<button  id="update" type="button" class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4" (click)="updateUOM(uomedit.uomName)">UPDATE</button>
+										<button type="button" class="btn btn-default primary col-lg-4 col-md-4 col-sm-4" (click)="updateUOMwithStatus(uomedit.uomName,'InActive')"> DEACTIVATE</button>
+
+									</div>
+									<div class="modal-window-footer" *ngIf="inactive">
+										<button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4" (click)="close()">CANCEL</button>
+										<button type="button" class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4" (click)="updateUOM(uomedit.uomName)">UPDATE</button>
+										<button  id="update" type="button" class="btn btn-default primary col-lg-4 col-md-4 col-sm-4" (click)="updateUOMwithStatus(uomedit.uomName,'Active')"> REACTIVATE</button>					
+									</div>
+								</form>
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+				<!-- Edit Modal End-->
+
+
+				<!--Edit Dialog starts-->
+				<!--p-dialog header="UOM Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+    <div class="ui-grid-row">
+          
+    </div>
+    
+</p-dialog-->
+				<!--Edit Dialog Ends-->
+
+
+<!-- Delete Success Modal -->
+<div *ngIf="deleteSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                        <div class="modal-content">
+                                <div class="modal-header font-14 font-regular">   
+
+									<div class="modal-title" *ngIf="isDraftStatus"><img src="../../assets/image/Ok.jpg"/>Success : Deleted UOM Name {{uomName}}</div>
+									<div class="modal-title" *ngIf="isActiveStatus"><img src="../../assets/image/Ok.jpg"/>Success : InActivated UOM Name {{uomName}}</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<!-- Delete Success Modal - End -->
+
+<!--Delete Pop up-->
+<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                       <img src="../../assets/image/Confirm_Delete.svg" />
+                                                                </div>
+                                                                
+                                                                <div class="modal-body">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular" >
+                                                                                                     Are you sure you want to {{deleteStatus}} the UOM Name {{uomName}} in {{status}} status ?
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+
+	<div *ngIf="errormodal" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHidden()" class="modal fade something_wrong"  bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">   
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>This page contains {{counter}} errors.Please correct the highlighted fields.</div>
+				</div> 
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- UOM code Cannot be delted Pop up-->
+<div class="modal fade delete-popup" *ngIf="isCannotDeletePopup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog ">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header">
+                                                         <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+														 <img src="../../assets/image/Confirm_Delete.svg" />
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     {{unitMeasurementService.errorMessage}}
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="closedeletepopup()">Ok</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+
+
+			</div>
+		</div>
+	</div>
+</div>

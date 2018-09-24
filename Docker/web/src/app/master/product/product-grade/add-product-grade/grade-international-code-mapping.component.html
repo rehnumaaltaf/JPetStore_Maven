@@ -1,0 +1,27 @@
+<div [formGroup]="gradeIntalMappingForm" >
+    <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 pad0">
+        <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+             <!--<input type='hidden' formControlName='intlGradeMappingId' [ngModel]="gradeMappingId || null " ng-init="gradeMappingId= null">-->
+              <input type='hidden' formControlName='intlGradeMappingId' [ngModel]="gradeMappingId"/>
+                <label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.ProductGrade.intlcodetype</label>
+                <div class="dropdown">
+                   <select   class="positionrel" formControlName="intlId"   id="intlId{{this.title}}"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="intlId{{this.title}}" [(ngModel)] = "gradeIntlData"  >
+                            <option selected > Select</option>
+                            <option *ngFor="let code of productGradeService.intlcodetypelist"  [value]=code.value>
+                        {{code.label}}
+                        </option>
+                        
+                    </select>
+                </div>
+        </div>
+        <div class="form-group col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                <label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate> Master.ProductGrade.intlcode </label>
+                <input type="text" class="form-control font-15 font-regular " maxlength="20" formControlName="intlCode" id="code_{{this.title}}" name="code_{{this.title}}" value="" placeholder="" [(ngModel)] = "gradeIntlcodeData">
+            </div>
+        <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate> Master.ProductGrade.intldesc </label>
+                <input type="text" class="form-control font-15 font-regular " maxlength="200" formControlName="intlDesc" id="description_{{this.title}}" name="description_{{this.title}}" value="" placeholder="" [(ngModel)] = "gradeIntlnameData">
+            </div>
+       
+    </div>
+</div>

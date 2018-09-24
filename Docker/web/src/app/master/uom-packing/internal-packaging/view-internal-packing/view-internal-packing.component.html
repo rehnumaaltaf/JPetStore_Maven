@@ -1,0 +1,201 @@
+<!--  <app-header></app-header>-->
+<div class="container-fluid">
+  <!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+  <div class="row row-background">
+    <app-nav-bar ></app-nav-bar>
+	<!--{{intpackdata | json}}-->
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 usr-div single-block view-page">	
+		<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">Primary Packing Details</h4>
+			<form class="user-detail font-sm">
+            <div class="accordion">
+				<div class="container-fluid-block marb30">
+					<h3 class="font-semibold colr-lblue">Basic Details</h3>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padt15">
+						
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Packing Type Code</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0"> : </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+												{{intpackdata?.internalPackingTypeCode}}
+												
+											</span>
+											</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Primary Packing TypeName</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0"> : </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+												{{intpackdata?.internalPackingTypeName}}
+											</span>
+											</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Primary Packing TypeDesc</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0"> : </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+												{{intpackdata?.internalPackingTypeDesc}}
+											</span>											
+											</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Bulk</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0"> : </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" >
+												{{intpackdata?.isBulk}}
+											</span>
+
+											</span>
+
+											</div>
+									</div>
+									</div>
+								 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Package UOM</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+										<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0"> : </span>
+										<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" >
+												{{intpackdata?.selectedUomId}}
+											</span>
+										    
+										</div>
+									</div>
+									
+								</div>
+
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Package Weight</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0"> : </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" >
+												{{intpackdata?.internalPackingWeight}}
+											</span>
+											</span>
+
+											</div>
+									</div>
+								</div>
+		
+							</div>	
+							
+						</div>
+            </div>
+					</div>
+					
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer e-draft displayblock" data-attr="footer-edraft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtoPrev()">Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                <button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)='edit()'>Edit</button>					
+              <span id="status-draft" *ngIf="intpackdata?.status === 'Draft'">
+                <button type="button" id="update14" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)='onSubmitBtnClick()' >Submit</button>					
+                <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)='openConfirmAction(this.intpackdata?.status)' >Delete</button>					
+              </span>
+              <span id="status-active" *ngIf="intpackdata?.status === 'Active'">
+                <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)='openConfirmAction(this.intpackdata?.status)'>Deactivate</button>					
+              </span>
+              <span id="status-inactive" *ngIf="intpackdata?.status === 'InActive'">
+                <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)='openConfirmAction(this.intpackdata?.status)' >Reactivate</button>					
+              </span>
+						</div>							
+					</div>
+          </form>
+			</div>
+  </div>
+</div>
+
+ <div  *ngIf="openEdit" [config]="{backdrop:'static',show: true }"
+ (onHidden)="onHideEditModal()" bsModal  #editModal="bs-modal"
+  class="modal fade edit-popup" 
+  tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-edit" >
+				<div class="modal-header mod-head"> 
+					<a class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="editModal.hide()"></span></a>
+					<h3 class="modal-title font-semibold"> Edit Primary Packing Details</h3>
+				</div>
+				<div class="modal-edit-body mod-body">
+							<app-add-internal-packaging [PackingDetails]="intpackdata" (onSubmit)="closeEditModal($event)" ></app-add-internal-packaging>
+				</div>			
+			</div>
+		</div>
+</div>
+
+<!--<app-message [msgs]="locationMessages"  id="success-message" ></app-message>-->
+<!-- <app-confirm-box [config]="confirmBoxConfigure" (doConfirm)="confirmCancelation($event)" (doCancel)=""> </app-confirm-box> -->
+<!--
+  <div  *ngIf="confirmBoxConfigure && confirmBoxConfigure?.isVisible" [config]="{backdrop:'static',show: true }"
+ (onHidden)="onHiddenConfirm()" bsModal  #confirmModal="bs-modal"
+  class="modal fade confirm-box delete-popup" 
+  tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog " style="color:white !important;">
+          <div class="modal-content  del-modal"> 
+              <div class="col-md-12 product_img text-center" style="padding-top:15px;">
+                    <img src="../../assets/image/Confirm_Delete.svg" />
+              </div>
+              <div class="modal-body">
+                  <div class="row">                                  
+                      <div class="col-md-12 product_img text-center">
+                          {{ confirmBoxConfigure?.message }}
+                      </div>
+                      <div class="col-md-12 product_img text-center" *ngIf="confirmBoxConfigure?.isCommentPresent">
+                          <input type="text" placeholder="comments" class="form-control font-15 font-regular " name="comment" id="comment" [(ngModel)]="confirmBoxConfigure.comment" >
+                      </div>                                  
+                  </div>
+              </div>
+              <div class="del-btn-group">
+                    <div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="closeConfirmBox($event)">Cancel</button></div>
+                    <div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="confirmCancelation($event)">Confirm</button></div>
+              </div>
+          </div>
+      </div>
+</div>-->
+
+      <div class="modal fade delete-popup"  (onHidden)="onHiddenpopup()" *ngIf="isConfirmPopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: true,show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog ">
+		<div class="modal-content  del-modal">
+		   <div class="modal-header text-center">
+				<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+				<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>			
+			<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular">							
+						{{dialogValue}}
+					</div>
+			</div>
+			<div class="del-btn-group modal-window-footer btn-shodow">
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="status_update()">Confirm</button></div>
+			</div>
+		</div>
+	</div>
+</div>	
+
+<div *ngIf="isconfirmSuccessModal" (onHidden)="onHidden()" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #confirmSuccessModal="bs-modal" [config]="{backdrop: true,show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>{{successDialog}}</div>
+				</div> 
+		</div>
+	</div>
+</div>

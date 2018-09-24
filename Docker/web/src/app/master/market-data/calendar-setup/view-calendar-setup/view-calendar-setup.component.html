@@ -1,0 +1,269 @@
+<div class="container-fluid ">
+
+  <div class="row row-background">
+    <app-nav-bar></app-nav-bar>
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+	
+	
+	      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div">
+<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">Calendar Setup Details</h4>	
+        <form class="user-detail font-sm">
+          <accordion>
+						 <accordion-group  #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                Basic Details                
+                   <i class="pull-right float-xs-right glyphicon"
+                    [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+				 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">                    
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Calendar Code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.calendarCode}} </span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Calendar Name</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.calendarName}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Calendar Type</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.calendarTypeName}}</span></div></div>
+                          </div>
+                       </div>	
+                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Exchange</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.exchangeName}}</span></div></div>
+                          </div>	
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Product</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.productName}}</span></div></div>
+                          </div>
+                         
+                      </div>
+                     
+                </div>
+				   </accordion-group>
+				   <!--2nd accodian-->
+				   
+				   		 <accordion-group #group1  [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf="physicals">
+                <div accordion-heading  class="font-semibold">
+               Physical Calendar Definition               
+                   <i class="pull-right float-xs-right glyphicon"
+                    [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+				 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">                    
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Ticker Code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.trickerCode}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Phy. Delivery Start Date</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.phyDlvryStrtDate}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Phy. Delivery End Date</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.phyDlvryEndDate}}</span></div></div>
+                          </div>
+                       </div>	
+                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Futures Calendar</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.futursCalendarName}}</span></div></div>
+                          </div>	
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Delivery Month</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.dlvryMonth}}</span></div></div>
+                          </div>
+                         
+                      </div>
+                     
+                </div>
+				   </accordion-group>
+				   
+				   <!--3rd Accodian-->
+				      		 <accordion-group #group2  [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf="futures">
+                <div accordion-heading  class="font-semibold">
+              Futures Calendar Definition             
+                   <i class="pull-right float-xs-right glyphicon"
+                    [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+				 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">                    
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Ticker Code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.trickerCode}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Delivery Month</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.dlvryMonth}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">First Trade Date</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.firstTradeDate}}</span></div></div>
+                          </div>
+                       </div>	
+                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Last Trade Date</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.lastTradeDate}}</span></div></div>
+                          </div>	
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">First Notice Date</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.firstNoticeDate}}</span></div></div>
+                          </div>
+						    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Last Notice Date</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.lastNoticeDate}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">First Delivery Date</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.firstDlvryDate}}</span></div></div>
+                          </div>
+						   <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Last Delivery Date</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.lastDlvryDate}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Final Settlement Date</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.finalStlmntDate}}</span></div></div>
+                          </div>
+                         
+                      </div>
+                     
+                </div>
+				   </accordion-group>
+				   <!--4th accodian-->
+				   
+				   <accordion-group #group3  [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf="options">
+                <div accordion-heading  class="font-semibold">
+               Options Calendar Definition               
+                   <i class="pull-right float-xs-right glyphicon"
+                    [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+				 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">                    
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Ticker Code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.trickerCode}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Delivery Month</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.dlvryMonth}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Futures Calendar</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.futursCalendarName}}</span></div></div>
+                          </div>
+                       </div>	
+                      
+                     
+                </div>
+				   </accordion-group>
+				   
+				   <!--5th accodian-->
+				   
+				   	   <accordion-group #group4 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled"*ngIf="spread">
+                <div accordion-heading  class="font-semibold">
+              Spread Calendar Definition             
+                   <i class="pull-right float-xs-right glyphicon"
+                    [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+				 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">                    
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Ticker Code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.trickerCode}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Spread Month 1</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.spreadMonth1}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Spread Month 2</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.spreadMonth2}}</span></div></div>
+                          </div>
+                       </div>	
+                      
+                     
+                </div>
+				   </accordion-group>
+				   
+				   <!--6th accodian-->
+				      
+				   	   <accordion-group #group5 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf="fx">
+                <div accordion-heading  class="font-semibold">
+             FX Calendar Definition           
+                   <i class="pull-right float-xs-right glyphicon"
+                    [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+				 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">                    
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Ticker Code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">:</span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.trickerCode}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Tenor</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">:</span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.tenorName}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Span</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">:</span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.span}}</span></div></div>
+                          </div>
+						     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Duration Type</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{calendarSetupViewByIdModel.durationType}}</span></div></div>
+                          </div>
+                       </div>	
+                      
+                     
+                </div>
+				   </accordion-group>
+				   
+				   
+				   
+                 </accordion>
+				 <!--Delete Pop up-->
+				<div class="modal fade delete-popup" (onHidden)="onHiddenpopup()" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'"
+				 class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1"
+				 role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<div class="modal-dialog " style="height:440px !important; color:white !important;">
+						<div class="modal-content  del-modal">
+							<div class="modal-header">
+								<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+							</div>
+							<div class="col-md-12 product_img text-center" style="padding-top:15px;">
+								<img src="../../assets/image/Confirm_Delete.svg" />
+							</div>
+							<div class="modal-body">
+								<div class="row">
+
+									<div class="col-md-12 product_img text-center">
+										{{deactivateSuccessDialog}}
+									</div>
+									<div class="col-md-12 product_img text-center"></div>
+
+								</div>
+							</div>
+							<div class="del-btn-group">
+								<div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="successModal.hide()">Cancel</button></div>
+								<div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="conf_delete($event)">Confirm</button></div>
+							</div>
+						</div>
+					</div>
+				</div>		
+          
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn" *ngIf="draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn btn-default navbar-btn cancel-btn font-semibold font-14" (click)=backtoPrev()>BACK</button>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 pull-right text-right pad0 primary-btn">
+              <button type="button" id="update13"  class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" style="width:20% !important;" (click)="enableEdit(calendarSetupViewByIdModel)" >EDIT</button>
+              <button type="button" id="update13"  class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" style="width:20% !important;" (click)="updatewithStatus('Active')" >SUBMIT</button>						
+							<button type="button" id="update14"   class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" style="width:20% !important;margin-right:20px;" (click)="updatewithStatus('Draft')">DELETE</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn"   *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn btn-default navbar-btn cancel-btn font-semibold font-14" (click)=backtoPrev()>BACK</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="update15"  class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" (click)="enableEdit(calendarSetupViewByIdModel)">EDIT</button>					
+							<button type="button" id=""  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="updatewithStatus('InActive')" >DEACTIVATE</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn"  *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn btn-default navbar-btn cancel-btn font-semibold font-14" (click)=backtoPrev()>BACK</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="update16" class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" (click)="enableEdit(calendarSetupViewByIdModel)" >EDIT</button>					
+							<button type="button" id=""  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="updatewithStatus('Active')" >REACTIVATE</button>					
+						</div>							
+					</div>
+
+				 
+				 
+				 
+				</form>
+				</div>
+				
+	
+	</div>
+	
+  </div>
+  
+</div>

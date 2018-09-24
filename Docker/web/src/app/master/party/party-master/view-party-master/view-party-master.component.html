@@ -1,0 +1,1017 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view" *ngIf="isDataLoaded">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Master.Party.PartyMaster</h4>
+				<form class="user-detail font-sm">
+					<accordion>
+						<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold" l10nTranslate>
+								Master.Party.BasicDetails
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.PartyInternal/External</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+												<span *ngIf='partydetails.partyBasicDetails.partyInternalExternal == "Y" || partydetails.partyBasicDetails.partyInternalExternal == "y"'>Internal</span>
+												<span *ngIf='partydetails.partyBasicDetails.partyInternalExternal == "N" || partydetails.partyBasicDetails.partyInternalExternal == "n"'>External</span>
+											</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.PartyCode</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.partyCode}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.PartyName</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.partyName}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.PartyFullName</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.partyFullName}}</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.GroupCompany</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.isGroupCompany}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.SelectGroup</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.selectGroup}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.SelectGeoHierarchy</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.geoCountry}}</span></div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<!--div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">GH4</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">France</div></div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">GH5</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Italy</div></div>
+								</div-->
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.MarketingDesk</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.marketingDesk}}</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0" *ngIf='partydetails.partyBasicDetails.partyInternalExternal == "N" || partydetails.partyBasicDetails.partyInternalExternal == "n"'>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.CreditAllowed</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.creditAllowed}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.PartyRating</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.partyRatingName}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0"  *ngIf='(partydetails.partyBasicDetails.partyInternalExternal == "N" || partydetails.partyBasicDetails.partyInternalExternal == "n") && ((partydetails.partyBasicDetails.isGroupCompany == "Y") && (partydetails.partyBasicDetails.creditAllowed == "Y" || partydetails.partyBasicDetails.creditAllowed == "Yes"))'>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.GroupCreditLimit</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.groupCreditLimit}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.GroupCreditTenor</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.groupCreditTenorInDays}}</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0" *ngIf='partydetails.partyBasicDetails.partyInternalExternal == "N" || partydetails.partyBasicDetails.partyInternalExternal == "n"'>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.PartyType</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0"><span *ngFor="let item of partydetails.partyBasicDetails.partyTypes; let isLast=last">{{item}}{{isLast ? '' : ', '}}</span></span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.PartyClassification</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+												<span *ngFor="let item of partydetails.partyBasicDetails.partyClassifications; let isLast=last">{{item}}{{isLast ? '' : ', '}}</span></span></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.CompanyRegistrationNo</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.companyRegistration}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.CompanyRegistrationDate</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.companyRegistrationDate}}</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.TaxRegistrationNo</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.partyTaxRegNo}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.TaxRegistrationDate</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.partyTaxRegDate}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0" *ngIf='partydetails.partyBasicDetails.partyInternalExternal == "N" || partydetails.partyBasicDetails.partyInternalExternal == "n"'>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.FirstTransactionDatewithOlam</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.firsttransactionDate}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0" *ngIf='partydetails.partyBasicDetails.partyInternalExternal == "N" || partydetails.partyBasicDetails.partyInternalExternal == "n"'>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.GlobalTradeProgramApplicable</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.isGtpApplicableInd}}</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf='partydetails.partyBasicDetails.partyInternalExternal == "Y" || partydetails.partyBasicDetails.partyInternalExternal == "y"'>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.FunctionalCurrency</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.functionalCurrencyId}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.OperationalCurrency</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.operationalCurrencyId}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.ReportingUOM</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.defaultReportingUOMId}}</span></div>
+										</div>
+									</div>
+								</div>
+								<!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Status</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyBasicDetails.statusName}}</span></div>
+										</div>
+									</div>
+								</div>-->
+							</div>
+
+
+						</accordion-group>
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold" l10nTranslate>
+								Master.Party.Address/Bank/ContactDetails
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div class="deflt_address_block">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 addr_brdr">
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 column-block1 add_addr1">
+										<h4 class="colr-lblue font-regular font-14" l10nTranslate>Master.Party.PrimaryAddress</h4>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-regular font-14 mart5 marb17" *ngFor="let item of partydetails.partyAddress;">
+											<div *ngIf='item.isDefaultAddress == "Y" || item.isDefaultAddress == "y"'>
+												<div class="ovr-flw padb20">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.DefaultAddress</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0" *ngIf='item.isDefaultAddress == "Y" || item.isDefaultAddress == "y"'><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Yes</span></div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0" *ngIf='item.isDefaultAddress == "N" || item.isDefaultAddress == "n"'><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">No</span></div>
+												</div>
+												<div class="clr-both ovr-flw">
+													<span class="pull-left">
+												<i class="location-icn-sm marr9"> &nbsp; </i>
+											</span>
+													<span class="pull-left">
+												<span class="displayblock">{{item.name}}</span>
+													<span class="displayblock">{{item.addressOne}}</span>
+													<span class="displayblock">{{item.addressTwo}}</span>
+													<span class="displayblock">{{item.country}} - {{item.zipCode}}</span>
+													</span>
+												</div>
+												<div class="clr-both mart17"><span class="displayinline"><i class="phone-icn-sm marr9"> &nbsp; </i> {{item.phone}}</span></div>
+												<div class="colr-lblue mart17"><span class="displayinline"><i class="mail-icn-sm marr9"> &nbsp; </i> {{item.email}}</span></div>
+												<div class="clr-both mart17"><span class="displayinline"><i class="fax-icn-sm marr9"> &nbsp; </i> {{item.fax}}</span></div>
+												<div class="colr-lblue mart17"><span class="displayinline"><i class="web-icn-sm marr9"> &nbsp; </i> {{item.website}}</span></div>
+											</div>
+											<div class="add_addr2 footer">
+												<div class="font-regular font-14"><span (click)="viewaddress()" data-toggle="modal" class="padr15 verti-align" l10nTranslate><i class="view-icn-sm marr9"> &nbsp;</i> Master.Party.ViewAll</span></div>
+											</div>
+										</div>
+										
+									</div>
+
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 column-block2 add_bank1">
+										<h4 class="colr-lblue font-regular font-14" l10nTranslate>Master.Party.PrimaryBankDetails</h4>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-regular font-14  mart5 marb17" *ngFor="let item of partydetails.partyBankAccountDetails;">
+											<div *ngIf='item.isDefault == "Y"'>
+												<div class="ovr-flw padb20">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Default Bank</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0" *ngIf='item.isDefault == "Y" || item.isDefault == "y"'><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Yes</span></div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0" *ngIf='item.isDefault == "N" || item.isDefault == "n"'><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">No</span></div>
+												</div>
+											<div>
+												<div class="clr-both ovr-flw mart5">
+													<span class="pull-left">
+												<i class="bank-icn-sm marr9"> &nbsp; </i>
+											</span>
+													<span class="pull-left col-lg-11 col-md-11 col-sm-11 col-xs-11 pad0">
+												<span>{{item.partyAccountName}}</span>
+													<span class="displayblock mart10"><span class="colr-lblue" l10nTranslate>Master.Party.AccountNo </span><span>{{item.partyBankAccountNo}}</span></span>
+													<span class="displayblock mart10"><span class="colr-lblue" l10nTranslate>Master.Party.BICCode </span><span>{{item.partyBankBicCode}}</span></span>
+													<span class="displayblock mart10"><span class="colr-lblue" l10nTranslate>Master.Party.SwiftCode </span><span>{{item.partyBankSwiftCode}}</span></span>
+													</span>
+												</div>
+												<div class="clr-both ovr-flw mart30">
+													<span class="pull-left">
+												<i class="location-icn-sm marr9"> &nbsp; </i>
+											</span>
+													<span class="pull-left">
+												<span class="displayblock">{{item.partyBankAddr1}}</span>
+													<span class="displayblock mart17">{{item.partyBankAddr2}}</span>
+													<span class="displayblock mart15">{{item.countryId}} {{item.partyBankZipCode}}</span>
+													</span>
+												</div>
+												<!--<div class="font-regular font-14 ovr-flw footer"><span><i class="view-icn-sm marr9"> &nbsp;</i> View All</span></div>-->
+											</div>
+											</div>
+											<div class="add_addr2 footer">
+												<div class="font-regular font-14"><span (click)="viewbank_details()" data-toggle="modal" class="padr15 verti-align" l10nTranslate><i class="view-icn-sm marr9"> &nbsp;</i>Master.Party.ViewAll</span></div>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 column-block3 add_con1">
+										<h4 class="colr-lblue font-regular font-14" l10nTranslate>Master.Party.PrimaryContactDetails</h4>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-regular font-14 mart5 marb17" *ngFor="let item of partydetails.partyContacts;">
+											<div *ngIf='item.partyContactIsDefault == "Y" || item.partyContactIsDefault == "y"'>
+												<div class="ovr-flw padb20">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.DefaultAddress</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0" *ngIf='item.partyContactIsDefault == "Y"  || item.partyContactIsDefault == "y"'><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Yes</span></div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0" *ngIf='item.partyContactIsDefault == "N"  || item.partyContactIsDefault == "n"'><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">No</span></div>
+												</div>
+												<div class="clr-both ovr-flw">
+													<span class="pull-left">
+												<i class="prn-icn-sm marr9"> &nbsp; </i>
+											</span>
+													<span class="pull-left col-lg-11 col-md-11 col-sm-11 col-xs-11 pad0 prm-contact-detail">
+												<span class="displayblock"><span class="colr-lblue" l10nTranslate>Master.Party.Department </span><span>{{item.partyDepartment}}</span></span>
+													<span class="displayblock"><span class="colr-lblue" l10nTranslate>Master.Party.Product </span><span>{{item.productName}}</span></span>
+													<span class="displayblock"><span class="colr-lblue" l10nTranslate>Master.Party.FullName </span><span>{{item.partyContactFullname}}</span></span>
+													<span class="displayblock"><span class="colr-lblue" l10nTranslate>Master.Party.Designation </span><span>{{item.partyContactDesignation}}</span></span>
+													</span>
+												</div>
+												<div class="clr-both mart20"><span><i class="phone-icn-sm marr9"> &nbsp; </i> {{item.partyContactWorkPhone}}</span></div>
+												<div class="colr-lblue clr-both mart17"><span><i class="mail-icn-sm marr9"> &nbsp; </i> {{item.partyContactEmail}}</span></div>
+												<div class="clr-both mart15"><span><i class="fax-icn-sm marr9"> &nbsp; </i> {{item.partyContactFax}}</span></div>
+
+											</div>
+											<div class="add_addr2 footer">
+												<div class="font-regular font-14"><span (click)="viewcontact_details()" data-toggle="modal" class="padr15 verti-align" l10nTranslate><i class="view-icn-sm marr9"> &nbsp;</i>Master.Party.ViewAll</span></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+
+
+						<div *ngIf="partygradefef">
+							<accordion-group #group21 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+								<div accordion-heading class="font-semibold" l10nTranslate>
+									Master.Party.PartyGradeDefinition
+									<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group21?.isOpen, 'acc-up': !group21?.isOpen}"></i>
+								</div>
+								<div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.Product</div>
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyGradeDefinition.productName}}</span></div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.PartyGradeName</div>
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyGradeDefinition.partyGradeName}}</span></div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.PartyGradeDescription</div>
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.partyGradeDefinition.partyGradeDescription}}</span></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</accordion-group>
+						</div>
+
+						<div *ngIf="intgrademap">
+							<accordion-group #group22 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+								<div accordion-heading class="font-semibold" l10nTranslate>
+									Master.Party.InternalGradeMapping
+									<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group22?.isOpen, 'acc-up': !group22?.isOpen}"></i>
+								</div>
+								<div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-4 col-md-4 col-sm-4 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.Origin</label>
+											<label class="font-regular font-14 col-lg-4 col-md-4 col-sm-4 col-xs-12 brdb" l10nTranslate>Master.Party.InternalGradeName</label>
+											<label class="font-regular font-14 col-lg-4 col-md-4 col-sm-4 col-xs-12 brdb" l10nTranslate>Master.Party.InternalGradeDescription</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.internalGradeMapping;">
+											<label class="font-regular font-14 col-lg-4 col-md-4 col-sm-4 col-xs-12 padl0 label-val">{{item.originName}}</label>
+											<label class="font-regular font-14 col-lg-4 col-md-4 col-sm-4 col-xs-12 label-val">{{item.gradeMappingId}}</label>
+											<label class="font-regular font-14 col-lg-4 col-md-4 col-sm-4 col-xs-12 label-val">{{item.description}}</label>
+										</div>
+									</div>
+								</div>
+							</accordion-group>
+						</div>
+
+						<div *ngIf="defpayterms">
+							<accordion-group #group23 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+								<div accordion-heading class="font-semibold" l10nTranslate>
+									Master.Party.DefaultPaymentTerms
+									<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group23?.isOpen, 'acc-up': !group23?.isOpen}"></i>
+								</div>
+								<div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.PaymentTerm</div>
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.paymentTermDetails.paymentTermCode}}</span></div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.Description</div>
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.paymentTermDetails.paymentTermDesc}}</span></div>
+											</div>
+										</div>
+										<!--<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Party Grade Description</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Nestle International Limited</span></div></div>
+									</div>-->
+									</div>
+								</div>
+							</accordion-group>
+						</div>
+
+						<div *ngIf="plantdetails">
+							<accordion-group #group24 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+								<div accordion-heading class="font-semibold" l10nTranslate>
+									Master.Party.PlantDetails
+									<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group24?.isOpen, 'acc-up': !group24?.isOpen}"></i>
+								</div>
+								<div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.PlantCode</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.PlantName</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.PlantFullName</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.TaxRegistrationNo</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.TaxRegistrationDate</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Address1</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.plantDetails;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.plantCode}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val">{{item.plantName}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.plantFullName}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.taxRegistrationNumber}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.taxRegistrationDate}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.address1}}</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.Address2</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.ZipCode</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Country</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Phone</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Email</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Fax</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.plantDetails;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.address2}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.zipCode}} </label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.countryDefault}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.phoneDefault}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.emailDefault}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.faxDefault}}</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.Website</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.plantDetails;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.websiteDefault}}</label>
+										</div>
+									</div>
+
+								</div>
+							</accordion-group>
+						</div>
+
+
+						<accordion-group #group25 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold" l10nTranslate>
+								Master.Party.ExternalSystemMapping
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group25?.isOpen, 'acc-up': !group25?.isOpen}"></i>
+							</div>
+							<div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.DestinationSystem</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.Party.Type</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.Party.VendorCode</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.Party.CustomerCode</label>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.externalSystemMapping;">
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 padl0 label-val">{{item.externalSystemRefName}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val"> {{item.externalSystemMappingType}} </label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val"> {{item.externalSystemMappingVendor}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val"> {{item.externalSystemMappingCustomerCode}}</label>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+
+						<div *ngIf="creditlimit">
+							<accordion-group #group26 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+								<div accordion-heading class="font-semibold" l10nTranslate>
+									Master.Party.CreditLimit
+									<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group26?.isOpen, 'acc-up': !group26?.isOpen}"></i>
+								</div>
+								<div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.InternalPartyCode</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.InternalPartyName</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Product</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Unit</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.LimitAlertLevel</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.BG/CI/Factoring</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.creditLimit;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.internalPartyCode}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val">{{item.internalPartyName}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.product}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.unitName}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.limitAlertLevelName}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.Factoring}}</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.BG/CI/FactoringEndDate</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.NetLimit</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.ValidFrom</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.ValidTo</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.LimitType</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.creditLimit;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.FactoringEndDate}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.netLimit}} </label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.validFrom}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.validTo}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.limitType}}</label>
+										</div>
+									</div>
+								</div>
+							</accordion-group>
+						</div>
+
+						<div *ngIf="partylimit">
+							<accordion-group #group27 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+								<div accordion-heading class="font-semibold" l10nTranslate>
+									Master.Party.PartyLimits
+									<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group27?.isOpen, 'acc-up': !group27?.isOpen}"></i>
+								</div>
+								<div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.InternalPartyCode</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.InternalPartyName</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Product</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Unit</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.LimitAlertLevel</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Currency</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.partyLimits;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.internalPartyCode}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.internalPartyNameOrg}} </label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.product}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.unit}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.limitAlertLevel}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.currency}}</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.UOM</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.FixedQtyLimit</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.FixedValueLimit</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.FixedForwardTenor</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.DiffQtyLimit</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.DiffValueLimit</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.partyLimits;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.uom}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.partyFixedQtyLimit}} </label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.partyFixedVAlueLimit}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.fixedForwardTenor}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.diffQtyLimit}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.diffValueLimit}}</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.DiffForwardTenor</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.M2MLimit</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.VarLimit</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.TotalQtyLimit</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.TotalValueLimit</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.LimitOn</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.partyLimits;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.diffForwardTenor}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.m2mLimit}} </label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.varLimit}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.totalQtyLimit}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.totalValueLimit}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.limitOnName}}</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.ValidFrom</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.ValidTo</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.partyLimits;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.partyValidFrom}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.partyValidTo}} </label>
+										</div>
+									</div>
+								</div>
+							</accordion-group>
+						</div>
+
+
+						<accordion-group #group3 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold" l10nTranslate>
+								Master.Party.Nameinalternatelanguage
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666  border-btm">
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.Language</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.Party.Name</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.Party.FullName</label>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.partyTranslations;">
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 padl0 label-val">{{item.language}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val"> {{item.alternativeName}} </label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val"> {{item.alternativeFullName}}</label>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+
+						<accordion-group #group4 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold" l10nTranslate>
+								Master.Party.AddressinAlternativeLanguage
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.AddressName</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Language</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Address1</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Address2</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Zipcode</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Country</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.addressAlternativeMulti;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.addressName}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.language}} </label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val">  {{item.addressAltAddress1}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val">{{item.addressAltAddress2}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val">{{item.addressAltZipCode}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val">{{item.country}}</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+
+						<div *ngIf="warehouse">
+							<accordion-group #group28 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+								<div accordion-heading class="font-semibold" l10nTranslate>
+									Master.Party.WarehouseLocation
+									<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group28?.isOpen, 'acc-up': !group28?.isOpen}"></i>
+								</div>
+								<div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.Port/LocationCode</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.LocationName</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.LocationFullName</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.LocationTaxRegistrationNo</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.LocationTaxRegistrationDate</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.ExchangeDesignated</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.warehouseLocation;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.warLocationCode}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.wareLocationName}} </label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.wareLocationFullName}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.wareLocationTaxRegNo}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.wareLocationTaxRegDate | date: 'dd/MM/yyyy'}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.isExchangeDesignated}}</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.BondedWarehouse</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Address1</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Address2</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.ZipCode</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Country</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Phone</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.warehouseLocation;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.isBrandedWareHouse}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.wareAddress1}} </label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.wareAddress2}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.wareZip}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.country}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.warePhone}}</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.Email</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Fax</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Website</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.warehouseLocation;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.wareEmail}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.wareFax}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.wareWebsite}}</label>
+										</div>
+									</div>
+								</div>
+							</accordion-group>
+						</div>
+
+						<div *ngIf="exchange">
+							<accordion-group #group29 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+								<div accordion-heading class="font-semibold" l10nTranslate>
+									Master.Party.ExchangeDetails
+									<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group29?.isOpen, 'acc-up': !group29?.isOpen}"></i>
+								</div>
+								<div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.Product</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.ScreenName</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.HubName</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.ContractSymbol</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Lot/ContractSize</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.Lot/ContractSize</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.exchangeDetails;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.product}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.exchangeScreenName}} </label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.exchangeHubName}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.exchangeContractSymbol}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.lotOrContractSizeId}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.lotOrContractSize}}</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.HolidayCalendar</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.TradingCalendar</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.PriceQuotation</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.PriceQuotationCurrency</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.PriceQuotationUOM</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.MinimumPriceMovement</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.exchangeDetails;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val"><span *ngFor="let items of item.holidayCalendar; let isLast=last">{{items.calendarname}}{{isLast ? '' : ', '}}</span></label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"><span *ngFor="let items of item.exchangeTradingCalender; let isLast=last">{{items.calendarname}}{{isLast ? '' : ', '}}</span></label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.exchangePriceQuotation}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.priceQuotationCurrency}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.priceQuotationUoM}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.exchangeMinimmumPrice}}</label>
+
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.MinimumPriceMovementCurrency</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.Party.MinimumPriceMovementUOM</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.exchangeDetails;">
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{item.minimumPriceMovementCurrency}}</label>
+											<label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val"> {{item.minimumPriceMovementUoM}}</label>
+										</div>
+									</div>
+								</div>
+							</accordion-group>
+						</div>
+
+						<div *ngIf="broker">
+							<accordion-group #group30 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+								<div accordion-heading class="font-semibold" l10nTranslate>
+									Master.Party.BrokerDetails
+									<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group30?.isOpen, 'acc-up': !group30?.isOpen}"></i>
+								</div>
+								<div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.TradingAccountNumber</div>
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.brokerDetails.tradingAccountNumber}}</span></div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.Commission</div>
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.brokerDetails.commission}}</span></div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.Commission</div>
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{partydetails.brokerDetails.commissionUOMName}}</span></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</accordion-group>
+						</div>
+
+						<div *ngIf="documents">
+							<accordion-group #group31 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+								<div accordion-heading class="font-semibold" l10nTranslate>
+									Master.Party.Documents
+									<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group31?.isOpen, 'acc-up': !group31?.isOpen}"></i>
+								</div>
+								<div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 plants-det mart15">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+											<label class="font-regular font-14 col-lg-4 col-md-4 col-sm-4 col-xs-12 padl0 brdb" l10nTranslate>Master.Party.DocumentName</label>
+											<label class="font-regular font-14 col-lg-4 col-md-4 col-sm-4 col-xs-12 brdb" l10nTranslate>Master.Party.DocumentType</label>
+											<label class="font-regular font-14 col-lg-4 col-md-4 col-sm-4 col-xs-12 brdb" l10nTranslate>Master.Party.NoofCopies</label>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of partydetails.partyDocuments;">
+											<label class="font-regular font-14 col-lg-4 col-md-4 col-sm-4 col-xs-12 padl0 label-val">{{item.documentName}}</label>
+											<label class="font-regular font-14 col-lg-4 col-md-4 col-sm-4 col-xs-12 label-val"> {{item.documentType}} </label>
+											<label class="font-regular font-14 col-lg-4 col-md-4 col-sm-4 col-xs-12 label-val"> {{item.documentNumber}}</label>
+										</div>
+									</div>
+								</div>
+							</accordion-group>
+						</div>
+
+					</accordion>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer draft" *ngIf='partydetails.partyBasicDetails.statusName=="Draft" || partydetails.partyBasicDetails.statusName=="SAP-Draft"'>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="back()" l10nTranslate>Master.Party.CANCEL</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master1" class="btn default-btn secondary-btn multiplebtn-width marr20  edit-form font-semibold font-18"
+						(click)="editparty(partydetails.pkPartyId)"	 l10nTranslate>Master.Party.EDITBUTTON</button>
+							<button type="button" id="save_party_master2" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+							 l10nTranslate (click)="updateParty('L1 Approved')">Master.Party.l1approval</button>
+						</div>
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer draft" *ngIf='partydetails.partyBasicDetails.statusName=="L1 Approved"'>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="back()" l10nTranslate>Master.Party.CANCEL</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master1" class="btn default-btn secondary-btn multiplebtn-width marr20  edit-form font-semibold font-18"
+							(click)="editparty(partydetails.pkPartyId)"  l10nTranslate>Master.Party.EDITBUTTON</button>
+							<button type="button" id="save_party_master2" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+							 l10nTranslate (click)="updateParty('Active')">Master.Party.l2approval</button>
+						</div>
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer draft" *ngIf='partydetails.partyBasicDetails.statusName=="L2 Approved"'>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="back()" l10nTranslate>Master.Party.CANCEL</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master1" class="btn default-btn secondary-btn multiplebtn-width marr20  edit-form font-semibold font-18"
+							 (click)="editparty(partydetails.pkPartyId)" l10nTranslate>Master.Party.EDITBUTTON</button>
+							<button type="button" id="save_party_master2" class="btndefault-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+							 l10nTranslate (click)="update()">Master.Party.Active </button>
+						</div>
+					</div>
+
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer draft" *ngIf='partydetails.partyBasicDetails.statusName=="Active"'>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="back()" l10nTranslate>Master.Party.CANCEL</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master1" class="btndefault-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+							 l10nTranslate (click)="editparty(partydetails.pkPartyId)">Master.Party.EDITBUTTON</button>
+							
+						</div>
+					</div>
+
+
+				</form>
+			</div>
+		</div>
+		<!-- Add Bank End -->
+		<!-- Primary address modal popup window-->
+		<div [config]="{backdrop: 'static', show: false }" bsModal #view_all_address="bs-modal" class="modal right fade add_addr"
+		 tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document" style="width:35%;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closecontact()"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel2" style="padding-left: 14px;padding-top: 14px;" l10nTranslate>Master.Party.ViewAllAddress</h4>
+					</div>
+					<div class="modal-body" style="overflow-y: scroll;height:470px;">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-regular font-14 mart5 marb15 underline-multi" *ngFor="let item of partydetails.partyAddress;">
+							<div class="ovr-flw padb20">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.DefaultAddress</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0" *ngIf='item.isDefaultAddress == "Y" || item.isDefaultAddress == "y"'><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Yes</span></div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0" *ngIf='item.isDefaultAddress == "N" || item.isDefaultAddress == "n"'><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">No</span></div>
+							</div>
+							<div class="clr-both ovr-flw">
+								<span class="pull-left"><i class="location-icn-sm marr9"> &nbsp; </i></span>
+								<span class="pull-left">
+										<span class="displayblock">{{item.name}}</span>
+								<span class="displayblock">{{item.addressOne}}</span>
+								<span class="displayblock">{{item.addressTwo}}</span>
+								<span class="displayblock">{{item.countryId}} {{item.zipCode}}</span>
+								</span>
+							</div>
+							<div class="clr-both mart17"><span class="displayinline"><i class="phone-icn-sm marr9"> &nbsp; </i> {{item.phone}}</span></div>
+							<div class="colr-lblue mart17"><span class="displayinline"><i class="mail-icn-sm marr9"> &nbsp; </i> {{item.email}}</span></div>
+							<div class="clr-both mart17"><span class="displayinline"><i class="fax-icn-sm marr9"> &nbsp; </i> {{item.fax}}</span></div>
+							<div class="colr-lblue mart17"><span class="displayinline"><i class="web-icn-sm marr9"> &nbsp; </i> {{item.website}}</span></div>
+						</div>
+						<div class="party-save-btn-div">
+							<button id="add-con-save" type="button" class="btn btn-default navbar-btn party-save-btn party_ok primary-btn wid-100" (click)="closecontact()">OK</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end here-->
+		<!-- bank details modal window -->
+		<div [config]="{backdrop: 'static', show: false }" bsModal #view_all_bank_details="bs-modal" class="modal right fade" tabindex="-1"
+		 role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document" style="width:35%;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closebank_details()"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel2" style="padding-left: 14px;padding-top: 14px;" l10nTranslate>Master.Party.ViewAllBankDetails</h4>
+					</div>
+					<div class="modal-body" style="overflow-y: scroll;height:470px;">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-regular font-14  mart5 marb15 underline-multi" *ngFor="let item of partydetails.partyBankAccountDetails;">
+							<div class="clr-both ovr-flw mart5">
+								<span class="pull-left"><i class="bank-icn-sm marr9"> &nbsp; </i></span>
+								<span class="pull-left col-lg-11 col-md-11 col-sm-11 col-xs-11 pad0">
+										<span>{{item.partyAccountName}}</span>
+								<span class="displayblock mart10"><span class="colr-lblue" l10nTranslate>Master.Party.AccountNo </span><span>{{item.partyBankAccountNo}}</span></span>
+								<span class="displayblock mart10"><span class="colr-lblue" l10nTranslate>Master.Party.BICCode </span><span>{{item.partyBankBicCode}}</span></span>
+								<span class="displayblock mart10"><span class="colr-lblue" l10nTranslate>Master.Party.SwiftCode </span><span>{{item.partyBankSwiftCode}}</span></span>
+								</span>
+							</div>
+							<div class="clr-both ovr-flw mart30">
+								<span class="pull-left"><i class="location-icn-sm marr9"> &nbsp; </i></span>
+								<span class="pull-left">
+									<span class="displayblock">{{item.partyBankAddr1}}</span>
+								<span class="displayblock mart17">{{item.partyBankAddr2}}</span>
+								<span class="displayblock mart15">{{item.country}} {{item.partyBankZipCode}}</span>
+								</span>
+							</div>
+						</div>
+						<div class="party-save-btn-div">
+							<button id="add-con-save" type="button" class="btn btn-default navbar-btn party-save-btn party_ok primary-btn wid-100" (click)="closebank_details()">OK</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end here -->
+		<!-- contact details modal window -->
+		<div [config]="{backdrop: 'static', show: false }" bsModal #view_all_contact_details="bs-modal" class="modal right fade"
+		 tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document" style="width:35%;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closecontact_details()"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel2" style="padding-left: 14px;padding-top: 14px;" l10nTranslate>Master.Party.ViewAllContactDetails</h4>
+					</div>
+					<div class="modal-body" style="overflow-y: scroll;height:470px;">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-regular font-14 mart5 marb15 underline-multi" *ngFor="let item of partydetails.partyContacts;">
+							<div class="ovr-flw padb20">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Party.DefaultAddress</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0" *ngIf='item.partyContactIsDefault == "Y" || item.partyContactIsDefault == "y"'><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Yes</span></div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0" *ngIf='item.partyContactIsDefault == "N" || item.partyContactIsDefault == "n"'><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">No</span></div>
+							</div>
+							<div class="clr-both ovr-flw">
+								<span class="pull-left"><i class="prn-icn-sm marr9"> &nbsp; </i></span>
+								<span class="pull-left col-lg-11 col-md-11 col-sm-11 col-xs-11 pad0 prm-contact-detail">
+								<span class="displayblock"><span class="colr-lblue" l10nTranslate>Master.Party.Department </span><span>{{item.partyDepartment}}</span></span>
+								<span class="displayblock"><span class="colr-lblue" l10nTranslate>Master.Party.Product </span><span>{{item.productName}}</span></span>
+								<span class="displayblock"><span class="colr-lblue" l10nTranslate>Master.Party.FullName </span><span>{{item.partyContactFullname}}</span></span>
+								<span class="displayblock"><span class="colr-lblue" l10nTranslate>Master.Party.Designation </span><span>{{item.partyContactDesignation}}</span></span>
+								</span>
+							</div>
+							<div class="clr-both mart20"><span><i class="phone-icn-sm marr9"> &nbsp; </i> {{item.partyContactWorkPhone}}</span></div>
+							<div class="colr-lblue clr-both mart17"><span><i class="mail-icn-sm marr9"> &nbsp; </i> {{item.partyContactMobile}}</span></div>
+							<div class="clr-both mart15"><span><i class="fax-icn-sm marr9"> &nbsp; </i> {{item.partyContactFax}}</span></div>
+						</div>
+						<div class="party-save-btn-div">
+							<button id="add-con-save" type="button" class="btn btn-default navbar-btn party-save-btn party_ok primary-btn wid-100" (click)="closecontact_details()">OK</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end here -->
+
+		<!--Delete Pop up-->
+		<!--<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup"
+		 bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+		 aria-hidden="true">-->
+		<div [config]="{backdrop: 'static', show: false }" bsModal #deletemodal="bs-modal" class="modal fade delete-popup" tabindex="-1"
+		 role="dialog" aria-hidden="true">
+			<div class="modal-dialog " style="height:440px !important; color:white !important;">
+				<div class="modal-content  del-modal">
+					<div class="modal-header">
+						<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+					</div>
+					<div class="col-md-12 product_img text-center" style="padding-top:15px;">
+						<img src="../../assets/image/Confirm_Delete.svg" />
+					</div>
+					<div class="modal-body">
+						<div class="row">
+
+							<div class="col-md-12 product_img text-center">
+								Are you sure you want to {{statusstate}} the Party {{code}} in {{statuses}} status ?
+							</div>
+							<div class="col-md-12 product_img text-center"></div>
+
+						</div>
+					</div>
+					<div class="del-btn-group">
+						<div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="deletemodal.hide()">Cancel</button></div>
+						<div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="conf_delete($event)">Confirm</button></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!---->
+
+
+	</div>
+</div>

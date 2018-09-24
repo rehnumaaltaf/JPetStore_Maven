@@ -1,0 +1,225 @@
+<div class="container-fluid">
+	<div class="row row-background" [ngClass]="{'white-bg': weighttermModel?.weightTermsId}">
+		<app-nav-bar *ngIf="!weighttermModel?.weightTermsId"></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div white-bg create-view single-block">
+
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold head-show" *ngIf="!weighttermModel?.weightTermsId">Add Weight Terms</h4>
+
+				<form class="user-detail font-sm" novalidate autocomplete="off">
+					<h3 class="font-semibold" *ngIf="!weighttermModel?.weightTermsId">Basic Details</h3>
+					<div class="container-fluid-block marb30">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-red font-regular font-14">Weight Code</label>
+										<input type="text" class="form-control font-15 font-regular" maxlength="20" id="rate" [(ngModel)]="weighttermModel.weightTermsCode"
+										 name="weightTermsCode" (keydown.space)="$event.preventDefault()" [style.border-color]="getStyle()" (focusout)="validate()" value="" placeholder="">
+										<span *ngIf="code" class="colr-red font-regular font-14">Weight Code {{requiedMesssage}}</span>
+									</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-red font-regular font-14">Weight Name</label>
+										<input type="text" class="form-control font-15 font-regular " maxlength="200" id="rate" [(ngModel)]="weighttermModel.weightTermsName"
+										 name="weightTermsName" [style.border-color]="getStyle1()" (focusout)="validate()" value="" placeholder="">
+										<span *ngIf="name" class="colr-red font-regular font-14">Weight Name {{requiedMesssage}}</span>
+									</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Description</label>
+										<input type="text" class="form-control font-15 font-regular " maxlength="500" id="rate" [(ngModel)]="weighttermModel.weightTermsDesc"
+										 name="weightTermsDesc" value="" placeholder="">
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Franchise Applicable</label>
+										<!--Master.AddEditPack.Bulk-->
+
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+											<span class="radio pricing-details">
+
+											<input type="radio" id="radio6" value="Y" (change) = "changeFirstfRadio($event.target.value)" [(ngModel)]="weighttermModel.weightTermsIsFranchiseApplicable" name="weightTermsIsFranchiseApplicable">
+											<label for="radio6">Yes</label>
+										</span>
+
+											<span class="radio pricing-details">
+
+											<input type="radio" id="radio7" value="N" (change) = "changeFirstfRadio($event.target.value)"  [(ngModel)]="weighttermModel.weightTermsIsFranchiseApplicable" name="weightTermsIsFranchiseApplicable" checked="checked">
+											<label for="radio7">No</label>
+										</span>
+										</div>
+
+									</div>
+									<div class="showFranchise">
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" [ngClass]="getFranchiseClass()">Default Franchise Value (+/-)</label>
+											<input type="number" class="form-control font-15 font-regular " id="rate" [(ngModel)]="weighttermModel.weightTermsDefaultFranchiseValue"
+											 name="weightTermsDefaultFranchiseValue" min="0" value="" [style.border-color]="getStyle2()" (focusout)="validate()" placeholder="">
+											<span *ngIf="franchisevalue" class="colr-red font-regular font-14">Franchise Value {{requiedMesssage}}</span>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" maxlength="20" [ngClass]="getFranchiseClass()" l10nTranslate>Default Franchise Value Unit</label>
+											<!--Master.AddEditPack.Uom-->
+											<div class="dropdown">
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-15" [(ngModel)]="weighttermModel.franchiseValueUnitId"
+												 name="franchiseValueUnitId" [style.border-color]="getStyle3()" (focusout)="validate()" required> 
+												<option [ngValue]="undefined" selected>Select</option>
+												<option *ngFor="let option of franchisedetails" value="{{option.franchiseValueUnitId}}">{{option.franchiseValueUnitCode}} </option>
+												
+												</select>
+												<span *ngIf="franchiseunit" class="colr-red font-regular font-14">Franchise Unit{{requiedMesssage}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Tolerance Applicable</label>
+										<!--Master.AddEditPack.Bulk-->
+
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+											<span class="radio pricing-details">
+
+											<input type="radio" id="radio3" value="Y" (change) = "changeFirstRadio($event.target.value)" [checked]="weighttermModel.weightTermsIsToleranceApplicable === 'Y'" [(ngModel)]="weighttermModel.weightTermsIsToleranceApplicable" name="weightTermsIsToleranceApplicable">
+											<label for="radio3">Yes</label>
+										</span>
+
+											<span class="radio pricing-details">
+
+											<input type="radio" id="radio4" value="N" (change) = "changeFirstRadio($event.target.value)" [checked]="weighttermModel.weightTermsIsToleranceApplicable === 'N'" [(ngModel)]="weighttermModel.weightTermsIsToleranceApplicable" name="weightTermsIsToleranceApplicable" checked="checked">
+											<label for="radio4">No</label>
+										</span>
+										</div>
+
+									</div>
+									<div class="showTolerance">
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" [ngClass]="getToleranceClass()">Default Tolerance Value (+/-)</label>
+											<input type="number" class="form-control font-15 font-regular " id="remarks" [(ngModel)]="weighttermModel.weightTermsDefaultToleranceValue"
+											 name="weightTermsDefaultToleranceValue" min="0" [style.border-color]="getStyle4()" (focusout)="validate()" value="" placeholder="">
+											<span *ngIf="tolerancevalue" class="colr-red font-regular font-14">Tolerance Value {{requiedMesssage}}</span>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" maxlength="20" [ngClass]="getToleranceClass()" l10nTranslate>Default Tolerance Value Unit</label>
+											<!--Master.AddEditPack.Uom-->
+											<div class="dropdown">
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-15" name="toleranceValueUnitId" [(ngModel)]="weighttermModel.toleranceValueUnitId"
+												 [style.border-color]="getStyle5()" (focusout)="validate()" required> 
+												<option [ngValue]="undefined" selected>Select</option>
+												<option *ngFor="let option of tolerancedetails" value="{{option.toleranceValueUnitId}}">{{option.toleranceValueUnitCode}} </option>
+												</select>
+												<span *ngIf="toleranceunit" class="colr-red font-regular font-14">Tolerance Unit {{requiedMesssage}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="!weighttermModel?.weightTermsId">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" name="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="reset()">Reset</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" name="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+							 (click)="savePackingMaterial('Draft')" l10nTranslate>Save</button>
+							<!--Master.AddEditPack.Save-->
+							<button id="update" type="button" class="btn default-btn primary-btn multiplebtn-width font-semibold font-18" (click)="savePackingMaterial('Active')"
+							 l10nTranslate>Submit</button>
+							<!--Master.AddEditPack.Submit-->
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="modal-window-footer update-modal-btn mod-bottom draft-base" *ngIf="weighttermModel?.weightTermsId && weighttermModel?.statusName === 'Draft'">
+
+			<button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4" (click)="onCancel()">CANCEL</button>
+			<button type="button" id="save_party_master" class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4"
+			 (click)="updatePack('Draft')">SAVE</button>
+			<button type="button" id="save_party_master" class="btn btn-default primary col-lg-4 col-md-4 col-sm-4"
+			 (click)="updatePack('Active')">SUBMIT</button>
+
+		</div>
+		<div class="modal-window-footer update-modal-btn mod-bottom act-base" *ngIf="weighttermModel?.weightTermsId && weighttermModel?.statusName === 'Active'">
+			<button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4" (click)="onCancel()">CANCEL</button>
+			<button type="button" id="save_party_master-s" class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4"
+			 (click)="updatePack('Active')">UPDATE</button>
+			<button type="button" id="save_party_master-sd" class="btn btn-default primary col-lg-4 col-md-4 col-sm-4"
+			 (click)="updatePack('InActive')">DEACTIVATE</button>
+
+		</div>
+		<div class="modal-window-footer update-modal-btn mod-bottom inact-base" *ngIf="weighttermModel?.weightTermsId && weighttermModel?.statusName === 'InActive'">
+
+			<button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4" (click)="onCancel()">CANCEL</button>
+			<button type="button" id="save_party_master" class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4"
+			 (click)="updatePack('InActive')">UPDATE</button>
+			<button type="button" id="save_party_master-sr" class="btn btn-default primary col-lg-4 col-md-4 col-sm-4"
+			 (click)="updatePack('Active')">REACTIVATE</button>
+
+		</div>
+
+		
+	</div>
+</div>
+
+<!-- on cancel starts here   -->
+
+<div *ngIf="isEditCancel" [config]="{backdrop:false,show: true }" (onHidden)="onHiddenCancel()" bsModal #cancelModal="bs-modal"
+ class="modal fade confirm-box delete-popup" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog ">
+		<div class="modal-content  del-modal">
+			<!-- *ngClass="{'confirmation-comment': config?.isCommentPresent}" -->
+			<div class="modal-header text-center">
+				<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>
+			<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular">
+						Do you really want to cancel?
+					</div>
+			</div>
+			<div class="del-btn-group modal-window-footer btn-shodow">
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closeConfirmBox()">Cancel</button></div>
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="confirmCancelation()">Confirm</button></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--on cancel ends here  -->
+
+
+<!-- count purpose -->
+	<div *ngIf="errormodalpart" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHiddenpopup()" class="modal fade something_wrong"  bsModal #invalidCount="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">   
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>{{invalidCountMsg}}</div>
+				</div>
+        </div>
+    </div>
+</div>
+
+  <!-- count purpose end -->
+
+ <!-- error modal start -->
+<div class="modal fade in error-modal" [style.display]="errorModal ? 'block' : 'none'" id="errorModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title"><img src="../../../assets/image/Confirm_Delete.svg"/>{{weightTermsService.errorMessage}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- error modal end -->
+
+

@@ -1,0 +1,268 @@
+/* Login css - Start */
+ body{
+font-family:"Roboto-Regular";
+  }
+  .landing_bg
+  {
+	height:660px;
+	  
+	background: url("../image/LandingPage_image1.png") no-repeat center center ; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+
+
+  }
+  
+   .bottom_bg
+  {
+	height:419px;
+	  
+	  background: url("../image/LandingPage_image2.png") no-repeat center center ; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+  }
+  div#myCarousel {
+    clear: both;
+}
+  .MTop25
+  {
+  margin-top:25px;
+  
+  }
+  
+  .Mleft45
+  {
+  margin-left:45px;
+  }
+  .MTop113
+  {
+  margin-top:110px;
+  }
+  .landing_test1
+  {
+  color:#ffffff;
+font-family:"Roboto-Bold";
+font-size:36px;
+line-height: normal;
+  }
+  
+    .landing_test2
+  {
+  color:#ffffff;
+font-family:"Roboto-Bold";
+font-size:55px;
+line-height: normal;
+margin-top:7px;
+  }
+  
+      .landing_test3
+  {
+  color:#9Ec800;
+font-family:"Roboto-Bold";
+font-size:55px;
+line-height: normal;
+margin-top:2px;
+  }
+      .landing_test4
+  {
+  color:#ffffff;
+font-family:"Roboto-Bold";
+font-size:55px;
+line-height: normal;
+margin-top:2px;
+  }
+
+  .style_input
+  {  
+  border-bottom:1px solid #ffffff;
+  border-left:0px;
+  border-right:0px;
+  border-top:0px;
+  background-color:transparent;
+  width:300px;
+ padding:7px 7px 7px 12px;;
+ 
+color: #ffffff;
+line-height: normal;
+letter-spacing: 1px;outline: none;
+border-radius: 2px;
+  }
+  
+    .style_input2
+  {
+  margin-top:28px;
+  border-bottom:1px solid #ffffff;
+  border-left:0px;
+  border-right:0px;
+  border-top:0px;
+  background-color:transparent;
+  width:300px;
+   padding:7px 7px 7px 12px;;
+   color: #ffffff;
+line-height: normal;
+border-radius: 2px;
+    letter-spacing: 1px;outline: none;
+  }
+  .style_button
+  {
+    margin-top:35px;
+	background-color:#e52522;
+	border:0px;
+	width:147px;
+	height:44px;
+	    font-family:"Roboto-Medium";
+
+	font-size:15pt;
+	line-height: normal;
+    letter-spacing: 1px;
+  }
+  
+  input::placeholder {
+  color: #ffffff;
+    font-family:"Roboto-Medium";
+	font-size:14pt;
+
+
+}
+
+
+
+
+
+.Mright16
+{
+margin-right:16px;
+}
+.mid_517
+{
+height:472px;
+}
+.Mleft517
+{
+margin-left:217px;
+}
+.Mtop80
+{
+margin-top:73px;
+}
+
+.midtext1
+{
+color:#333333;
+font-family:"Roboto-Bold";
+font-size:30px;
+    font-weight: normal;
+	line-height: 30pt;
+}
+
+.midtext2
+{
+color:#000000;
+font-family:"Roboto-Bold";
+font-size:18pt;
+line-height:27px;
+}
+
+.midtext3
+{
+color:#707070;
+font-family:"Roboto-Regular";
+font-size:13pt;
+}
+
+.MRight10
+{
+margin-right:10px;
+}
+
+.MBottom17
+{
+margin-bottom:17px;
+}
+
+.MTop25
+{
+margin-top:25px;
+}
+.Mtop8{
+margin-top:8px;
+}
+.footer_text1
+{
+color:#ffffff;
+margin-top:0px;
+font-size:62pt;
+font-family:"Roboto-Bold";
+display:inherit;
+margin-bottom:20px;
+
+
+}
+.olamcarousel .carousel-caption{
+  right:0px;
+  left:0px;
+  top:130px;
+  padding-top:0px;
+  padding-bottom:0px;
+}
+.olamcarousel .carousel-inner img{
+  width:1495px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+.olamcarousel .carousel-indicators{
+  bottom:35px;
+}
+.footer_text2
+{
+color:#ffffff;
+font-size:36pt;
+font-family:"Roboto-Bold";
+
+line-height: 40px;
+    margin-top: -33px;
+    display: inherit;
+}
+
+input[type="button"]:hover {
+	background: #c60000 ;
+}
+/*.learn-btn, .learn-btn .btn-default:hover{
+color: #d64846;
+    font-family: "Roboto-Bold";
+    background-color: #ffffff;
+    border-color: #d64846;
+    font-size: 16px !important;
+    font-weight: normal;
+    margin: 0px;
+    line-height: normal;
+    width: 115px;
+    padding: 10px 0px;
+    border-radius: 0px;
+	margin-top:20px;
+}*/
+.learnmore .learn-btn, .learnmore .learn-btn:hover{
+color: #d64846;
+    font-family: "Roboto-Bold";
+    background-color: #ffffff;
+    border-color: #d64846;
+    font-size: 16px !important;
+    font-weight: normal;
+    margin: 0px;
+    line-height: normal;
+    width: 115px;
+    padding: 10px 0px;
+    border-radius: 0px;
+	margin-top:20px;
+}
+#login_form{
+ padding:25px; 
+}
+/*Login css - End */

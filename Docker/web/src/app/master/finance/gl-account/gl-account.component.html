@@ -1,0 +1,261 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Master.GL.Title</h4>
+
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+				
+				
+
+
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+ 						 <!-- Kendo Grid starts-->
+							<div class="party-grade_block">
+									<!--<kendo-grid [kendoGridBinding]="glAccountService.glDetails" [data]="gridView" [selectable]="true" [groupable]="true" [group]="groups"
+										[scrollable]="'none'"   [editable]="true" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [filter]="state.filter"
+										 [filterable]="true" (dataStateChange)="dataStateChange($event)" [height]="400" [pageable]="false"
+										(pageChange)="pageChange($event)" (sortChange)="sortChange($event)">-->
+
+
+
+													 <!-- [group]="groups" put this code in below line    (dataStateChange)="dataStateChange($event)" -->     
+													  <!-- ,mode: multiple ? 'multiple' : 'single'        put this code in below line of sortable -->
+                                        <kendo-grid [data]="gridView" [kendoGridBinding]="glAccountService.glDetails" [selectable]="true" [groupable]="true"  [sortable]="{allowUnsort: allowUnsort}"  [sort]="sort" [scrollable]="true"   [editable]="true" [pageSize]="state.take" [skip]="state.skip" [filter]="state.filter"
+										 [filterable]="true"   [pageable]="false"
+										(pageChange)="pageChange($event)"  (sortChange)="sortChange($event)">
+         
+        
+
+										<ng-template kendoGridToolbarTemplate>
+										<span class=" k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+											<img src="../../assets/image/add.png" (click)="changeShowStatus()" />
+										</ng-template>
+									
+										<kendo-grid-column  media="xs" title="GL">
+										<ng-template kendoGridCellTemplate let-dataItem>
+											<!-- template for mobile -->
+											
+											<h4>
+											{{ dataItem.glCode }}
+											</h4>
+											<dl>
+											<dt>Name</dt>
+											<dd>{{ dataItem.glName }}</dd>
+
+											<dt>Full Name</dt>
+											<dd>{{ dataItem.externalGlMappingName }}</dd>
+
+											<dt>Conversion</dt>
+											<dd>{{ dataItem.externalGlMappingCode }}</dd>
+											</dl>
+											<!-- template for mobile Ends-->
+										</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column  field='' title='' [width]="40">
+												<ng-template kendoGridHeaderTemplate let-dataItem>
+												<input type="checkbox" id="checkall" class="k-checkbox" (change)="checkorUnCheckAll($event)"  />
+												<label class="k-checkbox-label chk_head" for="checkall"></label>
+											</ng-template> 
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<input type="checkbox" class="k-checkbox" id="dataItem.glCode" name="dataItem.glCode" ng-model="dataItem.glCode"/>
+												<label class="k-checkbox-label" for="dataItem.glCode"></label>
+											</ng-template>
+										</kendo-grid-column>
+
+										
+
+										<kendo-grid-column media="sm" field="glBasicDto.partyName" title="Legal Entity" width="230px">
+                                            <ng-template kendoGridCellTemplate let-dataItem>
+												<div >{{dataItem.glBasicDto.partyName}}</div>
+											</ng-template>
+										</kendo-grid-column>
+                                        <kendo-grid-column media="sm" field="glBasicDto.glCode" title="GL Code">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<div class="view-all"><a href="javascript:void(0)" [routerLink]="['view',dataItem.glBasicDto.glId]">{{dataItem.glBasicDto.glCode}}</a></div>
+												<!--<div (click)="viewById(dataItem)" class="view-all">{{dataItem.glBasicDto.glCode}}</div>-->
+											</ng-template>
+										</kendo-grid-column>
+										
+										<kendo-grid-column media="sm" field="glBasicDto.glName" title="GL Name">
+                                            <ng-template kendoGridCellTemplate let-dataItem>
+												<div >{{dataItem.glBasicDto.glName}}</div>
+											</ng-template>
+										</kendo-grid-column>
+
+										<kendo-grid-column media="md" field="glBasicDto.glTypeRefName" title="GL Type">
+                                            <ng-template kendoGridCellTemplate let-dataItem>
+												<div >{{dataItem.glBasicDto.glTypeRefName}}</div>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="lg" field="glBasicDto.glIsGroup" title="Is Group GL">
+                                            <ng-template kendoGridCellTemplate let-dataItem>
+												<div >{{dataItem.glBasicDto.glIsGroup}}</div>
+											</ng-template>
+										</kendo-grid-column>
+										<!--<kendo-grid-column media="lg" field="statusName" title="Status">
+										</kendo-grid-column>-->
+										<!--<kendo-grid-column   media="lg" field="glBasicDto.statusName" title="Status">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<label field="dataItem.glBasicDto.statusName" [ngClass]="{'status-draft': dataItem.glBasicDto.statusName=='Draft','status-active': dataItem.glBasicDto.statusName=='Active','status-inactive': dataItem.glBasicDto.statusName=='InActive'}">{{dataItem.glBasicDto.statusName}}</label>
+											</ng-template>
+										</kendo-grid-column>-->
+										<kendo-grid-column media="lg" field="statusName" title="Status">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<label field="statusName" [ngClass]="{'status-draft': dataItem.statusName=='Draft','status-active': dataItem.statusName=='Active','status-inactive': dataItem.statusName=='InActive'}">{{dataItem.statusName}}</label>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field="" title="" >
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<div class="show" style="float:left"><span id="e1" data-attr="draft">
+													<a href="javascript:void(0)" [routerLink]="['editgl',dataItem.glBasicDto.glId]"><img src="../../../assets/image/Edit_Icon_Hover.png.svg"></a><span style="display:none;">draft</span></span></div>
+												<div class=""  (click)="gl_delete(dataItem)" [ngClass]="{'displaynone': dataItem.statusName=='InActive'}"  *ngIf='dataItem.statusName=="Draft"'><span id="d1" class="confirm-delete"  >
+													<img src="../../../assets/image/Delete icon.svg"></span></div>
+											</ng-template>
+										</kendo-grid-column>
+									
+										
+										<kendo-grid-excel fileName="GL.xlsx"></kendo-grid-excel>
+									</kendo-grid>
+									</div>
+									<!--Kendo grid Ends-->
+
+
+</div>
+</div>
+
+
+<!-- Delete Success Modal -->
+<div *ngIf="deleteSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+                 <div class="modal-content">
+                               <div class="modal-header">        
+                                     <div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Deleted GL Name {{glName}}</div>
+									
+                                </div>
+                     </div>
+              </div>
+</div>
+<!-- Delete Success Modal - End -->
+
+<!-- Deactivate Success Modal -->
+<div *ngIf="deactivateSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                                <div class="modal-content">
+                                                                <div class="modal-header">        
+                                                                                <div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Deactivated GL Name :{{glName}}</div>
+                                                                </div> 
+                                </div>
+                </div>
+</div>
+<!-- Deactivate Success Modal - End -->
+
+<!-- Reactivate Success Modal -->
+<div *ngIf="reactivateSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #reactivateSuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+                 <div class="modal-content">
+                               <div class="modal-header">        
+                                     <div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Reactivated GL Name {{glName}}</div>
+									
+                                </div>
+                     </div>
+              </div>
+</div>
+<!-- Reactivate Success Modal - End -->
+
+<!--Delete Pop up-->
+<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog ">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                  <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+												  <img src="../../assets/image/Confirm_Delete.svg" />
+                                                </div>
+                                                                <div class="modal-body">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     Please confirm to {{deleteStatus}} {{glName}}
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!--Confirm Delete End-->
+
+<!--Deactivate Pop up-->
+<div class="modal fade delete-popup" *ngIf="isDeactivatePopupModal" [style.display]="isDeactivatePopupModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog " style="height:440px !important; color:white !important;">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header">
+                                                                               <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                                </div>
+                                                                <div class="col-md-12 product_img text-center" style="padding-top:15px;">
+                                                                                <img src="../../assets/image/Confirm_Delete.svg" />
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                                <div class="row">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                       Are you sure you want to deactivate {{glName}} ?
+                                                                                                </div>
+                                                                                                <div class="col-md-12 product_img text-center"></div>
+                                                                                                
+                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+
+
+			</div>
+		</div>
+
+
+		<!-- Success Modal -->
+<div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+ 		<div class="modal-content">
+     			<div class="modal-header">        
+					<div class="modal-title font-14 font-regular">
+        				<img src="../../assets/image/Ok.jpg"/>Success: GL added {{glName}}</div>
+   				 </div> 
+        </div>
+    </div>
+</div>
+<!-- Success Modal - End -->
+
+<!--Update message Modal - start -->
+<div *ngIf="isupdateModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #updateModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular" *ngIf="isUpdate"><img src="../../assets/image/Ok.jpg"/>Success : Updated GL Code {{glCode}}</div>
+					<div class="modal-title font-14 font-regular" *ngIf="isActivated"><img src="../../assets/image/Ok.jpg"/>Success : {{status}} GL Code {{glCode}}</div>
+					<!--<div class="modal-title" *ngIf="isInActivated"><span><img src="../../assets/image/Ok.jpg"/></span>Success : In{{status}}d GL Code {{glName}}</div>-->
+				</div> 
+		</div>
+	</div>
+</div>
+<!--Update message Modal - end -->
+	</div>
+</div>

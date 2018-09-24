@@ -1,0 +1,99 @@
+[
+{
+"className": "nz.co.spark.jbehave.steps.MyStoryRunner",
+"methodName": "MySparkIdentitySignUp",
+"workItemID": 2631
+},
+{
+"className": "nz.co.spark.jbehave.steps.MyStoryRunner",
+"methodName": "NotificationEmailUpdated",
+"workItemID": 2632
+},
+{
+"className": "nz.co.spark.jbehave.steps.MyStoryRunner",
+"methodName": "PerformbuyjourneyforCopperNaked",
+"workItemID": 2633
+},
+
+{
+"className": "nz.co.spark.jbehave.steps.MyStoryRunner",
+"methodName": "Then_verify_user_lands_on_configurator_page",
+"workItemID": 3078
+},
+{
+"className": "nz.co.spark.jbehave.steps.MyStoryRunner",
+"methodName": "Scenario__As_a_new_Customer_buy_a_fibre_broadband_device_along_with_landline_at_152_Beaumont_Street",
+"workItemID": 3079
+},
+{
+"className": "nz.co.spark.jbehave.steps.MyStoryRunner",
+"methodName": "Given_the_page_to_open_is_myspark_page",
+"workItemID": 3081
+},
+{
+"className": "nz.co.spark.jbehave.steps.MyStoryRunner",
+"methodName": "Perform_Buy_Journey_For_Fibre_Dataplusvoice_story",
+"workItemID": 3080
+},
+{
+"className": "nz.co.spark.jbehave.steps.MyStoryRunner",
+"methodName": "NotificationEmailUpdated",
+"workItemID": 3222
+},
+{
+"className": "nz.co.spark.jbehave.steps.MyStoryRunner",
+"methodName": "PerformbuyjourneyforCopperNaked",
+"workItemID": 3223
+},
+
+{
+"className": "nz.co.spark.jbehave.steps.MyStoryRunner",
+"methodName": "Then_verify_user_lands_on_configurator_page",
+"workItemID": 3224
+},
+{
+"className": "nz.co.spark.jbehave.steps.MyStoryRunner",
+"methodName": "Scenario__As_a_new_Customer_buy_a_fibre_broadband_device_along_with_landline_at_152_Beaumont_Street",
+"workItemID": 3227
+},
+{
+"className": "nz.co.spark.jbehave.steps.MyStoryRunner",
+"methodName": "Perform_Buy_Journey_For_Fibre_Dataplusvoice_story",
+"workItemID": 3228
+},
+{
+"className": "nz.co.spark.jbehave.steps.MyStoryRunner",
+"methodName": "Given_the_page_to_open_is_myspark_page",
+"workItemID": 3229
+},
+{
+"className": "com.selenium.tests.CRMSales.CRMsalesTest",
+"methodName": "CRMsalesTest",
+"workItemID": 52797
+},
+{
+"className": "com.selenium.tests.Granite.GraniteTest",
+"methodName": "GraniteTest",
+"workItemID": 52798
+},
+{
+"className": "com.selenium.tests.MySparkonline.MySparkonlineTest",
+"methodName": "FiberconnectionTest",
+"workItemID": 52799
+},
+{
+"className": "com.selenium.tests.NPMS.NPMSPortTest",
+"methodName": "NPMSPortTest",
+"workItemID": 52800
+},
+{
+"className": "com.selenium.tests.Postpaid.PostpaidTest",
+"methodName": "PostpaidTest",
+"workItemID": 52801
+},
+{
+"className": "com.selenium.tests.Tass.TassNewconnectTest",
+"methodName": "createNewconnect",
+"workItemID": 52802
+}
+]  

@@ -1,0 +1,64 @@
+<!--<header id="main-header">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Before Login 
+      <div *ngIf="!isLoggedIn()" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 head-block head_bg">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <img src="../assets/image/Logo.png" />
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right MTop25 ">
+          <a href="#" class=" Mright16"><img  src=""></a>
+        </div>
+      </div>
+
+      <!-- After Login 
+      <div *ngIf="isLoggedIn()" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 head-block head_bg">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 padl0 padr0">
+          <img src="../../../../assets/image/Logo.png" />
+        </div>
+        <div class="col-lg-8 col-md-7 col-sm-6 col-xs-8 text-center">
+          <h3 class="colr-4b536">Olam International Limited</h3>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-2 text-right padr0 header-right-block">
+          <span class="notif-span"><img src="../../../../assets/image/notif.png"/></span>
+          <span class="mail-span"><img src="../../../../assets/image/mail.png"/></span>
+          <span class="profile-span"><img src="../../../../assets/image/Profile.png"/></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>-->
+<header  id="main-header">
+<div class="container-fluid p-right p-left mobile-header1">
+	<div class="row navbar  no-margin">
+    <div *ngIf="!isLoggedIn()" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 head-block head_bg">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          	<img src="../../../../assets/image/olam_logo.svg" id="logo"/>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right ">
+          <!--src="../../../../assets/image/menu-button.svg"-->
+          <a href="#" class=" Mright16"><img   id="Hamberg" /></a>
+        </div>
+      </div>
+
+		<div *ngIf="isLoggedIn()"  class="header col-lg-12 col-md-12 col-sm-12 col-xs-12 head-block padr0">
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 padl0 mobile-flex padr0">
+			  <div class="navbar-header fixed-brand">
+                    <button type="button" class="navbar-toggle collapsed mobile-menu-click" data-toggle="collapse"  id="menu-toggle">
+                      <span class="glyphicon glyphicon-align-left1" aria-hidden="true"></span>
+                    </button>
+                </div><!-- Mobile-->
+				<img src="../../../../assets/image/olam_logo.svg" id="logo"/>
+			</div>
+			<div class="col-lg-8 col-md-7 col-sm-6 col-xs-8 text-center mobile-olam-txt">
+				<h3 class="colr-ffffff">Olam International Limited</h3>
+			</div>
+			<div class="col-lg-2 col-md-3 col-sm-4 col-xs-5 text-right padr0 header-right-block">
+				<span class="notif-span"><img src="../../../../assets/image/notification.svg" class="notification_img"/></span>
+				<!--<span class="mail-span"><img src="../../../../assets/image/mail.png"/></span>-->
+				<span class="profile-span"><img src="../../../../assets/image/user_inside.svg" class="profile_img"/></span>
+			</div>
+		</div>		
+	</div>
+</div>		
+</header>

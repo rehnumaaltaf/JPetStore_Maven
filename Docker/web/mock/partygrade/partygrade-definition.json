@@ -1,0 +1,22 @@
+{
+    "data": [
+       {
+		"internalGrade": "Grade1",
+		"internalGradeDesc": "GradeDesc1",
+		"partyGradeName": "GradeA",
+		"partyGradeDesc": "GradeDescA"
+	},
+	{
+		"internalGrade": "Grade2",
+		"internalGradeDesc": "GradeDesc2",
+		"partyGradeName": "GradeB",
+		"partyGradeDesc": "GradeDescB"
+	},
+	{
+		"internalGrade": "Grade3",
+		"internalGradeDesc": "GradeDesc3",
+		"partyGradeName": "GradeC",
+		"partyGradeDesc": "GradeDescC"
+	}
+    ]
+}

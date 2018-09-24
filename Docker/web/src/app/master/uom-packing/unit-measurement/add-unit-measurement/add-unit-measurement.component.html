@@ -1,0 +1,121 @@
+<div class="container-fluid">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+<!--button type="button" (click)="getMasterScreen()">back</button-->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0 create-view">
+			<!--create end -->
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div single-block">
+
+				<h4 class="padb10 padt10  colr-1e2f4d font-18 font-bold head-show" l10nTranslate>Master.Uom.AddTitle</h4>
+				<form class="user-detail font-sm" method="post">
+						<h3 class="font-semibold" >Basic Details</h3>
+							<div class="container-fluid-block marb30">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Uom.Code</label>
+											<input type="text" class="form-control font-15 font-regular " [style.border-color]="getStyle()" (focus)="uomCodeSuggestion($event)" maxlength="20" [typeahead]="uomCodeList" [(ngModel)]="uomData.uomCode" name="UomCode" placeholder="" required >
+											<small *ngIf="req_uomcode" class="colr-red font-regular font-14">Enter UOM Code</small>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Uom.Name</label>
+											<input type="text" class="form-control font-15 font-regular " [style.border-color]="getStyle1()" (focus)="uomNameSuggestion($event)" maxlength="200" [typeahead]="uomNameList" [(ngModel)]="uomData.uomName" name="UOMName" placeholder="" required >
+											<small *ngIf="req_uomname" class="colr-red font-regular font-14">Enter UOM Name </small>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="font-regular colr-lblue font-14" l10nTranslate>Master.Uom.FullName</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="uomData.uomFullname" maxlength="500" name="UOMFullName" placeholder="">
+										</div>
+
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.Uom.Basis</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="uomData.uomBasis" name="uomBasis" placeholder="" >
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.Uom.Base</label>
+											<div class="dropdown ">
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="uomData.parentUomId" name="baseCode" >
+												   <option *ngFor="let option of basecodeOption" value="{{option.value}}">{{option.label}}</option>
+											  </select>
+												<!-- <li *ngFor="let item of items"></li> can also be used -->
+												<!-- <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14">
+											<option value="">Select</option>
+											<option value="KG">KG</option>
+											<option value="MG">MG</option>
+										</select> -->
+											</div>
+										</div>
+										
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.Uom.Conversion</label>
+											<input type="text" class="form-control font-15 font-regular " (keydown)="validateNumericsOnly($event)"  [(ngModel)]="uomData.uomConversionFactor" name="conversion" placeholder="" >
+										</div>
+									</div>
+									</div>
+							
+						
+						
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" name="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="clear()" l10nTranslate>Master.Uom.Reset</button>
+							</div>
+							<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" name="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+								 (click)="save('Draft',uomData.uomName)" l10nTranslate>Master.Uom.Save</button>
+								<button type="button" name="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+								 (click)="save('Save',uomData.uomName)" l10nTranslate>Master.Uom.Submit</button>
+							</div>
+						</div>
+					
+				</form>
+			</div>
+		</div>
+
+		<div *ngIf="errormodal" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHidden()" class="modal fade something_wrong"  bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">   
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>This page contains {{counter}} errors.Please correct the highlighted fields.</div>
+				</div> 
+        </div>
+    </div>
+</div>
+<div *ngIf="errormodal1" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHidden()" class="modal fade something_wrong"  bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">   
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>{{errorMsg}}</div>
+				</div> 
+        </div>
+    </div>
+</div>
+<!--Duplicate UOM code Pop up-->
+<div class="modal fade delete-popup" *ngIf="ispagebackPopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog ">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                      <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                	 <img src="../../assets/image/Confirm_Delete.svg" />
+												</div>
+                                                                
+                                                                <div class="modal-body">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     {{unitMeasurementService.errorMessage}}
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="close()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="close()">Ok</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+
+
+	</div>
+</div>

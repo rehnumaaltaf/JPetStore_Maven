@@ -1,0 +1,1449 @@
+INFO - 14:32:54:                   Java SourceField total was translated as UML PropertyImpl total
+INFO - 14:32:54: Java PackageFragment test was translated as UML ModelImpl test
+INFO - 14:32:54: Java SourceMethod main within UML ClassImpl PreDeploy was translated as UML OperationImpl main
+INFO - 14:32:54: Entering Java SourceMethod LineItem: Creating operation
+INFO - 14:32:54: UML CallOperationActionImpl order.initOrder(account,cartBean.getCart()); was created: Create expression declaration
+WARNING - 14:32:54: First conversion pass
+INFO - 14:32:54: Entering Java CompilationUnit PreDBValidate.java: Initializing types
+INFO - 14:32:54:    Java SourceMethod LineItem within UML ClassImpl LineItem was translated as UML OperationImpl LineItem
+INFO - 14:32:54:    UML ControlFlowImpl Account account=accountService_order.initOrder(account,cartB was created
+INFO - 14:32:54:    Entering Java PackageFragment test
+INFO - 14:32:54:       Entering Java SourceType PreDBValidate
+INFO - 14:32:54:       Entering Java SourceMethod LineItem: Creating operation
+INFO - 14:32:54:       UML ControlFlowImpl order.initOrder(account,cartBe_FinalNode was created
+INFO - 14:32:54:          Entering UML ClassImpl PreDBValidate: Creating import
+INFO - 14:32:55:             UML CallOperationActionImpl setSimpleMessage was created: Create method invocation
+INFO - 14:32:55:             UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl int:  findinImportPackages int
+INFO - 14:32:55:                UML ElementImportImpl unnamed was created
+INFO - 14:32:55:                UML CallOperationActionImpl ActionContext.getActionContext().setSimpleMessage("An order could not be created because a cart could not be found."); was created: Create expression declaration
+INFO - 14:32:55:                UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl int:  findinImportPackages int
+INFO - 14:32:55:                UML ControlFlowImpl If_1_cond_ActionContext.getActionContext().setSimpleMessage( was created
+INFO - 14:32:55:                UML PackageImportImpl unnamed was created
+INFO - 14:32:55:                Java SourceMethod LineItem within UML ClassImpl LineItem was translated as UML OperationImpl LineItem
+INFO - 14:32:55:                UML ElementImportImpl unnamed was created
+INFO - 14:32:55:                UML PackageImportImpl unnamed was created
+INFO - 14:32:55:             Entering Java SourceMethod getOrderId: Creating operation
+INFO - 14:32:55:                UML ControlFlowImpl ActionContext.getActionContext_FinalNode was created
+INFO - 14:32:55:             UML ElementImportImpl unnamed was created
+INFO - 14:32:55:             UML PackageImpl test was created
+INFO - 14:32:55:             UML ControlFlowImpl If_1_merge_If_1_cond was created
+INFO - 14:32:55:                UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl int:  findinImportPackages int
+INFO - 14:32:55:                UML ElementImportImpl unnamed was created
+INFO - 14:32:55:                Entering UML PackageImpl test
+INFO - 14:32:55:                UML ControlFlowImpl If_0_merge_FinalNode was created
+INFO - 14:32:55:                UML ElementImportImpl unnamed was created
+INFO - 14:32:55:                Java SourceMethod getOrderId within UML ClassImpl LineItem was translated as UML OperationImpl getOrderId
+INFO - 14:32:55:                   Entering Java CompilationUnit GetCategoryWithProductsTest.java: Creating types
+INFO - 14:32:55:             Entering Java SourceMethod main: Creating operation
+INFO - 14:32:55:                Entering UML ActivityImpl newOrder: Activity for newOrder
+INFO - 14:32:55:             Entering Java SourceType GetCategoryWithProductsTest: Processing types
+INFO - 14:32:55:                UML ModelImpl com.tools.infosys.validate was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:55:                   UML ControlFlowImpl InitNode_Map sessionMap=ActionContext.getActionContext().get was created
+INFO - 14:32:55:                      Entering Java SourceType GetCategoryWithProductsTest: Creating template parameters
+INFO - 14:32:55:                      UML ModelImpl com.tools.infosys.validate was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:55:                      UML AddVariableValueActionImpl Map sessionMap=ActionContext.getActionContext().getSessionMap(); was created: Create variable declaration
+INFO - 14:32:55:                      Java SourceType GetCategoryWithProductsTest was translated as UML ClassImpl GetCategoryWithProductsTest
+INFO - 14:32:55:          Entering Java SourceMethod setOrderId: Creating operation
+INFO - 14:32:55:                      UML DecisionNodeImpl If_2_cond was created: Create if structure
+INFO - 14:32:55:                      Java SourceMethod main within UML ClassImpl PreDBValidate was translated as UML OperationImpl main
+INFO - 14:32:55:                         UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl int:  findinImportPackages int
+INFO - 14:32:55:                         UML ControlFlowImpl Map sessionMap=ActionContext.g_If_2_cond was created
+INFO - 14:32:55:                UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl int:  findinImportPackages int
+INFO - 14:32:55:          Entering Java CompilationUnit GetCategoryWithProductsTest.java: Initializing types
+INFO - 14:32:55:                Entering UML ClassImpl PreDeploy: Creating associations
+INFO - 14:32:55:          Java SourceMethod setOrderId within UML ClassImpl LineItem was translated as UML OperationImpl setOrderId
+INFO - 14:32:55:             Entering Java SourceType GetCategoryWithProductsTest
+INFO - 14:32:55:                UML OpaqueActionImpl shippingAddressRequired=false; was created: Create expression declaration
+INFO - 14:32:55:             Entering UML ClassImpl PreDBValidate: Creating associations
+INFO - 14:32:55:          Entering Java SourceMethod getLineNumber: Creating operation
+INFO - 14:32:55:             Entering UML ClassImpl GetCategoryWithProductsTest: Creating import
+WARNING - 14:32:55: Generic post-process : Creating activities
+INFO - 14:32:55:             UML ControlFlowImpl If_2_cond_shippingAddressRequired=false; was created
+INFO - 14:32:55:                UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl int:  findinImportPackages int
+INFO - 14:32:55:                   UML ElementImportImpl unnamed was created
+INFO - 14:32:55:                   Entering Java CompilationUnit PreDeploy.java: Creating activities
+INFO - 14:32:55:                   UML ControlFlowImpl shippingAddressRequired=false;_FinalNode was created
+INFO - 14:32:55:                   Java SourceMethod getLineNumber within UML ClassImpl LineItem was translated as UML OperationImpl getLineNumber
+INFO - 14:32:55:                   UML ElementImportImpl unnamed was created
+INFO - 14:32:55:                   Entering UML ActivityImpl main: Activity for main
+INFO - 14:32:55:                   UML DecisionNodeImpl If_3_cond was created: Create if structure
+INFO - 14:32:55:                Entering Java SourceMethod GetCategoryWithProductsTest: Creating operation
+INFO - 14:32:55:             Entering Java SourceMethod setLineNumber: Creating operation
+INFO - 14:32:55:                UML ControlFlowImpl InitNode_File fXmlFile=new File(argv[0]); was created
+INFO - 14:32:55:                UML ControlFlowImpl If_2_cond_If_3_cond was created
+INFO - 14:32:55:                   Java SourceMethod GetCategoryWithProductsTest within UML ClassImpl GetCategoryWithProductsTest was translated as UML OperationImpl GetCategoryWithProductsTest
+INFO - 14:32:55:                      UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl int:  findinImportPackages int
+INFO - 14:32:55:                      UML ControlFlowImpl If_3_cond_FinalNode was created
+INFO - 14:32:55:                      UML AddVariableValueActionImpl File fXmlFile=new File(argv[0]); was created: Create variable declaration
+INFO - 14:32:55:                   Entering Java SourceMethod main: Creating operation
+INFO - 14:32:55:                   UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl int:  findinImportPackages int
+INFO - 14:32:55:                   UML DecisionNodeImpl If_4_cond was created: Create if structure
+INFO - 14:32:55:                   UML ControlFlowImpl File fXmlFile=new File(argv[0]_DocumentBuilderFactory dbFact was created
+INFO - 14:32:55:                      UML ModelImpl test was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:55:                      Java SourceMethod setLineNumber within UML ClassImpl LineItem was translated as UML OperationImpl setLineNumber
+INFO - 14:32:55:                      UML ControlFlowImpl If_3_cond_If_4_cond was created
+INFO - 14:32:55:                      UML AddVariableValueActionImpl DocumentBuilderFactory dbFactory=DocumentBuilderFactory.newInstance(); was created: Create variable declaration
+INFO - 14:32:55:                   Entering Java SourceMethod getItemId: Creating operation
+INFO - 14:32:55:                   UML CallOperationActionImpl insertOrder was created: Create method invocation
+INFO - 14:32:55:                   UML ControlFlowImpl DocumentBuilderFactory dbFacto_DocumentBuilder dBuilder=dbFa was created
+INFO - 14:32:55:                      UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:55:                      UML ModelImpl test was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:55:                      UML AddVariableValueActionImpl DocumentBuilder dBuilder=dbFactory.newDocumentBuilder(); was created: Create variable declaration
+INFO - 14:32:55:                      Java SourceMethod getItemId within UML ClassImpl LineItem was translated as UML OperationImpl getItemId
+INFO - 14:32:55:                      Java SourceMethod main within UML ClassImpl GetCategoryWithProductsTest was translated as UML OperationImpl main
+INFO - 14:32:55:                      UML CallOperationActionImpl orderService.insertOrder(order); was created: Create expression declaration
+INFO - 14:32:55:                      UML ControlFlowImpl DocumentBuilder dBuilder=dbFac_Document doc=dBuilder.parse(f was created
+INFO - 14:32:55:                   Entering Java SourceMethod setItemId: Creating operation
+INFO - 14:32:55:                   UML ControlFlowImpl If_4_cond_orderService.insertOrder(order); was created
+INFO - 14:32:55:                Entering Java SourceMethod test: Creating operation
+INFO - 14:32:55:                UML AddVariableValueActionImpl Document doc=dBuilder.parse(fXmlFile); was created: Create variable declaration
+INFO - 14:32:55:                   UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:55:                   UML ControlFlowImpl orderService.insertOrder(order_CartBean cartBean=(CartBean)s was created
+INFO - 14:32:55:                      Java SourceMethod test within UML ClassImpl GetCategoryWithProductsTest was translated as UML OperationImpl test
+INFO - 14:32:55:                      UML CallOperationActionImpl normalize was created: Create method invocation
+INFO - 14:32:55:                      UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:55:                      UML AddVariableValueActionImpl CartBean cartBean=(CartBean)sessionMap.get("cartBean"); was created: Create variable declaration
+INFO - 14:32:55:             Entering UML ClassImpl GetCategoryWithProductsTest: Creating associations
+INFO - 14:32:55:             UML CallOperationActionImpl doc.getDocumentElement().normalize(); was created: Create expression declaration
+INFO - 14:32:55:             Java SourceMethod setItemId within UML ClassImpl LineItem was translated as UML OperationImpl setItemId
+INFO - 14:32:55:             UML CallOperationActionImpl clear was created: Create method invocation
+WARNING - 14:32:55: Generic post-process : Creating activities
+INFO - 14:32:55:             UML ControlFlowImpl Document doc=dBuilder.parse(fX_doc.getDocumentElement().norm was created
+INFO - 14:32:55:             UML CallOperationActionImpl cartBean.clear(); was created: Create expression declaration
+INFO - 14:32:55:             Entering Java CompilationUnit GetCategoryWithProductsTest.java: Creating activities
+INFO - 14:32:55:             UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:55:             UML ControlFlowImpl CartBean cartBean=(CartBean)se_cartBean.clear(); was created
+INFO - 14:32:55:             Entering UML ActivityImpl GetCategoryWithProductsTest: Activity for GetCategoryWithProductsTest
+INFO - 14:32:55:             UML CallOperationActionImpl System.out.println("Root element :" + doc.getDocumentElement().getNodeName()); was created: Create expression declaration
+INFO - 14:32:55:          Entering Java SourceMethod getUnitPrice: Creating operation
+INFO - 14:32:55:          UML CallOperationActionImpl setSimpleMessage was created: Create method invocation
+INFO - 14:32:55:             UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:55:             UML ControlFlowImpl doc.getDocumentElement().norma_System.out.println("Root elem was created
+INFO - 14:32:55:                Java SourceMethod getUnitPrice within UML ClassImpl LineItem was translated as UML OperationImpl getUnitPrice
+INFO - 14:32:55:                UML CallOperationActionImpl ActionContext.getActionContext().setSimpleMessage("Thank you, your order has been submitted."); was created: Create expression declaration
+INFO - 14:32:55:          Entering UML ActivityImpl test: Activity for test
+INFO - 14:32:55:          UML ControlFlowImpl System.out.println("Root eleme_NodeList nList=doc.getElement was created
+INFO - 14:32:55:       Entering Java SourceMethod setUnitPrice: Creating operation
+INFO - 14:32:55:       UML ControlFlowImpl cartBean.clear();_ActionContext.getActionContext().setSimple was created
+INFO - 14:32:55:          UML ControlFlowImpl InitNode_Category c=CatalogService.getInstance().getCategory was created
+INFO - 14:32:55:             UML ControlFlowImpl ActionContext.getActionContext_FinalNode was created
+INFO - 14:32:55:             Java SourceMethod setUnitPrice within UML ClassImpl LineItem was translated as UML OperationImpl setUnitPrice
+INFO - 14:32:55:             UML AddVariableValueActionImpl Category c=CatalogService.getInstance().getCategoryWithProducts("DOGS"); was created: Create variable declaration
+INFO - 14:32:55:             UML CallOperationActionImpl setSimpleMessage was created: Create method invocation
+INFO - 14:32:55:             UML AddVariableValueActionImpl NodeList nList=doc.getElementsByTagName("Resource"); was created: Create variable declaration
+INFO - 14:32:55:          Entering Java SourceMethod getTotal: Creating operation
+INFO - 14:32:55:          UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:55:          UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:55:             Java SourceMethod getTotal within UML ClassImpl LineItem was translated as UML OperationImpl getTotal
+INFO - 14:32:55:             UML CallOperationActionImpl System.out.println("The category ID we queried for was: " + c.getCategoryId()); was created: Create expression declaration
+INFO - 14:32:55:             UML CallOperationActionImpl ActionContext.getActionContext().setSimpleMessage("An error occurred processing your order (order was null)."); was created: Create expression declaration
+INFO - 14:32:55:             UML CallOperationActionImpl System.out.println("----------------------------"); was created: Create expression declaration
+INFO - 14:32:55:          Entering Java SourceMethod getItem: Creating operation
+INFO - 14:32:55:          UML ControlFlowImpl Category c=CatalogService.getI_System.out.println("The categ was created
+INFO - 14:32:55:          UML ControlFlowImpl If_4_cond_ActionContext.getActionContext().setSimpleMessage( was created
+INFO - 14:32:55:          UML ControlFlowImpl NodeList nList=doc.getElements_System.out.println("--------- was created
+INFO - 14:32:55:             Java SourceMethod getItem within UML ClassImpl LineItem was translated as UML OperationImpl getItem
+INFO - 14:32:55:             UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:55:             UML ControlFlowImpl ActionContext.getActionContext_FinalNode was created
+INFO - 14:32:55:             UML MergeNodeImpl For_0_cond was created: Create for loop
+INFO - 14:32:55:          Entering Java SourceMethod setItem: Creating operation
+INFO - 14:32:55:          UML CallOperationActionImpl System.out.println("It contained the products: " + c.getProducts()); was created: Create expression declaration
+INFO - 14:32:55:          UML ControlFlowImpl If_4_merge_If_4_cond was created
+INFO - 14:32:55:          UML ControlFlowImpl int temp=0_For_0_cond was created
+INFO - 14:32:55:             UML ControlFlowImpl System.out.println("The catego_System.out.println("It contai was created
+INFO - 14:32:55:             Java SourceMethod setItem within UML ClassImpl LineItem was translated as UML OperationImpl setItem
+INFO - 14:32:55:             UML ControlFlowImpl If_3_merge_If_3_cond was created
+INFO - 14:32:55:             UML ControlFlowImpl For_0_cond_null was created
+INFO - 14:32:55:          Entering Java SourceMethod getQuantity: Creating operation
+INFO - 14:32:55:          UML ControlFlowImpl If_2_merge_FinalNode was created
+INFO - 14:32:55:          UML ControlFlowImpl temp++_For_0_cond was created
+INFO - 14:32:55:             UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl int:  findinImportPackages int
+INFO - 14:32:55:          Entering UML ActivityImpl listOrders: Activity for listOrders
+INFO - 14:32:55:          UML ControlFlowImpl System.out.println("----------_int temp=0 was created
+INFO - 14:32:55:             UML ControlFlowImpl System.out.println("It contain_FinalNode was created
+INFO - 14:32:55:          Java SourceMethod getQuantity within UML ClassImpl LineItem was translated as UML OperationImpl getQuantity
+INFO - 14:32:55:             UML ControlFlowImpl InitNode_Map sessionMap=ActionContext.getActionContext().get was created
+INFO - 14:32:55:             UML ControlFlowImpl For_0_cond_Node nNode=nList.item(temp); was created
+WARNING - 14:32:55: Second pass : generating package usages
+INFO - 14:32:55: UML AddVariableValueActionImpl Map sessionMap=ActionContext.getActionContext().getSessionMap(); was created: Create variable declaration
+INFO - 14:32:55: Entering Java SourceMethod setQuantity: Creating operation
+INFO - 14:32:55: UML AddVariableValueActionImpl Node nNode=nList.item(temp); was created: Create variable declaration
+INFO - 14:32:55: Entering UML ModelImpl test: Creating usages
+INFO - 14:32:55: UML ControlFlowImpl Map sessionMap=ActionContext.g_AccountBean accountBean=(Acco was created
+INFO - 14:32:55:    UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl int:  findinImportPackages int
+INFO - 14:32:55:    UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:55:    Entering UML PackageImpl test: Creating usages
+INFO - 14:32:55:    UML AddVariableValueActionImpl AccountBean accountBean=(AccountBean)sessionMap.get("accountBean"); was created: Create variable declaration
+INFO - 14:32:55:       UML PackageImpl test was created
+INFO - 14:32:55:    UML CallOperationActionImpl System.out.println("\nCurrent Element :" + nNode.getNodeName()); was created: Create expression declaration
+INFO - 14:32:55:    UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl int:  findinImportPackages int
+INFO - 14:32:55:       UML PackageImpl test was created
+INFO - 14:32:55:       Java SourceMethod setQuantity within UML ClassImpl LineItem was translated as UML OperationImpl setQuantity
+INFO - 14:32:55: Entering Java SourceMethod calculateTotal: Creating operation
+INFO - 14:32:55:       UML ControlFlowImpl Node nNode=nList.item(temp);_System.out.println("\nCurrent E was created
+INFO - 14:32:55:    Entering UML PackageImpl com: Creating usages
+INFO - 14:32:55: UML CallOperationActionImpl getOrdersByUsername was created: Create method invocation
+INFO - 14:32:55:    Java SourceMethod calculateTotal within UML ClassImpl LineItem was translated as UML OperationImpl calculateTotal
+INFO - 14:32:55:    UML ControlFlowImpl System.out.println("\nCurrent _Element eElement=(Element)nNo was created
+INFO - 14:32:55:    Entering UML PackageImpl ibatis: Creating usages
+INFO - 14:32:55:    UML CallOperationActionImpl orderList=orderService.getOrdersByUsername(accountBean.getAccount().getUsername()); was created: Create expression declaration
+INFO - 14:32:56: Entering Java CompilationUnit Product.java: Initializing types
+INFO - 14:32:56: UML AddVariableValueActionImpl Element eElement=(Element)nNode; was created: Create variable declaration
+INFO - 14:32:56: Entering UML PackageImpl jpetstore: Creating usages
+INFO - 14:32:56: UML ControlFlowImpl AccountBean accountBean=(Accou_orderList=orderService.getOrd was created
+INFO - 14:32:56:    Entering Java SourceType Product
+INFO - 14:32:56:    UML DecisionNodeImpl If_0_cond was created: Create if structure
+INFO - 14:32:56:    Entering UML PackageImpl service: Creating usages
+INFO - 14:32:56:    UML ControlFlowImpl orderList=orderService.getOrde_FinalNode was created
+INFO - 14:32:56:       Entering UML ClassImpl Product: Creating import
+INFO - 14:32:56:       UML ControlFlowImpl Element eElement=(Element)nNod_If_0_cond was created
+INFO - 14:32:56:       Entering UML PackageImpl domain: Creating usages
+INFO - 14:32:56:    Entering UML ActivityImpl switchOrderPage: Activity for switchOrderPage
+INFO - 14:32:56:       UML ElementImportImpl unnamed was created
+INFO - 14:32:56:       UML ControlFlowImpl If_0_cond_If_0_merge was created
+INFO - 14:32:56:          UML DecisionNodeImpl If_5_cond was created: Create if structure
+INFO - 14:32:56:       Entering Java SourceField productId: creating property
+INFO - 14:32:56:       UML ControlFlowImpl InitNode_If_5_cond was created
+INFO - 14:32:56:          UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:          UML CallOperationActionImpl nextPage was created: Create method invocation
+INFO - 14:32:56:       UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:56:          UML PropertyImpl productId was created within UML ClassImpl Product:  created 
+INFO - 14:32:56:          UML CallOperationActionImpl orderList.nextPage(); was created: Create expression declaration
+INFO - 14:32:56:          UML CallOperationActionImpl System.out.println("Input"); was created: Create expression declaration
+INFO - 14:32:56:          Java SourceField productId was translated as UML PropertyImpl productId
+INFO - 14:32:56:          UML ControlFlowImpl If_5_cond_orderList.nextPage(); was created
+INFO - 14:32:56:          UML ControlFlowImpl If_0_cond_System.out.println("Input"); was created
+INFO - 14:32:56:       Entering Java SourceField categoryId: creating property
+INFO - 14:32:56:       UML DecisionNodeImpl If_6_cond was created: Create if structure
+INFO - 14:32:56:       UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:56:          UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:          UML ControlFlowImpl If_5_cond_If_6_cond was created
+INFO - 14:32:56:          UML CallOperationActionImpl System.out.println("UserName : " + eElement.getAttribute("username")); was created: Create expression declaration
+INFO - 14:32:56:          UML ControlFlowImpl If_6_cond_If_6_merge was created
+INFO - 14:32:56:          UML ControlFlowImpl System.out.println("Input");_System.out.println("UserName :  was created
+INFO - 14:32:56:          UML PropertyImpl categoryId was created within UML ClassImpl Product:  created 
+INFO - 14:32:56:          UML CallOperationActionImpl previousPage was created: Create method invocation
+INFO - 14:32:56:          UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:56:          Java SourceField categoryId was translated as UML PropertyImpl categoryId
+INFO - 14:32:56:          UML CallOperationActionImpl orderList.previousPage(); was created: Create expression declaration
+INFO - 14:32:56:       Entering Java SourceField name: creating property
+INFO - 14:32:56:       UML ControlFlowImpl If_6_cond_orderList.previousPage(); was created
+INFO - 14:32:56:          UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:          UML ControlFlowImpl If_6_merge_If_6_cond was created
+INFO - 14:32:56:          UML CallOperationActionImpl System.out.println("Password : " + eElement.getAttribute("password")); was created: Create expression declaration
+INFO - 14:32:56:          UML PropertyImpl name was created within UML ClassImpl Product:  created 
+INFO - 14:32:56:          UML ControlFlowImpl orderList.nextPage();_If_5_merge was created
+INFO - 14:32:56:          UML ControlFlowImpl System.out.println("UserName :_System.out.println("Password  was created
+INFO - 14:32:56:          Java SourceField name was translated as UML PropertyImpl name
+INFO - 14:32:56:          UML ControlFlowImpl orderList.previousPage();_If_5_merge was created
+INFO - 14:32:56:          UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:56:       Entering Java SourceField description: creating property
+INFO - 14:32:56:       UML ControlFlowImpl If_5_merge_FinalNode was created
+INFO - 14:32:56:       UML CallOperationActionImpl System.out.println("DriverClassName : " + eElement.getAttribute("driverClassName")); was created: Create expression declaration
+INFO - 14:32:56:          UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:       Entering UML ActivityImpl viewOrder: Activity for viewOrder
+INFO - 14:32:56:       UML ControlFlowImpl System.out.println("Password :_System.out.println("DriverCla was created
+INFO - 14:32:56:       UML PropertyImpl description was created within UML ClassImpl Product:  created 
+INFO - 14:32:56:          UML ControlFlowImpl InitNode_Map sessionMap=ActionContext.getActionContext().get was created
+INFO - 14:32:56:          UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:56:          Java SourceField description was translated as UML PropertyImpl description
+INFO - 14:32:56:          UML AddVariableValueActionImpl Map sessionMap=ActionContext.getActionContext().getSessionMap(); was created: Create variable declaration
+INFO - 14:32:56:          UML CallOperationActionImpl System.out.println("URL : " + eElement.getAttribute("url")); was created: Create expression declaration
+INFO - 14:32:56:       Entering Java SourceMethod getProductId: Creating operation
+INFO - 14:32:56:       UML ControlFlowImpl Map sessionMap=ActionContext.g_AccountBean accountBean=(Acco was created
+INFO - 14:32:56:       UML ControlFlowImpl System.out.println("DriverClas_System.out.println("URL : " + was created
+INFO - 14:32:56:          UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:          UML AddVariableValueActionImpl AccountBean accountBean=(AccountBean)sessionMap.get("accountBean"); was created: Create variable declaration
+INFO - 14:32:56:          UML ControlFlowImpl System.out.println("URL : " + _If_0_merge was created
+INFO - 14:32:56:          Java SourceMethod getProductId within UML ClassImpl Product was translated as UML OperationImpl getProductId
+INFO - 14:32:56:          UML CallOperationActionImpl getOrder was created: Create method invocation
+INFO - 14:32:56:          UML DecisionNodeImpl If_1_cond was created: Create if structure
+INFO - 14:32:56:       Entering Java SourceMethod setProductId: Creating operation
+INFO - 14:32:56:       UML CallOperationActionImpl order=orderService.getOrder(orderId); was created: Create expression declaration
+INFO - 14:32:56:       UML ControlFlowImpl If_0_merge_If_1_cond was created
+INFO - 14:32:56:          UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:          UML ControlFlowImpl AccountBean accountBean=(Accou_order=orderService.getOrder(o was created
+INFO - 14:32:56:          UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:56:          UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:          UML DecisionNodeImpl If_7_cond was created: Create if structure
+INFO - 14:32:56:          UML CallOperationActionImpl System.out.println("Server Details are matched"); was created: Create expression declaration
+INFO - 14:32:56:          Java SourceMethod setProductId within UML ClassImpl Product was translated as UML OperationImpl setProductId
+INFO - 14:32:56:          UML ControlFlowImpl order=orderService.getOrder(or_If_7_cond was created
+INFO - 14:32:56:          UML ControlFlowImpl If_1_cond_System.out.println("Server Details are matched"); was created
+INFO - 14:32:56:       Entering Java SourceMethod getCategoryId: Creating operation
+INFO - 14:32:56:       UML ControlFlowImpl If_7_cond_FinalNode was created
+INFO - 14:32:56:       UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:56:          UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:          UML OpaqueActionImpl order=null; was created: Create expression declaration
+INFO - 14:32:56:          UML CallOperationActionImpl System.out.println("false"); was created: Create expression declaration
+INFO - 14:32:56:          Java SourceMethod getCategoryId within UML ClassImpl Product was translated as UML OperationImpl getCategoryId
+INFO - 14:32:56:          UML ControlFlowImpl If_7_cond_order=null; was created
+INFO - 14:32:56:          UML ControlFlowImpl If_1_cond_System.out.println("false"); was created
+INFO - 14:32:56:       Entering Java SourceMethod setCategoryId: Creating operation
+INFO - 14:32:56:       UML CallOperationActionImpl setSimpleMessage was created: Create method invocation
+INFO - 14:32:56:       UML OpaqueActionImpl null was created
+INFO - 14:32:56:          UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:          UML CallOperationActionImpl ActionContext.getActionContext().setSimpleMessage("You may only view your own orders."); was created: Create expression declaration
+INFO - 14:32:56:          UML ControlFlowImpl System.out.println("false");_throw new Exception(); was created
+INFO - 14:32:56:          UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:          UML ControlFlowImpl order=null;_ActionContext.getActionContext().setSimpleMessag was created
+INFO - 14:32:56:          UML ControlFlowImpl System.out.println("Server Det_If_1_merge was created
+INFO - 14:32:56:          Java SourceMethod setCategoryId within UML ClassImpl Product was translated as UML OperationImpl setCategoryId
+INFO - 14:32:56:          UML ControlFlowImpl ActionContext.getActionContext_FinalNode was created
+INFO - 14:32:56:          UML ControlFlowImpl throw new Exception();_If_1_merge was created
+INFO - 14:32:56:       Entering Java SourceMethod getName: Creating operation
+INFO - 14:32:56:       UML ControlFlowImpl If_7_merge_FinalNode was created
+INFO - 14:32:56:       UML ControlFlowImpl If_1_merge_temp++ was created
+INFO - 14:32:56:          UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:       Entering UML ActivityImpl reset: Activity for reset
+INFO - 14:32:56:       UML ControlFlowImpl For_0_cond_FinalNode was created
+INFO - 14:32:56:       Java SourceMethod getName within UML ClassImpl Product was translated as UML OperationImpl getName
+INFO - 14:32:56:          UML OpaqueActionImpl shippingAddressRequired=false; was created: Create expression declaration
+INFO - 14:32:56:    Entering Java CompilationUnit PreDBValidate.java: Creating activities
+INFO - 14:32:56: Entering Java SourceMethod setName: Creating operation
+INFO - 14:32:56: UML ControlFlowImpl InitNode_shippingAddressRequired=false; was created
+INFO - 14:32:56: Entering UML ActivityImpl main: Activity for main
+INFO - 14:32:56:    UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:    UML ControlFlowImpl shippingAddressRequired=false;_FinalNode was created
+INFO - 14:32:56:       UML ControlFlowImpl InitNode_String userName="cisqladmin"; was created
+INFO - 14:32:56:       UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:    Entering UML ActivityImpl clear: Activity for clear
+INFO - 14:32:56:    UML AddVariableValueActionImpl String userName="cisqladmin"; was created: Create variable declaration
+INFO - 14:32:56:    Java SourceMethod setName within UML ClassImpl Product was translated as UML OperationImpl setName
+INFO - 14:32:56:       UML OpaqueActionImpl order=new Order(); was created: Create expression declaration
+INFO - 14:32:56:       UML ControlFlowImpl String userName="cisqladmin";_String password="infy1234+"; was created
+INFO - 14:32:56:    Entering Java SourceMethod getDescription: Creating operation
+INFO - 14:32:56:    UML ControlFlowImpl InitNode_order=new Order(); was created
+INFO - 14:32:56:    UML AddVariableValueActionImpl String password="infy1234+"; was created: Create variable declaration
+INFO - 14:32:56:       UML OpaqueActionImpl orderId=0; was created: Create expression declaration
+INFO - 14:32:56:       UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:       UML ControlFlowImpl String password="infy1234+";_Connection conn=null; was created
+INFO - 14:32:56:       UML ControlFlowImpl order=new Order();_orderId=0; was created
+INFO - 14:32:56:       Java SourceMethod getDescription within UML ClassImpl Product was translated as UML OperationImpl getDescription
+INFO - 14:32:56:       UML AddVariableValueActionImpl Connection conn=null; was created: Create variable declaration
+INFO - 14:32:56:       UML OpaqueActionImpl shippingAddressRequired=false; was created: Create expression declaration
+INFO - 14:32:56:       UML ControlFlowImpl Connection conn=null;_Statement stmt=null; was created
+INFO - 14:32:56:    Entering Java SourceMethod setDescription: Creating operation
+INFO - 14:32:56:    UML ControlFlowImpl orderId=0;_shippingAddressRequired=false; was created
+INFO - 14:32:56:    UML AddVariableValueActionImpl Statement stmt=null; was created: Create variable declaration
+INFO - 14:32:56:       UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:       UML OpaqueActionImpl confirmed=false; was created: Create expression declaration
+INFO - 14:32:56:       UML ControlFlowImpl Statement stmt=null;_ResultSet rsColumns=null, rsTables=null was created
+INFO - 14:32:56:       UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:       UML ControlFlowImpl shippingAddressRequired=false;_confirmed=false; was created
+INFO - 14:32:56:       UML AddVariableValueActionImpl ResultSet rsColumns=null, rsTables=null; was created: Create variable declaration
+INFO - 14:32:56:       Java SourceMethod setDescription within UML ClassImpl Product was translated as UML OperationImpl setDescription
+INFO - 14:32:56:       UML OpaqueActionImpl orderList=null; was created: Create expression declaration
+INFO - 14:32:56:       UML ControlFlowImpl ResultSet rsColumns=null, rsTa_String url="jdbc:sqlserver:// was created
+INFO - 14:32:56:    Entering Java SourceMethod toString: Creating operation
+INFO - 14:32:56:    UML ControlFlowImpl confirmed=false;_orderList=null; was created
+INFO - 14:32:56:    UML AddVariableValueActionImpl String url="jdbc:sqlserver://mystgserv02\\SQLEXPRESS:1433;databaseName=ICIP_DB_Dev"; was created: Create variable declaration
+INFO - 14:32:56:       UML ModelImpl com.ibatis.jpetstore.domain was translated as UML PrimitiveTypeImpl String:  findinImportPackages String
+INFO - 14:32:56:       UML OpaqueActionImpl pageDirection=null; was created: Create expression declaration
+INFO - 14:32:56:       UML CallOperationActionImpl forName was created: Create method invocation
+INFO - 14:32:56:       Java SourceMethod toString within UML ClassImpl Product was translated as UML OperationImpl toString
+INFO - 14:32:56:       UML ControlFlowImpl orderList=null;_pageDirection=null; was created
+INFO - 14:32:56:       UML CallOperationActionImpl Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); was created: Create expression declaration
+INFO - 14:32:56: Entering UML ClassImpl CartItem: Creating associations
+INFO - 14:32:56: UML ControlFlowImpl pageDirection=null;_FinalNode was created
+INFO - 14:32:56: UML ControlFlowImpl String url="jdbc:sqlserver://m_Class.forName("com.microsoft. was created
+INFO - 14:32:56:    UML PropertyImpl item was created
+INFO - 14:32:56: Entering UML ActivityImpl validate: Activity for validate
+INFO - 14:32:56: UML CallOperationActionImpl getConnection was created: Create method invocation
+INFO - 14:32:56: Entering UML ClassImpl Cart: Creating associations
+INFO - 14:32:56:    UML ControlFlowImpl InitNode_ActionContext ctx=ActionContext.getActionContext(); was created
+INFO - 14:32:56:    UML CallOperationActionImpl conn=DriverManager.getConnection(url,userName,password); was created: Create expression declaration
+INFO - 14:32:56:    Entering UML ClassImpl Order: Creating associations
+INFO - 14:32:56:    UML AddVariableValueActionImpl ActionContext ctx=ActionContext.getActionContext(); was created: Create variable declaration
+INFO - 14:32:56:    UML ControlFlowImpl Class.forName("com.microsoft.s_conn=DriverManager.getConnect was created
+INFO - 14:32:56:    Entering UML ClassImpl Category: Creating associations
+INFO - 14:32:56:    UML DecisionNodeImpl If_8_cond was created: Create if structure
+INFO - 14:32:56:    UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:56:    Entering UML ClassImpl Sequence: Creating associations
+INFO - 14:32:56:    UML ControlFlowImpl ActionContext ctx=ActionContex_If_8_cond was created
+INFO - 14:32:56:    UML CallOperationActionImpl System.out.println("connected"); was created: Create expression declaration
+INFO - 14:32:56:    Entering UML ClassImpl Account: Creating associations
+INFO - 14:32:57:    UML ControlFlowImpl If_8_cond_If_8_merge was created
+INFO - 14:32:57:    UML ControlFlowImpl conn=DriverManager.getConnecti_System.out.println("connected was created
+INFO - 14:32:57:    Entering UML ClassImpl Item: Creating associations
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:    UML CallOperationActionImpl createStatement was created: Create method invocation
+INFO - 14:32:57:       UML PropertyImpl product was created
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField(order.getCreditCard(),"FAKE (!) credit card number required."); was created: Create expression declaration
+INFO - 14:32:57:       UML CallOperationActionImpl stmt=conn.createStatement(); was created: Create expression declaration
+INFO - 14:32:57:    Entering UML ClassImpl LineItem: Creating associations
+INFO - 14:32:57:    UML ControlFlowImpl If_8_cond_validateRequiredField(order.getCreditCard(),"FAKE  was created
+INFO - 14:32:57:    UML ControlFlowImpl System.out.println("connected"_stmt=conn.createStatement(); was created
+INFO - 14:32:57:       UML PropertyImpl item was created
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:       UML ControlFlowImpl stmt=conn.createStatement();_String queryString="select * fr was created
+INFO - 14:32:57:    Entering UML ClassImpl Product: Creating associations
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField(order.getExpiryDate(),"Expiry date is required."); was created: Create expression declaration
+INFO - 14:32:57:    UML AddVariableValueActionImpl String queryString="select * from job_details"; was created: Create variable declaration
+WARNING - 14:32:57: Generic post-process : Creating activities
+INFO - 14:32:57:    UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:    UML ControlFlowImpl String queryString="select * f_DatabaseMetaData md2=conn.get was created
+INFO - 14:32:57:    Entering Java CompilationUnit CartItem.java: Creating activities
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:    UML AddVariableValueActionImpl DatabaseMetaData md2=conn.getMetaData(); was created: Create variable declaration
+INFO - 14:32:57:    Entering UML ActivityImpl isInStock: Activity for isInStock
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField(order.getCardType(),"Card type is required."); was created: Create expression declaration
+INFO - 14:32:57:    UML CallOperationActionImpl getColumns was created: Create method invocation
+INFO - 14:32:57:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:57:       UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:       UML CallOperationActionImpl rsColumns=md2.getColumns(null,null,"job_details","job_name"); was created: Create expression declaration
+INFO - 14:32:57:    Entering UML ActivityImpl setInStock: Activity for setInStock
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:    UML ControlFlowImpl DatabaseMetaData md2=conn.getM_rsColumns=md2.getColumns(null was created
+INFO - 14:32:57:       UML OpaqueActionImpl this.inStock=inStock; was created: Create expression declaration
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField(order.getShipToFirstName(),"Shipping Info: first name is required."); was created: Create expression declaration
+INFO - 14:32:57:       UML DecisionNodeImpl If_0_cond was created: Create if structure
+INFO - 14:32:57:       UML ControlFlowImpl InitNode_this.inStock=inStock; was created
+INFO - 14:32:57:       UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:       UML ControlFlowImpl rsColumns=md2.getColumns(null,_If_0_cond was created
+INFO - 14:32:57:       UML ControlFlowImpl this.inStock=inStock;_FinalNode was created
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:       UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:57:    Entering UML ActivityImpl getTotal: Activity for getTotal
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField(order.getShipToLastName(),"Shipping Info: last name is required."); was created: Create expression declaration
+INFO - 14:32:57:    UML CallOperationActionImpl System.out.println(" Column Exists !"); was created: Create expression declaration
+INFO - 14:32:57:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:57:       UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:       UML ControlFlowImpl If_0_cond_System.out.println(" Column Exists !"); was created
+INFO - 14:32:57:    Entering UML ActivityImpl getItem: Activity for getItem
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:    UML OpaqueActionImpl null was created
+INFO - 14:32:57:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField(order.getShipAddress1(),"Shipping Info: address is required."); was created: Create expression declaration
+INFO - 14:32:57:       UML ControlFlowImpl If_0_cond_throw new Exception(); was created
+INFO - 14:32:57:    Entering UML ActivityImpl setItem: Activity for setItem
+INFO - 14:32:57:    UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:    UML ControlFlowImpl System.out.println(" Column Ex_If_0_merge was created
+INFO - 14:32:57:       UML OpaqueActionImpl this.item=item; was created: Create expression declaration
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:       UML ControlFlowImpl throw new Exception();_If_0_merge was created
+INFO - 14:32:57:       UML ControlFlowImpl InitNode_this.item=item; was created
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField(order.getShipCity(),"Shipping Info: city is required."); was created: Create expression declaration
+INFO - 14:32:57:       UML CallOperationActionImpl getTables was created: Create method invocation
+INFO - 14:32:57:       UML CallOperationActionImpl calculateTotal was created: Create method invocation
+INFO - 14:32:57:       UML CallOperationActionImpl rsTables=md2.getTables(null,null,"users2",null); was created: Create expression declaration
+INFO - 14:32:57:       UML CallOperationActionImpl calculateTotal(); was created: Create expression declaration
+INFO - 14:32:57:       UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:       UML ControlFlowImpl If_0_merge_rsTables=md2.getTables(null,null,"users2",null); was created
+INFO - 14:32:57:       UML ControlFlowImpl this.item=item;_calculateTotal(); was created
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:       UML DecisionNodeImpl If_1_cond was created: Create if structure
+INFO - 14:32:57:       UML ControlFlowImpl calculateTotal();_FinalNode was created
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField(order.getShipState(),"Shipping Info: state is required."); was created: Create expression declaration
+INFO - 14:32:57:       UML ControlFlowImpl rsTables=md2.getTables(null,nu_If_1_cond was created
+INFO - 14:32:57:    Entering UML ActivityImpl getQuantity: Activity for getQuantity
+INFO - 14:32:57:    UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:    UML CallOperationActionImpl println was created: Create method invocation
+INFO - 14:32:57:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:       UML CallOperationActionImpl System.out.println(" Table Exists !"); was created: Create expression declaration
+INFO - 14:32:57:    Entering UML ActivityImpl setQuantity: Activity for setQuantity
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField(order.getShipZip(),"Shipping Info: zip/postal code is required."); was created: Create expression declaration
+INFO - 14:32:57:    UML ControlFlowImpl If_1_cond_System.out.println(" Table Exists !"); was created
+INFO - 14:32:57:       UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:       UML OpaqueActionImpl this.quantity=quantity; was created: Create expression declaration
+INFO - 14:32:57:       UML OpaqueActionImpl null was created
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:       UML ControlFlowImpl InitNode_this.quantity=quantity; was created
+INFO - 14:32:57:       UML ControlFlowImpl If_1_cond_throw new Exception(); was created
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField(order.getShipCountry(),"Shipping Info: country is required."); was created: Create expression declaration
+INFO - 14:32:57:       UML CallOperationActionImpl calculateTotal was created: Create method invocation
+INFO - 14:32:57:       UML ControlFlowImpl System.out.println(" Table Exi_If_1_merge was created
+INFO - 14:32:57:       UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:       UML CallOperationActionImpl calculateTotal(); was created: Create expression declaration
+INFO - 14:32:57:       UML ControlFlowImpl throw new Exception();_If_1_merge was created
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:       UML ControlFlowImpl this.quantity=quantity;_calculateTotal(); was created
+INFO - 14:32:57:       UML ControlFlowImpl If_1_merge_FinalNode was created
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField(order.getBillToFirstName(),"Billing Info: first name is required."); was created: Create expression declaration
+INFO - 14:32:57:       UML ControlFlowImpl calculateTotal();_FinalNode was created
+WARNING - 14:32:57: Second pass : generating package usages
+INFO - 14:32:57: UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57: Entering UML ActivityImpl incrementQuantity: Activity for incrementQuantity
+INFO - 14:32:57: Entering UML ModelImpl com.tools.infosys.validate: Creating usages
+INFO - 14:32:57: UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:    UML OpaqueActionImpl quantity++; was created: Create expression declaration
+INFO - 14:32:57:    Entering UML PackageImpl com: Creating usages
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField(order.getBillToLastName(),"Billing Info: last name is required."); was created: Create expression declaration
+INFO - 14:32:57:    UML ControlFlowImpl InitNode_quantity++; was created
+INFO - 14:32:57:    Entering UML PackageImpl tools: Creating usages
+INFO - 14:32:57:    UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:    UML CallOperationActionImpl calculateTotal was created: Create method invocation
+INFO - 14:32:57:    Entering UML PackageImpl infosys: Creating usages
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:    UML CallOperationActionImpl calculateTotal(); was created: Create expression declaration
+INFO - 14:32:57:    Entering UML PackageImpl validate: Creating usages
+INFO - 14:32:57:    UML ControlFlowImpl quantity++;_calculateTotal(); was created
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField(order.getBillAddress1(),"Billing Info: address is required."); was created: Create expression declaration
+INFO - 14:32:57:       UML PackageImpl validate was created
+INFO - 14:32:57:       UML ControlFlowImpl calculateTotal();_FinalNode was created
+INFO - 14:32:57:       UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:       UML PackageImpl validate was created
+INFO - 14:32:57:    Entering UML ActivityImpl calculateTotal: Activity for calculateTotal
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:    UML PackageImpl validate was created
+INFO - 14:32:57:       UML DecisionNodeImpl If_0_cond was created: Create if structure
+INFO - 14:32:57:       UML CallOperationActionImpl validateRequiredField(order.getBillCity(),"Billing Info: city is required."); was created: Create expression declaration
+INFO - 14:32:57:       UML PackageImpl validate was created
+INFO - 14:32:57:       UML ControlFlowImpl InitNode_If_0_cond was created
+INFO - 14:32:57:       UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:    Entering UML PackageImpl java: Creating usages
+INFO - 14:32:57:    UML CallOperationActionImpl multiply was created: Create method invocation
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:    Entering UML PackageImpl io: Creating usages
+INFO - 14:32:57:    UML CallOperationActionImpl total=item.getListPrice().multiply(new BigDecimal(quantity)); was created: Create expression declaration
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField(order.getBillState(),"Billing Info: state is required."); was created: Create expression declaration
+INFO - 14:32:57:    Entering UML PackageImpl sql: Creating usages
+INFO - 14:32:57:    UML ControlFlowImpl If_0_cond_total=item.getListPrice().multiply(new BigDecimal( was created
+INFO - 14:32:57:    UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:    Entering UML PackageImpl javax: Creating usages
+INFO - 14:32:57:    UML OpaqueActionImpl total=null; was created: Create expression declaration
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:    Entering UML PackageImpl xml: Creating usages
+INFO - 14:32:57:    UML ControlFlowImpl If_0_cond_total=null; was created
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField(order.getBillZip(),"Billing Info: zip/postal code is required."); was created: Create expression declaration
+INFO - 14:32:57:    Entering UML PackageImpl parsers: Creating usages
+INFO - 14:32:57:    UML ControlFlowImpl total=item.getListPrice().mult_If_0_merge was created
+INFO - 14:32:57:    UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57:    Entering UML PackageImpl org: Creating usages
+INFO - 14:32:57:    UML ControlFlowImpl total=null;_If_0_merge was created
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField was created: Create method invocation
+INFO - 14:32:57:    Entering UML PackageImpl w3c: Creating usages
+INFO - 14:32:57:    UML ControlFlowImpl If_0_merge_FinalNode was created
+INFO - 14:32:57:    UML CallOperationActionImpl validateRequiredField(order.getBillCountry(),"Billing Info: country is required."); was created: Create expression declaration
+INFO - 14:32:57:    Entering UML PackageImpl dom: Creating usages
+INFO - 14:32:57: Entering Java CompilationUnit Cart.java: Creating activities
+INFO - 14:32:57: UML ControlFlowImpl validateRequiredField(order.ge_validateRequiredField(order.g was created
+INFO - 14:32:57: Entering UML ActivityImpl getCartItems: Activity for getCartItems
+INFO - 14:32:57: UML ControlFlowImpl validateRequiredField(order.ge_If_8_merge was created
+INFO - 14:32:57:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:57:    UML DecisionNodeImpl If_9_cond was created: Create if structure
+INFO - 14:32:57: Entering UML ActivityImpl getCartItemList: Activity for getCartItemList
+INFO - 14:32:57: UML ControlFlowImpl If_8_merge_If_9_cond was created
+INFO - 14:32:57:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:57:    UML ControlFlowImpl If_9_cond_If_9_merge was created
+INFO - 14:32:57: Entering UML ActivityImpl getNumberOfItems: Activity for getNumberOfItems
+INFO - 14:32:57: UML CallOperationActionImpl setBillAddress1 was created: Create method invocation
+INFO - 14:32:57:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:57:    UML CallOperationActionImpl order.setBillAddress1(order.getShipAddress1()); was created: Create expression declaration
+INFO - 14:32:57: Entering UML ActivityImpl getAllCartItems: Activity for getAllCartItems
+INFO - 14:32:57: UML ControlFlowImpl If_9_cond_order.setBillAddress1(order.getShipAddress1()); was created
+INFO - 14:32:58:    UML ControlFlowImpl InitNode_List allItems=new ArrayList(); was created
+INFO - 14:32:58:    UML CallOperationActionImpl setBillAddress2 was created: Create method invocation
+INFO - 14:32:58:    UML AddVariableValueActionImpl List allItems=new ArrayList(); was created: Create variable declaration
+INFO - 14:32:58:    UML CallOperationActionImpl order.setBillAddress2(order.getShipAddress2()); was created: Create expression declaration
+INFO - 14:32:58:    UML CallOperationActionImpl gotoPage was created: Create method invocation
+INFO - 14:32:58:    UML ControlFlowImpl order.setBillAddress1(order.ge_order.setBillAddress2(order.g was created
+INFO - 14:32:58:    UML CallOperationActionImpl itemList.gotoPage(0); was created: Create expression declaration
+INFO - 14:32:58:    UML CallOperationActionImpl setBillToFirstName was created: Create method invocation
+INFO - 14:32:58:    UML ControlFlowImpl List allItems=new ArrayList();_itemList.gotoPage(0); was created
+INFO - 14:32:58:    UML CallOperationActionImpl order.setBillToFirstName(order.getShipToFirstName()); was created: Create expression declaration
+INFO - 14:32:58:    UML CallOperationActionImpl addAll was created: Create method invocation
+INFO - 14:32:58:    UML ControlFlowImpl order.setBillAddress2(order.ge_order.setBillToFirstName(orde was created
+INFO - 14:32:58:    UML CallOperationActionImpl allItems.addAll(itemList); was created: Create expression declaration
+INFO - 14:32:58:    UML CallOperationActionImpl setBillToLastName was created: Create method invocation
+INFO - 14:32:58:    UML ControlFlowImpl itemList.gotoPage(0);_allItems.addAll(itemList); was created
+INFO - 14:32:58:    UML CallOperationActionImpl order.setBillToLastName(order.getShipToLastName()); was created: Create expression declaration
+INFO - 14:32:58:    UML MergeNodeImpl null was created: Create while loop
+INFO - 14:32:58:    UML ControlFlowImpl order.setBillToFirstName(order_order.setBillToLastName(order was created
+INFO - 14:32:58:    UML ControlFlowImpl While_0_merge_While_0_cond was created
+INFO - 14:32:58:    UML CallOperationActionImpl setBillCity was created: Create method invocation
+INFO - 14:32:58:    UML ControlFlowImpl allItems.addAll(itemList);_While_0_merge was created
+INFO - 14:32:58:    UML CallOperationActionImpl order.setBillCity(order.getShipCity()); was created: Create expression declaration
+INFO - 14:32:58:    UML CallOperationActionImpl addAll was created: Create method invocation
+INFO - 14:32:58:    UML ControlFlowImpl order.setBillToLastName(order._order.setBillCity(order.getSh was created
+INFO - 14:32:58:    UML CallOperationActionImpl allItems.addAll(itemList); was created: Create expression declaration
+INFO - 14:32:58:    UML CallOperationActionImpl setBillCountry was created: Create method invocation
+INFO - 14:32:58:    UML ControlFlowImpl While_0_cond_allItems.addAll(itemList); was created
+INFO - 14:32:58:    UML CallOperationActionImpl order.setBillCountry(order.getShipCountry()); was created: Create expression declaration
+INFO - 14:32:58:    UML ControlFlowImpl allItems.addAll(itemList);_While_0_merge was created
+INFO - 14:32:58:    UML ControlFlowImpl order.setBillCity(order.getShi_order.setBillCountry(order.ge was created
+INFO - 14:32:58:    UML ControlFlowImpl While_0_cond_FinalNode was created
+INFO - 14:32:58:    UML CallOperationActionImpl setBillState was created: Create method invocation
+INFO - 14:32:58: Entering UML ActivityImpl containsItemId: Activity for containsItemId
+INFO - 14:32:58: UML CallOperationActionImpl order.setBillState(order.getShipState()); was created: Create expression declaration
+INFO - 14:32:58:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:58:    UML ControlFlowImpl order.setBillCountry(order.get_order.setBillState(order.getS was created
+INFO - 14:32:58: Entering UML ActivityImpl addItem: Activity for addItem
+INFO - 14:32:58: UML CallOperationActionImpl setBillZip was created: Create method invocation
+INFO - 14:32:58:    UML ControlFlowImpl InitNode_CartItem cartItem=(CartItem)itemMap.get(item.getIte was created
+INFO - 14:32:58:    UML CallOperationActionImpl order.setBillZip(order.getShipZip()); was created: Create expression declaration
+INFO - 14:32:58:    UML AddVariableValueActionImpl CartItem cartItem=(CartItem)itemMap.get(item.getItemId()); was created: Create variable declaration
+INFO - 14:32:58:    UML ControlFlowImpl order.setBillState(order.getSh_order.setBillZip(order.getShi was created
+INFO - 14:32:58:    UML DecisionNodeImpl If_0_cond was created: Create if structure
+INFO - 14:32:58:    UML ControlFlowImpl order.setBillZip(order.getShip_If_9_merge was created
+INFO - 14:32:58:    UML ControlFlowImpl CartItem cartItem=(CartItem)it_If_0_cond was created
+INFO - 14:32:58:    UML ControlFlowImpl If_9_merge_FinalNode was created
+INFO - 14:32:58:    UML ControlFlowImpl If_0_cond_If_0_merge was created
+INFO - 14:32:58: Entering Java CompilationUnit CatalogBean.java: Creating activities
+INFO - 14:32:58: UML OpaqueActionImpl cartItem=new CartItem(); was created: Create expression declaration
+INFO - 14:32:58: Entering UML ActivityImpl getKeyword: Activity for getKeyword
+INFO - 14:32:58: UML ControlFlowImpl If_0_cond_cartItem=new CartItem(); was created
+INFO - 14:32:58:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:58:    UML CallOperationActionImpl setItem was created: Create method invocation
+INFO - 14:32:58: Entering UML ActivityImpl setKeyword: Activity for setKeyword
+INFO - 14:32:58: UML CallOperationActionImpl cartItem.setItem(item); was created: Create expression declaration
+INFO - 14:32:58:    UML OpaqueActionImpl this.keyword=keyword; was created: Create expression declaration
+INFO - 14:32:58:    UML ControlFlowImpl cartItem=new CartItem();_cartItem.setItem(item); was created
+INFO - 14:32:58:    UML ControlFlowImpl InitNode_this.keyword=keyword; was created
+INFO - 14:32:58:    UML CallOperationActionImpl setQuantity was created: Create method invocation
+INFO - 14:32:58:    UML ControlFlowImpl this.keyword=keyword;_FinalNode was created
+INFO - 14:32:58:    UML CallOperationActionImpl cartItem.setQuantity(0); was created: Create expression declaration
+INFO - 14:32:58: Entering UML ActivityImpl getPageDirection: Activity for getPageDirection
+INFO - 14:32:58: UML ControlFlowImpl cartItem.setItem(item);_cartItem.setQuantity(0); was created
+INFO - 14:32:58:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:58:    UML CallOperationActionImpl setInStock was created: Create method invocation
+INFO - 14:32:58: Entering UML ActivityImpl setPageDirection: Activity for setPageDirection
+INFO - 14:32:58: UML CallOperationActionImpl cartItem.setInStock(isInStock); was created: Create expression declaration
+INFO - 14:32:58:    UML OpaqueActionImpl this.pageDirection=pageDirection; was created: Create expression declaration
+INFO - 14:32:58:    UML ControlFlowImpl cartItem.setQuantity(0);_cartItem.setInStock(isInStock); was created
+INFO - 14:32:58:    UML ControlFlowImpl InitNode_this.pageDirection=pageDirection; was created
+INFO - 14:32:58:    UML CallOperationActionImpl put was created: Create method invocation
+INFO - 14:32:58:    UML ControlFlowImpl this.pageDirection=pageDirecti_FinalNode was created
+INFO - 14:32:58:    UML CallOperationActionImpl itemMap.put(item.getItemId(),cartItem); was created: Create expression declaration
+INFO - 14:32:58: Entering UML ActivityImpl getCategoryId: Activity for getCategoryId
+INFO - 14:32:58: UML ControlFlowImpl cartItem.setInStock(isInStock)_itemMap.put(item.getItemId(), was created
+INFO - 14:32:58:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:58:    UML CallOperationActionImpl add was created: Create method invocation
+INFO - 14:32:58: Entering UML ActivityImpl setCategoryId: Activity for setCategoryId
+INFO - 14:32:58: UML CallOperationActionImpl itemList.add(cartItem); was created: Create expression declaration
+INFO - 14:32:58:    UML OpaqueActionImpl this.categoryId=categoryId; was created: Create expression declaration
+INFO - 14:32:58:    UML ControlFlowImpl itemMap.put(item.getItemId(),c_itemList.add(cartItem); was created
+INFO - 14:32:58:    UML ControlFlowImpl InitNode_this.categoryId=categoryId; was created
+INFO - 14:32:58:    UML ControlFlowImpl itemList.add(cartItem);_If_0_merge was created
+INFO - 14:32:58:    UML ControlFlowImpl this.categoryId=categoryId;_FinalNode was created
+INFO - 14:32:58:    UML CallOperationActionImpl incrementQuantity was created: Create method invocation
+INFO - 14:32:58: Entering UML ActivityImpl getProductId: Activity for getProductId
+INFO - 14:32:58: UML CallOperationActionImpl cartItem.incrementQuantity(); was created: Create expression declaration
+INFO - 14:32:58:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:59:    UML ControlFlowImpl If_0_merge_cartItem.incrementQuantity(); was created
+INFO - 14:32:59: Entering UML ActivityImpl setProductId: Activity for setProductId
+INFO - 14:32:59: UML ControlFlowImpl cartItem.incrementQuantity();_FinalNode was created
+INFO - 14:32:59:    UML OpaqueActionImpl this.productId=productId; was created: Create expression declaration
+INFO - 14:32:59: Entering UML ActivityImpl removeItemById: Activity for removeItemById
+INFO - 14:32:59: UML ControlFlowImpl InitNode_this.productId=productId; was created
+INFO - 14:32:59:    UML ControlFlowImpl InitNode_CartItem cartItem=(CartItem)itemMap.remove(itemId); was created
+INFO - 14:32:59:    UML ControlFlowImpl this.productId=productId;_FinalNode was created
+INFO - 14:32:59:    UML AddVariableValueActionImpl CartItem cartItem=(CartItem)itemMap.remove(itemId); was created: Create variable declaration
+INFO - 14:32:59: Entering UML ActivityImpl getItemId: Activity for getItemId
+INFO - 14:32:59: UML DecisionNodeImpl If_1_cond was created: Create if structure
+INFO - 14:32:59:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:59:    UML ControlFlowImpl CartItem cartItem=(CartItem)it_If_1_cond was created
+INFO - 14:32:59: Entering UML ActivityImpl setItemId: Activity for setItemId
+INFO - 14:32:59: UML ControlFlowImpl If_1_cond_FinalNode was created
+INFO - 14:32:59:    UML OpaqueActionImpl this.itemId=itemId; was created: Create expression declaration
+INFO - 14:32:59:    UML CallOperationActionImpl remove was created: Create method invocation
+INFO - 14:32:59:    UML ControlFlowImpl InitNode_this.itemId=itemId; was created
+INFO - 14:32:59:    UML CallOperationActionImpl itemList.remove(cartItem); was created: Create expression declaration
+INFO - 14:32:59:    UML ControlFlowImpl this.itemId=itemId;_FinalNode was created
+INFO - 14:32:59:    UML ControlFlowImpl If_1_cond_itemList.remove(cartItem); was created
+INFO - 14:32:59: Entering UML ActivityImpl getCategory: Activity for getCategory
+INFO - 14:32:59: UML ControlFlowImpl itemList.remove(cartItem);_FinalNode was created
+INFO - 14:32:59:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:59:    UML ControlFlowImpl If_1_merge_FinalNode was created
+INFO - 14:32:59: Entering UML ActivityImpl setCategory: Activity for setCategory
+INFO - 14:32:59: Entering UML ActivityImpl incrementQuantityByItemId: Activity for incrementQuantityByItemId
+INFO - 14:32:59:    UML OpaqueActionImpl this.category=category; was created: Create expression declaration
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_CartItem cartItem=(CartItem)itemMap.get(itemId); was created
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_this.category=category; was created
+INFO - 14:32:59:       UML AddVariableValueActionImpl CartItem cartItem=(CartItem)itemMap.get(itemId); was created: Create variable declaration
+INFO - 14:32:59:       UML ControlFlowImpl this.category=category;_FinalNode was created
+INFO - 14:32:59:       UML CallOperationActionImpl incrementQuantity was created: Create method invocation
+INFO - 14:32:59:    Entering UML ActivityImpl getProduct: Activity for getProduct
+INFO - 14:32:59:    UML CallOperationActionImpl cartItem.incrementQuantity(); was created: Create expression declaration
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:59:       UML ControlFlowImpl CartItem cartItem=(CartItem)it_cartItem.incrementQuantity(); was created
+INFO - 14:32:59:    Entering UML ActivityImpl setProduct: Activity for setProduct
+INFO - 14:32:59:    UML ControlFlowImpl cartItem.incrementQuantity();_FinalNode was created
+INFO - 14:32:59:       UML OpaqueActionImpl this.product=product; was created: Create expression declaration
+INFO - 14:32:59:    Entering UML ActivityImpl setQuantityByItemId: Activity for setQuantityByItemId
+INFO - 14:32:59:    UML ControlFlowImpl InitNode_this.product=product; was created
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_CartItem cartItem=(CartItem)itemMap.get(itemId); was created
+INFO - 14:32:59:       UML ControlFlowImpl this.product=product;_FinalNode was created
+INFO - 14:32:59:       UML AddVariableValueActionImpl CartItem cartItem=(CartItem)itemMap.get(itemId); was created: Create variable declaration
+INFO - 14:32:59:    Entering UML ActivityImpl getItem: Activity for getItem
+INFO - 14:32:59:    UML CallOperationActionImpl setQuantity was created: Create method invocation
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:59:       UML CallOperationActionImpl cartItem.setQuantity(quantity); was created: Create expression declaration
+INFO - 14:32:59:    Entering UML ActivityImpl setItem: Activity for setItem
+INFO - 14:32:59:    UML ControlFlowImpl CartItem cartItem=(CartItem)it_cartItem.setQuantity(quantity was created
+INFO - 14:32:59:       UML OpaqueActionImpl this.item=item; was created: Create expression declaration
+INFO - 14:32:59:       UML ControlFlowImpl cartItem.setQuantity(quantity)_FinalNode was created
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_this.item=item; was created
+INFO - 14:32:59:    Entering UML ActivityImpl getSubTotal: Activity for getSubTotal
+INFO - 14:32:59:    UML ControlFlowImpl this.item=item;_FinalNode was created
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_BigDecimal subTotal=new BigDecimal("0"); was created
+INFO - 14:32:59:    Entering UML ActivityImpl getCategoryList: Activity for getCategoryList
+INFO - 14:32:59:    UML AddVariableValueActionImpl BigDecimal subTotal=new BigDecimal("0"); was created: Create variable declaration
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:59:       UML ControlFlowImpl BigDecimal subTotal=new BigDec_Iterator items=getAllCartItem was created
+INFO - 14:32:59:    Entering UML ActivityImpl setCategoryList: Activity for setCategoryList
+INFO - 14:32:59:    UML AddVariableValueActionImpl Iterator items=getAllCartItems(); was created: Create variable declaration
+INFO - 14:32:59:       UML OpaqueActionImpl this.categoryList=categoryList; was created: Create expression declaration
+INFO - 14:32:59:       UML MergeNodeImpl null was created: Create while loop
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_this.categoryList=categoryList; was created
+INFO - 14:32:59:       UML ControlFlowImpl While_1_merge_While_1_cond was created
+INFO - 14:32:59:       UML ControlFlowImpl this.categoryList=categoryList_FinalNode was created
+INFO - 14:32:59:       UML ControlFlowImpl Iterator items=getAllCartItems_While_1_merge was created
+INFO - 14:32:59:    Entering UML ActivityImpl getProductList: Activity for getProductList
+INFO - 14:32:59:    UML ControlFlowImpl While_1_cond_CartItem cartItem=(CartItem)items.next(); was created
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:59:       UML AddVariableValueActionImpl CartItem cartItem=(CartItem)items.next(); was created: Create variable declaration
+INFO - 14:32:59:    Entering UML ActivityImpl setProductList: Activity for setProductList
+INFO - 14:32:59:    UML ControlFlowImpl CartItem cartItem=(CartItem)it_Item item=cartItem.getItem(); was created
+INFO - 14:32:59:       UML OpaqueActionImpl this.productList=productList; was created: Create expression declaration
+INFO - 14:32:59:       UML AddVariableValueActionImpl Item item=cartItem.getItem(); was created: Create variable declaration
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_this.productList=productList; was created
+INFO - 14:32:59:       UML ControlFlowImpl Item item=cartItem.getItem();_BigDecimal listPrice=item.getL was created
+INFO - 14:32:59:       UML ControlFlowImpl this.productList=productList;_FinalNode was created
+INFO - 14:32:59:       UML AddVariableValueActionImpl BigDecimal listPrice=item.getListPrice(); was created: Create variable declaration
+INFO - 14:32:59:    Entering UML ActivityImpl getItemList: Activity for getItemList
+INFO - 14:32:59:    UML ControlFlowImpl BigDecimal listPrice=item.getL_BigDecimal quantity=new BigDe was created
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:59:       UML AddVariableValueActionImpl BigDecimal quantity=new BigDecimal(String.valueOf(cartItem.getQuantity())); was created: Create variable declaration
+INFO - 14:32:59:    Entering UML ActivityImpl setItemList: Activity for setItemList
+INFO - 14:32:59:    UML CallOperationActionImpl add was created: Create method invocation
+INFO - 14:32:59:       UML OpaqueActionImpl this.itemList=itemList; was created: Create expression declaration
+INFO - 14:32:59:       UML CallOperationActionImpl subTotal=subTotal.add(listPrice.multiply(quantity)); was created: Create expression declaration
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_this.itemList=itemList; was created
+INFO - 14:32:59:       UML ControlFlowImpl BigDecimal quantity=new BigDec_subTotal=subTotal.add(listPri was created
+INFO - 14:32:59:       UML ControlFlowImpl this.itemList=itemList;_FinalNode was created
+INFO - 14:32:59:       UML ControlFlowImpl subTotal=subTotal.add(listPric_While_1_merge was created
+INFO - 14:32:59:    Entering UML ActivityImpl viewCategory: Activity for viewCategory
+INFO - 14:32:59:    UML ControlFlowImpl While_1_cond_FinalNode was created
+INFO - 14:32:59:       UML DecisionNodeImpl If_0_cond was created: Create if structure
+INFO - 14:32:59: Entering Java CompilationUnit Order.java: Creating activities
+INFO - 14:32:59: UML ControlFlowImpl InitNode_If_0_cond was created
+INFO - 14:32:59: UML ControlFlowImpl If_0_cond_If_0_merge was created
+INFO - 14:32:59: Entering UML ActivityImpl getOrderId: Activity for getOrderId
+INFO - 14:32:59: UML CallOperationActionImpl getProductListByCategory was created: Create method invocation
+INFO - 14:32:59:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:59:    UML CallOperationActionImpl productList=catalogService.getProductListByCategory(categoryId); was created: Create expression declaration
+INFO - 14:32:59: Entering UML ActivityImpl setOrderId: Activity for setOrderId
+INFO - 14:32:59: UML ControlFlowImpl If_0_cond_productList=catalogService.getProductListByCategor was created
+INFO - 14:32:59:    UML OpaqueActionImpl this.orderId=orderId; was created: Create expression declaration
+INFO - 14:32:59:    UML CallOperationActionImpl getCategory was created: Create method invocation
+INFO - 14:32:59:    UML ControlFlowImpl InitNode_this.orderId=orderId; was created
+INFO - 14:32:59:    UML CallOperationActionImpl category=catalogService.getCategory(categoryId); was created: Create expression declaration
+INFO - 14:32:59:    UML ControlFlowImpl this.orderId=orderId;_FinalNode was created
+INFO - 14:32:59:    UML ControlFlowImpl productList=catalogService.get_category=catalogService.getCa was created
+INFO - 14:32:59: Entering UML ActivityImpl getUsername: Activity for getUsername
+INFO - 14:32:59: UML ControlFlowImpl category=catalogService.getCat_If_0_merge was created
+INFO - 14:32:59:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:32:59:    UML ControlFlowImpl If_0_merge_FinalNode was created
+INFO - 14:32:59: Entering UML ActivityImpl setUsername: Activity for setUsername
+INFO - 14:32:59: Entering UML ActivityImpl searchProducts: Activity for searchProducts
+INFO - 14:32:59:    UML OpaqueActionImpl this.username=username; was created: Create expression declaration
+INFO - 14:32:59:       UML DecisionNodeImpl If_1_cond was created: Create if structure
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_this.username=username; was created
+INFO - 14:32:59:       UML ControlFlowImpl InitNode_If_1_cond was created
+INFO - 14:32:59:       UML ControlFlowImpl this.username=username;_FinalNode was created
+INFO - 14:33:00:       UML CallOperationActionImpl setSimpleMessage was created: Create method invocation
+INFO - 14:33:00:    Entering UML ActivityImpl getOrderDate: Activity for getOrderDate
+INFO - 14:33:00:    UML CallOperationActionImpl ActionContext.getActionContext().setSimpleMessage("Please enter a keyword to search for, then press the search button."); was created: Create expression declaration
+INFO - 14:33:00:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:00:       UML ControlFlowImpl If_1_cond_ActionContext.getActionContext().setSimpleMessage( was created
+INFO - 14:33:00:    Entering UML ActivityImpl setOrderDate: Activity for setOrderDate
+INFO - 14:33:00:    UML ControlFlowImpl ActionContext.getActionContext_FinalNode was created
+INFO - 14:33:00:       UML OpaqueActionImpl this.orderDate=orderDate; was created: Create expression declaration
+INFO - 14:33:00:       UML CallOperationActionImpl searchProductList was created: Create method invocation
+INFO - 14:33:00:       UML ControlFlowImpl InitNode_this.orderDate=orderDate; was created
+INFO - 14:33:00:       UML CallOperationActionImpl productList=catalogService.searchProductList(keyword.toLowerCase()); was created: Create expression declaration
+INFO - 14:33:00:       UML ControlFlowImpl this.orderDate=orderDate;_FinalNode was created
+INFO - 14:33:00:       UML ControlFlowImpl If_1_cond_productList=catalogService.searchProductList(keywo was created
+INFO - 14:33:00:    Entering UML ActivityImpl getShipAddress1: Activity for getShipAddress1
+INFO - 14:33:00:    UML ControlFlowImpl productList=catalogService.sea_FinalNode was created
+INFO - 14:33:00:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:00:       UML ControlFlowImpl If_1_merge_FinalNode was created
+INFO - 14:33:00:    Entering UML ActivityImpl setShipAddress1: Activity for setShipAddress1
+INFO - 14:33:00: Entering UML ActivityImpl switchProductListPage: Activity for switchProductListPage
+INFO - 14:33:00:    UML OpaqueActionImpl this.shipAddress1=shipAddress1; was created: Create expression declaration
+INFO - 14:33:00:       UML DecisionNodeImpl If_2_cond was created: Create if structure
+INFO - 14:33:00:       UML ControlFlowImpl InitNode_this.shipAddress1=shipAddress1; was created
+INFO - 14:33:00:       UML ControlFlowImpl InitNode_If_2_cond was created
+INFO - 14:33:00:       UML ControlFlowImpl this.shipAddress1=shipAddress1_FinalNode was created
+INFO - 14:33:00:       UML CallOperationActionImpl nextPage was created: Create method invocation
+INFO - 14:33:00:    Entering UML ActivityImpl getShipAddress2: Activity for getShipAddress2
+INFO - 14:33:00:    UML CallOperationActionImpl productList.nextPage(); was created: Create expression declaration
+INFO - 14:33:00:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:00:       UML ControlFlowImpl If_2_cond_productList.nextPage(); was created
+INFO - 14:33:00:    Entering UML ActivityImpl setShipAddress2: Activity for setShipAddress2
+INFO - 14:33:00:    UML DecisionNodeImpl If_3_cond was created: Create if structure
+INFO - 14:33:00:       UML OpaqueActionImpl this.shipAddress2=shipAddress2; was created: Create expression declaration
+INFO - 14:33:00:       UML ControlFlowImpl If_2_cond_If_3_cond was created
+INFO - 14:33:00:       UML ControlFlowImpl InitNode_this.shipAddress2=shipAddress2; was created
+INFO - 14:33:00:       UML ControlFlowImpl If_3_cond_If_3_merge was created
+INFO - 14:33:00:       UML ControlFlowImpl this.shipAddress2=shipAddress2_FinalNode was created
+INFO - 14:33:00:       UML CallOperationActionImpl previousPage was created: Create method invocation
+INFO - 14:33:00:    Entering UML ActivityImpl getShipCity: Activity for getShipCity
+INFO - 14:33:00:    UML CallOperationActionImpl productList.previousPage(); was created: Create expression declaration
+INFO - 14:33:00:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:00:       UML ControlFlowImpl If_3_cond_productList.previousPage(); was created
+INFO - 14:33:00:    Entering UML ActivityImpl setShipCity: Activity for setShipCity
+INFO - 14:33:00:    UML ControlFlowImpl If_3_merge_If_3_cond was created
+INFO - 14:33:00:       UML OpaqueActionImpl this.shipCity=shipCity; was created: Create expression declaration
+INFO - 14:33:00:       UML ControlFlowImpl productList.nextPage();_If_2_merge was created
+INFO - 14:33:00:       UML ControlFlowImpl InitNode_this.shipCity=shipCity; was created
+INFO - 14:33:00:       UML ControlFlowImpl productList.previousPage();_If_2_merge was created
+INFO - 14:33:00:       UML ControlFlowImpl this.shipCity=shipCity;_FinalNode was created
+INFO - 14:33:00:       UML ControlFlowImpl If_2_merge_FinalNode was created
+INFO - 14:33:00:    Entering UML ActivityImpl getShipState: Activity for getShipState
+INFO - 14:33:00: Entering UML ActivityImpl viewProduct: Activity for viewProduct
+INFO - 14:33:00:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:00:       UML DecisionNodeImpl If_4_cond was created: Create if structure
+INFO - 14:33:00:    Entering UML ActivityImpl setShipState: Activity for setShipState
+INFO - 14:33:00:    UML ControlFlowImpl InitNode_If_4_cond was created
+INFO - 14:33:00:       UML OpaqueActionImpl this.shipState=shipState; was created: Create expression declaration
+INFO - 14:33:00:       UML ControlFlowImpl If_4_cond_If_4_merge was created
+INFO - 14:33:00:       UML ControlFlowImpl InitNode_this.shipState=shipState; was created
+INFO - 14:33:00:       UML CallOperationActionImpl getItemListByProduct was created: Create method invocation
+INFO - 14:33:00:       UML ControlFlowImpl this.shipState=shipState;_FinalNode was created
+INFO - 14:33:00:       UML CallOperationActionImpl itemList=catalogService.getItemListByProduct(productId); was created: Create expression declaration
+INFO - 14:33:00:    Entering UML ActivityImpl getShipZip: Activity for getShipZip
+INFO - 14:33:00:    UML ControlFlowImpl If_4_cond_itemList=catalogService.getItemListByProduct(produ was created
+INFO - 14:33:00:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:00:       UML CallOperationActionImpl getProduct was created: Create method invocation
+INFO - 14:33:00:    Entering UML ActivityImpl setShipZip: Activity for setShipZip
+INFO - 14:33:00:    UML CallOperationActionImpl product=catalogService.getProduct(productId); was created: Create expression declaration
+INFO - 14:33:00:       UML OpaqueActionImpl this.shipZip=shipZip; was created: Create expression declaration
+INFO - 14:33:00:       UML ControlFlowImpl itemList=catalogService.getIte_product=catalogService.getPro was created
+INFO - 14:33:00:       UML ControlFlowImpl InitNode_this.shipZip=shipZip; was created
+INFO - 14:33:00:       UML ControlFlowImpl product=catalogService.getProd_If_4_merge was created
+INFO - 14:33:00:       UML ControlFlowImpl this.shipZip=shipZip;_FinalNode was created
+INFO - 14:33:00:       UML ControlFlowImpl If_4_merge_FinalNode was created
+INFO - 14:33:00:    Entering UML ActivityImpl getShipCountry: Activity for getShipCountry
+INFO - 14:33:00: Entering UML ActivityImpl switchItemListPage: Activity for switchItemListPage
+INFO - 14:33:00:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:00:       UML DecisionNodeImpl If_5_cond was created: Create if structure
+INFO - 14:33:00:    Entering UML ActivityImpl setShipCountry: Activity for setShipCountry
+INFO - 14:33:00:    UML ControlFlowImpl InitNode_If_5_cond was created
+INFO - 14:33:00:       UML OpaqueActionImpl this.shipCountry=shipCountry; was created: Create expression declaration
+INFO - 14:33:00:       UML CallOperationActionImpl nextPage was created: Create method invocation
+INFO - 14:33:00:       UML ControlFlowImpl InitNode_this.shipCountry=shipCountry; was created
+INFO - 14:33:00:       UML CallOperationActionImpl itemList.nextPage(); was created: Create expression declaration
+INFO - 14:33:00:       UML ControlFlowImpl this.shipCountry=shipCountry;_FinalNode was created
+INFO - 14:33:00:       UML ControlFlowImpl If_5_cond_itemList.nextPage(); was created
+INFO - 14:33:01:    Entering UML ActivityImpl getBillAddress1: Activity for getBillAddress1
+INFO - 14:33:01:    UML DecisionNodeImpl If_6_cond was created: Create if structure
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl If_5_cond_If_6_cond was created
+INFO - 14:33:01:    Entering UML ActivityImpl setBillAddress1: Activity for setBillAddress1
+INFO - 14:33:01:    UML ControlFlowImpl If_6_cond_If_6_merge was created
+INFO - 14:33:01:       UML OpaqueActionImpl this.billAddress1=billAddress1; was created: Create expression declaration
+INFO - 14:33:01:       UML CallOperationActionImpl previousPage was created: Create method invocation
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_this.billAddress1=billAddress1; was created
+INFO - 14:33:01:       UML CallOperationActionImpl itemList.previousPage(); was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl this.billAddress1=billAddress1_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl If_6_cond_itemList.previousPage(); was created
+INFO - 14:33:01:    Entering UML ActivityImpl getBillAddress2: Activity for getBillAddress2
+INFO - 14:33:01:    UML ControlFlowImpl If_6_merge_If_6_cond was created
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl itemList.nextPage();_If_5_merge was created
+INFO - 14:33:01:    Entering UML ActivityImpl setBillAddress2: Activity for setBillAddress2
+INFO - 14:33:01:    UML ControlFlowImpl itemList.previousPage();_If_5_merge was created
+INFO - 14:33:01:       UML OpaqueActionImpl this.billAddress2=billAddress2; was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl If_5_merge_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_this.billAddress2=billAddress2; was created
+INFO - 14:33:01:    Entering UML ActivityImpl viewItem: Activity for viewItem
+INFO - 14:33:01:    UML ControlFlowImpl this.billAddress2=billAddress2_FinalNode was created
+INFO - 14:33:01:       UML CallOperationActionImpl getItem was created: Create method invocation
+INFO - 14:33:01:    Entering UML ActivityImpl getBillCity: Activity for getBillCity
+INFO - 14:33:01:    UML CallOperationActionImpl item=catalogService.getItem(itemId); was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_item=catalogService.getItem(itemId); was created
+INFO - 14:33:01:    Entering UML ActivityImpl setBillCity: Activity for setBillCity
+INFO - 14:33:01:    UML CallOperationActionImpl getProduct was created: Create method invocation
+INFO - 14:33:01:       UML OpaqueActionImpl this.billCity=billCity; was created: Create expression declaration
+INFO - 14:33:01:       UML CallOperationActionImpl product=item.getProduct(); was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_this.billCity=billCity; was created
+INFO - 14:33:01:       UML ControlFlowImpl item=catalogService.getItem(it_product=item.getProduct(); was created
+INFO - 14:33:01:       UML ControlFlowImpl this.billCity=billCity;_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl product=item.getProduct();_FinalNode was created
+INFO - 14:33:01:    Entering UML ActivityImpl getBillState: Activity for getBillState
+INFO - 14:33:01: Entering UML ActivityImpl clear: Activity for clear
+INFO - 14:33:01:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:01:       UML OpaqueActionImpl keyword=null; was created: Create expression declaration
+INFO - 14:33:01:    Entering UML ActivityImpl setBillState: Activity for setBillState
+INFO - 14:33:01:    UML ControlFlowImpl InitNode_keyword=null; was created
+INFO - 14:33:01:       UML OpaqueActionImpl this.billState=billState; was created: Create expression declaration
+INFO - 14:33:01:       UML OpaqueActionImpl pageDirection=null; was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_this.billState=billState; was created
+INFO - 14:33:01:       UML ControlFlowImpl this.billState=billState;_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl keyword=null;_pageDirection=null; was created
+INFO - 14:33:01:    Entering UML ActivityImpl getBillZip: Activity for getBillZip
+INFO - 14:33:01:    UML OpaqueActionImpl categoryId=null; was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl pageDirection=null;_categoryId=null; was created
+INFO - 14:33:01:    Entering UML ActivityImpl setBillZip: Activity for setBillZip
+INFO - 14:33:01:    UML OpaqueActionImpl category=null; was created: Create expression declaration
+INFO - 14:33:01:       UML OpaqueActionImpl this.billZip=billZip; was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl categoryId=null;_category=null; was created
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_this.billZip=billZip; was created
+INFO - 14:33:01:       UML OpaqueActionImpl categoryList=null; was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl this.billZip=billZip;_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl category=null;_categoryList=null; was created
+INFO - 14:33:01:    Entering UML ActivityImpl getBillCountry: Activity for getBillCountry
+INFO - 14:33:01:    UML OpaqueActionImpl productId=null; was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl categoryList=null;_productId=null; was created
+INFO - 14:33:01:    Entering UML ActivityImpl setBillCountry: Activity for setBillCountry
+INFO - 14:33:01:    UML OpaqueActionImpl product=null; was created: Create expression declaration
+INFO - 14:33:01:       UML OpaqueActionImpl this.billCountry=billCountry; was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl productId=null;_product=null; was created
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_this.billCountry=billCountry; was created
+INFO - 14:33:01:       UML OpaqueActionImpl productList=null; was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl this.billCountry=billCountry;_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl product=null;_productList=null; was created
+INFO - 14:33:01:    Entering UML ActivityImpl getCourier: Activity for getCourier
+INFO - 14:33:01:    UML OpaqueActionImpl itemId=null; was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl productList=null;_itemId=null; was created
+INFO - 14:33:01:    Entering UML ActivityImpl setCourier: Activity for setCourier
+INFO - 14:33:01:    UML OpaqueActionImpl item=null; was created: Create expression declaration
+INFO - 14:33:01:       UML OpaqueActionImpl this.courier=courier; was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl itemId=null;_item=null; was created
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_this.courier=courier; was created
+INFO - 14:33:01:       UML OpaqueActionImpl itemList=null; was created: Create expression declaration
+INFO - 14:33:01:       UML ControlFlowImpl this.courier=courier;_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl item=null;_itemList=null; was created
+INFO - 14:33:01:    Entering UML ActivityImpl getTotalPrice: Activity for getTotalPrice
+INFO - 14:33:01:    UML ControlFlowImpl itemList=null;_FinalNode was created
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_FinalNode was created
+WARNING - 14:33:01: Second pass : generating package usages
+INFO - 14:33:01: Entering UML ActivityImpl setTotalPrice: Activity for setTotalPrice
+INFO - 14:33:01: Entering UML ModelImpl com.ibatis.jpetstore.presentation: Creating usages
+INFO - 14:33:01:    UML OpaqueActionImpl this.totalPrice=totalPrice; was created: Create expression declaration
+INFO - 14:33:01:    Entering UML PackageImpl com: Creating usages
+INFO - 14:33:01:    UML ControlFlowImpl InitNode_this.totalPrice=totalPrice; was created
+INFO - 14:33:01:    Entering UML PackageImpl ibatis: Creating usages
+INFO - 14:33:01:    UML ControlFlowImpl this.totalPrice=totalPrice;_FinalNode was created
+INFO - 14:33:01:    Entering UML PackageImpl jpetstore: Creating usages
+INFO - 14:33:01: Entering UML ActivityImpl getBillToFirstName: Activity for getBillToFirstName
+INFO - 14:33:01: Entering UML PackageImpl presentation: Creating usages
+INFO - 14:33:01:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:01:       UML PackageImpl presentation was created
+INFO - 14:33:01:    Entering UML ActivityImpl setBillToFirstName: Activity for setBillToFirstName
+INFO - 14:33:01:    UML PackageImpl presentation was created
+INFO - 14:33:01:       UML OpaqueActionImpl this.billToFirstName=billToFirstName; was created: Create expression declaration
+INFO - 14:33:01:       UML PackageImpl presentation was created
+INFO - 14:33:01:       UML ControlFlowImpl InitNode_this.billToFirstName=billToFirstName; was created
+INFO - 14:33:01:       UML PackageImpl presentation was created
+INFO - 14:33:01:       UML ControlFlowImpl this.billToFirstName=billToFir_FinalNode was created
+INFO - 14:33:01:       UML PackageImpl presentation was created
+INFO - 14:33:01:    Entering UML ActivityImpl getBillToLastName: Activity for getBillToLastName
+INFO - 14:33:01: Entering UML PackageImpl domain: Creating usages
+INFO - 14:33:01:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:01:    Entering UML PackageImpl service: Creating usages
+INFO - 14:33:01: Entering UML ActivityImpl setBillToLastName: Activity for setBillToLastName
+INFO - 14:33:01: Entering UML PackageImpl struts: Creating usages
+INFO - 14:33:02:    UML OpaqueActionImpl this.billToLastName=billToLastName; was created: Create expression declaration
+INFO - 14:33:02:    Entering UML PackageImpl common: Creating usages
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_this.billToLastName=billToLastName; was created
+INFO - 14:33:02:    Entering UML PackageImpl util: Creating usages
+INFO - 14:33:02:    UML ControlFlowImpl this.billToLastName=billToLast_FinalNode was created
+INFO - 14:33:02:    Entering UML PackageImpl java: Creating usages
+INFO - 14:33:02: Entering UML ActivityImpl getShipToFirstName: Activity for getShipToFirstName
+INFO - 14:33:02: Entering UML PackageImpl util: Creating usages
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl setShipToFirstName: Activity for setShipToFirstName
+INFO - 14:33:02:    UML OpaqueActionImpl this.shipToFirstName=shipFoFirstName; was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_this.shipToFirstName=shipFoFirstName; was created
+INFO - 14:33:02:    UML ControlFlowImpl this.shipToFirstName=shipFoFir_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl getShipToLastName: Activity for getShipToLastName
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl setShipToLastName: Activity for setShipToLastName
+INFO - 14:33:02:    UML OpaqueActionImpl this.shipToLastName=shipToLastName; was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_this.shipToLastName=shipToLastName; was created
+INFO - 14:33:02:    UML ControlFlowImpl this.shipToLastName=shipToLast_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl getCreditCard: Activity for getCreditCard
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl setCreditCard: Activity for setCreditCard
+INFO - 14:33:02:    UML OpaqueActionImpl this.creditCard=creditCard; was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_this.creditCard=creditCard; was created
+INFO - 14:33:02:    UML ControlFlowImpl this.creditCard=creditCard;_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl getExpiryDate: Activity for getExpiryDate
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl setExpiryDate: Activity for setExpiryDate
+INFO - 14:33:02:    UML OpaqueActionImpl this.expiryDate=expiryDate; was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_this.expiryDate=expiryDate; was created
+INFO - 14:33:02:    UML ControlFlowImpl this.expiryDate=expiryDate;_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl getCardType: Activity for getCardType
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl setCardType: Activity for setCardType
+INFO - 14:33:02:    UML OpaqueActionImpl this.cardType=cardType; was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_this.cardType=cardType; was created
+INFO - 14:33:02:    UML ControlFlowImpl this.cardType=cardType;_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl getLocale: Activity for getLocale
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl setLocale: Activity for setLocale
+INFO - 14:33:02:    UML OpaqueActionImpl this.locale=locale; was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_this.locale=locale; was created
+INFO - 14:33:02:    UML ControlFlowImpl this.locale=locale;_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl getStatus: Activity for getStatus
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl setStatus: Activity for setStatus
+INFO - 14:33:02:    UML OpaqueActionImpl this.status=status; was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_this.status=status; was created
+INFO - 14:33:02:    UML ControlFlowImpl this.status=status;_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl setLineItems: Activity for setLineItems
+INFO - 14:33:02:    UML OpaqueActionImpl this.lineItems=lineItems; was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_this.lineItems=lineItems; was created
+INFO - 14:33:02:    UML ControlFlowImpl this.lineItems=lineItems;_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl getLineItems: Activity for getLineItems
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:02: Entering UML ActivityImpl initOrder: Activity for initOrder
+INFO - 14:33:02:    UML CallOperationActionImpl getUsername was created: Create method invocation
+INFO - 14:33:02:    UML CallOperationActionImpl username=account.getUsername(); was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl InitNode_username=account.getUsername(); was created
+INFO - 14:33:02:    UML OpaqueActionImpl orderDate=new Date(); was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl username=account.getUsername()_orderDate=new Date(); was created
+INFO - 14:33:02:    UML CallOperationActionImpl getFirstName was created: Create method invocation
+INFO - 14:33:02:    UML CallOperationActionImpl shipToFirstName=account.getFirstName(); was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl orderDate=new Date();_shipToFirstName=account.getFirstName() was created
+INFO - 14:33:02:    UML CallOperationActionImpl getLastName was created: Create method invocation
+INFO - 14:33:02:    UML CallOperationActionImpl shipToLastName=account.getLastName(); was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl shipToFirstName=account.getFir_shipToLastName=account.getLas was created
+INFO - 14:33:02:    UML CallOperationActionImpl getAddress1 was created: Create method invocation
+INFO - 14:33:02:    UML CallOperationActionImpl shipAddress1=account.getAddress1(); was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl shipToLastName=account.getLast_shipAddress1=account.getAddre was created
+INFO - 14:33:02:    UML CallOperationActionImpl getAddress2 was created: Create method invocation
+INFO - 14:33:02:    UML CallOperationActionImpl shipAddress2=account.getAddress2(); was created: Create expression declaration
+INFO - 14:33:02:    UML ControlFlowImpl shipAddress1=account.getAddres_shipAddress2=account.getAddre was created
+INFO - 14:33:03:    UML CallOperationActionImpl getCity was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl shipCity=account.getCity(); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl shipAddress2=account.getAddres_shipCity=account.getCity(); was created
+INFO - 14:33:03:    UML CallOperationActionImpl getState was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl shipState=account.getState(); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl shipCity=account.getCity();_shipState=account.getState(); was created
+INFO - 14:33:03:    UML CallOperationActionImpl getZip was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl shipZip=account.getZip(); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl shipState=account.getState();_shipZip=account.getZip(); was created
+INFO - 14:33:03:    UML CallOperationActionImpl getCountry was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl shipCountry=account.getCountry(); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl shipZip=account.getZip();_shipCountry=account.getCountry(); was created
+INFO - 14:33:03:    UML CallOperationActionImpl getFirstName was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl billToFirstName=account.getFirstName(); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl shipCountry=account.getCountry_billToFirstName=account.getFi was created
+INFO - 14:33:03:    UML CallOperationActionImpl getLastName was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl billToLastName=account.getLastName(); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl billToFirstName=account.getFir_billToLastName=account.getLas was created
+INFO - 14:33:03:    UML CallOperationActionImpl getAddress1 was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl billAddress1=account.getAddress1(); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl billToLastName=account.getLast_billAddress1=account.getAddre was created
+INFO - 14:33:03:    UML CallOperationActionImpl getAddress2 was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl billAddress2=account.getAddress2(); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl billAddress1=account.getAddres_billAddress2=account.getAddre was created
+INFO - 14:33:03:    UML CallOperationActionImpl getCity was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl billCity=account.getCity(); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl billAddress2=account.getAddres_billCity=account.getCity(); was created
+INFO - 14:33:03:    UML CallOperationActionImpl getState was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl billState=account.getState(); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl billCity=account.getCity();_billState=account.getState(); was created
+INFO - 14:33:03:    UML CallOperationActionImpl getZip was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl billZip=account.getZip(); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl billState=account.getState();_billZip=account.getZip(); was created
+INFO - 14:33:03:    UML CallOperationActionImpl getCountry was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl billCountry=account.getCountry(); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl billZip=account.getZip();_billCountry=account.getCountry(); was created
+INFO - 14:33:03:    UML CallOperationActionImpl getSubTotal was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl totalPrice=cart.getSubTotal(); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl billCountry=account.getCountry_totalPrice=cart.getSubTotal() was created
+INFO - 14:33:03:    UML OpaqueActionImpl creditCard="999 9999 9999 9999"; was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl totalPrice=cart.getSubTotal();_creditCard="999 9999 9999 999 was created
+INFO - 14:33:03:    UML OpaqueActionImpl expiryDate="12/03"; was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl creditCard="999 9999 9999 9999_expiryDate="12/03"; was created
+INFO - 14:33:03:    UML OpaqueActionImpl cardType="Visa"; was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl expiryDate="12/03";_cardType="Visa"; was created
+INFO - 14:33:03:    UML OpaqueActionImpl courier="UPS"; was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl cardType="Visa";_courier="UPS"; was created
+INFO - 14:33:03:    UML OpaqueActionImpl locale="CA"; was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl courier="UPS";_locale="CA"; was created
+INFO - 14:33:03:    UML OpaqueActionImpl status="P"; was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl locale="CA";_status="P"; was created
+INFO - 14:33:03:    UML ControlFlowImpl status="P";_Iterator i=cart.getAllCartItems(); was created
+INFO - 14:33:03:    UML AddVariableValueActionImpl Iterator i=cart.getAllCartItems(); was created: Create variable declaration
+INFO - 14:33:03:    UML MergeNodeImpl null was created: Create while loop
+INFO - 14:33:03:    UML ControlFlowImpl While_0_merge_While_0_cond was created
+INFO - 14:33:03:    UML ControlFlowImpl Iterator i=cart.getAllCartItem_While_0_merge was created
+INFO - 14:33:03:    UML ControlFlowImpl While_0_cond_CartItem cartItem=(CartItem)i.next(); was created
+INFO - 14:33:03:    UML AddVariableValueActionImpl CartItem cartItem=(CartItem)i.next(); was created: Create variable declaration
+INFO - 14:33:03:    UML CallOperationActionImpl addLineItem was created: Create method invocation
+INFO - 14:33:03:    UML CallOperationActionImpl addLineItem(cartItem); was created: Create expression declaration
+INFO - 14:33:03:    UML ControlFlowImpl CartItem cartItem=(CartItem)i._addLineItem(cartItem); was created
+INFO - 14:33:03:    UML ControlFlowImpl addLineItem(cartItem);_While_0_merge was created
+INFO - 14:33:04:    UML ControlFlowImpl While_0_cond_FinalNode was created
+INFO - 14:33:04: Entering UML ActivityImpl addLineItem: Activity for addLineItem
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_LineItem lineItem=new LineItem(lineItems.size() + 1 was created
+INFO - 14:33:04:    UML AddVariableValueActionImpl LineItem lineItem=new LineItem(lineItems.size() + 1,cartItem); was created: Create variable declaration
+INFO - 14:33:04:    UML CallOperationActionImpl addLineItem was created: Create method invocation
+INFO - 14:33:04:    UML CallOperationActionImpl addLineItem(lineItem); was created: Create expression declaration
+INFO - 14:33:04:    UML ControlFlowImpl LineItem lineItem=new LineItem_addLineItem(lineItem); was created
+INFO - 14:33:04:    UML ControlFlowImpl addLineItem(lineItem);_FinalNode was created
+INFO - 14:33:04: Entering UML ActivityImpl addLineItem: Activity for addLineItem
+INFO - 14:33:04:    UML CallOperationActionImpl add was created: Create method invocation
+INFO - 14:33:04:    UML CallOperationActionImpl lineItems.add(lineItem); was created: Create expression declaration
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_lineItems.add(lineItem); was created
+INFO - 14:33:04:    UML ControlFlowImpl lineItems.add(lineItem);_FinalNode was created
+INFO - 14:33:04: Entering Java CompilationUnit Category.java: Creating activities
+INFO - 14:33:04: Entering UML ActivityImpl getCategoryId: Activity for getCategoryId
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:04: Entering UML ActivityImpl setCategoryId: Activity for setCategoryId
+INFO - 14:33:04:    UML CallOperationActionImpl trim was created: Create method invocation
+INFO - 14:33:04:    UML CallOperationActionImpl this.categoryId=categoryId.trim(); was created: Create expression declaration
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_this.categoryId=categoryId.trim(); was created
+INFO - 14:33:04:    UML ControlFlowImpl this.categoryId=categoryId.tri_FinalNode was created
+INFO - 14:33:04: Entering UML ActivityImpl getName: Activity for getName
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:04: Entering UML ActivityImpl setName: Activity for setName
+INFO - 14:33:04:    UML OpaqueActionImpl this.name=name; was created: Create expression declaration
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_this.name=name; was created
+INFO - 14:33:04:    UML ControlFlowImpl this.name=name;_FinalNode was created
+INFO - 14:33:04: Entering UML ActivityImpl getDescription: Activity for getDescription
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:04: Entering UML ActivityImpl setDescription: Activity for setDescription
+INFO - 14:33:04:    UML OpaqueActionImpl this.description=description; was created: Create expression declaration
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_this.description=description; was created
+INFO - 14:33:04:    UML ControlFlowImpl this.description=description;_FinalNode was created
+INFO - 14:33:04: Entering UML ActivityImpl getProducts: Activity for getProducts
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:04: Entering UML ActivityImpl setProducts: Activity for setProducts
+INFO - 14:33:04:    UML OpaqueActionImpl this.products=products; was created: Create expression declaration
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_this.products=products; was created
+INFO - 14:33:04:    UML ControlFlowImpl this.products=products;_FinalNode was created
+INFO - 14:33:04: Entering UML ActivityImpl toString: Activity for toString
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:04: Entering Java CompilationUnit Sequence.java: Creating activities
+INFO - 14:33:04: Entering UML ActivityImpl Sequence: Activity for Sequence
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:04: Entering UML ActivityImpl Sequence: Activity for Sequence
+INFO - 14:33:04:    UML OpaqueActionImpl this.name=name; was created: Create expression declaration
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_this.name=name; was created
+INFO - 14:33:04:    UML OpaqueActionImpl this.nextId=nextId; was created: Create expression declaration
+INFO - 14:33:04:    UML ControlFlowImpl this.name=name;_this.nextId=nextId; was created
+INFO - 14:33:04:    UML ControlFlowImpl this.nextId=nextId;_FinalNode was created
+INFO - 14:33:04: Entering UML ActivityImpl getName: Activity for getName
+INFO - 14:33:04:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:04: Entering UML ActivityImpl setName: Activity for setName
+INFO - 14:33:05:    UML OpaqueActionImpl this.name=name; was created: Create expression declaration
+INFO - 14:33:05:    UML ControlFlowImpl InitNode_this.name=name; was created
+INFO - 14:33:09:    UML ControlFlowImpl this.name=name;_FinalNode was created
+INFO - 14:33:14: Entering UML ActivityImpl getNextId: Activity for getNextId
+INFO - 14:33:14:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:14: Entering UML ActivityImpl setNextId: Activity for setNextId
+INFO - 14:33:14:    UML OpaqueActionImpl this.nextId=nextId; was created: Create expression declaration
+INFO - 14:33:14:    UML ControlFlowImpl InitNode_this.nextId=nextId; was created
+INFO - 14:33:14:    UML ControlFlowImpl this.nextId=nextId;_FinalNode was created
+INFO - 14:33:14: Entering Java CompilationUnit Account.java: Creating activities
+INFO - 14:33:14: Entering UML ActivityImpl getUsername: Activity for getUsername
+INFO - 14:33:14:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:14: Entering UML ActivityImpl setUsername: Activity for setUsername
+INFO - 14:33:14:    UML OpaqueActionImpl this.username=username; was created: Create expression declaration
+INFO - 14:33:14:    UML ControlFlowImpl InitNode_this.username=username; was created
+INFO - 14:33:14:    UML ControlFlowImpl this.username=username;_FinalNode was created
+INFO - 14:33:14: Entering UML ActivityImpl getPassword: Activity for getPassword
+INFO - 14:33:14:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl setPassword: Activity for setPassword
+INFO - 14:33:15:    UML OpaqueActionImpl this.password=password; was created: Create expression declaration
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_this.password=password; was created
+INFO - 14:33:15:    UML ControlFlowImpl this.password=password;_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl getEmail: Activity for getEmail
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl setEmail: Activity for setEmail
+INFO - 14:33:15:    UML OpaqueActionImpl this.email=email; was created: Create expression declaration
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_this.email=email; was created
+INFO - 14:33:15:    UML ControlFlowImpl this.email=email;_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl getFirstName: Activity for getFirstName
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl setFirstName: Activity for setFirstName
+INFO - 14:33:15:    UML OpaqueActionImpl this.firstName=firstName; was created: Create expression declaration
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_this.firstName=firstName; was created
+INFO - 14:33:15:    UML ControlFlowImpl this.firstName=firstName;_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl getLastName: Activity for getLastName
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl setLastName: Activity for setLastName
+INFO - 14:33:15:    UML OpaqueActionImpl this.lastName=lastName; was created: Create expression declaration
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_this.lastName=lastName; was created
+INFO - 14:33:15:    UML ControlFlowImpl this.lastName=lastName;_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl getStatus: Activity for getStatus
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl setStatus: Activity for setStatus
+INFO - 14:33:15:    UML OpaqueActionImpl this.status=status; was created: Create expression declaration
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_this.status=status; was created
+INFO - 14:33:15:    UML ControlFlowImpl this.status=status;_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl getAddress1: Activity for getAddress1
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl setAddress1: Activity for setAddress1
+INFO - 14:33:15:    UML OpaqueActionImpl this.address1=address1; was created: Create expression declaration
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_this.address1=address1; was created
+INFO - 14:33:15:    UML ControlFlowImpl this.address1=address1;_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl getAddress2: Activity for getAddress2
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl setAddress2: Activity for setAddress2
+INFO - 14:33:15:    UML OpaqueActionImpl this.address2=address2; was created: Create expression declaration
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_this.address2=address2; was created
+INFO - 14:33:15:    UML ControlFlowImpl this.address2=address2;_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl getCity: Activity for getCity
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:15: Entering UML ActivityImpl setCity: Activity for setCity
+INFO - 14:33:15:    UML OpaqueActionImpl this.city=city; was created: Create expression declaration
+INFO - 14:33:15:    UML ControlFlowImpl InitNode_this.city=city; was created
+INFO - 14:33:16:    UML ControlFlowImpl this.city=city;_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl getState: Activity for getState
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl setState: Activity for setState
+INFO - 14:33:16:    UML OpaqueActionImpl this.state=state; was created: Create expression declaration
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_this.state=state; was created
+INFO - 14:33:16:    UML ControlFlowImpl this.state=state;_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl getZip: Activity for getZip
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl setZip: Activity for setZip
+INFO - 14:33:16:    UML OpaqueActionImpl this.zip=zip; was created: Create expression declaration
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_this.zip=zip; was created
+INFO - 14:33:16:    UML ControlFlowImpl this.zip=zip;_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl getCountry: Activity for getCountry
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl setCountry: Activity for setCountry
+INFO - 14:33:16:    UML OpaqueActionImpl this.country=country; was created: Create expression declaration
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_this.country=country; was created
+INFO - 14:33:16:    UML ControlFlowImpl this.country=country;_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl getPhone: Activity for getPhone
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl setPhone: Activity for setPhone
+INFO - 14:33:16:    UML OpaqueActionImpl this.phone=phone; was created: Create expression declaration
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_this.phone=phone; was created
+INFO - 14:33:16:    UML ControlFlowImpl this.phone=phone;_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl getFavouriteCategoryId: Activity for getFavouriteCategoryId
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl setFavouriteCategoryId: Activity for setFavouriteCategoryId
+INFO - 14:33:16:    UML OpaqueActionImpl this.favouriteCategoryId=favouriteCategoryId; was created: Create expression declaration
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_this.favouriteCategoryId=favouriteCategoryId; was created
+INFO - 14:33:16:    UML ControlFlowImpl this.favouriteCategoryId=favou_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl getLanguagePreference: Activity for getLanguagePreference
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl setLanguagePreference: Activity for setLanguagePreference
+INFO - 14:33:16:    UML OpaqueActionImpl this.languagePreference=languagePreference; was created: Create expression declaration
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_this.languagePreference=languagePreference; was created
+INFO - 14:33:16:    UML ControlFlowImpl this.languagePreference=langua_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl isListOption: Activity for isListOption
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl setListOption: Activity for setListOption
+INFO - 14:33:16:    UML OpaqueActionImpl this.listOption=listOption; was created: Create expression declaration
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_this.listOption=listOption; was created
+INFO - 14:33:16:    UML ControlFlowImpl this.listOption=listOption;_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl isBannerOption: Activity for isBannerOption
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl setBannerOption: Activity for setBannerOption
+INFO - 14:33:16:    UML OpaqueActionImpl this.bannerOption=bannerOption; was created: Create expression declaration
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_this.bannerOption=bannerOption; was created
+INFO - 14:33:16:    UML ControlFlowImpl this.bannerOption=bannerOption_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl getBannerName: Activity for getBannerName
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:16: Entering UML ActivityImpl setBannerName: Activity for setBannerName
+INFO - 14:33:16:    UML OpaqueActionImpl this.bannerName=bannerName; was created: Create expression declaration
+INFO - 14:33:16:    UML ControlFlowImpl InitNode_this.bannerName=bannerName; was created
+INFO - 14:33:16:    UML ControlFlowImpl this.bannerName=bannerName;_FinalNode was created
+INFO - 14:33:17: Entering Java CompilationUnit Item.java: Creating activities
+INFO - 14:33:17: Entering UML ActivityImpl getItemId: Activity for getItemId
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl setItemId: Activity for setItemId
+INFO - 14:33:17:    UML CallOperationActionImpl trim was created: Create method invocation
+INFO - 14:33:17:    UML CallOperationActionImpl this.itemId=itemId.trim(); was created: Create expression declaration
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_this.itemId=itemId.trim(); was created
+INFO - 14:33:17:    UML ControlFlowImpl this.itemId=itemId.trim();_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl getQuantity: Activity for getQuantity
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl setQuantity: Activity for setQuantity
+INFO - 14:33:17:    UML OpaqueActionImpl this.quantity=quantity; was created: Create expression declaration
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_this.quantity=quantity; was created
+INFO - 14:33:17:    UML ControlFlowImpl this.quantity=quantity;_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl getProduct: Activity for getProduct
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl setProduct: Activity for setProduct
+INFO - 14:33:17:    UML OpaqueActionImpl this.product=product; was created: Create expression declaration
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_this.product=product; was created
+INFO - 14:33:17:    UML ControlFlowImpl this.product=product;_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl getProductId: Activity for getProductId
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl setProductId: Activity for setProductId
+INFO - 14:33:17:    UML OpaqueActionImpl this.productId=productId; was created: Create expression declaration
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_this.productId=productId; was created
+INFO - 14:33:17:    UML ControlFlowImpl this.productId=productId;_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl getSupplierId: Activity for getSupplierId
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl setSupplierId: Activity for setSupplierId
+INFO - 14:33:17:    UML OpaqueActionImpl this.supplierId=supplierId; was created: Create expression declaration
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_this.supplierId=supplierId; was created
+INFO - 14:33:17:    UML ControlFlowImpl this.supplierId=supplierId;_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl getListPrice: Activity for getListPrice
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl setListPrice: Activity for setListPrice
+INFO - 14:33:17:    UML OpaqueActionImpl this.listPrice=listPrice; was created: Create expression declaration
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_this.listPrice=listPrice; was created
+INFO - 14:33:17:    UML ControlFlowImpl this.listPrice=listPrice;_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl getUnitCost: Activity for getUnitCost
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl setUnitCost: Activity for setUnitCost
+INFO - 14:33:17:    UML OpaqueActionImpl this.unitCost=unitCost; was created: Create expression declaration
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_this.unitCost=unitCost; was created
+INFO - 14:33:17:    UML ControlFlowImpl this.unitCost=unitCost;_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl getStatus: Activity for getStatus
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl setStatus: Activity for setStatus
+INFO - 14:33:17:    UML OpaqueActionImpl this.status=status; was created: Create expression declaration
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_this.status=status; was created
+INFO - 14:33:17:    UML ControlFlowImpl this.status=status;_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl getAttribute1: Activity for getAttribute1
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl setAttribute1: Activity for setAttribute1
+INFO - 14:33:17:    UML OpaqueActionImpl this.attribute1=attribute1; was created: Create expression declaration
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_this.attribute1=attribute1; was created
+INFO - 14:33:17:    UML ControlFlowImpl this.attribute1=attribute1;_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl getAttribute2: Activity for getAttribute2
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl setAttribute2: Activity for setAttribute2
+INFO - 14:33:17:    UML OpaqueActionImpl this.attribute2=attribute2; was created: Create expression declaration
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_this.attribute2=attribute2; was created
+INFO - 14:33:17:    UML ControlFlowImpl this.attribute2=attribute2;_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl getAttribute3: Activity for getAttribute3
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl setAttribute3: Activity for setAttribute3
+INFO - 14:33:17:    UML OpaqueActionImpl this.attribute3=attribute3; was created: Create expression declaration
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_this.attribute3=attribute3; was created
+INFO - 14:33:17:    UML ControlFlowImpl this.attribute3=attribute3;_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl getAttribute4: Activity for getAttribute4
+INFO - 14:33:17:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:17: Entering UML ActivityImpl setAttribute4: Activity for setAttribute4
+INFO - 14:33:17:    UML OpaqueActionImpl this.attribute4=attribute4; was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_this.attribute4=attribute4; was created
+INFO - 14:33:18:    UML ControlFlowImpl this.attribute4=attribute4;_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl getAttribute5: Activity for getAttribute5
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl setAttribute5: Activity for setAttribute5
+INFO - 14:33:18:    UML OpaqueActionImpl this.attribute5=attribute5; was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_this.attribute5=attribute5; was created
+INFO - 14:33:18:    UML ControlFlowImpl this.attribute5=attribute5;_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl toString: Activity for toString
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:18: Entering Java CompilationUnit LineItem.java: Creating activities
+INFO - 14:33:18: Entering UML ActivityImpl LineItem: Activity for LineItem
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl LineItem: Activity for LineItem
+INFO - 14:33:18:    UML OpaqueActionImpl this.lineNumber=lineNumber; was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_this.lineNumber=lineNumber; was created
+INFO - 14:33:18:    UML CallOperationActionImpl getQuantity was created: Create method invocation
+INFO - 14:33:18:    UML CallOperationActionImpl this.quantity=cartItem.getQuantity(); was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl this.lineNumber=lineNumber;_this.quantity=cartItem.getQuanti was created
+INFO - 14:33:18:    UML CallOperationActionImpl getItemId was created: Create method invocation
+INFO - 14:33:18:    UML CallOperationActionImpl this.itemId=cartItem.getItem().getItemId(); was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl this.quantity=cartItem.getQuan_this.itemId=cartItem.getItem( was created
+INFO - 14:33:18:    UML CallOperationActionImpl getListPrice was created: Create method invocation
+INFO - 14:33:18:    UML CallOperationActionImpl this.unitPrice=cartItem.getItem().getListPrice(); was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl this.itemId=cartItem.getItem()_this.unitPrice=cartItem.getIt was created
+INFO - 14:33:18:    UML CallOperationActionImpl getItem was created: Create method invocation
+INFO - 14:33:18:    UML CallOperationActionImpl this.item=cartItem.getItem(); was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl this.unitPrice=cartItem.getIte_this.item=cartItem.getItem(); was created
+INFO - 14:33:18:    UML ControlFlowImpl this.item=cartItem.getItem();_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl getOrderId: Activity for getOrderId
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl setOrderId: Activity for setOrderId
+INFO - 14:33:18:    UML OpaqueActionImpl this.orderId=orderId; was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_this.orderId=orderId; was created
+INFO - 14:33:18:    UML ControlFlowImpl this.orderId=orderId;_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl getLineNumber: Activity for getLineNumber
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl setLineNumber: Activity for setLineNumber
+INFO - 14:33:18:    UML OpaqueActionImpl this.lineNumber=lineNumber; was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_this.lineNumber=lineNumber; was created
+INFO - 14:33:18:    UML ControlFlowImpl this.lineNumber=lineNumber;_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl getItemId: Activity for getItemId
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl setItemId: Activity for setItemId
+INFO - 14:33:18:    UML OpaqueActionImpl this.itemId=itemId; was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_this.itemId=itemId; was created
+INFO - 14:33:18:    UML ControlFlowImpl this.itemId=itemId;_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl getUnitPrice: Activity for getUnitPrice
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl setUnitPrice: Activity for setUnitPrice
+INFO - 14:33:18:    UML OpaqueActionImpl this.unitPrice=unitprice; was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_this.unitPrice=unitprice; was created
+INFO - 14:33:18:    UML ControlFlowImpl this.unitPrice=unitprice;_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl getTotal: Activity for getTotal
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl getItem: Activity for getItem
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl setItem: Activity for setItem
+INFO - 14:33:18:    UML OpaqueActionImpl this.item=item; was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_this.item=item; was created
+INFO - 14:33:18:    UML CallOperationActionImpl calculateTotal was created: Create method invocation
+INFO - 14:33:18:    UML CallOperationActionImpl calculateTotal(); was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl this.item=item;_calculateTotal(); was created
+INFO - 14:33:18:    UML ControlFlowImpl calculateTotal();_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl getQuantity: Activity for getQuantity
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:18: Entering UML ActivityImpl setQuantity: Activity for setQuantity
+INFO - 14:33:18:    UML OpaqueActionImpl this.quantity=quantity; was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl InitNode_this.quantity=quantity; was created
+INFO - 14:33:18:    UML CallOperationActionImpl calculateTotal was created: Create method invocation
+INFO - 14:33:18:    UML CallOperationActionImpl calculateTotal(); was created: Create expression declaration
+INFO - 14:33:18:    UML ControlFlowImpl this.quantity=quantity;_calculateTotal(); was created
+INFO - 14:33:18:    UML ControlFlowImpl calculateTotal();_FinalNode was created
+INFO - 14:33:19: Entering UML ActivityImpl calculateTotal: Activity for calculateTotal
+INFO - 14:33:19:    UML DecisionNodeImpl If_0_cond was created: Create if structure
+INFO - 14:33:19:    UML ControlFlowImpl InitNode_If_0_cond was created
+INFO - 14:33:19:    UML CallOperationActionImpl multiply was created: Create method invocation
+INFO - 14:33:19:    UML CallOperationActionImpl total=item.getListPrice().multiply(new BigDecimal(quantity)); was created: Create expression declaration
+INFO - 14:33:19:    UML ControlFlowImpl If_0_cond_total=item.getListPrice().multiply(new BigDecimal( was created
+INFO - 14:33:19:    UML OpaqueActionImpl total=null; was created: Create expression declaration
+INFO - 14:33:19:    UML ControlFlowImpl If_0_cond_total=null; was created
+INFO - 14:33:19:    UML ControlFlowImpl total=item.getListPrice().mult_If_0_merge was created
+INFO - 14:33:19:    UML ControlFlowImpl total=null;_If_0_merge was created
+INFO - 14:33:19:    UML ControlFlowImpl If_0_merge_FinalNode was created
+INFO - 14:33:19: Entering Java CompilationUnit Product.java: Creating activities
+INFO - 14:33:19: Entering UML ActivityImpl getProductId: Activity for getProductId
+INFO - 14:33:19:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:19: Entering UML ActivityImpl setProductId: Activity for setProductId
+INFO - 14:33:19:    UML CallOperationActionImpl trim was created: Create method invocation
+INFO - 14:33:19:    UML CallOperationActionImpl this.productId=productId.trim(); was created: Create expression declaration
+INFO - 14:33:19:    UML ControlFlowImpl InitNode_this.productId=productId.trim(); was created
+INFO - 14:33:19:    UML ControlFlowImpl this.productId=productId.trim(_FinalNode was created
+INFO - 14:33:19: Entering UML ActivityImpl getCategoryId: Activity for getCategoryId
+INFO - 14:33:19:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:19: Entering UML ActivityImpl setCategoryId: Activity for setCategoryId
+INFO - 14:33:19:    UML OpaqueActionImpl this.categoryId=categoryId; was created: Create expression declaration
+INFO - 14:33:19:    UML ControlFlowImpl InitNode_this.categoryId=categoryId; was created
+INFO - 14:33:19:    UML ControlFlowImpl this.categoryId=categoryId;_FinalNode was created
+INFO - 14:33:19: Entering UML ActivityImpl getName: Activity for getName
+INFO - 14:33:19:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:19: Entering UML ActivityImpl setName: Activity for setName
+INFO - 14:33:19:    UML OpaqueActionImpl this.name=name; was created: Create expression declaration
+INFO - 14:33:19:    UML ControlFlowImpl InitNode_this.name=name; was created
+INFO - 14:33:19:    UML ControlFlowImpl this.name=name;_FinalNode was created
+INFO - 14:33:19: Entering UML ActivityImpl getDescription: Activity for getDescription
+INFO - 14:33:19:    UML ControlFlowImpl InitNode_FinalNode was created
+INFO - 14:33:19: Entering UML ActivityImpl setDescription: Activity for setDescription
+INFO - 14:33:19:    UML OpaqueActionImpl this.description=description; was created: Create expression declaration
+INFO - 14:33:19:    UML ControlFlowImpl InitNode_this.description=description; was created
+INFO - 14:33:19:    UML ControlFlowImpl this.description=description;_FinalNode was created
+INFO - 14:33:19: Entering UML ActivityImpl toString: Activity for toString
+INFO - 14:33:19:    UML ControlFlowImpl InitNode_FinalNode was created
+WARNING - 14:33:19: Second pass : generating package usages
+INFO - 14:33:19: Entering UML ModelImpl com.ibatis.jpetstore.domain: Creating usages
+INFO - 14:33:19: Entering UML PackageImpl com: Creating usages
+INFO - 14:33:19: Entering UML PackageImpl ibatis: Creating usages
+INFO - 14:33:19: Entering UML PackageImpl jpetstore: Creating usages
+INFO - 14:33:19: Entering UML PackageImpl domain: Creating usages
+INFO - 14:33:19:    UML PackageImpl domain was created
+INFO - 14:33:19:    UML PackageImpl domain was created
+INFO - 14:33:19:    UML PackageImpl domain was created
+INFO - 14:33:19:    UML PackageImpl domain was created
+INFO - 14:33:19: Entering UML PackageImpl common: Creating usages
+INFO - 14:33:19: Entering UML PackageImpl util: Creating usages
+INFO - 14:33:19: Entering UML PackageImpl java: Creating usages
+INFO - 14:33:19: Entering UML PackageImpl io: Creating usages
+INFO - 14:33:19: Entering UML PackageImpl math: Creating usages
+INFO - 14:33:19: Entering UML PackageImpl util: Creating usages

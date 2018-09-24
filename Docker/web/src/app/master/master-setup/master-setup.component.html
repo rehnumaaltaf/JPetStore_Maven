@@ -1,0 +1,262 @@
+<div class="container-fluid">
+	<div class="row">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0 wid94" *ngIf="master_more">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 height-220 master_search_cont">
+				<div class="master-search">
+					<h3 class="font-24 font-semibold colr-1e2f4d marb15 colr-333333 mart0">Setup your Masters</h3>
+					<p class="font-regular font-15 marb20 colr-333333">
+
+						Search your Desired Module...
+					</p>
+					<div class="user-detail">
+						<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 cursor-pnt ovr-flw positionrel">
+							<input type="text" class="form-control font-14 font-regular" id="master_search" value="" placeholder="Search Masters">
+							<i class="search-icn">&nbsp;</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  pad0 no-bckgrnd">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 card-columns Master_setup_block ovr-flow padt15">
+					
+						<div class="col-lg-3 col-md-3 col-sm-6 card mart20 marb20">
+							<div class="card-block">
+							<div class="ovr-flow inner-header">
+								<h3 class="font-15 colr-9fc800"><i class="Bank-icn-sm top-align"> &nbsp; </i> Finance</h3>
+							</div>
+							<div class="content-block font-regular font-14">
+								<div class="colm-data1 cursor-pnt" (click)="paymentListList()">Payment Terms</div>
+								<div class="colm-data1 cursor-pnt" (click)="financialCalDetails()">Financial Calendar</div>
+								<div class="colm-data1 cursor-pnt" (click)="currencyDetails()">Currency master</div>
+
+								<!--<div class="colm-data1 cursor-pnt" (click)="forexDetails()">FOREX</div>-->
+								<div class="colm-data1 cursor-pnt pointer-disable" (click)="glDetails()">GL Account Master</div>
+								<div class="colm-data1 cursor-pnt" (click)="taxRate()">Tax Rate Master</div>
+								<div class="colm-data1 cursor-pnt" (click)="weightTerms()">Weight Terms Master</div>
+								<div class="colm-data1 cursor-pnt" (click)="basepaymentTerms()">Base Payment Term</div>
+								<div class="colm-data1 cursor-pnt pointer-disable" (click)="taxRule()">Tax Rule Master</div>
+								<div class="colm-data1 cursor-pnt pointer-disable">Contract Term</div>
+							</div>
+						</div>
+
+				</div>
+						<div class="col-lg-3 col-md-3 card col-sm-6 mart20 marb20">
+							<div class="card-block">
+							<div class="ovr-flow inner-header">
+								<h3 class="font-15 colr-9fc800"><i class="Cal-icn-sm top-align"> &nbsp; </i> Product </h3>
+							</div>
+							<div class="content-block ovr-flow font-regular font-14">
+								<div class="colm-data1 cursor-pnt " (click)="product()">Product Master</div>
+								<div class="colm-data1 cursor-pnt pointer-disable" (click)="origin()">Origin Master</div>
+								<div class="colm-data1 cursor-pnt" (click)="productGrade()">Grade Master </div>
+								<div class="colm-data1 cursor-pnt" (click)="cropYear()">Crop Year Master</div>
+								<div class="colm-data1 cursor-pnt" (click)="blendMaster()">Blend Master</div>
+								<div class="colm-data1 cursor-pnt" (click)="outTurn()">Out-Turn Ratio Master </div>
+								<div class="colm-data1 cursor-pnt" (click)="BrandMaster()">Brand Master</div>
+								<div class="colm-data1 cursor-pnt pointer-disable" (click)="gradeAttribute()">Grade Attribute</div>
+								<div class="colm-data1 cursor-pnt" (click)="CertificationMaster()">Certification Master</div>
+							</div>
+						</div>
+						</div>
+						<div class="card  mart20 marb20">
+				<div class="card-block">
+							<div class="ovr-flow inner-header">
+								<h3 class="font-15 colr-9fc800"><i class="batch-icn-sm top-align"> &nbsp; </i> Geo & Location </h3>
+							</div>
+							<div class="content-block font-regular font-14">
+								<div class="colm-data1 cursor-pnt" (click)="goToViewGeo()">Geo Master</div>
+								<div class="colm-data1 cursor-pnt" (click)="loactionDetails()">Port / Loction Master</div>
+
+								<div class="colm-data1 cursor-pnt" (click)="incoTerms()">INCO terms Master</div>
+							</div>
+						</div>
+				</div>
+						<div class="card mart20 marb20">
+								<div class="card-block">
+							<div class="ovr-flow inner-header">
+								<h3 class="font-15 colr-9fc800"><i class="Payment-icn-sm top-align"> &nbsp; </i> UOM & Packing </h3>
+							</div>
+							<div class="content-block font-regular font-14">
+								<div class="colm-data1 cursor-pnt" (click)="onInternalClick()">Primary Packing Master</div>
+								<div class="colm-data1 cursor-pnt" (click)="onExternalClick()">Secondary Packing Master</div>
+								<div class="colm-data1 cursor-pnt" (click)="packingMaterialDetails()">Packing Material</div>
+								<div class="colm-data1 cursor-pnt" (click)="uomDetails()">UOM Master</div>
+							</div>
+						</div>
+				</div>
+				
+
+			
+
+						<div class="card mart20 marb20">
+								<div class="card-block">
+							<div class="ovr-flow inner-header">
+								<h3 class="font-15 colr-9fc800"><i class="dollar-icn-sm top-align"> &nbsp; </i> Party</h3>
+							</div>
+							<div class="content-block font-regular font-14" >
+								<div class="colm-data1 cursor-pnt" (click)="partyMaster()">Party Master</div>
+								<!--<div class="colm-data1 cursor-pnt" (click)="unitDetails()">Unit Master</div>-->
+								<div class="colm-data1 cursor-pnt pointer-disable">Unit Master</div>
+								<!--<div class="colm-data1 cursor-pnt" onClick="window.location.href='./Party_Master_Internal.html'">Certification Agency</div>-->
+							</div>
+						</div>
+				</div>
+						<div class="card mart20 marb20">
+								<div class="card-block">
+							<div class="ovr-flow inner-header">
+								<h3 class="font-15 colr-9fc800"><i class="card-icn-sm top-align"> &nbsp; </i> Cost </h3>
+							</div>
+							<div class="content-block font-regular font-14">
+								<div class="colm-data1 cursor-pnt" (click)="viewCostMaster()">Cost</div>
+								<div class="colm-data1 cursor-pnt" (click)="viewCostMatrix()"> Cost Matrix</div>
+								<!--<div class="colm-data1 cursor-pnt pointer-disable" (click)="cnfCostMatrixList()">CnF Cost Matrix</div>
+								<div class="colm-data1 cursor-pnt pointer-disable" (click)="freightCostMatrixList()">Freight Cost Matrix</div>-->
+							</div>
+						</div>
+				</div>
+						<div class="card mart20 marb20">
+								<div class="card-block">
+							<div class="ovr-flow inner-header">
+								<h3 class="font-15 colr-9fc800"><i class="Label-batch-icn-sm top-align"> &nbsp; </i> Market Data </h3>
+							</div>
+							<div class="content-block font-regular font-14">
+								<div class="colm-data1 cursor-pnt" (click)="holidayCalendarList()">Holiday Calendar Master</div>
+								<div class="colm-data1 cursor-pnt pointer-disable" (click)="forexDetails()">FOREX Index</div>
+								<!--<div class="colm-data1 cursor-pnt" onClick="window.location.href='./GL-Master.html'">Market Price Options</div>-->
+								<div class="colm-data1 cursor-pnt pointer-disable">Future Price Index</div>
+								<div class="colm-data1 cursor-pnt pointer-disable">Option Price Index</div>
+								<div class="colm-data1 cursor-pnt pointer-disable">Exchange Rule Setup</div>
+								<div class="colm-data1 cursor-pnt pointer-disable">Physical Price Index</div>
+								<div class="colm-data1 cursor-pnt pointer-disable">Tenor Master</div>
+								<div class="colm-data1 cursor-pnt pointer-disable">Physical / Market Calendar Master</div>
+								<!--
+								<div class="colm-data1 cursor-pnt" onClick="window.location.href='./AddCnF_Terminal Matrix.html'">Market Price Futures</div>-->
+								<div class="colm-data1 cursor-pnt" (click)="shipmentMonth()">Shipment / Delivery Week Master</div>
+							</div>
+						</div>
+						</div>
+						<div class="card mart20 marb20">
+								<div class="card-block">
+							<div class="ovr-flow inner-header">
+								<h3 class="font-15 colr-9fc800"><i class="Curr-icn-sm top-align"> &nbsp; </i> Limit </h3>
+							</div>
+							<div class="content-block font-regular font-14">
+								<!--<div class="colm-data1 cursor-pnt" onClick="window.location.href='./PackingMaterial_Master.html'">Party limit</div>-->
+								<div class="colm-data1 cursor-pnt " (click)="limitMaster()">Limit Master</div>
+								<div class="colm-data1 cursor-pnt pointer-disable" (click)="productLimit()">Product Limit Master</div>
+								<div class="colm-data1 cursor-pnt pointer-disable" (click)="exchangeLimit()">Exchange Limit Master</div>
+								<div class="colm-data1 cursor-pnt pointer-disable" (click)="forexLimit()">Forex Limit Master</div>
+								<div class="colm-data1 cursor-pnt pointer-disable" (click)="traderLimit()">Trader Limit Master</div>
+								<div class="colm-data1 cursor-pnt pointer-disable" (click)="legalEntity()">Legal Entity Limit</div>
+								<div class="colm-data1 cursor-pnt pointer-disable" (click)="unitLimit()">Unit Limit Master</div>
+								<div class="colm-data1 cursor-pnt pointer-disable">Credit limits</div>
+								<div class="colm-data1 cursor-pnt pointer-disable">Counterparty Limits</div>
+							</div>
+						</div>
+						</div>
+			
+						<div class="card mart20 marb20">
+								<div class="card-block">
+							<div class="ovr-flow inner-header">
+								<h3 class="font-15 colr-9fc800"><i class="dollar-icn-sm top-align"> &nbsp; </i> Security</h3>
+							</div>
+							<div class="content-block font-regular font-14">
+								<div class="colm-data1 cursor-pnt" (click)="permissionGroup()">Permission Group</div>
+								<div class="colm-data1 cursor-pnt" (click)="goToViewUser()">User Role</div>
+							</div>
+								</div>
+						</div>
+
+				
+					<!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="col-lg-3 col-md-3 col-sm-6 ovr-flow padt15 padb15">
+							<div class="ovr-flow inner-header">
+								<h3 class="font-bold font-15 colr-lblue"><i class="dollar-icn-sm"> &nbsp; </i> Security</h3>
+							</div>
+							<div class="content-block font-regular font-14">
+								<div class="colm-data1 cursor-pnt" (click)="permissionGroup()">Permission Group</div>
+								<div class="colm-data1 cursor-pnt" (click)="goToViewUser()">User Role</div>
+							</div>
+						</div>
+
+					</div>-->
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0" *ngIf="!master_more">
+			<!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 no-bckgrnd">-->
+			<!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 Master_setup_block ovr-flow padt15">
+					<div class="col-lg-3 col-md-3 col-sm-6 ovr-flow padt15 padb15">
+						<div class="ovr-flow inner-header">
+							<h3 class="font-bold font-15 colr-lblue"><i class="dollar-icn-sm"> &nbsp; </i> Masters</h3>
+						</div>
+						<div class="content-block font-regular font-14">
+							<div class="colm-data1 cursor-pnt" onClick="window.location.href='./Party_Master_External.html'">Payment Terms</div>
+							<div class="colm-data1 cursor-pnt" onClick="window.location.href='./Party_Master_Internal.html'">Tax Rate</div>
+							<div class="colm-data1 cursor-pnt" onClick="window.location.href='./Party_Master_Warehouse.html'">Product Definition</div>
+							<div class="colm-data1 cursor-pnt" (click)="origin()">Origin Definition</div>
+							<div class="colm-data1 cursor-pnt" onClick="window.location.href='./Product_Create_page.html'">Quality Template</div>
+							<div class="colm-data1 cursor-pnt" onClick="window.location.href='./Product_Grade_Master.html'">Grade Definition</div>
+							<div class="colm-data1 cursor-pnt" onClick="window.location.href='./Product_Grade_Master.html'">Party Definition</div>
+							<div class="colm-data1 cursor-pnt" (click)="click_more()">More...</div>
+						</div>
+					</div>
+					
+			
+				</div>-->
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 no-bckgrnd">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div padt0 no-bckgrnd">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 more-txt">
+						<h3 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart0 font-15 font-semibold colr-1e2f4d marb0 main-header">Master Setup</h3>						
+					</div>
+					<div class="mastermenu" (click)="paymentListList()">
+						<div class="head pay-icon mart30 marb25"></div>
+						<div class="foot marb25">Payment Term Master</div>
+					</div>
+					<div class="mastermenu " (click)="taxRate()">
+						<div class="head tax-icon mart30 marb25"></div>
+						<div class="foot marb25">Tax Rate Master</div>
+					</div>
+					<div class="mastermenu" (click)="product()">
+						<div class="head product-icon mart30 marb25"></div>
+						<div class="foot marb25">Product Master</div>
+					</div>
+					<div class="mastermenu  cursor-pnt pointer-disable" (click)="origin()">
+						<div class="head origin-icon mart30 marb25"></div>
+						<div class="foot marb25">Origin Master</div>
+					</div>
+					<div class="mastermenu" (click)="productGrade()">
+						<div class="head grade-icon mart30 marb25"></div>
+						<div class="foot marb25">Grade Master</div>
+					</div>
+					<div class="mastermenu" (click)="partyMaster()">
+						<div class="head party-icon mart30 marb25"></div>
+						<div class="foot marb25">Party Master</div>
+					</div>
+					<div class="mastermenu  cursor-pnt pointer-disable" [hidden]="!masterService.getChildObject('View Uom.GET')" (click)="uomDetails()">
+						<div class="head quality-icon mart30 marb25"></div>
+						<div class="foot marb25">Unit Master</div>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div padt0 no-bckgrnd more-txt">
+
+				
+					<!--<div class="mastermenu marl25 cursor-pnt" (click)="permissionGroup()">
+						<div class="head security-icon mart30 marb25"></div>
+						<div class="foot marb25">Security Configuration</div>
+					</div>-->
+					<div class="mastermenu  cursor-pnt" (click)="click_more()">
+						<div class="head more-icon mart30 marb25"></div>
+						<div class="foot marb25">More</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!--</div>-->
+		</div>
+	</div>

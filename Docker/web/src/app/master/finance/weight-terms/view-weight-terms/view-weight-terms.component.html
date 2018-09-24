@@ -1,0 +1,155 @@
+<div class="container-fluid ">
+
+  <div class="row row-background">
+    <app-nav-bar></app-nav-bar>
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div">
+<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">Weight Terms</h4>	
+        <form class="user-detail font-sm">
+          <accordion>
+						 <accordion-group #group [isOpen]="statuses.isFirstOpen" [isDisabled]="statuses.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                Basic Details                
+                   <i class="pull-right float-xs-right glyphicon"
+                    [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">                    
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Weight Code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{weightTermViewByIdModel.weightTermsCode }}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Weight Name</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{weightTermViewByIdModel.weightTermsName}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Description</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{weightTermViewByIdModel.weightTermsDesc}}</span></div></div>
+                          </div>
+                       </div>	
+                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Franchise Applicable</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{weightTermViewByIdModel.weightTermsIsFranchiseApplicable}}</span></div></div>
+                          </div>	
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Default Franchise Value (+/-)</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{weightTermViewByIdModel.weightTermsDefaultFranchiseValue}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Default Franchise Value Unit</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{weightTermViewByIdModel.franchiseValueUnitCode}}</span></div></div>
+                          </div>
+                      </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Tolerance Applicable</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{weightTermViewByIdModel.weightTermsIsToleranceApplicable}}</span></div></div>
+                          </div>	
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Default Tolerance Value (+/-)</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{weightTermViewByIdModel.weightTermsDefaultToleranceValue}}</span></div></div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Default Tolerance Value Unit</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{weightTermViewByIdModel.toleranceValueUnitCode}}</span></div></div>
+                          </div>
+                      </div>
+                </div>
+             </accordion-group>
+                 </accordion>
+   
+                 	<!--Delete Pop up-->
+				<div class="modal fade delete-popup" (onHidden)="onHiddenpopup()" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'"
+				 class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1"
+				 role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<div class="modal-dialog ">
+						<div class="modal-content  del-modal">
+							<div class="modal-header text-center">
+								<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+								<img src="../../assets/image/Confirm_Delete.svg" />
+							</div>
+							<div class="modal-body">
+									<div class="col-md-12 product_img text-center font-14 font-regular">
+										{{deactivateSuccessDialog}}
+									</div>
+							</div>
+							<div class="del-btn-group modal-window-footer btn-shodow">
+								<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="successModal.hide()">Cancel</button></div>
+								<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!---->
+				
+				<!-- ANITHA code -->
+
+				<!--Edit modal pop-up-->
+<div  *ngIf="openEdit" [config]="{backdrop:'static',show: true }"
+ (onHidden)="onHideEditModal()" bsModal  #editModal="bs-modal"
+  class="modal fade edit-popup" 
+  tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-edit">
+				<div class="modal-header mod-head"> 
+					<a class="class pull-right"><span (click)="editModal.hide()"></span></a>
+					<h3 class="modal-title font-semibold">Edit Weight Terms</h3>
+				</div>
+				<div class="modal-edit-body mod-body">
+					<app-add-weight-terms [packModel]=weighttermdetail (onSubmit)="closeEditModal($event)" ></app-add-weight-terms>
+				</div>			
+			</div>
+		</div>
+</div>
+<!--End of Edit modal pop up-->	
+				
+        
+ <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)='backtoPrev()'>Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 font-semibold font-18"
+							  *ngIf="editMode" (click)="editRow()">Edit</button>
+							<button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"
+							*ngIf="isEdit">Update</button>
+							 <button type="button" id="update14" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updatewithStatus('AcitvateDraft')"
+							 >Submit</button> 
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updatewithStatus('Draft')"
+							  >Delete</button>
+						</div>
+					</div>
+
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)='backtoPrev()'>Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update15" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" 
+							 *ngIf="editMode" (click)="editRow()" >Edit</button>
+							<button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"
+							 *ngIf="isEdit">Update</button>
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updatewithStatus('Active')"
+							 >Deactivate</button>
+						</div>
+					</div>
+
+					 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)='backtoPrev()'>Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+						<button type="button" id="update16" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"
+							 *ngIf="editMode" (click)="editRow()" >Edit</button>
+							<button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 save-btn edit-form1 font-semibold font-18"
+							 
+							 *ngIf="isEdit">Update</button>
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updatewithStatus('InActive')"
+							 >Reactivate</button>
+						</div>
+					</div>
+
+        </form>
+
+      </div>
+
+
+
+    </div>
+  </div>
+</div>

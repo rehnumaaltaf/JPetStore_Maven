@@ -1,0 +1,113 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt30 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;"> <!--Master.Forex.Title-->
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>FOREX</h4>
+				</div>
+				<!-- Search Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a>
+					<a routerLink="add-forex"><img src="../../assets/image/add.png"  /></a>
+				</div>
+                <!--end of Search Icon pannel -->
+
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+					<div class="accordion">
+                       <!--view display starts-->
+						<div class="add_Forex_unit">
+						  <p-dataTable [value]="forexModel" [editable]="true" selectionMode="single"
+							 [responsive]="true">
+								<p-column [style]="{'width':'68px'}" selectionMode="multiple">
+								</p-column>
+								<p-column  [sortable]="true" field="forexCode" header="FOREX CODE" [editable]="true" >
+									  
+								</p-column>
+								<p-column  [sortable]="true" field="forexName" header="FOREX NAME" [editable]="true" >
+                                   <ng-template let-col let-attribute="rowData" pTemplate="body">
+										<span (click)="forexDetailView(attribute.forexId,attribute.statusId)" class="view-hyperlink" [innerHTML]="attribute.forexName" class="unit-hyperlink"></span>
+									</ng-template>
+								</p-column>
+								<p-column  [sortable]="true" field="forexDesc" header="FOREX DESCRIPTION" [editable]="true" ></p-column>
+								<p-column  [sortable]="true" field="baseCurrency" header="BASE CURRENCY" [editable]="true" >
+								</p-column>
+								<p-column  [sortable]="true" field="counterCurrency" header="COUNTER CURRENCY" [editable]="true" >
+								</p-column>
+								<p-column  [sortable]="true" field="frequency" header="FREQUENCY" [editable]="true" >
+								</p-column>
+								<p-column field="status" header="STATUS">
+								<ng-template let-col let-attribute="rowData" pTemplate="body">
+									<label class="text-center" [ngClass]="{'status-draft': attribute.statusId==3, 'status-active': attribute.statusId==1,'status-inactive': attribute.statusId==4}">{{((attribute.statusId==3)?'Draft':(attribute.statusId==4?'Inactive':'Active'))}}</label>
+								</ng-template>
+								</p-column>
+								<p-column>
+									<ng-template let-col="rowData" pTemplate="body">
+										<a href="javascript:void(0)" [routerLink]="['edit-forex',col.forexId]"><img src='../../../assets/image/Edit_Icon_Hover.png.svg'/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href="javascript:void(0)" (click)="DeleteForex(col.forexId,col.statusId,col.forexName)"><img src="../../../assets/image/Delete icon.svg" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									</ng-template>
+								</p-column>
+							</p-dataTable>
+						</div>
+                     <!--end of view display-->
+					</div>
+				</div>
+
+				<!-- Delete Success Modal -->
+				<div *ngIf="deleteSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<div class="modal-content">
+								<div class="modal-header">        
+									<div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>{{deactivateSuccessDialog}}</div>
+								</div>       
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Delete Success Modal - End -->
+
+				<!--Delete Pop up-->
+				<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<div class="modal-dialog " style="height:440px !important; color:white !important;">
+						<div class="modal-content  del-modal">
+						<div class="modal-header">
+								<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+							</div>
+							<div class="col-md-12 product_img text-center" style="padding-top:15px;">
+											<img src="../../assets/image/Confirm_Delete.svg" />
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-md-12 product_img text-center">							
+										{{dialogValue}}
+									</div>
+									<div class="col-md-12 product_img text-center"></div>								
+								</div>
+							</div>
+							<div class="del-btn-group">
+								<div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="closedeletepopup()">Cancel</button></div>
+								<div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="conf_delete()">Confirm</button></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Delete Pop up end-->
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- Save Success Modal -->
+<div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>{{message}}</div>
+				</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,12 @@
+version: "3"
+services:
+ party-service:
+    image: ctrmdev.azurecr.io/party-service:latest
+    deploy:
+      replicas: 1
+      resources:
+        restart_policy:
+          condition: on-failure
+    container_name: party-service
+    ports:
+      - "8096:8096"

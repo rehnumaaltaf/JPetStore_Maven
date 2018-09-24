@@ -1,0 +1,28 @@
+{
+	"Master": {
+		"OriginLocale": {
+			"Title": "Origin List",
+			"Code": "Origin Code",
+			"Name": "Origin Name",
+			"FullName": "Origin Full Name",
+			"Country": "Country",
+			"GradeGroupCode": "Grade Group Code",
+			"GradeGroupName": "Grade Group Name",
+			"RegionCode": "Region / Estate Code",
+			"RegionName": "Region / Estate Name",
+			"RegionFullName": "Region / Estate Full Name",
+			"RegionEstate": "Region / Estate",
+			"Product": "Product",
+			"Packing": "Packing",
+			"Type": "Type",
+			"DestinationSystem": "Destination System",
+			"Mapping": "Mapping",
+			"Satus": "Status",
+			"Reset": "RESET",
+			"Save": "SAVE",
+			"Submit": "SUBMIT",
+			"AddTitle": "Add Origin Details"
+		}
+		
+	}
+}

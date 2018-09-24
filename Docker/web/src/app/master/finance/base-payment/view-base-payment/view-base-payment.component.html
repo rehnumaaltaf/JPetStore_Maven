@@ -1,0 +1,262 @@
+<div class="container-fluid">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div view-page">
+				<!--<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">Base Payment</h4>	-->
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate> Master.BasePayment.ViewTitle</h4>
+				<form class="user-detail font-sm">
+					<accordion>
+						<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold" l10nTranslate>
+								Master.BasePayment.basicDetails
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.BasePayment.termCode</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{code}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.BasePayment.termName</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{name}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.BasePayment.termDescription</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{description}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.BasePayment.CreditRisk</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{risk}}</span></div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.BasePayment.LCBased</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{lcbased}}</span></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+					</accordion>
+
+					<accordion>
+						<div *ngIf="toShowNegoTerm">
+							<accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+								<div accordion-heading class="font-semibold" l10nTranslate>
+									Master.BasePayment.NegoTerms
+									<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-up': group?.isOpen, 'acc-down': !group?.isOpen}"></i>
+								</div>
+
+
+
+								<div>
+
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 brdb" style="border-bottom: 1px solid #ccc;padding-bottom: 8px;
+    margin-bottom: 0px;" l10nTranslate>Master.BasePayment.NegotiationTermCode</label></div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 brdb" style="border-bottom: 1px solid #ccc;padding-bottom: 8px;
+    margin-bottom: 0px;" l10nTranslate>Master.BasePayment.NegotiationTermName </label></div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 brdb" style="border-bottom: 1px solid #ccc;padding-bottom: 8px;
+    margin-bottom: 0px;" l10nTranslate>Master.BasePayment.PrintDescription</label></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--drh-->
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngFor="let option1 of featureList1">
+												<label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option1}}</label>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngFor="let option of moduleNameList">
+												<label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option}}</label>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngFor="let option of desclist">
+												<label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option}}</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--gfh-->
+
+
+
+							</accordion-group>
+						</div>
+					</accordion>
+					<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup"
+						bsModal #successModalDELTE="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header text-center">
+									<img src="../../assets/image/Confirm_Delete.svg" />
+								</div>
+								<div class="modal-body">
+										<div class="col-md-12 product_img text-center font-14 font-regular">
+											Are you sure you want to {{statusMsg}} this record in {{status}} status ?
+										</div>
+								</div>
+								<div class="del-btn-group modal-window-footer btn-shodow">
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" type="button" (click)="closedeletepopup()"
+											l10nTranslate>Master.BasePayment.Cancel</button></div>
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" type="button" (click)="conf_delete($event)"
+											l10nTranslate>Master.BasePayment.Confirm</button></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Delete Success Modal-->
+					<div *ngIf="deleteSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal"
+						[config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+									<div class="modal-header">
+										<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : {{statusMsg}} User Role</div>
+									</div>
+							</div>
+						</div>
+					</div>
+					<!-- Delete Success Modal - End -->
+					<!--Confirm Update -->
+					<div class="modal fade delete-popup" *ngIf="status_change" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup"
+						bsModal #statusChange="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header text-center">
+									<img src="../../assets/image/Confirm_Delete.svg" />
+								</div>
+								<div class="modal-body">
+										<div class="col-md-12 product_img text-center font-14 font-regular">
+											Are you sure you want to submit the Role Name {{roleName}} in {{status}} status ?
+										</div>
+								</div>
+								<div class="del-btn-group modal-window-footer btn-shodow">
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()" l10nTranslate>Master.BasePayment.Cancel</button></div>
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_status_change()"
+											l10nTranslate>Master.BasePayment.Confirm</button></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!---->
+					<!--Confirm Update -->
+					<div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #statusChange1="bs-modal" [config]="{backdrop: 'false'}"
+						tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header text-center">
+									<img src="../../assets/image/Confirm_Delete.svg" />
+									<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+								</div>
+								<div class="modal-body">
+										<div class="col-md-12 product_img text-center font-14 font-regular">
+											Please confirm to deactivate {{name}}
+										</div>
+								</div>
+								<div class="del-btn-group modal-window-footer btn-shodow">
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="statusChange1.hide()"
+											l10nTranslate>Master.BasePayment.Cancel</button></div>
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="updatewithStatus('InActive')"
+											l10nTranslate>Master.BasePayment.Confirm</button></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #statusChange2="bs-modal" [config]="{backdrop: 'false'}"
+						tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						<div class="modal-dialog ">
+							<div class="modal-content">
+								<div class="modal-header text-center">
+									<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+									<img src="../../assets/image/Confirm_Delete.svg" />
+								</div>
+								<div class="modal-body">
+										<div class="col-md-12 product_img text-center font-14 font-regular">
+											Please confirm to reactivate {{name}}
+										</div>
+								</div>
+								<div class="del-btn-group modal-window-footer btn-shodow">
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="statusChange2.hide()"
+											l10nTranslate>Master.BasePayment.Cancel</button></div>
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="updatewithStatus('Active')"
+											l10nTranslate>Master.BasePayment.Confirm</button></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer e-draft" *ngIf="draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)=backtoPrev1()>BACK</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<a href="javascript:void(0)" [routerLink]="['edit',basePaymentService.viewbasePaymentdetails.baseTermId]"><button type="button" id="update13"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" >EDIT</button></a>
+							<button type="button" id="update14" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+								(click)="updateSubmit('Active')" l10nTranslate>Master.BasePayment.SUBMIT</button>
+							<button type="button" id="update14" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+								(click)="user_delete(basePaymentService.viewbasePaymentdetails.baseTermId,basePaymentService.viewbasePaymentdetails)"
+								l10nTranslate>Master.BasePayment.DELETE</button>
+						</div>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)=backtoPrev1()
+								l10nTranslate>Master.BasePayment.BACK</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<a href="javascript:void(0)" [routerLink]="['edit',basePaymentService.viewbasePaymentdetails.baseTermId]"><button type="button" id="update13"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"  l10nTranslate >Master.BasePayment.EDIT</button>	</a>
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+								(click)="confirm1()" l10nTranslate>Master.BasePayment.DEACTIVATE</button>
+						</div>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)=backtoPrev1()
+								l10nTranslate>Master.BasePayment.BACK</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<a href="javascript:void(0)" [routerLink]="['edit',basePaymentService.viewbasePaymentdetails.baseTermId]"><button type="button" id="update13"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"  l10nTranslate >Master.BasePayment.EDIT</button>	</a>
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+								(click)="confirm2()" l10nTranslate>Master.BasePayment.REACTIVATE</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

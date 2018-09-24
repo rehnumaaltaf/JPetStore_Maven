@@ -1,0 +1,255 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Holiday Calendar List</h4>
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<!-- <a href="#"><img src="../../assets/image/filter.png"/></a> -->
+					<!-- <a href="#"><img src="../../assets/image/search.png"/></a> -->
+				
+
+
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+						<!-- Kendo Grid starts-- [kendoGridBinding]="unitMeasurementService.uomDetails" -->
+						<div class="party-grade_block">
+							<kendo-grid [kendoGridBinding]="holidayCalendarService.holidaydetails" [selectable]="true" [groupable]="true" [group]="state.group"
+							 [scrollable]="'virtual'" [editable]="true" [pageSize]="state.take" [filter]="state.filter" [rowHeight]="36" [sortable]="true"
+							 [filterable]="true"  [pageable]="false" (pageChange)="pageChange($event)">
+
+								<kendo:grid-editable mode="inline" />
+
+								<ng-template kendoGridToolbarTemplate>
+									 <span class="k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+									<img src="../../assets/image/add.png" (click)="changeShowStatus()" />
+								</ng-template>
+
+								<kendo-grid-column media="xs" title="Holiday Calendar ">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<!-- template for mobile -->
+
+										<h4>
+											{{ dataItem.holidayCalCode }}
+										</h4>
+										<dl>
+											<dt>Calendar Name</dt>
+											<dd>{{ dataItem.holidayCalName }}</dd>
+
+											<dt>Calendar Description</dt>
+											<dd>{{ dataItem.holidayCalDesc }}</dd>
+										</dl>
+										<!-- template for mobile Ends-->
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column field='' title='' [width]="40">
+									<ng-template kendoGridHeaderTemplate let-dataItem>
+										<input type="checkbox" id="checkall" class="k-checkbox" (change)="checkorUnCheckAll($event)" />
+										<label class="k-checkbox-label chk_head" for="checkall"></label>
+									</ng-template>
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<input type="checkbox" class="k-checkbox" id="" name="" ng-model="" />
+										<label class="k-checkbox-label" for=""></label>
+									</ng-template>
+								</kendo-grid-column>
+
+								<!--<kendo-grid-column field="checked" title="">
+											<ng-template kendoGridHeaderTemplate let-dataItem>
+											<input type="checkbox" 	(change)="checkAllClicked($event)" />
+											
+											</ng-template> 
+										</kendo-grid-column>-->
+								<!--<kendo-grid-column media="sm" field="uomCode" title="Code">
+										</kendo-grid-column>-->
+								<kendo-grid-column media="sm" field="holidayCalCode" title="Calendar Code">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<div (click)="viewById(dataItem)" class="view-all">{{dataItem.holidayCalCode}}</div>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="holidayCalName" title="Calendar Name">
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="holidayCalDesc" title="Calendar Description">
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="geoName" title="Country">
+								</kendo-grid-column>
+
+								<!--<kendo-grid-column media="lg" field="statusName" title="Status">
+										</kendo-grid-column>-->
+								<kendo-grid-column media="lg" field="statusName" title="Status">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<label field="statusName" [ngClass]="{'status-draft': dataItem.statusName=='Draft','status-active': dataItem.statusName=='Active','status-inactive': dataItem.statusName=='InActive'}">{{dataItem.statusName}}</label>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column field="" title="" >
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<div class="show" style="float:left"><span id="e1" data-attr="draft" >
+													<a href="javascript:void(0)" [routerLink]="['edit',dataItem.holidayCalId]"><img src="../../../assets/image/Edit_Icon_Hover.png.svg"></a><span style="display:none;">draft</span></span>
+										</div>
+										<!-- <div class="" style="padding-left:30px;" (click)="holidayCalander_Delete(dataItem)" [ngClass]="{'displaynone': dataItem.statusName=='InActive'}">
+											<span id="d1" class="confirm-delete" style="font-size:8px !important;">
+													<img src="../../../assets/image/Delete icon.svg"></span></div> -->
+										<div class=""   [ngClass]="[dataItem.statusName=='Draft' ? 'displayblock' : 'displaynone']"  *ngIf='dataItem.statusName=="Draft"'>
+											<span id="d1" class="confirm-delete" >
+                                                    <!--<img src="../../../assets/image/Activeicon.svg" style="width:50px;" (click)="holidayCalander_status_change(dataItem)">-->
+                                                    <img src="../../../assets/image/Delete icon.svg" (click)="holidayCalander_Delete(dataItem)">
+                                                    </span>
+										</div>
+										<!--<div class="" style="padding-left:20px;"  [ngClass]="[dataItem.statusName=='Active' ? 'displayblock' : 'displaynone']">
+											<span id="d1" class="confirm-delete" style="font-size:8px !important;">
+                                                    <img src="../../../assets/image/Deactiveicon2.svg" style="width:50px;" (click)="holidayCalander_status_change(dataItem)">
+                                                    </span>
+										</div>-->
+										<!--<div class="" style="padding-left:20px;"  [ngClass]="[dataItem.statusName=='InActive' ? 'displayblock' : 'displaynone']">
+											<span id="d1" class="confirm-delete" style="font-size:8px !important;">
+                                                    <img src="../../../assets/image/Reactivate2.svg" style="width:25px;" (click)="holidayCalander_status_change(dataItem)" >
+                                                    </span>
+										</div>-->
+									</ng-template>
+								</kendo-grid-column>
+
+
+								<kendo-grid-excel fileName="Holiday Calendar.xlsx"></kendo-grid-excel>
+							</kendo-grid>
+						</div>
+						<!--Kendo grid Ends-->
+					</div>
+				</div>
+
+
+
+
+				<!-- Delete Success Modal -->
+				<div *ngIf="isdeleteSuccessModal" (onHidden) = "onHiddenpopup()" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal"
+				 bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+				 aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+								<div class="modal-header">
+									<!-- <div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>Success : Deleted {{calendar_Name}} :</div> -->
+									<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>{{deactivateSuccessDialog}}</div>
+								</div>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- Delete Success Modal - End -->
+				
+
+				<!--Update message Modal - start -->
+				 <div *ngIf="isupdateModal" (onHidden) = "onHiddenpopup()" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #updateModal="bs-modal" 
+				 [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+								<div class="modal-header">
+									<!-- <div class="modal-title" *ngIf="isUpdate"><span><img src="../../assets/image/Ok.jpg"/></span>Success : Updated Calender Name {{holidayCalName}}</div>
+									<div class="modal-title" *ngIf="isDeactivated"><span><img src="../../assets/image/Ok.jpg"/></span>Success : Updated & deactivated Calender Name {{holidayCalName}}</div>
+									<div class="modal-title" *ngIf="isActivated"><span><img src="../../assets/image/Ok.jpg"/></span>Success : {{status}} Calendar Name {{holidayCalName}}</div> -->
+									 <div class="modal-title font-14 font-regular" *ngIf="isUpdate"><img src="../../assets/image/Ok.jpg"/>{{successToast}}</div>
+									<div class="modal-title font-14 font-regular" *ngIf="isDeactivated"><img src="../../assets/image/Ok.jpg"/>{{successToast}}</div>
+									<div class="modal-title font-14 font-regular" *ngIf="isActivated"><img src="../../assets/image/Ok.jpg"/>{{successToast}}</div>
+									<div class="modal-title font-14 font-regular" *ngIf="!isActivated"><img src="../../assets/image/Ok.jpg"/>{{successToast}}</div> 
+
+									<!--<div class="modal-title" *ngIf="isInActivated"><span><img src="../../assets/image/Ok.jpg"/></span>Success : In{{status}}d GL Code {{glName}}</div>-->
+								 </div>
+						</div>
+					</div>
+				</div>  
+				<!--Update message Modal - end -->
+
+				<!-- Deactivate Success Modal -->
+				<div *ngIf="deactivateSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal
+				 #deletesuccessModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+				 aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Updated and Deactivated {{holidayCalName}} :</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<!-- Deactivate Success Modal - End -->
+
+				<!--Delete Pop up-->
+				<div *ngIf="isDeletePopupModal" class="modal fade delete-popup" (onHidden)="onHiddenpopup()"  [style.display]="showModal ? 'block' : 'none'"
+				 class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1"
+				 role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content  del-modal">
+							<div class="modal-header text-center">
+								<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+								<img src="../../assets/image/Confirm_Delete.svg" />
+							</div>
+							<div class="modal-body">
+
+									<div class="col-md-12 product_img text-center font-14 font-regular">
+										{{deactivateSuccessDialog}}
+									</div>
+							</div>
+							<div class="del-btn-group modal-window-footer btn-shodow">
+								<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="successModal.hide()">Cancel</button></div>
+								<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!---->
+
+				<!--Deactivate Pop up-->
+				<div class="modal fade delete-popup" (onHidden)="onHiddenpopup()" *ngIf="isDeactivatePopupModal" 
+				 class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1"
+				 role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content  del-modal">
+							<div class="modal-header text-center">
+								<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+								<img src="../../assets/image/Confirm_Delete.svg" />
+							</div>
+							
+							<div class="modal-body">
+
+									<div class="col-md-12 product_img text-center font-14 font-regular">
+										Are you sure you want to deactivate {{holidayCalName}} ?
+									</div>
+							</div>
+							<div class="del-btn-group modal-window-footer btn-shodow">
+								<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="successModal.hide()">Cancel</button></div>
+								<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!---->
+
+				<div *ngIf="isShowModal" (onHidden)="onHiddenpopup()" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal"
+				 [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title font-14 font-regular">
+										<span><img src="../../assets/image/Ok.jpg"/></span>Success: Holiday Calendar {{calendar_Name}} Saved</div>
+								</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,41 @@
+<div [formGroup]="addressMultiple">  
+	<input type='hidden' formControlName='uniqueMapping' [ngModel]="data0 || 'null'" ng-init="data0=null">
+									<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Address Name</label>
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="addressMulti.addressName" formControlName="addressName" 									
+											name="baseCode">
+						                      <option value="">Select</option>
+						                       <option *ngFor="let option of addressName" value="{{option.addressTypeId}}" >{{option.name}}</option>
+					                    </select>
+									</div>
+									<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Language</label>
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="addressMulti.addressLanguage" formControlName="addressLanguage" 									
+											name="baseCode">
+						                      <option value="">Select</option>
+						                       <option *ngFor="let option of languageList" value="{{option.languageId}}" >{{option.languageFullName}}</option>
+					                    </select>
+									</div>
+									<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Address 1</label>
+										<input type="text" class="form-control font-15 font-regular " [(ngModel)]="addressMulti.addressAltAddress1" formControlName="addressAltAddress1" id="" value="" placeholder="">
+									</div>
+									<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Address 2</label>
+										<input type="text" class="form-control font-15 font-regular " [(ngModel)]="addressMulti.addressAltAddress2" formControlName="addressAltAddress2" id="" value="" placeholder="">
+									</div>
+									<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Zip Code</label>
+										<input type="text" class="form-control font-15 font-regular " [(ngModel)]="addressMulti.addressAltZipCode" formControlName="addressAltZipCode" id="" value="" placeholder="">
+									</div>
+									<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Country</label>
+										<!--<input type="text" class="form-control font-15 font-regular " formControlName="addressAltCountry" id="" value="" placeholder="">-->
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="addressMulti.addressAltCountry" formControlName="addressAltCountry" name="baseCode" [ngClass]="{'valred': pcode==true,'val': pcode==false}">
+												<option value="">Select</option>
+													<!--<option *ngFor="let option of countryList" value="{{option.}}" > {{option.}} </option>-->
+												<!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+										<option *ngFor="let option of countryList" value="{{option.pkGeoId}}" > {{option.geoName}} </option>
+										</select>
+									</div>
+</div>

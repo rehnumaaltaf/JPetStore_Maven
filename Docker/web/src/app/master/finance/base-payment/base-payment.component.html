@@ -1,0 +1,189 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Base Payment List</h4>
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+				
+				
+
+
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+                            <!-- Kendo Grid starts-- [kendoGridBinding]="unitMeasurementService.uomDetails" --> 
+							<div class="party-grade_block">
+									<kendo-grid  
+									    [kendoGridBinding]="basePaymentService.basePaymentdetails"
+										[selectable]="true" 
+										[groupable]="true" 
+										[group]="state.group"
+										[scrollable]="true" 
+										[editable]="true" 										
+										[sortable]="true" 
+										[filterable]="true" 
+									
+										[pageable]="false"
+										
+										>
+										<kendo:grid-editable mode="inline"/>
+										<ng-template kendoGridToolbarTemplate>
+										<span class="k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+											<img src="../../assets/image/add.png" (click)="changeShowStatus()" />
+										</ng-template>
+										<kendo-grid-column media="xs" title="BASE PAYMENT">
+										<ng-template kendoGridCellTemplate let-dataItem>
+											<h4>
+											{{ dataItem.baseTermCode }}
+											</h4>
+											<dl>
+											<dt>Name</dt>
+											<dd>{{ dataItem.baseTermName }}</dd>
+
+											<dt>Full Name</dt>
+											<dd>{{ dataItem.baseTermCreditRisk }}</dd>
+
+											<dt>Conversion</dt>
+											<dd>{{ dataItem.baseTermLCBased }}</dd>
+											</dl>
+											<!-- template for mobile Ends-->
+										</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field='' title='' width="40">
+												<ng-template kendoGridHeaderTemplate let-dataItem>
+												<input type="checkbox" id="checkall" class="k-checkbox" (change)="checkorUnCheckAll($event)" />
+												<label class="k-checkbox-label chk_head" for="checkall"></label>
+											</ng-template> 
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<input type="checkbox" class="k-checkbox" id="dataItem.baseTermCode" name="dataItem.baseTermCode" ng-model="dataItem.baseTermCode"/>
+												<label class="k-checkbox-label" for="dataItem.baseTermCode"></label>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="sm" field="baseTermCode" title={{headerTermCode}}>
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<a href="javascript:void(0)" [routerLink]="['view-base-payment',dataItem.baseTermId]"><div   class="view-all">{{dataItem.baseTermCode}}</div></a>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="sm" field="baseTermName" title={{headerTermName}}>
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="baseTermDescription" title={{headerTermDesc}}>
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="baseTermCreditRisk" title={{headerTermCredit}}>
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="baseTermLCBased" title={{headerTermLC}}>
+										</kendo-grid-column>
+										<!--<kendo-grid-column media="lg" field="statusName" title="Status">
+										</kendo-grid-column>-->
+										<kendo-grid-column media="lg" field="statusName" title="Status">
+										<ng-template kendoGridCellTemplate let-dataItem>
+												<label field="statusName" [ngClass]="{'status-draft': dataItem.statusName=='Draft','status-active': dataItem.statusName=='Active','status-inactive': dataItem.statusName=='InActive'}">{{dataItem.statusName}}</label>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field="" title="" >
+											<ng-template kendoGridCellTemplate let-dataItem>
+													<div class="show" style="float:left" ><span id="e1" data-attr="draft">
+												<a href="javascript:void(0)" [routerLink]="['edit',dataItem.baseTermId]"><img src='../../../assets/image/Edit_Icon_Hover.png.svg'/></a>
+													<span style="display:none;">draft</span></span></div>
+												<div class=""  (click)="basePayment_delete(dataItem.baseTermId,dataItem.statusName,dataItem.baseTermCode)"  *ngIf='dataItem.statusName=="Draft"'  [ngClass]="{'displaynone': dataItem.statusName=='InActive'}" >
+													<span id="d1" class="confirm-delete"  >
+													<img src="../../../assets/image/Delete icon.svg"></span></div>
+											</ng-template>
+										</kendo-grid-column>										
+										<kendo-grid-excel fileName="BASEPAYMENT.xlsx"></kendo-grid-excel>
+									</kendo-grid>
+									</div>
+									<!--Kendo grid Ends-->
+                     </div>
+				</div>
+
+    <!-- Success Modal -->
+<div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" (onHidden) ="hide()" bsModal #successModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>{{msg}}</div>
+				</div> 
+		</div>
+	</div>
+</div>
+<div *ngIf="viewByIddelete" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" (onHidden) ="hide()" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                                <div class="modal-content">
+                                                                <div class="modal-header">        
+                                                                              <div class="modal-title font-14 font-regular" ><img src="../../assets/image/Ok.jpg"/>Success : Base Payment {{basePaymentCode}} Deleted </div>
+                                        
+                                                                </div>  
+                                </div>
+                </div>
+</div>
+<div class="modal fade success-modal" bsModal #deletesuccessModals="bs-modal" [config]="{backdrop: 'static',show: false}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                                <div class="modal-content">
+                                                                <div class="modal-header">   
+
+                                                                                <div class="modal-title font-14 font-regular" *ngIf="isDraftStatus"><img src="../../assets/image/Ok.jpg"/>Success :  Base Payment {{baseCodedelpop}} Deleted</div>
+																				<div class="modal-title font-14 font-regular" *ngIf="isActiveStatus"><img src="../../assets/image/Ok.jpg"/>Success :  Base Payment {{baseCodedelpop}} InActivated</div>
+                                                                </div>  
+                                </div>
+                </div>
+</div>
+<!-- Delete Success Modal -->
+
+<div *ngIf="isupdateModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" (onHidden) ="hide()" bsModal #updateModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>{{msg}}</div>
+				</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="isupdateModalOnly" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" (onHidden) ="hide()" bsModal #updateModalOnly="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>{{msg}}</div>
+				</div>
+		</div>
+	</div>
+</div>
+<!--Delete Pop up-->
+<div class="modal fade delete-popup"  class="modal fade delete-popup" bsModal #confirmPop ="bs-modal" [config]="{backdrop: 'false',show: false}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog ">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                   <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+												   <img src="../../assets/image/Confirm_Delete.svg" />
+                                                </div>
+                                                               
+                                                                <div class="modal-body">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isDraftStatus">
+                                                                                                    Please confirm to delete {{baseCodedelpop}}
+                                                                                                </div>
+                                                                                                			
+					                                                                             <div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isActiveStatus" >
+                                                                                                         Please confirm to deactivate {{baseCodedelpop}}
+                                                                                                  </div>
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular"></div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="confirmPop.hide()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+			</div>
+		</div>
+	</div>
+</div>

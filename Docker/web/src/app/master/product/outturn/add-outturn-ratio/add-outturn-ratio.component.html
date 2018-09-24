@@ -1,0 +1,266 @@
+<div class="container-fluid">
+    <!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+    <div class="row row-background">
+        <app-nav-bar></app-nav-bar>
+        <!-- ngx bootstrap - Accordion -->
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+                <h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">{{title}}</h4>
+                <form class="user-detail font-sm" [formGroup]="outturnForm" method="post">
+                    <accordion>
+                        <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                            <!-- [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">-->
+                            <div accordion-heading class="font-semibold">
+                                Basic Details
+
+                                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+
+
+                                <input type='hidden'  formControlName='outturnRawGradeId'  >
+                                    <input type='hidden'  formControlName='statusName'  >
+                                    <input type='hidden'  formControlName='prodName'  >
+
+
+                                        <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <label for="usr-field" class="colr-red font-regular font-14">Product Code</label>
+                                            <div class="dropdown">
+
+
+                                                <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [style.border-color]="getStyle()"
+                                                    formControlName="prodId" name="prodId" (focusout)="validate()" required> 
+												<option  selected>Select</option>
+												<option *ngFor="let option of productfilter" value="{{option.prodId}}">{{option.prodName}}</option>
+                                            </select>
+                                        <span  *ngIf="product"  class="colr-red font-regular font-14">Product Code {{requiedMesssage}}</span>
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <label for="usr-field" class="colr-red font-regular font-14">Origin</label>
+                                            <div class="dropdown">
+                                                <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [style.border-color]="getStyle1()"
+                                                    formControlName="originId" name="originId" (focusout)="validate()" required> 
+												<option  selected>Select</option>
+												<option *ngFor="let option of origindetial" value="{{option.originDto.pkOriginId}}">{{option.originDto.originName}}</option>
+                                            </select>
+                                        <span  *ngIf="origin"  class="colr-red font-regular font-14">Origin {{requiedMesssage}}</span>
+                                            
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <label for="usr-field" class="colr-red font-regular font-14">Input Raw Grade Code</label>
+                                            <div class="dropdown">
+                                                <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [style.border-color]="getStyle2()"
+                                                    formControlName="gradeId" name="gradeId" (focusout)="validate()" required> 
+												<option selected>Select</option>
+												<option *ngFor="let option of rawGrades" value="{{option.gradeId}}">{{option.gradeCode}}</option>
+                                            </select>
+                                            <span  *ngIf="raw"  class="colr-red font-regular font-14">Raw Grade Code {{requiedMesssage}}</span>
+
+                                            </div>
+                                        </div>
+
+
+                            </div>
+                        </accordion-group>
+                    </accordion>
+
+                    <accordion>
+
+                        <!-- 2nd accordian -->
+                        <accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                            <div accordion-heading class="font-semibold">
+                                OutTurn Ratio
+
+                                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+                            </div>
+                            <!--<h3 class="font-semibold">Outturn Ratio </h3>-->
+                            <div>
+                                <div formArrayName="outturnRationArray">
+                                    <div *ngFor="let outturnRationArray of getExternalMappingList(outturnForm); let i=index">
+                                        <span style="display: none">  {{i + 1}}</span>
+                                        <div [formGroupName]="i">
+
+
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 assoc_block">
+                                                <input type='hidden'  formControlName='outturnRatioId'  >
+                                                    <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                                        <label for="usr-field" class="colr-red font-regular font-14 ">Finished Grade Code</label>
+                                                        <div class="dropdown">
+                                                            <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [style.border-color]="colors[i]"
+                                                                formControlName="finishedGradeId" name="gradeId" (focusout)="validate()"
+                                                                required> 
+												<option [ngValue]="" selected>Select</option>
+												<option *ngFor="let option of finshGrades" value="{{option.gradeId}}"><span [hidden] ='option.gradeIsRaw === "F"'>{{option.gradeCode}}</span></option>
+                                            </select>
+                                            <span *ngIf= 'colors[i] === "#d43c3c"'  class="colr-red font-regular font-14">Finished Grade Code {{requiedMesssage}}</span>
+
+                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12 padr0">
+                                                        <label for="usr-field" class="colr-red font-regular font-14">Quantity Ratio</label>
+                                                        <input type="number" class="form-control font-15 font-regular " id="quantityRatio" [style.border-color]="colors1[i]" formControlName="quantityRatio"
+                                                            (focusout)="validate()" value=""  min="1"  max="100"  placeholder="">
+                                            <span *ngIf= 'colors1[i] === "#d43c3c"'  class="colr-red font-regular font-14">Quantity Ratio {{requiedMesssage}}</span>
+                                                        
+                                                    </div>
+                                                    <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12 padr0">
+                                                        <label for="usr-field" class="colr-red font-regular font-14">Ability To Bear Ratio</label>
+                                                        <input type="number" class="form-control font-15 font-regular " id="abilityToBearRatio" [style.border-color]="colors2[i]"
+                                                            formControlName="abilityToBearRatio" min="1"  max="100" (focusout)="validate()" value=""
+                                                            placeholder="">
+                                            <span *ngIf= 'colors2[i] === "#d43c3c"'  class="colr-red font-regular font-14">Bear Ratio {{requiedMesssage}}</span>
+                                                        
+                                                    </div>
+                                                    <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 accessories-block external_blck" style="float:left;">
+                                                        <span class="pull-left" [hidden]="showplus[i]">  <i class="plus-icn-md"  (click)="addoutturn(true)"> &nbsp; </i></span>
+                                                        <span class="pull-left" [hidden]="showcross[i]"><i class="delete-icn-md" (click)="removeoutturn(i)">&nbsp; </i></span>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </accordion-group>
+                    </accordion>
+
+                    <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                            <button type="button" class="btn btn-default navbar-btn cancel-btn font-semibold font-14" (click)="reset()">RESET</button>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+                            <button type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14"
+                            (click)="save()" l10nTranslate> SAVE</button>	
+                            <button type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14"
+                            (click)="submit()" l10nTranslate>SUBMIT</button>
+                        </div>
+                    </div> -->
+                </form>
+                <!-- copied fromr -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="!isEditPage">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                        <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="resetForm()">Reset</button>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                        <button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+                            (click)="saveOutTurn('Draft')">Save</button>
+                        <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                            (click)="saveOutTurn('Active')">Submit</button>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && draft">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                        <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()">Cancel</button>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                        <button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+                            (click)="updateOutTurn('Draft')">Save</button>
+                        <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                            (click)="updateOutTurn('Active')">Submit</button>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && active">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                        <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()">Cancel</button>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                        <button type="button" id="save_party_master-s" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+                            (click)="updateOutTurn('update')">Update</button>
+                        <button type="button" id="save_party_master-sd" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                            (click)="updateOutTurn('InActive')">Deactivate</button>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && inactive">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                        <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()">Cancel</button>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                        <button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+                            (click)="updateOutTurn('update')">Update</button>
+                        <button type="button" id="save_party_master-sr" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                            (click)="updateOutTurn('Active')">Reactivate</button>
+                    </div>
+                </div>
+                <!-- copied end  -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- error modal start -->
+<div class="modal fade in error-modal" [style.display]="errorModal ? 'block' : 'none'" id="errorModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title  font-14 font-regular"><img src="../../../assets/image/Confirm_Delete.svg"/>Error : {{outturnservice.errorMessage}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- error modal end -->
+
+<!-- count purpose -->
+	<div *ngIf="errormodalpart" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHiddenpopup()" class="modal fade something_wrong"  bsModal #invalidCount="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">   
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>{{invalidCountMsg}}</div>
+				</div> 
+        </div>
+    </div>
+</div>
+
+  <!-- count purpose end -->
+
+<!--Confirm Update -->
+<div  *ngIf="isStatusChangePopupModal" [config]="{backdrop: 'false',show: true}" (onHidden)="onHiddenReset()"
+ bsModal #statusChangePopupModal="bs-modal"  class="modal fade confirm-box delete-popup" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content  del-modal">
+            <div class="modal-header text-center">
+                 <img src="../../assets/image/Confirm_Delete.svg" />
+            </div>            
+            <div class="modal-body">
+                    <div class="col-md-12 product_img text-center font-14 font-regular">
+                        Are you sure you want to {{statusName}} the Product {{outturn.outturnRawGradeDto.prodName}}?
+                    </div>
+            </div>
+            <div class="del-btn-group modal-window-footer btn-shodow">
+                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="statusChangePopupModal.hide()">Cancel</button></div>
+                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_update(true)">Confirm</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---->
+
+<!--Vaildation error message -->
+<div  *ngIf="errorPopupModal" [config]="{backdrop: 'false',show: true}" (onHidden)="onHiddenErrorReset()"
+ bsModal #errorChangePopupModal="bs-modal"  class="modal fade confirm-box delete-popup" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content  del-modal">
+            <div class="modal-header text-center">
+                 <img src="../../assets/image/Confirm_Delete.svg" />
+            </div>            
+            <div class="modal-body">
+                   <div class="col-md-12 product_img text-center font-14 font-regular">
+                       {{validationError}}
+                    </div>
+            </div>
+            <!-- <div class="del-btn-group">
+                <div class="del-pop-btn"><button class="del-ok del-ok-button btn btn-default btn-lg font-semibold" (click)="errorChangePopupModal.hide()">Cancel</button></div>
+                
+            </div> -->
+            <div class="del-btn-group modal-window-footer btn-shodow">
+            <div class="del-pop-btn col-lg-12 col-md-12 col-sm-12 pad0"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="errorChangePopupModal.hide()">Cancel</button></div>
+            
+          </div>
+
+        </div>
+    </div>
+</div>
+<!---->

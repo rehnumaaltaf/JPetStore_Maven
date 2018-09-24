@@ -1,0 +1,50 @@
+{
+	"Master": {
+		"LimitMaster": {
+            "addtitle" :"Add Limit",
+            "edittitle" :"Edit Limit",
+            "subtitle1" : "Basic Details",
+            "subtitle2" :"Limits",
+            "viewtitle": "Limit List",
+            "viewrecordtitle":"Limit Details",
+            "limitnumber":"Limit Number",
+           "limitBasis" : "Limit Basis",
+           "basisName" : "Basis Name",
+           "additionalBasis" : "Additional Basis",
+           "additionalbasisName" : "Additional Basis Name",
+           "comments" : "Comments",
+           "outright" : "Outright",
+           "basis" : "Basis",
+           "structure" : "Structure",
+           "vega" : "Vega",
+           "delta" : "Delta",
+           "gamma" : "Gamma",
+           "var" : "VaR",
+           "drawdown" : "Drawdown",
+           "currentmonth" : "Current Month",
+           "forwardmonth" : "Forward Month",
+           "totalattr" : "Total",
+           "valueattr" : "Value",
+           "validity": "Validity",
+           "temp": "Temporary / Permanent",
+           "status":"Status",
+           "updateby" :"Update By",
+           "datetime" :"Date & Time Stamp",
+            "savebutton" : "Save",
+			"submitbutton" :"Submit",
+			"updatebutton":"Update",
+			"resetbutton":"Reset",
+			"reactivebutton":"Reactive",
+			"deactivebutton":"Deactive",
+			"cancelbutton":"Cancel",
+			"backbutton":"Back",
+			"deltebutton":"Delete",
+			"editbutton":"Edit",
+            "errlimitbasis": "Select Limit Basis",
+            "errlimitbasisname": "Select Limit Name",
+            "errerroutright" : "Select Outright"
+           
+
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+	"Master": {
+		"Uom": {
+			"Title": "UOM List",
+			"Code": "UOM Code",
+			"Name": "UOM Name",
+			"FullName": "Long Name",
+			"Base": "Target UOM",
+			"Basis": "Basis",
+			"Conversion": "Conversion Factor",
+			"Satus": "Status",
+			"Reset": "Reset",
+			"Save": "Save",
+			"Submit": "Submit",
+			"AddTitle": "Add UOM"
+		},
+		"Gl": {
+			"Title": "GL List",
+			"Code": "GL Code",
+			"Name": "GL Name",
+			"FullName": "GL Full Name",
+			"Satus": "Status"			
+		}
+	}
+}

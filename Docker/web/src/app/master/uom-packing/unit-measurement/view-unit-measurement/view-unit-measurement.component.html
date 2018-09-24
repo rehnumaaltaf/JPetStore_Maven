@@ -1,0 +1,353 @@
+ <div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+ <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content">
+	 <span *ngIf="errorMessage" style="color:red">{{errorMessage}}</span>
+ <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div view-page single-block">			
+			<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">UOM Details</h4>
+          <form class="user-detail font-sm">
+	<h3 class="font-semibold">Basic Details</h3>
+	<div class="container-fluid-block marb30">
+			        <div class="accordion-content" *ngIf="isBeforeEdit">
+						
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padt20">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+									
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">UOM Code</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: 
+											</span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" *ngIf="editMode">
+												{{uomdata.uomCode}}
+											</span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" *ngIf="isEdit">
+												<input type="text" class="form-control font-15 font-regular padl10" [(ngModel)]="uomdata.uomCode" value={{uomdata.uomCode}} name="uomCode" [style.border-color]="getStyle()">
+											</span>
+											
+											</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">UOM Name</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" *ngIf="editMode">
+												{{uomdata.uomName}}
+											</span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" *ngIf="isEdit">
+												<input type="text" class="form-control font-15 font-regular padl10" [(ngModel)]="uomdata.uomName" value={{uomdata.uomName}} name="uomName" [style.border-color]="getStyle1()">
+											</span>
+											
+											</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">UOM FullName</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" *ngIf="editMode">
+												{{uomdata.uomFullname}}
+											</span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" *ngIf="isEdit">
+												<input type="text" class="form-control font-15 font-regular padl10" [(ngModel)]="uomdata.uomFullname" value={{uomdata.uomFullname}} name="uomFullname">
+											</span>
+											
+											</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Basis</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">:</span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" *ngIf="editMode">
+												{{uomdata.uomBasis}}
+											</span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" *ngIf="isEdit">
+												<input type="text" class="form-control font-15 font-regular padl10" [(ngModel)]="uomdata.uomBasis" value={{uomdata.uomBasis}} name="baseUomCode">
+											</span>
+											
+											</span>
+
+											</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Target UOM Code</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">:</span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" *ngIf="editMode">
+												{{uomdata.baseUomCode}}
+											</span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" *ngIf="isEdit">
+												<div class="dropdown ">
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="uomdata.parentUomId"  name="uomedit.parentUomId" id="uomedit.parentUomId" >
+												<option *ngFor="let option of UomCodeDropDown" [selected]="uomdata.parentUomId === option.label" value="{{option.value}}">{{option.label}}</option>
+											</select>
+											</div>
+											</span>
+											
+											</span>
+
+											</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Conversion Factor</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+										<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" *ngIf="editMode">
+												{{uomdata.uomConversionFactor}}
+											</span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" *ngIf="isEdit">
+												<input type="text" class="form-control font-15 font-regular padl10" [(ngModel)]="uomdata.uomConversionFactor" value={{uomdata.uomConversionFactor}} name="conversionFactor">
+											</span>
+										    
+										</div>
+									</div>
+									
+									<!--class="displaynone"-->
+									<input type="hidden" [(ngModel)]="uomdata.statusName" value={{uomdata.statusName}} name="statusName">
+								</div>
+							</div>	
+</div>
+			        </div>
+
+					<div class="panel-group" id="accordion" *ngIf="isEdit">
+						<div class="panel panel-default marb30">
+							<div class="modal-header mod-head">
+								<!--a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="close()"></span></a-->
+								<h3 class="modal-title font-semibold">Edit UOM</h3>
+							</div>
+
+							<div id="collapse1" class="panel-collapse collapse in">
+								<div class="panel-body">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Uom.Code</label>
+											<input type="text" class="form-control font-15 font-regular " [style.border-color]="getStyle()" [(ngModel)]="uomdata.uomCode" name="UomCode" placeholder="" required >
+											<small *ngIf="req_uomcode" class="colr-red font-regular font-14">Enter UOM Code</small>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Uom.Name</label>
+											<input type="text" class="form-control font-15 font-regular " [style.border-color]="getStyle1()" [(ngModel)]="uomdata.uomName" name="UOMName" placeholder="" required >
+											<small *ngIf="req_uomname" class="colr-red font-regular font-14">Enter UOM Name</small>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="font-regular colr-lblue font-14" l10nTranslate>Master.Uom.FullName</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="uomdata.uomFullname" name="UOMFullName" placeholder="">
+										</div>
+									
+
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.Uom.Basis</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="uomdata.uomBasis" name="uomBasis" placeholder="" >
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.Uom.Base</label>
+											<div class="dropdown ">
+												<div class="dropdown ">
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="uomdata.parentUomId"  name="uomedit.parentUomId" id="uomedit.parentUomId" >
+												<option *ngFor="let option of UomCodeDropDown" [selected]="uomdata.parentUomId === option.label" value="{{option.value}}">{{option.label}}</option>
+											</select>
+											</div>
+												<!-- <li *ngFor="let item of items"></li> can also be used -->
+												<!-- <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14">
+											<option value="">Select</option>
+											<option value="KG">KG</option>
+											<option value="MG">MG</option>
+										</select> -->
+											</div>
+										</div>
+										
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.Uom.Conversion</label>
+											<input type="text" class="form-control font-15 font-regular " (keydown)="validateNumericsOnly($event)"  [(ngModel)]="uomdata.uomConversionFactor" name="conversion" placeholder="" >
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer ">
+							
+							
+						</div>
+					</div>
+            
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)='backtoPrev()'>Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0 ">
+							<button type="button" id="update13"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="enableEdit()" *ngIf="editMode">Edit</button>
+							<button type="button" id="update13"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="update(uomdata.uomCode,uomdata.uomName,uomdata.uomFullname,uomdata.baseUom,uomdata.uomConversionFactor,'update')" *ngIf="isEdit">Update</button>										
+							<button type="button" id="update14"   class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="confirm()">Submit</button>	<!--update(uomdata.uomCode,uomdata.uomName,uomdata.uomFullname,uomdata.baseUom,uomdata.uomConversionFactor,uomdata.statusName)-->				
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="delete()">Delete</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)='backtoPrev()'>Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update15"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="enableEdit()" *ngIf="editMode">Edit</button>	
+							<button type="button" id="update13"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="update(uomdata.uomCode,uomdata.uomName,uomdata.uomFullname,uomdata.baseUom,uomdata.uomConversionFactor,'update')" *ngIf="isEdit">Update</button>														
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="confirm()">Deactivate</button>					<!--update(uomdata.uomCode,uomdata.uomName,uomdata.uomFullname,uomdata.baseUom,uomdata.uomConversionFactor,'InActive')-->
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"  *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)='backtoPrev()'>Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update16" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="enableEdit()" *ngIf="editMode">Edit</button>					
+							<button type="button" id="update13"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="update(uomdata.uomCode,uomdata.uomName,uomdata.uomFullname,uomdata.baseUom,uomdata.uomConversionFactor,'update' )" *ngIf="isEdit">Update</button>
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="confirm()">Reactivate</button>					<!--update(uomdata.uomCode,uomdata.uomName,uomdata.uomFullname,uomdata.baseUom,uomdata.uomConversionFactor,'Active')-->
+						</div>							
+					</div>
+					
+          </form>
+			
+			</div>	
+
+
+	<div *ngIf="errormodal" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHidden()" class="modal fade something_wrong"  bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">   
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>This page contains {{counter}} errors.Please correct the highlighted fields.</div>
+				</div> 
+        </div>
+    </div>
+</div>
+ <!--Duplicate UOM code Pop up-->
+<div class="modal fade delete-popup" *ngIf="isCannotDeletePopup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog ">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                     <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                	 <img src="../../assets/image/Confirm_Delete.svg" />
+												</div>
+                                                               
+                                                                <div class="modal-body">
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     {{unitMeasurementService.errorMessage}}
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="close()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="close()">Ok</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+
+
+     <!-- Success Updated Modal -->
+<div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : {{statusMsg}} UOM Name {{uomName}}</div>
+				</div> 
+		</div>
+	</div>
+</div>
+<!-- Success Modal - End -->
+<!-- Delete Success Modal - End -->
+
+<!--Confirm Update -->
+<div class="modal fade delete-popup" *ngIf="status_change" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #statusChange="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                  <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+												  <img src="../../assets/image/Confirm_Delete.svg" />
+                                                </div>
+                                                          
+                                                                <div class="modal-body">
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular" >
+                                                                                                     Are you sure you want to {{statusMsg}} the UOM Name {{uomdata.uomName}} in {{status}} status ?
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_status_change()">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+
+<!--Delete Pop up-->
+<div class="modal fade delete-popup" *ngIf="deletebyid" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #delete="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog ">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                   <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                  					<img src="../../assets/image/Confirm_Delete.svg" />
+								                </div>
+                                                                
+                                                                <div class="modal-body">
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular" >
+                                                                                                     Are you sure you want to {{statusMsg}} the UOM Name {{uomdata.uomName}} in {{status}} status ?
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete(uomdata.uomId)">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+
+
+<!-- UOM code Cannot be delted Pop up-->
+<div class="modal fade delete-popup" *ngIf="isCannotDeletePopup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                     <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                					<img src="../../assets/image/Confirm_Delete.svg" />
+								               </div>
+                                                               
+                                                                <div class="modal-body">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center">
+                                                                                                     {{unitMeasurementService.errorMessage}}
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="closedeletepopup()">Ok</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+
+
+
+
+
+
+
+
+
+   </div>
+</div> 
+</div>

@@ -1,0 +1,144 @@
+
+<!--<app-header></app-header>-->
+<div class="container-fluid">
+
+ <div class="row row-background">
+
+   <app-nav-bar></app-nav-bar>
+   <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0 view-unit-container">
+
+     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt30 single-block create-view">
+
+				<!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 view-unit-form-bg" style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-lblue font-18 font-bold " l10nTranslate>BASIC DETAILS</h4>
+				</div>-->
+        <form class="user-detail font-sm" id="unit_view_form" [formGroup]="unitViewForm">
+
+			<h3 class="font-semibold">BASIC DETAILS</h3>	
+						<div>
+							<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 pad0">
+                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 view-unit-form-bg">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0 ">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  font-14 font-regular marb20">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Unit Code</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+										<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+										<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{profitCenterModel[0].unitCode}}</span>
+									</div>
+								</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Unit Name</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+										<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+										<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{profitCenterModel[0].unitName}}</span>
+									</div>
+								</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Unit FullName</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+										<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+										<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{profitCenterModel[0].unitFullName}}</span>
+									</div>
+								</div>
+								</div>
+							</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  view-unit-form-bg pad0">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Is Group Unit ?</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{((profitCenterModel[0].groupUnit==1)?'Yes':'No')}}</span>
+										</div>
+									</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Parent Unit</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{profitCenterModel[0].parentUnitName}}</span>
+										</div>
+									</div>
+									</div>
+
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Legal Entity</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{profitCenterModel[0].legalEntity}}</span>
+										</div>
+									</div>
+									</div>
+							  </div>
+
+							</div>
+              	</div>
+
+                  
+              <!--new gl mapping-->
+              <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+                <h4 class="padb10 padt10 colr-lblue font-18 font-bold " l10nTranslate>GL MAPPING</h4>
+              </div>
+                  <accordion>
+                        <accordion-group #group>
+                            <div accordion-heading  class="font-semibold">
+                              <i class="pull-right float-xs-right glyphicon"
+                                 [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-up': !group?.isOpen}"></i>
+                            </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Legal Entity</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+										<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+										<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{profitCenterModel.legalEntity}}</span>
+									</div>
+								</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">GL Code</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+										<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+										<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{profitCenterModel.glCode}}</span>
+									</div>
+								</div>
+								</div>
+							</div>
+					
+				
+
+           </accordion-group>
+				    </accordion>-->
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" class="btn default-btn secondary-btn multiplebtn-width marr20 font-semibold font-18" (click)="onEditBtnClick(profitCenterModel[0].unitMasterId,profitCenterModel[0].statusId)" *ngIf="editStatus">Edit</button>
+							<button type="button" class="btn default-btn primary-btn multiplebtn-width font-semibold font-18" (click)="onDeactivateBtnClick(profitCenterModel[0].unitMasterId)" *ngIf="doDeActiveStatus" >Deactivate</button>
+							<button type="button" class="btn default-btn primary-btn multiplebtn-width font-semibold font-18" (click)="onReactivateBtnClick(profitCenterModel[0].unitMasterId)" *ngIf="doReActiveStatus">Reactivate</button>
+							<button type="button" class="btn default-btn secondary-btn multiplebtn-width marr20 font-semibold font-18" (click)="onSubmitBtnClick(profitCenterModel[0].unitMasterId)" *ngIf="showStatus" >Submit</button>
+							<button type="button" class="btn default-btn primary-btn multiplebtn-width font-semibold font-18" (click)="onDeleteBtnClick(profitCenterModel[0].unitMasterId)" *ngIf="showStatus">Delete</button>
+						</div>
+					</div>
+				</form>
+
+     </div>
+
+   </div>
+
+ </div>
+
+</div>
+<p-growl [(value)]="msgs" [life]="3000" ></p-growl>
+
+<p-confirmDialog></p-confirmDialog>

@@ -1,0 +1,96 @@
+<div [formGroup]="exchangeMultiple">  
+	<input type='hidden' formControlName='uniqueMapping' [ngModel]="data0 || 'null'" ng-init="data0=null">
+										<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Product</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="exchange_details.exchangeProduct" formControlName="exchangeProduct"
+												name="baseCode">
+                                                   <option value="">Select</option>
+												   <option *ngFor="let option of productList" value="{{option.prodId}}" > {{option.prodName}}</option>
+                                                   <!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+                                        </select>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Screen Name</label>
+											<input type="text" class="form-control font-15 font-regular" [(ngModel)]="exchange_details.exchangeScreenName" formControlName="exchangeScreenName" id="" value="" placeholder="" maxlength="200">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Hub Name</label>
+											<input type="text" class="form-control font-15 font-regular" [(ngModel)]="exchange_details.exchangeHubName" formControlName="exchangeHubName" id="" value="" placeholder="" maxlength="200">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Contract Symbol</label>
+											<input type="text" class="form-control font-15 font-regular" [(ngModel)]="exchange_details.exchangeContractSymbol" formControlName="exchangeContractSymbol" id="" value="" placeholder="" maxlength="200">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Lot / Contract Size</label>
+											<input type="text" class="form-control font-15 font-regular" (keypress) = "numberonly($event)" [(ngModel)]="exchange_details.exchangeContractSize" formControlName="exchangeContractSize" id="" value="" placeholder="" maxlength="200">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+											<!-- Multiselect --><label for="usr-field" class="colr-lblue font-regular font-14">Lot / Contract Size</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="exchange_details.exchangeContractSizeUom" formControlName="exchangeContractSizeUom"
+												name="baseCode">
+                                                   <option value="">Select</option>
+                                                   <!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+                                       <option *ngFor="let option of commisionList" value="{{option.uomId}}" >{{option.uomCode}}</option>
+									    </select>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+											<!-- Multiselect --><label for="usr-field" class="colr-lblue font-regular font-14">Holiday Calendar</label>
+										<!--	<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="holidayCalender"
+												name="baseCode">
+                                                   <option value="">Select</option>
+                                                   <option *ngFor="let option of holidayCalenderList" value="{{option.holidayCalId}}"> {{option.holidayCalName}} </option>
+                                      </select>-->
+									   <kendo-multiselect [data]="holidayCalenderList"  name="holidayCalender" [(ngModel)]="exchange_details.holidayCalender" formControlName="holidayCalender"
+												[textField]="'holidayCalName'" [valueField]="'holidayCalId'"></kendo-multiselect>
+									   
+										</div>
+										<!--<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+											<!-- Multiselect <label for="usr-field" class="colr-lblue font-regular font-14">Trading Calendar</label>
+											<!--<kendo-multiselect [data]="tradingCalender" [(ngModel)]="tradingCalenderModel" name="tradingCalenderModel" formControlName="exchangeTradingCalender"
+												[textField]="'calenderMonth'" [valueField]="'calenderMonth'"></kendo-multiselect>
+										</div>-->
+										<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14 width-full clr-both">Price Quotation</label>
+											<div class="pull-left col-lg-4 col-md-4 pad0">
+												<!--<input type="dropdown" style="width:75% !important" class="form-control pull-left fix-wid" id="usr-field2" formControlName="exchangePriceQuotation" value="2" placeholder="">-->
+										    <input type="text" class="form-control font-15 font-regular" [(ngModel)]="exchange_details.exchangePriceQuotation" formControlName="exchangePriceQuotation" id="" value="" placeholder="" maxlength="200">
+											</div>
+											<div class="dropdown pull-left col-lg-4 col-md-4 pad0 input-grp">
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="exchange_details.exchangePriceQuotationCurrency" formControlName="exchangePriceQuotationCurrency"
+													name="baseCode">
+                                                   <option value="">Select</option>
+                                                     <option *ngFor="let option of currencyList" value="{{option.pkCurrencyId}}">{{option.currencyName}} </option>
+                                                </select>
+											</div>
+
+											<div class="dropdown pull-left col-lg-4 col-md-4 pad0 input-grp">
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="exchange_details.exchangePriceQuotationUom" formControlName="exchangePriceQuotationUom" name="baseCode">
+                                                   <option value="">Select</option>
+												   <option *ngFor="let option of commisionList" value="{{option.uomId}}" >{{option.uomCode}}</option>
+                                            </select>
+											</div>
+										</div>
+
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14 width-full clr-both">Minimum Price Movement</label>
+											<div class="pull-left col-lg-4 col-md-4 pad0">
+												<!--<input type="dropdown" style="width:75% !important" class="form-control pull-left fix-wid" id="usr-field2" formControlName="exchangeMinimmumPrice" value="2" placeholder="">-->
+											<input type="text" class="form-control font-15 font-regular" (keypress) = "numberonly($event)" [(ngModel)]="exchange_details.exchangeMinimmumPrice" formControlName="exchangeMinimmumPrice" id="" value="" placeholder="" maxlength="200">
+											</div>
+											<div class="dropdown pull-left col-lg-4 col-md-4 pad0 input-grp">
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="exchange_details.exchangeMinimmumPriceCurrency" formControlName="exchangeMinimmumPriceCurrency"
+													name="baseCode">
+                                                   <option value="">Select</option>
+                                                    <option *ngFor="let option of currencyList" value="{{option.pkCurrencyId}}">{{option.currencyName}} </option> 
+                                                </select>
+											</div>
+
+											<div class="dropdown pull-left col-lg-4 col-md-4 pad0 input-grp">
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="exchange_details.exchangeMinimmumPriceUom" formControlName="exchangeMinimmumPriceUom" name="baseCode">
+                                                   <option value="">Select</option>
+												   <option *ngFor="let option of commisionList" value="{{option.uomId}}" >{{option.uomCode}}</option>
+                                            </select>
+											</div>
+										</div>
+

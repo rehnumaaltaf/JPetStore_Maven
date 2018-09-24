@@ -1,0 +1,14 @@
+.inValid, .inValid > div{
+    border-bottom-color:#d43c3c !important;
+}
+
+.white-bg{
+    background:#ffffff !important;
+}
+.popup-btn{
+  width:33% !important;  
+}
+
+.save-btn{
+    margin:0px !important;
+}

@@ -1,0 +1,45 @@
+<div [formGroup]="baseProductMappingforms">  
+   <div *ngIf="whentoEdit">
+	    <input type='hidden' formControlName='gradeMappingId' [ngModel]="data0 || 'null'" ng-init="data0=null">
+			<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 pad0">
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Code Type</label>
+									<div class="dropdown ">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="codeType" formControlName="codeTypeId" placeholder="">
+											<option value="">Select</option>
+											<option *ngFor="let option of grade" [selected]="codeType === option.typeRefId" value="{{option.typeRefId}}">{{option.intlCodeTypeName}}</option>
+										</select>
+								</div>
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Code</label>
+									<input type="text" class="form-control font-15" id="" value="" [(ngModel)]="code" formControlName="code" placeholder="">
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Description</label>
+									<input type="text" class="form-control font-15" id="" value="" [(ngModel)]="codedescription" formControlName="codedescription" placeholder="">
+								</div>
+							</div>
+							</div>
+	   <div *ngIf="whentoAdd">
+			<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 pad0">
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Code Type</label>
+									<div class="dropdown ">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="codeType" formControlName="codeTypeId" placeholder="">
+											<option value="">Select</option>
+											<option *ngFor="let option of grade" value="{{option.typeRefId}}">{{option.intlCodeTypeName}}</option>
+										</select>
+								</div>
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Code</label>
+									<input type="text" class="form-control font-15" id="" value="" formControlName="code" placeholder="">
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Description</label>
+									<input type="text" class="form-control font-15" id="" value="" formControlName="codedescription" placeholder="">
+								</div>
+							</div>
+     </div>
+</div>

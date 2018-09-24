@@ -1,0 +1,44 @@
+{
+    "body": {
+        "eeID": 8500049,
+        "name": "test",
+        "emailAddress": "test@gmail.com",
+        "subject": "Test Form",
+        "message": "I am on angular 4",
+        "description": "These forms may contain privileged and confidential information and/or protected health information (PHI). Please be aware that email is unsecured and can cause unintentional disclosures.",
+        "images": [
+            {
+                "src": "images/receipt2.jpg",
+                "mainImage": true,
+                "fileName": "Walgreens_receipt_1",
+                "timeStamp": "Uploaded on Sep 12, 2016"
+            },
+            {
+                "src": "images/receipt.jpg",
+                "mainImage": false,
+                "fileName": "Walgreens_receipt_2",
+                "timeStamp": "Uploaded on Sep 13, 2016"
+            },
+            {
+                "src": "images/receipt3.png",
+                "mainImage": false,
+                "fileName": "Walgreens_receipt_3",
+                "timeStamp": "Uploaded on Sep 14, 2016"
+            }
+        ]
+    },
+    "labels": [
+        {
+            "labelCd": "EMAIL.ADDRESS",
+            "labelVal": "Email Address"
+        },
+        {
+            "labelCd": "EMAIL.SUBJECT",
+            "labelVal": "Subject"
+        },
+         {
+            "labelCd": "EMAIL.MESSAGE",
+            "labelVal": "Message"
+        }
+    ]
+}

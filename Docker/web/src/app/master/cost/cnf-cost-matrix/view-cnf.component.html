@@ -1,0 +1,31 @@
+<!--<div class="container-fluid">
+    <div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Master.CnfLocale.AddTitle </h4>	-->
+    <form  class="user-detail font-sm" [formGroup]="CnfHouseFormMain">
+        <div formArrayName="cnfCostMatrix">
+            <div *ngFor="let ware of getWarehouseList(this.CnfHouseFormMain); let i=index" class="panel panel-default">
+                <div [formGroupName]="i">
+                    <app-add-cnf-cost-matrix [group]="CnfHouseFormMain.controls.cnfCostMatrix.controls[i]" [cnfCostData]=cnfCostData [addEditId]=addEditId [arrIndex]=i></app-add-cnf-cost-matrix>
+                        <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 accessories-block">
+                        <span class="pull-left add-icon"><i class="plus-icn-md" (click)="addCnf(i)"> &nbsp; </i></span>
+                        <span class="pull-left"><i class="delete-icn-md" (click)="removeCnfCost(i)"> &nbsp; </i></span>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+            <button type="button" class="btn btn-default navbar-btn cancel-btn font-semibold font-14">RESET</button>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+            <button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14">SAVE</button>					
+            <button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="SaveCnfDetails(this.CnfHouseFormMain.value)">SUBMIT</button>					
+        </div>							
+    </div>-->
+    </form>
+   <!-- </div>
+        </div></div>
+</div>-->

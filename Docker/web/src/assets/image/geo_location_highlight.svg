@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="272 -268.5 513 512" style="enable-background:new 272 -268.5 513 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#698714;}
+	.st1{clip-path:url(#SVGID_2_);}
+	.st2{opacity:0.4;enable-background:new    ;}
+	.st3{fill:#FFFFFF;}
+</style>
+<title>geo location_highlight</title>
+<g id="Layer_4">
+	<circle id="_Path_" class="st0" cx="528" cy="-12.5" r="256"/>
+	<g id="_Clip_Group_">
+		<g>
+			<defs>
+				<circle id="SVGID_1_" cx="528" cy="-12.5" r="256"/>
+			</defs>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+			</clipPath>
+			<g class="st1">
+				<polygon id="_Path_2" class="st2" points="426.6,78.6 654,308 804,247 856,181 597.1,-120.4 427.6,-102.4 				"/>
+			</g>
+		</g>
+	</g>
+	<path id="_Path_3" class="st3" d="M437-100.5"/>
+</g>
+<g id="Layer_3">
+	<g id="_Group_">
+		<g id="_Group_2">
+			<g id="_Group_3">
+				<circle id="_Path_4" class="st3" cx="528.4" cy="-51.9" r="24.1"/>
+				<path id="_Compound_Path_" class="st3" d="M528-162.5c-82.8,0-150,67.2-150,150s67.2,150,150,150s150-67.2,150-150
+					S610.8-162.5,528-162.5z M527.7-93.8h0.6c25.4,0.5,45.7,21.2,45.8,46.6c0,30.9-33,62.2-46.2,73.4c-0.9-0.8-1.8-1.6-2.9-2.5l0,0
+					c-14.5-12.9-43.2-42-43.2-70.9C482-72.6,502.3-93.3,527.7-93.8z M528.7,69.7c-27.7,0-55.7-7.9-55.7-23.1
+					c0-10.6,13.8-17.7,31.6-21c3.4,3.5,6.7,6.5,9.6,9c-19.4,2.2-30.7,8.3-30.7,11.9c0,4.5,17.2,12.7,45.3,12.7
+					c28.1,0,45.3-8.2,45.3-12.7c0-3.7-11.9-10-31.9-12c2.9-2.6,6.2-5.6,9.6-9.1c18.3,3.2,32.7,10.3,32.7,21.2
+					C584.3,61.8,556.3,69.7,528.7,69.7L528.7,69.7z"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

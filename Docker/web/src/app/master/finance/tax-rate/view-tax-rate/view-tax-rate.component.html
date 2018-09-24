@@ -1,0 +1,129 @@
+<div class="container-fluid">
+  <div class="row row-background">
+    <app-nav-bar></app-nav-bar>
+    <!-- ngx bootstrap - Accordion -->
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+        <h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">{{pageTitle}}</h4>
+        <form class="user-detail font-sm">
+          <accordion>
+            <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+              <div accordion-heading class="font-semibold">
+                Basic Details
+                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+              </div>
+              <div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.TaxRate.Code</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{code}}</span></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.TaxRate.TaxName</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{name}}</span></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.TaxRate.Description</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{description}}</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.TaxRate.Country</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{countryName}}</span></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.TaxRate.GovtTaxRef</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{govtTaxRef}}</span></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.TaxRate.TaxByLine</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{taxByLine=='Y' ? 'Yes' : 'No'}}</span></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.TaxRate.Status</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{statusName}}</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </accordion-group>
+            <accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+              <div accordion-heading class="font-semibold" l10nTranslate>
+                Master.TaxRate.TaxRates
+                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+              </div>
+              <div class="party-grade_block">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 Fin-yrs">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666">
+                      <label class="font-regular font-14 col-lg-3 col-md-2 col-sm-3 col-xs-12 padl0 brdb" l10nTranslate> Master.TaxRate.EffectiveFrom</label>
+                      <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate> Master.TaxRate.EffectiveTo</label>
+                      <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate> Master.TaxRate.TaxRatesPercentage </label>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let viewDetailsData of arrayList">
+                      <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 padl0 label-val">{{viewDetailsData.effectiveFrom}}</label>
+                      <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val">{{viewDetailsData.expirationDate}}</label>
+                      <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val">{{viewDetailsData.taxRatePercentage}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </accordion-group>
+
+          </accordion>
+
+         
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtoPrev()" l10nTranslate>Master.TaxRate.Back</button>
+						</div>
+						<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update13"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="enableEdit(taxRateViewByIdModel)" l10nTranslate>Master.TaxRate.Edit</button>
+							<button type="button" id="update14"   class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updatewithStatus('Active')" l10nTranslate>Master.TaxRate.Submit</button>					
+							<button type="button" id="update14"   class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updatewithStatus('Draft')" l10nTranslate>Master.TaxRate.Delete</button>				
+						</div>							
+					</div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtoPrev()" l10nTranslate>Master.TaxRate.Back</button>
+						</div>
+						<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update15"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="enableEdit(taxRateViewByIdModel)" l10nTranslate>Master.TaxRate.Edit</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updatewithStatus('InActive')" l10nTranslate>Master.TaxRate.Deactivate</button>					
+						</div>							
+          </div>
+          
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"  *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtoPrev()" l10nTranslate>Master.TaxRate.Back</button>
+						</div>
+						<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+              <button type="button" id="update16" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="enableEdit(taxRateViewByIdModel)" l10nTranslate>Master.TaxRate.Edit</button>
+              <button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updatewithStatus('Active')" l10nTranslate>Master.TaxRate.Reactivate</button>					
+						</div>							
+					</div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-message [(msgs)]="showMessage"></app-message>

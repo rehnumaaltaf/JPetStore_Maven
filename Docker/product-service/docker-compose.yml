@@ -1,0 +1,12 @@
+version: "3"
+services:
+ product-service:
+    image: ctrmdev.azurecr.io/product-service:latest
+    deploy:
+      replicas: 1
+      resources:
+        restart_policy:
+          condition: on-failure
+    container_name: product-service
+    ports:
+      - "8097:8097"

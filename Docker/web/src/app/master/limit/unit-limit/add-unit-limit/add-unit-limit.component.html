@@ -1,0 +1,129 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">Unit Limit</h4>			 			
+				<form  class="user-detail font-sm">
+					<accordion>
+						 <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                          Unit Limit Header
+                  <i class="pull-right float-xs-right glyphicon"
+                  [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">                    
+                    <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14">Internal Party Name</label>
+                      <input type="text" class="form-control font-15 font-regular " id="PartyCode" value="Nestle" placeholder="">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14">Product</label>
+                      <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+                          <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Coffee</a></li>
+                          <li><a href="#">Cocoa</a></li>											
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14">Limit Alert Level</label>
+                      <div class="dropdown ">
+                        <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+                          <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Hard </a></li>
+                          <li><a href="#">Soft</a></li>											
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14">Unit of Measurement</label>
+                      <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+                          <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">MT</a></li>
+                          <li><a href="#">KG</a></li>
+                          <li><a href="#">LBS</a></li>										
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14">Currency</label>
+                      <div class="dropdown positionrel">
+                        <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select 
+                          <span class="caret"></span></button>
+                        <ul class="dropdown-menu positionrel">
+                          <li><a href="#">USD</a></li>
+                          <li><a href="#">INR</a></li>											
+                        </ul>
+                      </div>
+                    </div>								
+							  </div>
+						 </accordion-group>
+              <accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                          Unit Limit
+                  <i class="pull-right float-xs-right glyphicon"
+                  [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">                    
+                    <div class="form-group col-lg-3 col-md-4 col-sm-3 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14">Unit Name</label>
+                      <input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4 col-sm-3 col-xs-12">
+                      <label for="usr-field" class="colr-lblue font-regular font-14">Outright Limit</label>
+                      <input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-lblue font-regular font-14">Basis Limit</label>
+                      <input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-lblue font-regular font-14">Structure Limit</label>
+                      <input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                      <label for="usr-field" class="colr-lblue font-regular font-14">Fixed Forward Tendor</label>
+                      <input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                      <label for="usr-field" class="colr-lblue font-regular font-14">VaR Limit</label>
+                      <input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                      <label for="usr-field" class="colr-lblue font-regular font-14">M2M Limit</label>
+                      <input type="Number" class="form-control font-15 font-regular " id="" value="" placeholder="">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                      <label for="usr-field" class="colr-lblue font-regular font-14">Valid From</label>
+                      <input type="date" class="form-control font-15 font-regular " id="" value="" placeholder="">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                      <label for="usr-field" class="colr-lblue font-regular font-14">Valid To</label>
+                      <input type="date" class="form-control font-15 font-regular " id="" value="" placeholder="">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-red font-regular font-14">Temporary/Permanent </label>
+                      <div class="dropdown positionrel">
+                        <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select 
+                          <span class="caret"></span></button>
+                        <ul class="dropdown-menu positionrel">
+                          <li><a href="#">Temporary</a></li>
+                          <li><a href="#">Permanent</a></li>											
+                        </ul>
+                      </div>
+                    </div>
+                 </div>
+              </accordion-group>
+					</accordion>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

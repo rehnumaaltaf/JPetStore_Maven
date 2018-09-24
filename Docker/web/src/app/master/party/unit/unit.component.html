@@ -1,0 +1,201 @@
+<div class="container-fluid">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt30 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>UNIT MASTER LIST</h4>
+
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a>
+					<img src="../../assets/image/add.png" (click)="unitAddView()" />
+
+
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+					<div class="accordion">
+
+						<div class="add_Uom_unit">
+						  <p-dataTable [value]="profitCenterModel" [editable]="true" selectionMode="single"
+							 [responsive]="true" widgetVar="unitlist">
+								<p-column [style]="{'width':'68px'}" selectionMode="multiple">
+								  <!-- <input type="checkbox" class="k-checkbox" name="check_all" id="check_all123">-->
+								</p-column>
+								<p-column  [sortable]="true" field="unitMasterId" header="UNIT CODE" [editable]="true">
+									  <ng-template let-col let-attribute="rowData" pTemplate="body">
+										<!--<span (click)="unitDetailView(attribute.unitMasterId,attribute.statusId)" class="view-hyperlink" [innerHTML]="attribute.unitCode" class="unit-hyperlink"></span>-->
+										<span class="view-hyperlink" [innerHTML]="attribute.unitCode" class="unit-hyperlink"></span>
+									</ng-template>
+								</p-column>
+								<p-column  [sortable]="true" field="unitName" header="UNIT NAME" [editable]="true">
+
+								</p-column>
+								<p-column  [sortable]="true" field="unitFullName" header="UNIT FULL NAME" [editable]="true"></p-column>
+								<!--<p-column  [sortable]="true" field="groupUnit" header="IS GROUP UNIT?" [editable]="true">
+									<ng-template let-col let-attribute="rowData" pTemplate="body">
+									{{((attribute.groupUnit==1)?'Yes':'No')}}
+									</ng-template>
+								</p-column>
+								<p-column  [sortable]="true" field="parentUnitName" header="PARENT UNIT" [editable]="true">
+								</p-column>-->
+								<p-column field="status" header="STATUS">
+								<ng-template let-col let-attribute="rowData" pTemplate="body">
+									<label class="text-center" [ngClass]="{'status-draft': attribute.statusId==3, 'status-active': attribute.statusId==1,'status-inactive': attribute.statusId==4}">{{((attribute.statusId==3)?'Draft':(attribute.statusId==4?'Inactive':'Active'))}}</label>
+								</ng-template>
+								</p-column>
+								<p-column>
+									<ng-template let-col="rowData" pTemplate="body">
+										<a href="javascript:void(0)" (click)="UpdateUnitView(col.unitMasterId, col.statusId)" (mouseover)='over($event)'><img [src]=imgSrc/></a>
+										<a href="javascript:void(0)" (click)="DeleteUnitView(col.unitMasterId,col.statusId,col.unitName)"><img src="../../../assets/image/Delete icon.svg" /></a>
+									</ng-template>
+								</p-column>
+							</p-dataTable>
+
+						</div>
+
+					</div>
+				</div>
+
+
+<!--Edit Dialog starts-->
+<p-dialog header="UOM Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+    <div class="ui-grid-row">
+          
+    </div>
+    
+</p-dialog>
+
+<!--Edit Dialog Ends-->
+<!-- Edit Modal -->
+<div class="modal fade edit-popup" id="edit" *ngIf="unitService.iseditModal" [style.display]="editModal ? 'block' : 'none'" bsModal #Edit="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="Edit UOM" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-edit">
+				<div class="modal-header mod-head">
+					<a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="close()"></span></a>
+					<h3 class="modal-title font-semibold">EDIT UNIT DETAILS</h3>
+				</div>
+				<div class="modal-edit-body mod-body">
+						<!--<app-add-unit [editId]="id" [editStatusId]="statusId" (onEditCancel)="close($event)"></app-add-unit>-->
+							<form class="user-detail font-lg">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Unit Code</label>
+											<input type="text" class="form-control font-15 font-regular "  [(ngModel)]="unitService.profitCenterModel.unitCode" [style.border-color]="unitService.getUnitCodeStyle()" name="unitCode" placeholder="" (focusout)="validateUnitCode()" required >
+											
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Unit Name</label>
+											<input type="text" class="form-control font-15 font-regular "  [(ngModel)]="unitService.profitCenterModel.unitName" [style.border-color]="unitService.getUnitNameStyle()" name="unitName" placeholder="" (focusout)="validateUnitName()" required >
+											
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Unit Full Name</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="unitService.profitCenterModel.unitFullName" [style.border-color]="unitService.getUnitFullNameStyle()" name="unitFullName" (focusout)="validateUnitFullName()" placeholder="">
+										</div>
+									</div>
+									
+									<div class="modal-window-footer" *ngIf="unitService.statusDraft">
+										<button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4" (click)="close()">CANCEL</button>
+										<button type="button" class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4" (click)="onSubmitBtnClick('SAVE')">SAVE</button>
+										<button  id="update" type="button" class="btn btn-default primary col-lg-4 col-md-4 col-sm-4" (click)="onSubmitBtnClick('SUBMIT')">SAVE & SUBMIT</button>					
+									</div>
+									<div class="modal-window-footer" *ngIf="unitService.statusActive">
+										<button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4" (click)="close()">CANCEL</button>
+										<button  id="update" type="button" class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4" (click)="onSubmitBtnClick('UPDATE')">UPDATE</button>
+										<button type="button" class="btn btn-default primary col-lg-4 col-md-4 col-sm-4" (click)="onSubmitBtnClick('UPDATEACIVE')">UPDATE & DEACTIVATE</button>
+															
+									</div>
+									<div class="modal-window-footer" *ngIf="unitService.statusInactive">
+										<button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4" (click)="close()">CANCEL</button>
+										<button type="button" class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4" (click)="onSubmitBtnClick('UPDATE')">UPDATE</button>
+										<button  id="update" type="button" class="btn btn-default primary col-lg-4 col-md-4 col-sm-4" (click)="onSubmitBtnClick('UPDATEINACIVE')">UPDATE & REACTIVATE</button>					
+									</div>
+									
+								</form>
+				</div>
+				
+			
+			</div>
+		</div>
+</div>
+<!-- Edit Modal End-->
+<!--Update message Modal - start -->
+<div *ngIf="isupdateModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #updateModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Unit Details Updated</div>
+				</div> 
+		</div>
+	</div>
+</div>
+<!--Update message Modal - end -->
+<!-- Delete Success Modal -->
+<div *ngIf="deleteSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>{{deactivateSuccessDialog}}</div>
+				</div> 
+		</div>
+	</div>
+</div>
+<!-- Delete Success Modal - End -->
+
+<!--Delete Pop up-->
+<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content  del-modal">
+		   <div class="modal-header text-center">
+				<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+				<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>			
+			<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular">							
+						{{dialogValue}}
+					</div>
+			</div>
+			<div class="del-btn-group modal-window-footer btn-shodow">
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete()">Confirm</button></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!---->
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- Save Success Modal -->
+<div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>{{message}}</div>
+				</div> 
+		</div>
+	</div>
+</div>
+
+<div *ngIf="isShowValModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<!--<div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>{{message}}</div>-->
+					<div class="modal-title font-14 font-regular">{{valMessage}}</div>
+				</div> 
+		</div>
+	</div>
+</div>

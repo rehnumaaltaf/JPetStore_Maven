@@ -1,0 +1,92 @@
+<div [formGroup]="wareHouseGrp">  
+	<div class="ovr-flw war-stc-block">
+										 <input type='hidden' formControlName='uniqueMapping' [ngModel]="data0 || 'null'" ng-init="data0=null">
+											<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Port/Location Code</label>
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="wareHouse_details.warlocationCode" formControlName="warlocationCode"
+													name="baseCode">
+													<option value="">Select</option>
+													<option *ngFor="let option of locationCodeList" value="{{option.pkLocId}}" >{{option.locName}}</option>
+											</select>
+											</div>
+											<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Location Name</label>
+												<input type="text" class="form-control font-15 font-regular " [(ngModel)]="wareHouse_details.wareLocationName" formControlName="wareLocationName" id="GeoCode" value="" placeholder="" maxlength="200">
+											</div>
+											<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Location Full Name</label>
+												<input type="text" class="form-control font-15 font-regular " [(ngModel)]="wareHouse_details.wareLocationFullName" formControlName="wareLocationFullName" id="GeoCode" value=""
+													placeholder="" maxlength="500">
+											</div>
+											<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Location Tax Registration No</label>
+												<input type="text" class="form-control font-15 font-regular " [(ngModel)]="wareHouse_details.wareLocationTaxRegNo"  id="GeoCode" formControlName="wareLocationTaxRegNo" value=""
+													placeholder="" maxlength="200">
+											</div>
+											<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Location Tax Registration Date</label>
+												<kendo-datepicker [(value)]="wareLocationTaxRegDate" [format]="'dd-MM-yyyy'" formControlName="wareLocationTaxRegDate"></kendo-datepicker>
+											</div>
+											<div class="form-group col-lg-3 col-md-3 col-sm-8 col-xs-12">
+												<span class="pull-left  padl0 colr-4b536 colr-lblue font-regular font-14">Exchange Designated</span>
+												<span class="radio pricing-details">
+											<input type="radio"  id="radio33"  value="Y"  formControlName="isExchangeDesignated" [(ngModel)]="isExchangeDesignated" >
+											<label for="radio3">Yes</label>
+										</span>
+												<span class="radio pricing-details">
+											<input type="radio"  id="radio44" value="N"   formControlName="isExchangeDesignated" [(ngModel)]="isExchangeDesignated" checked="checked">
+											<label for="radio4">No</label>
+										</span>
+											</div>
+											<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+												<span class="pull-left  padl0 colr-4b536 colr-lblue font-regular font-14">Bonded Warehouse</span>
+												<span class="radio pricing-details">
+											<input type="radio"  id="radio34"  value="Y"  formControlName="isBrandedWareHouse" [(ngModel)]="isBrandedWareHouse" >
+											<label for="radio3">Yes</label>
+										</span>
+												<span class="radio pricing-details">
+											<input type="radio"  id="radio45" value="N"   formControlName="isBrandedWareHouse" [(ngModel)]="isBrandedWareHouse" checked="checked">
+											<label for="radio4">No</label>
+										</span>
+											</div>
+											<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Address 1</label>
+												<input type="text" class="form-control font-15 font-regular " [(ngModel)]="wareHouse_details.wareAddress1" formControlName="wareAddress1" id="GeoCode" value="" placeholder="" maxlength="500" >
+											</div>
+											<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Address 2</label>
+												<input type="text" class="form-control font-15 font-regular "  [(ngModel)]="wareHouse_details.wareAddress2" formControlName="wareAddress2" id="GeoCode" value="" placeholder="" maxlength="500">
+											</div>
+											<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Zipcode</label>
+												<input type="text" class="form-control font-15 font-regular " [(ngModel)]="wareHouse_details.wareZip" formControlName="wareZip" id="GeoCode" value="" placeholder="" maxlength="20">
+											</div>
+											<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Country</label>
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="wareHouse_details.countryWareHOuse" formControlName="countryWareHOuse" name="baseCode" [ngClass]="{'valred': pcode==true,'val': pcode==false}">
+												<option value="">Select</option>
+													<!--<option *ngFor="let option of countryList" value="{{option.}}" > {{option.}} </option>-->
+												<!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+										<option *ngFor="let option of countryList" value="{{option.pkGeoId}}" > {{option.geoName}} </option>
+										  </select>
+											</div>
+											<div class="form-group col-lg-3 col-md-4 col-sm-2 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Phone</label>
+												<input type="text" class="form-control font-15 font-regular "  [(ngModel)]="wareHouse_details.warePhone" formControlName="warePhone" id="GeoCode" value="" placeholder="" maxlength="50">
+											</div>
+											<div class="form-group col-lg-3 col-md-4 col-sm-2 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Email</label>
+												<input type="text" class="form-control font-15 font-regular " [(ngModel)]="wareHouse_details.wareEmail" formControlName="wareEmail" id="GeoCode" value="" placeholder="" maxlength="1000">
+											<!--<span *ngIf="emailvalidation" class="font-12 colr-red">* Enter a valid email address</span>-->
+											</div>
+											<div class="form-group col-lg-3 col-md-4 col-sm-2 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Fax</label>
+												<input type="text" class="form-control font-15 font-regular " [(ngModel)]="wareHouse_details.wareFax" formControlName="wareFax" id="GeoCode" value="" placeholder="" maxlength="50">
+											</div>
+											<div class="form-group col-lg-3 col-md-4 col-sm-2 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Website</label>
+												<input type="text" class="form-control font-15 font-regular " [(ngModel)]="wareHouse_details.wareWebsite" formControlName="wareWebsite" id="GeoCode" value="" placeholder="" maxlength="500">
+											</div>
+										
+</div>
+</div>

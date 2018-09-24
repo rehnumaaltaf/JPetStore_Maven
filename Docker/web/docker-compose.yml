@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  web:
+    image: web
+    build: .
+    ports:
+      - 4200:4200

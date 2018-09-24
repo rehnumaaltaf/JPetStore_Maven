@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: authorization-config-service
+ 
+eureka:
+  instance:
+    preferIpAddress: true
+    hostname: ctrm-gateway
+    ipAddress: 10.175.50.4
+  client:
+    serviceUrl:
+      defaultZone: http://ctrm-registry:8761/eureka
+db:
+  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  url: jdbc:sqlserver://ctrm-dev-db.database.windows.net:1433;DataBaseName=CTRM_DEV_TRANSACTIONAL
+  username: auth_service_user
+  password: Infy123+
+
+server:
+  port: 8092
+  
+entitymanager:
+  packagesToScan: com.olam.score
+  
+hibernate:
+  dialect: org.hibernate.dialect.SQLServer2012Dialect
+  show_sql: true
+  
+reference:
+  name: reference-service
+  
+party:
+  name: party-service
+  
+product:
+  name: product-service
+  
+authorization:
+  name: authorization-config-service
+  
+finance:
+  name: finance-service
+  
+packing:
+  name: packing-service
+  
+marketdata:
+  name: marketdata-service
+  
+location:
+  name: location-service
+  
+limit:
+  name: limit-service
+  
+forex:
+  name: forex-service
+  
+cost:
+  name: cost-service
+  
+terms:
+  name: terms-service
+  
+  
+ 

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+ This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="Category">
+
+  <typeAlias alias="category" type="com.ibatis.jpetstore.domain.Category"/>
+  <typeAlias alias="categoryProduct" type="com.ibatis.jpetstore.domain.Product"/>
+
+
+  <cacheModel id="oneDayCategory" type="LRU">
+    <flushInterval hours="24"/>
+  </cacheModel>
+
+  <resultMap id="categoryResult" class="category">
+    <result property="categoryId" column="CATID"/>
+    <result property="name" column="NAME"/>
+    <result property="description" column="DESCN"/>
+  </resultMap>
+
+
+  <resultMap id="categoryWithProducts" class="category" groupBy="categoryId">
+    <result property="categoryId" column="CATEGORY_ID"/>
+    <result property="name" column="CATEGORY_NAME"/>
+    <result property="description" column="CATEGORY_DESCN"/>
+    <result property="products" resultMap="Category.productsInCategory"/>
+  </resultMap>
+
+  <resultMap id="productsInCategory" class="categoryProduct">
+    <result property="productId" column="PRODUCT_ID"/>
+    <result property="categoryId" column="CATEGORY_ID"/>
+    <result property="name" column="PRODUCT_NAME"/>
+    <result property="description" column="PRODUCT_DESCN"/>
+  </resultMap>
+
+
+  <select id="getCategoryWithProducts" resultMap="categoryWithProducts" parameterClass="string">
+    select
+        CATEGORY.CATID as CATEGORY_ID,
+        CATEGORY.NAME as CATEGORY_NAME,
+        CATEGORY.DESCN as CATEGORY_DESCN,
+        PRODUCT.PRODUCTID as PRODUCT_ID,
+        PRODUCT.NAME as PRODUCT_NAME,
+        PRODUCT.DESCN as PRODUCT_DESCN
+      from CATEGORY, PRODUCT
+    where PRODUCT.CATEGORY = CATEGORY.CATID and CATEGORY.CATID = #value#
+  </select>
+  
+  <select id="getCategory" resultMap="categoryResult" parameterClass="string">
+    select CATID, NAME, DESCN from CATEGORY where CATID = #value#
+  </select>
+
+  <select id="getCategoryList" resultMap="categoryResult">
+    select CATID, NAME, DESCN from CATEGORY
+  </select>
+
+</sqlMap>

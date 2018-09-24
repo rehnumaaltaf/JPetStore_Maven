@@ -1,0 +1,234 @@
+
+<div class="container-fluid"><!--<loading-animation [loadingData]="loadingData"></loading-animation>-->   
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+					<h4 class="padb10 padt10  colr-1e2f4d font-18 font-bold head-show" l10nTranslate >{{pageTitle}}</h4>	
+				
+				<form class="user-detail font-sm" method="post" [formGroup]="roleForm">
+					<accordion>
+						 <accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading  class="font-semibold">
+							Basic Details 
+							  <i class="pull-right float-xs-right glyphicon"
+                               [ngClass]="{'acc-up': group1?.isOpen, 'acc-down': !group1?.isOpen}"></i>
+							</div>
+							  <div>
+						  <div class="plants-detail-Stp">
+                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate >Role Name</label> 
+									<input type="text" class="form-control font-15 font-regular " [style.border-color]="getStyle()" formControlName="roleName" id="roleName" [(ngModel)]="userRoleDataList.roleName" maxlength="20" name="roleName" value="" placeholder="" >
+									<small *ngIf="req_roleName" class="colr-red font-regular font-14">Enter Role Name</small>
+								</div>
+								
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate >Description</label>
+									<input type="text" class="form-control font-15 font-regular " [style.border-color]="getStyle1()"  id="description" formControlName="description" [(ngModel)]="userRoleDataList.roleDesc" maxlength="250" name="roleDesc" value="" placeholder="">
+									<small *ngIf="req_roleDesc" class="colr-red font-regular font-14">Enter Role Description</small>
+								</div>							
+							</div>
+          </div>
+		  </div>	
+			</accordion-group>
+			<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading  class="font-semibold" l10nTranslate>
+							 Role Features List
+							  <i class="pull-right float-xs-right glyphicon"
+                               [ngClass]="{'acc-up': group?.isOpen, 'acc-down': !group?.isOpen}"></i>
+							</div>
+							<!-- <div>
+						 <div class="">
+								
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14 l10nTranslate">Feature</label>
+									<div class="dropdown">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="userRoleDataList.features" name="features" >
+											<option [ngValue]="undefined" selected>Select</option>
+												<option *ngFor="let module of userRoleService.userRole12" [ngValue]="module">{{module.value}}</option>
+											</select>
+											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 accessories-block">
+														<span class="pull-left"><i class="plus-icn-md" (click)="addPermissionMapping()" > &nbsp; </i></span>
+														<span class="pull-left"><i class="delete-icn-md" (click)="removePermissionMapping(i) " > &nbsp; </i></span>
+												</div>*/
+									</div>
+								<!--<div >
+									<span class="pull-left"><i class="plus-icn-md"> &nbsp; </i></span>
+									<span class="pull-left"><i class="delete-icn-md"> &nbsp; </i></span>
+								</div>-->
+
+								<!--</div>
+								</div>
+          </div>
+		  </div>	-->
+		  <div class="plants-detail-Stp">	
+								<div formArrayName="features">
+									<div *ngFor="let feature  of getUserRoleArray(roleForm); let i=index" >
+										<!--<span style="display: none" > {{i + 1}}</span>-->
+										<div  [formGroupName]="i">
+												<app-user-mapping [group]="roleForm.controls.features.controls[i]" [title]="i" [financialCalendarModel]=financialCalendarModel></app-user-mapping>
+												<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+														<span class="pull-left"><i class="plus-icn-md" (click)="addPermissionMapping()" > &nbsp; </i></span>
+														<span class="pull-left"><i class="delete-icn-md" (click)="removePermissionMapping(i) " > &nbsp; </i></span>
+													  <span class="pull-left role_more"><i class="view-icn-md"  (click)="click_more(i)" > &nbsp; </i></span>
+												 </div>
+										</div>
+									</div>
+								</div>	
+							</div>
+			</accordion-group>
+					</accordion>
+					<div *ngIf="whenDataNotTobeEdited">
+					 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="clear()">Reset</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="save()" >Save</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="saveAndSubmitRoleDetails()">Submit</button>					
+						</div>
+						</div>							
+					</div>
+					<div *ngIf="whenDataEdited">
+					 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="reset()">Cancel</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="saveEdit()" >Save</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="saveAndSubmitEdit()">Submit</button>					
+						</div>
+						</div>							
+					</div>
+					<div *ngIf="whenStatusInactive">
+					 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="reset()">Cancel</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="update()" >Update</button>					
+						
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updateUserRole('Active')" >Reactivate</button>					
+											
+						</div>
+						</div>							
+					</div>
+					<div *ngIf="whenStatusactive">
+					 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="reset()">Cancel</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="update()" >Update</button>					
+						
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updateUserRole('InActive')" >Deactivate</button>					
+											
+						</div>
+						</div>							
+					</div>
+					<div class="modal fade in error-modal" [style.display]="ErrorModal ? 'block' : 'none'" id="ErrorModal" role="dialog">
+			          <div class="modal-dialog">
+			             <div class="modal-content">
+					     <div class="modal-header">        
+					       <div class="modal-title font-14 font-regular"><span><img src="../../assets/image/Confirm_Delete.svg"/></span>Error : {{errorMessage}}!!!</div>
+					   </div>       
+				       </div>
+			</div>
+		</div>
+		  <div class="modal fade edit-popup" id="view" *ngIf="isShowFeature" [style.display]="editModal ? 'block' : 'none'" bsModal #Edit="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="view pop" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-edit">
+				<div class="modal-header mod-head">
+					<a data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove" (click)="close()"></span></a>
+					<h3 class="modal-title font-semibold">FEATURE DETAILS</h3>
+				</div>
+				<div class="modal-edit-body mod-body">
+					<div class="accordion">
+                             
+         <table role="grid" style="border: 1px solid #31708f;width:80%;margin-left:60px">
+            <thead role="rowgroup">
+               <tr role="row">
+                  <th scope="col" role="columnheader" data-field="ref" aria-haspopup="true" rowspan="1" data-title="REFERENCE" data-index="1" id="86f9254c-6e46-4a26-8517-119acdf79faf" class="k-header" data-role="columnsorter"><a class="k-link" href="#" style="margin-left:24px">MODULE</a></th>
+                  <th scope="col" role="columnheader" data-field="p_code" aria-haspopup="true" rowspan="1" data-title="PARTY CODE" data-index="2" id="3c83b705-9e92-4bf3-9534-63b35ac8f326" class="k-header" data-role="columnsorter"><a class="k-link" href="#" style="margin-left:24px">ENTITY</a></th>
+                  <th scope="col" role="columnheader" data-field="p_name" aria-haspopup="true" rowspan="1" data-title="PARTY NAME" data-index="3" id="8e58fe48-c6b3-4524-b0b9-1124bef39fe3" class="k-header" data-role="columnsorter"><a class="k-link" href="#" style="margin-left:24px">PERMISSION LEVEL</a></th>
+                  <th scope="col" role="columnheader" data-field="p_name" aria-haspopup="true" rowspan="1" data-title="PARTY NAME" data-index="3" id="8e58fe48-c6b3-4524-b0b9-1124bef39fe3" class="k-header" data-role="columnsorter"><a class="k-link" href="#" style="margin-left:24px">ATTRIBUTE</a></th>
+                 
+               </tr>
+            </thead>
+         </table>
+      <table role="grid" style="height: auto;border:1px solid #31708f;width:80%;margin-left:60px">
+         <tbody role="rowgroup" *ngFor="let userdetails of userRoleService.popUpList">
+				<td style="text-align: Center;" role="gridcell" style="padding-left:3%;" class="view-all" style="padding-left:3%;color:#0000EE !important;cursor: pointer;">{{userdetails.module}}</td>
+				<td style="text-align: Center;" role="gridcell" style="padding-left:3%;">{{userdetails.entity}}</td>
+				<td style="text-align: Center;" role="gridcell" style="padding-left:3%;">{{userdetails.feature}}</td>
+				<td style="text-align: Center;" role="gridcell" style="padding-left:3%;">{{userdetails.feature}}</td>
+
+           
+         </tbody>
+      </table>
+						
+
+					</div>
+
+						
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-right text-right pad0 primary-btn" style="position: fixed;bottom: 0 !important;left:200px;">
+										<button  id="popup" type="button" class="btn btn-default navbar-btn update-cancel-btn cancel-btn" (click)="closePop()">Close</button>					
+									</div>
+			
+			</div>
+		</div>
+</div>
+
+				</form>
+				<div *ngIf="errormodal" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHidden()" class="modal fade something_wrong"  bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+                <div class="modal-header">   
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>This page contains {{counter}} errors.Please correct the highlighted fields.</div>
+				</div> 
+        </div>
+    </div>
+</div>
+				<!--Delete Pop up-->
+		<div class="modal fade delete-popup" *ngIf="isError" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" >
+                                <div class="modal-dialog">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                    <img src="../../assets/image/Confirm_Delete.svg" />
+                                                                </div>
+                                                                <!--<div class="col-md-12 product_img text-center" style="padding-top:15px;">
+                                                                                <img src="../../assets/image/Confirm_Delete.svg" />
+                                                                </div>-->
+                                                                <div class="modal-body">
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     {{errorMessageForUser}}
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="clickToClosePop()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="clickToClosePop()">Ok</button></div>				
+                                                                </div>
+                                                </div>
+                                </div>
+<div *ngIf="isupdateModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #updateModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular" *ngIf="isUpdate"><img src="../../assets/image/Ok.jpg"/>Success : Updated UOM Code {{uomCode}}</div>
+					<div class="modal-title font-14 font-regular" *ngIf="isActivated"><img src="../../assets/image/Ok.jpg"/>Success : Activated UOM Code {{uomCode}}</div>
+					<div class="modal-title font-14 font-regular" *ngIf="isInActivated"><img src="../../assets/image/Ok.jpg"/>Success : InActivated UOM Code {{uomCode}}</div>
+				</div> 
+		</div>
+	</div>
+</div>
+			</div> 
+  
+		</div>
+	
+	</div>
+</div>

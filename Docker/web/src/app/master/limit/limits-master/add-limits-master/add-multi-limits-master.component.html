@@ -1,0 +1,721 @@
+<div [formGroup]="basePaymentMappingform" class="clr-both">
+	 <input type='hidden' formControlName='limitDetailsId' [ngModel]="limitDetailsId" />
+
+		 <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="optionText != '19' && optionText != '20' ">
+			<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both" l10nTranslate>Master.LimitMaster.outright</label>
+			<div formGroupName="limitOutRightAttribute">
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0 ">
+				<select formControlName='limitVolumeValueRefId'  
+				name = "limitVolumeValueRefId_{{this.title}}" 
+				id="limitVolumeValueRefId_{{this.title}}"
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75" 
+				(change)="onVolumeValueChange($event,'Outright')"
+				[(ngModel)] = "limitOutRightAttribute.limitVolumeValueRefId"
+				[style.border-color]="getStyleoutright(this.title)"
+				>
+				<option value="-1" selected disabled>Select</option>
+				<option *ngFor="let option of limitmasterService.volumeValueArr" 
+				value="{{option.limitVolumeValueRefId}}">
+				{{option.limitVolumeValueRefName}}
+			    </option>									 
+				</select>
+			
+			</div>
+		
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0">
+			  
+
+				<select 
+				formControlName='limitVolumeUomIdCurrencycode' 
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75"  
+				name ="limitVolumeUomIdCurrencycode_{{this.title}}"	
+				[style.border-color]="getStyleoutright(this.title)"
+				id="limitVolumeUomIdCurrencycode_{{this.title}}"	
+					 [(ngModel)] = "limitOutRightAttribute.limitVolumeUomIdCurrencycode" 
+					>
+						<option value="-1" selected disabled>Select</option>
+						<option *ngFor="let option of volumeOrValueDetails" 
+						value="{{option.value}}">
+						{{option.label}}
+						
+					</option>	
+				</select>
+			
+			</div>
+			<div class="pull-left col-lg-4 col-md-4 pad0">
+				<input type="text"
+				class="form-control pull-left fix-wid width-75" 
+				id="limit"
+				formControlName='limit' 
+				name ="limit_{{this.title}}"	
+				[style.border-color]="getStyleoutright(this.title)"
+				id="limit_{{this.title}}"
+				[(ngModel)] = "limitOutRightAttribute.limit"
+				(keypress) = "numberonly($event)"
+				>
+			</div>
+		</div>
+		<small *ngIf="req_outright(this.title)" class="colr-red font-regular font-14" l10nTranslate >Select Outright Attribute</small>			
+	  </div>
+	
+
+	  <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="optionText != '19' && optionText != '20' ">
+			<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both" l10nTranslate>
+				Master.LimitMaster.basis</label>
+		  <div formGroupName="limitBasisAttribute">		
+			
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0 ">
+				<select  formControlName='limitVolumeValueRefId'  
+				name = "limitVolumeValueRefId_{{this.title}}" 
+				id="limitVolumeValueRefId_{{this.title}}"
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75" 
+				(change)="onVolumeValueChange($event,'Basis')"
+				[(ngModel)] = "limitBasisAttribute.limitVolumeValueRefId"
+				[style.border-color]="getStylebasis(this.title)"
+				>
+				<option value="-1"  selected disabled>Select</option>
+				<option *ngFor="let option of limitmasterService.volumeValueArr" 
+				value="{{option.limitVolumeValueRefId}}">
+				{{option.limitVolumeValueRefName}}
+			    </option>									 
+				</select>
+			
+			</div>
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0">
+				
+
+				<select 
+				formControlName='limitVolumeUomIdCurrencycode' 
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75"  
+					name ="limitVolumeUomIdCurrencycode_{{this.title}}"	
+				id="limitVolumeUomIdCurrencycode_{{this.title}}"
+					 [(ngModel)] = "limitBasisAttribute.limitVolumeUomIdCurrencycode" 
+					  [style.border-color]="getStylebasis(this.title)"
+					>
+						<option value="-1"  selected disabled> Select</option>
+						<option *ngFor="let option of volumeOrValueDetailsbasis" 
+						value="{{option.value}}">
+						{{option.label}}
+						
+					</option>	
+				</select>
+			</div>
+			<div class="pull-left col-lg-4 col-md-4 pad0">
+				<input type="dropdown"  class="form-control pull-left fix-wid width-75" 
+				
+				 placeholder="" 
+				 formControlName='limit'
+				 [(ngModel)] = "limitBasisAttribute.limit" 
+				  [style.border-color]="getStylebasis(this.title)"
+				  name ="limit_{{this.title}}"	
+				id="limit_{{this.title}}"
+				(keypress) = "numberonly($event)"
+				>
+			</div>
+			<!-- <input type="hidden" name="basisDiv" value="{{limitBasisAttribute}}"> -->
+		</div>
+		<small *ngIf="req_basis(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Basis Attribute</small>			
+	  </div>	
+       <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="optionText != '19' && optionText != '20' " l10nTranslate>
+			<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both" l10nTranslate>
+				Master.LimitMaster.structure</label>
+		    <div formGroupName="limitStructureAttribute">			
+			
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0 ">
+				<select formControlName='limitVolumeValueRefId'  
+				name = "limitVolumeValueRefId_{{this.title}}" 
+				id="limitVolumeValueRefId_{{this.title}}"
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75" 
+				(change)="onVolumeValueChange($event,'Structure')"
+				[(ngModel)] = "limitStructureAttribute.limitVolumeValueRefId"
+				[style.border-color]="getStylestruture(this.title)"
+				>
+				<option value="-1" selected disabled>Select</option>
+				<option *ngFor="let option of limitmasterService.volumeValueArr" 
+				value="{{option.limitVolumeValueRefId}}">
+				{{option.limitVolumeValueRefName}}
+			    </option>									 
+				</select>
+			
+			</div>
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0">
+				
+				<select 
+				formControlName='limitVolumeUomIdCurrencycode' 
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75"  
+					name ="limitVolumeUomIdCurrencycode_{{this.title}}"	
+				id="limitVolumeUomIdCurrencycode_{{this.title}}"	
+					 [(ngModel)] = "limitStructureAttribute.limitVolumeUomIdCurrencycode" 
+					  [style.border-color]="getStylestruture(this.title)"
+					>
+						<option value="-1" selected disabled> Select</option>
+						<option *ngFor="let option of volumeOrValueDetailsStructure" 
+						value="{{option.value}}">
+						{{option.label}}
+						
+					</option>	
+				</select>
+			</div>
+			<div class="pull-left col-lg-4 col-md-4 pad0">
+				<input type="dropdown"  class="form-control pull-left fix-wid width-75" 
+				id="usr-field2"
+				 formControlName='limit'
+				 [(ngModel)] = "limitStructureAttribute.limit" 
+				  [style.border-color]="getStylestruture(this.title)"
+				 placeholder="" 
+				  name ="limit_{{this.title}}"	
+				id="limit_{{this.title}}"
+				(keypress) = "numberonly($event)"
+				>
+			</div>
+		</div>
+		<small *ngIf="req_structure(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Structure Attribute</small>			
+	</div>
+
+	<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="optionText != '19' && optionText != '20' ">
+			<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both" l10nTranslate>
+				Master.LimitMaster.drawdown</label>
+		<div formGroupName="limitDrawDownAttribute">		
+		
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0 ">
+				<select formControlName='limitVolumeValueRefId'  
+				name = "limitVolumeValueRefId_{{this.title}}" 
+				id="limitVolumeValueRefId_{{this.title}}"
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75" 
+				(change)="onVolumeValueChange($event,'Drawdown')"
+				[(ngModel)] = "limitDrawDownAttribute.limitVolumeValueRefId"
+				[style.border-color]="getStyledran(this.title)"
+				>
+				<option value="-1" selected disabled>Select</option>
+				<option *ngFor="let option of limitmasterService.volumeValueArr" 
+				value="{{option.limitVolumeValueRefId}}">
+				{{option.limitVolumeValueRefName}}
+			    </option>									 
+				</select>
+			
+			</div>
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0">
+				
+				<select 
+				formControlName='limitVolumeUomIdCurrencycode' 
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75"  
+						name ="limitVolumeUomIdCurrencycode_{{this.title}}"	
+				id="limitVolumeUomIdCurrencycode_{{this.title}}"
+					 [(ngModel)] = "limitDrawDownAttribute.limitVolumeUomIdCurrencycode" 
+					  [style.border-color]="getStyledran(this.title)"
+					>
+						<option value="-1" selected disabled >Select</option>
+						<option *ngFor="let option of volumeOrValueDetailsDrawdown" 
+						value="{{option.value}}">
+						{{option.label}}
+						
+					</option>	
+				</select>
+			</div>
+			<div class="pull-left col-lg-4 col-md-4 pad0">
+				<input type="dropdown"  class="form-control pull-left fix-wid width-75" 
+				[style.border-color]="getStyledran(this.title)"
+				 placeholder="" 
+				 formControlName='limit'
+				 [(ngModel)] = "limitDrawDownAttribute.limit" 
+				  name ="limit_{{this.title}}"	
+				id="limit_{{this.title}}"
+				(keypress) = "numberonly($event)"
+				 >
+			</div>
+		</div>
+		<small *ngIf="req_drawdown(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Drawdown Attribute</small>			
+	</div>		
+
+	<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="optionText != '19' && optionText != '20' " l10nTranslate>
+			<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both">
+				Master.LimitMaster.var</label>
+		<div formGroupName="limitVaRAttribute">		
+			
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0 ">
+				<select formControlName='limitVolumeValueRefId'  
+				name = "limitVolumeValueRefId_{{this.title}}" 
+				id="limitVolumeValueRefId_{{this.title}}"
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75" 
+				(change)="onVolumeValueChange($event,'VaR')"
+				[(ngModel)] = "limitVaRAttribute.limitVolumeValueRefId"
+				[style.border-color]="getStyleVar(this.title)"
+				>
+				<option value="-1" selected disabled>Select</option>
+				<option *ngFor="let option of limitmasterService.volumeValueArr" 
+				value="{{option.limitVolumeValueRefId}}">
+				{{option.limitVolumeValueRefName}}
+			    </option>									 
+				</select>
+			
+			</div>
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0">
+				
+				<select 
+				formControlName='limitVolumeUomIdCurrencycode' 
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75"  
+						name ="limitVolumeUomIdCurrencycode_{{this.title}}"	
+				id="limitVolumeUomIdCurrencycode_{{this.title}}"
+					 [(ngModel)] = "limitVaRAttribute.limitVolumeUomIdCurrencycode" 
+					  [style.border-color]="getStyleVar(this.title)"
+					>
+						<option value="-1" selected disabled> Select</option>
+						<option *ngFor="let option of volumeOrValueDetailsVaR" 
+						value="{{option.value}}">
+						{{option.label}}
+						
+					</option>	
+				</select>
+			</div>
+			<div class="pull-left col-lg-4 col-md-4 pad0">
+				<input type="dropdown"  class="form-control pull-left fix-wid width-75" 
+				[style.border-color]="getStyleVar(this.title)"
+				 placeholder="" 
+				 formControlName='limit'
+				  name ="limit_{{this.title}}"	
+				id="limit_{{this.title}}"
+				  [(ngModel)] = "limitVaRAttribute.limit" 
+					(keypress) = "numberonly($event)"
+				 >
+			</div>
+		</div>
+		<small *ngIf="req_var(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Var Attribute</small>			
+	</div>
+	<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="optionText != '19' && optionText != '20' " l10nTranslate>
+			<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both">
+			Master.LimitMaster.delta</label>
+		<div formGroupName="limitDeltaAttribute">		
+			
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0 ">
+				<select formControlName='limitVolumeValueRefId'  
+				name = "limitVolumeValueRefId_{{this.title}}" 
+				id="limitVolumeValueRefId_{{this.title}}"
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75" 
+				(change)="onVolumeValueChange($event,'Delta')"
+				[(ngModel)] = "limitDeltaAttribute.limitVolumeValueRefId"
+				[style.border-color]="getStyleDelta(this.title)"
+				>
+				<option value="-1" selected disabled> Select</option>
+				<option *ngFor="let option of limitmasterService.volumeValueArr" 
+				value="{{option.limitVolumeValueRefId}}">
+				{{option.limitVolumeValueRefName}}
+			    </option>									 
+				</select>
+			
+			</div>
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0">
+				
+				<select 
+				formControlName='limitVolumeUomIdCurrencycode' 
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75"  
+						name ="limitVolumeUomIdCurrencycode_{{this.title}}"	
+				id="limitVolumeUomIdCurrencycode_{{this.title}}"
+					 [(ngModel)] = "limitDeltaAttribute.limitVolumeUomIdCurrencycode" 
+					  [style.border-color]="getStyleDelta(this.title)"
+					>
+						<option value="-1" selected disabled> Select</option>
+						<option *ngFor="let option of volumeOrValueDetailsDelta" 
+						value="{{option.value}}">
+						{{option.label}}
+						
+					</option>	
+				</select>
+            </div>
+			<div class="pull-left col-lg-4 col-md-4 pad0">
+				<input type="dropdown" class="form-control pull-left fix-wid width-75" 
+				[style.border-color]="getStyleDelta(this.title)"
+				 placeholder=""
+				 formControlName='limit'
+				  name ="limit_{{this.title}}"	
+				id="limit_{{this.title}}"
+				[(ngModel)] = "limitDeltaAttribute.limit"	
+				(keypress) = "numberonly($event)"
+			 >
+			</div>
+		</div>	
+		<small *ngIf="req_delta(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Delta Attribute</small>			
+</div>
+
+<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="optionText != '19' && optionText != '20' " l10nTranslate>
+			<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both">
+			Master.LimitMaster.gamma</label>
+			<div formGroupName="limitGammaAttribute">
+			
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0 ">
+				<select formControlName='limitVolumeValueRefId'  
+				name = "limitVolumeValueRefId_{{this.title}}" 
+				id="limitVolumeValueRefId_{{this.title}}"
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75" 
+			    (change)="onVolumeValueChange($event,'Gamma')"
+				[(ngModel)] = "limitGammaAttribute.limitVolumeValueRefId"
+				[style.border-color]="getStyleGamma(this.title)"
+				>
+				<option value="-1" selected disabled> Select</option>
+				<option *ngFor="let option of limitmasterService.volumeValueArr" 
+				value="{{option.limitVolumeValueRefId}}">
+				{{option.limitVolumeValueRefName}}
+			    </option>									 
+				</select>
+			
+			</div>
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0">
+				
+				<select 
+				formControlName='limitVolumeUomIdCurrencycode' 
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75"  
+					name ="limitVolumeUomIdCurrencycode_{{this.title}}"	
+				id="limitVolumeUomIdCurrencycode_{{this.title}}"	
+					 [(ngModel)] = "limitGammaAttribute.limitVolumeUomIdCurrencycode" 
+					  [style.border-color]="getStyleGamma(this.title)"
+					>
+					<option value="-1" selected disabled> Select</option>
+						<option *ngFor="let option of volumeOrValueDetailsGamma" 
+						value="{{option.value}}">
+						{{option.label}}
+						
+					</option>	
+				</select>
+
+            </div>
+			<div class="pull-left col-lg-4 col-md-4 pad0">
+				<input type="dropdown" class="form-control pull-left fix-wid width-75" 
+				 placeholder=""
+				formControlName='limit'
+				[(ngModel)] = "limitGammaAttribute.limit"	
+				name ="limit_{{this.title}}"	
+				id="limit_{{this.title}}"
+				[style.border-color]="getStyleGamma(this.title)"
+				(keypress) = "numberonly($event)"
+				>
+			</div>
+		</div>	
+		<small *ngIf="req_gamma(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Gamma Attribute</small>			
+</div>
+
+<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="optionText != '19' && optionText != '20' ">
+			<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both" l10nTranslate>
+			Master.LimitMaster.vega</label>
+			<div formGroupName="limitVegaAttribute">
+			
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0 ">
+				<select formControlName='limitVolumeValueRefId'  
+				name = "limitVolumeValueRefId_{{this.title}}" 
+				id="limitVolumeValueRefId_{{this.title}}"
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75" 
+			    (change)="onVolumeValueChange($event,'Vega')"
+				[(ngModel)] = "limitVegaAttribute.limitVolumeValueRefId"
+				[style.border-color]="getStyleVega(this.title)"
+				>
+				<option  value="-1" selected disabled> Select</option>
+				<option *ngFor="let option of limitmasterService.volumeValueArr" 
+				value="{{option.limitVolumeValueRefId}}">
+				{{option.limitVolumeValueRefName}}
+			    </option>									 
+				</select>
+			
+			</div>
+			<div class="dropdown pull-left col-lg-4 col-md-4 pad0">
+				
+				<select 
+				formControlName='limitVolumeUomIdCurrencycode' 
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75"  
+					name ="limitVolumeUomIdCurrencycode_{{this.title}}"	
+				id="limitVolumeUomIdCurrencycode_{{this.title}}"	
+					 [(ngModel)] = "limitVegaAttribute.limitVolumeUomIdCurrencycode" 
+					  [style.border-color]="getStyleVega(this.title)"
+					>
+						<option  value="-1" selected disabled> Select</option>
+						<option *ngFor="let option of volumeOrValueDetailsVega" 
+						value="{{option.value}}">
+						{{option.label}}
+						
+					</option>	
+				</select>
+
+            </div>
+			<div class="pull-left col-lg-4 col-md-4 pad0">
+				<input type="dropdown" class="form-control pull-left fix-wid width-75"
+				 placeholder=""
+				formControlName='limit'
+				 [(ngModel)] = "limitVegaAttribute.limit"	
+				  name ="limit_{{this.title}}"	
+				id="limit_{{this.title}}" 
+				[style.border-color]="getStyleVega(this.title)"
+				(keypress) = "numberonly($event)"
+				>
+			</div>
+		</div>	
+		<small *ngIf="req_vega(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Vega Attribute</small>			
+</div>
+
+
+<div *ngIf="optionText=='19'" >
+	<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both" l10nTranslate>
+				Master.LimitMaster.currentmonth</label>
+				<div formGroupName="currentMonthAttribute">
+				
+				<div class="dropdown pull-left col-lg-4 col-md-4 pad0 ">
+					<select formControlName='limitVolumeValueRefId'  
+					name = "limitVolumeValueRefId_{{this.title}}" 
+				id="limitVolumeValueRefId_{{this.title}}"
+					class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75" 
+					(change)="onVolumeValueChange($event,'CurrentMonth')"
+					[style.border-color]="getStyleCurrent(this.title)"
+					
+					 [(ngModel)] = "currentMonthAttribute.limitVolumeValueRefId"	
+					>
+					<option value="-1" selected disabled> Select</option>
+					<option *ngFor="let option of limitmasterService.volumeValueArr" 
+					value="{{option.limitVolumeValueRefId}}">
+					{{option.limitVolumeValueRefName}}
+					</option>									 
+					</select>
+				
+				</div>
+				<div class="dropdown pull-left col-lg-4 col-md-4 pad0">
+					
+					<select 
+					formControlName='limitVolumeUomIdCurrencycode' 
+					class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75"  
+						name ="limitVolumeUomIdCurrencycode_{{this.title}}"	
+				id="limitVolumeUomIdCurrencycode_{{this.title}}"	
+						[style.border-color]="getStyleCurrent(this.title)"
+						 [(ngModel)] = "currentMonthAttribute.limitVolumeUomIdCurrencycode"
+						>
+							<option value="-1" selected disabled> Select</option>
+							<option *ngFor="let option of volumeOrValueDetailscurrent" 
+							value="{{option.value}}">
+							{{option.label}}
+							
+						</option>	
+					</select>
+
+
+				</div>
+				<div class="pull-left col-lg-3 col-md-4 pad0">
+					<input type="dropdown" class="form-control pull-left fix-wid width-75" 
+					placeholder=""
+					formControlName='limit'
+					name ="limit_{{this.title}}"	
+				id="limit_{{this.title}}"
+				 [(ngModel)] = "currentMonthAttribute.limit"
+				[style.border-color]="getStyleCurrent(this.title)"
+				(keypress) = "numberonly($event)"
+					>
+				</div>
+			</div>	
+			<small *ngIf="req_current(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Current Attribute</small>			
+	</div>
+
+	<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both" l10nTranslate>
+				Master.LimitMaster.forwardmonth</label>
+				<div formGroupName="forwardMonthAttribute">
+				
+				<div class="dropdown pull-left col-lg-4 col-md-4 pad0 ">
+					<select formControlName='limitVolumeValueRefId'  
+						name = "limitVolumeValueRefId_{{this.title}}" 
+				id="limitVolumeValueRefId_{{this.title}}"
+					class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75" 
+					(change)="onVolumeValueChange($event,'ForwardMonth')"
+					[style.border-color]="getStyleForward(this.title)"
+					 [(ngModel)] = "forwardMonthAttribute.limitVolumeValueRefId"
+					>
+					<option value="-1" selected disabled> Select</option>
+					<option *ngFor="let option of limitmasterService.volumeValueArr" 
+					value="{{option.limitVolumeValueRefId}}">
+					{{option.limitVolumeValueRefName}}
+					</option>									 
+					</select>
+				
+				</div>
+				<div class="dropdown pull-left col-lg-4 col-md-4 pad0">
+					
+					<select 
+					formControlName='limitVolumeUomIdCurrencycode' 
+					class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75"  
+						name ="limitVolumeUomIdCurrencycode_{{this.title}}"	
+				id="limitVolumeUomIdCurrencycode_{{this.title}}"	
+						[style.border-color]="getStyleForward(this.title)"
+						 [(ngModel)] = "forwardMonthAttribute.limitVolumeUomIdCurrencycode"
+						>
+						<option value="-1" selected disabled> Select</option>
+							<option *ngFor="let option of volumeOrValueDetailsforward" 
+							value="{{option.value}}">
+							{{option.label}}
+							
+						</option>	
+					</select>
+
+					
+				</div>
+				<div class="pull-left col-lg-3 col-md-4 pad0">
+					<input type="dropdown" class="form-control pull-left fix-wid width-75" 
+					placeholder=""
+					formControlName='limit'
+					name ="limit_{{this.title}}"	
+				id="limit_{{this.title}}"
+				[style.border-color]="getStyleForward(this.title)"
+				 [(ngModel)] = "forwardMonthAttribute.limit"
+				  (keypress) = "numberonly($event)"
+					>
+				</div>
+			</div>	
+			<small *ngIf="req_forward(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Forward Attribute</small>			
+	</div>
+	<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" l10nTranslate>
+				<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both">
+				Master.LimitMaster.totalattr</label>
+				<div formGroupName="totalAttribute">
+				
+				<div class="dropdown pull-left col-lg-4 col-md-4 pad0 ">
+					<select formControlName='limitVolumeValueRefId'  
+						name = "limitVolumeValueRefId_{{this.title}}" 
+				id="limitVolumeValueRefId_{{this.title}}"
+					class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75" 
+					(change)="onVolumeValueChange($event,'totalAttribute')"
+					[style.border-color]="getStyleTotal(this.title)"
+					 [(ngModel)] = "totalAttribute.limitVolumeValueRefId"
+					>
+					<option value="-1" selected disabled> Select</option>
+					<option *ngFor="let option of limitmasterService.volumeValueArr" 
+					value="{{option.limitVolumeValueRefId}}">
+					{{option.limitVolumeValueRefName}}
+					</option>									 
+					</select>
+				
+				</div>
+				<div class="dropdown pull-left col-lg-4 col-md-4 pad0">
+					
+					<select 
+					formControlName='limitVolumeUomIdCurrencycode' 
+					class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75"  
+						name ="limitVolumeUomIdCurrencycode_{{this.title}}"	
+				id="limitVolumeUomIdCurrencycode_{{this.title}}"	
+						[style.border-color]="getStyleTotal(this.title)"
+						 [(ngModel)] = "totalAttribute.limitVolumeUomIdCurrencycode"
+						>
+						<option value="-1" selected disabled> Select</option>
+							<option *ngFor="let option of volumeOrValueDetailstotal" 
+							value="{{option.value}}">
+							{{option.label}}
+							
+						</option>	
+					</select>
+
+				</div>
+				<div class="pull-left col-lg-3 col-md-4 pad0">
+					<input type="dropdown" class="form-control pull-left fix-wid width-75"
+					placeholder=""
+					formControlName='limit'
+					name ="limit_{{this.title}}"	
+				id="limit_{{this.title}}"
+				[style.border-color]="getStyleTotal(this.title)"
+				 [(ngModel)] = "totalAttribute.limit"
+				  (keypress) = "numberonly($event)"
+					>
+				</div>
+			</div>	
+			<small *ngIf="req_total(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Total Attribute</small>			
+	</div>
+</div>
+<div *ngIf="optionText=='20'">
+	<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both" l10nTranslate>
+				Master.LimitMaster.valueattr</label>
+				<div formGroupName="valueAttribute">
+				
+				<div class="dropdown pull-left col-lg-4 col-md-4 pad0 ">
+					<select formControlName='limitVolumeValueRefId'  
+						name = "limitVolumeValueRefId_{{this.title}}" 
+				id="limitVolumeValueRefId_{{this.title}}"
+					class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75" 
+					(change)="onVolumeValueChange($event,'valueAttribute')"
+					[style.border-color]="getStyleValue(this.title)"
+					 [(ngModel)] = "valueAttribute.limitVolumeValueRefId"
+					>
+					<option value="-1" selected disabled> Select</option>
+					<option *ngFor="let option of limitmasterService.volumeValueArr" 
+					value="{{option.limitVolumeValueRefId}}">
+					{{option.limitVolumeValueRefName}}
+					</option>									 
+					</select>
+				
+				</div>
+				<div class="dropdown pull-left col-lg-4 col-md-4 pad0">
+					
+					<select 
+					formControlName='limitVolumeUomIdCurrencycode' 
+					class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 width-75"  
+							name ="limitVolumeUomIdCurrencycode_{{this.title}}"	
+				id="limitVolumeUomIdCurrencycode_{{this.title}}"
+						[style.border-color]="getStyleValue(this.title)"
+						 [(ngModel)] = "valueAttribute.limitVolumeUomIdCurrencycode"
+						>
+							<option value="-1" selected disabled> Select</option>
+							<option *ngFor="let option of volumeOrValueDetailsvalue" 
+							value="{{option.value}}">
+							{{option.label}}
+							
+						</option>	
+					</select>
+
+				</div>
+				<div class="pull-left col-lg-3 col-md-4 pad0">
+					<input type="dropdown" class="form-control pull-left fix-wid width-75" 
+					placeholder=""
+					formControlName='limit'
+						name ="limit_{{this.title}}"	
+				id="limit_{{this.title}}"
+				[style.border-color]="getStyleValue(this.title)"
+				 [(ngModel)] = "valueAttribute.limit"
+				  (keypress) = "numberonly($event)"
+					>
+				</div>
+			</div>	
+			<small *ngIf="req_value(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Value Attribute</small>			
+	</div>
+</div>
+<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 certification-add">
+				<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both" l10nTranslate>Master.LimitMaster.validity</label>
+				<div  class="pull-left col-lg-6 col-md-6 pad0 " >
+					<!--input type="date" class="form-control font-regular font-14" id="calendar1" value="" placeholder="" formControlName='Validity'-->
+					<!--kendo-datepicker [min]="min" [max]="max" formControlName="Validity"  [ngModelOptions]="{standalone: true}"></kendo-datepicker-->
+				    <kendo-datepicker
+					[format]="'dd-MM-yyyy'"
+                       formControlName="validFrom"
+                      [(ngModel)] ="validFrom"
+					   [(value)]="validFrom"	  
+		           ></kendo-datepicker>		
+				</div>
+				<div  class="pull-left col-lg-6 col-md-6 pad0 " >
+					<!--input type="date" class="form-control font-regular font-14" id="calendar2" value="" placeholder="" formControlName='Validity'-->
+					 <kendo-datepicker
+					 [format]="'dd-MM-yyyy'"
+                       formControlName="validTo"
+					  [(ngModel)] ="validTo"
+					   [(value)]="validTo"		  
+					 ></kendo-datepicker>		
+				</div>
+					<small *ngIf="req_validity(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Validity</small>			
+					<small *ngIf="req_validity_betweendate(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Valid From and To Date</small>			
+</div>
+
+
+
+
+			<div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12">
+				<label for="usr-field" class="colr-red font-regular font-14 width-full clr-both" l10nTranslate>Master.LimitMaster.temp</label>
+				<select formControlName='isTemporary' 
+				class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "
+				 [(ngModel)] = "isTemporary"
+				  [style.border-color]="getStyletemp(this.title)"
+				>
+				<option value="-1" selected disabled> Select</option>
+				<option value="Y">Temporary</option>
+				<option value="N">Permanent</option>
+				</select> 
+			<small *ngIf="req_isTemporary(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Temporary / Permanent</small>			
+</div>
+	

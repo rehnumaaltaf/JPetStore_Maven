@@ -1,0 +1,278 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">Add Tax Rule</h4>			 			
+				<form  class="user-detail font-sm">
+					<accordion>
+						 <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                        Basic Details
+                  <i class="pull-right float-xs-right glyphicon"
+                  [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+				<div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Tax Rule Code</label>
+									<input type="text" class="form-control font-15 font-regular " id="rate" value="" placeholder="">
+								</div>	
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Tax Rule Name</label>
+									<input type="text" class="form-control font-15 font-regular " id="rate" value="" placeholder="">
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Tax Rule Description</label>
+									<input type="text" class="form-control font-15 font-regular " id="rate" value="" placeholder="">
+								</div>						
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Legal Entity</label>
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft " type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu positionrel">
+											<li><a >Olam Italy</a></li>
+											<li><a href="#">Olam Brazil</a></li>
+										</ul>
+									</div>
+								</div>							
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Country</label>
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft " type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu positionrel">
+											<li><a href="#">Italy</a></li>
+											<li><a href="#">USA</a></li>
+										</ul>
+									</div>
+								</div>
+								
+							</div>	
+															
+							</div>	
+              			
+						 </accordion-group>
+              <accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                         Tax Rule
+                  <i class="pull-right float-xs-right glyphicon"
+                  [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+                	<div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+						
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Nature of Transaction</label>
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft " type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu positionrel">
+											<li><a href="#">Purchase</a></li>
+											<li><a href="#">Sales</a></li>
+										</ul>
+									</div>
+								</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Product / Cost</label>
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft " type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li><a >Product</a></li>
+											<li><a >Cost</a></li>
+										</ul>
+									</div>
+								</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Product / Cost Name</label>
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft " type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li><a >Product Hierarchy</a></li>
+											<li><a >Cost Master</a></li>
+										</ul>
+									</div>
+								</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Supplier</label>
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft " type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu ">
+											<li><a >Local</a></li>
+											<li><a >Overseas</a></li>
+									
+										</ul>
+									</div>
+								</div>
+											<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Customer</label>
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft " type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu ">
+											<li><a >Local</a></li>
+											<li><a >Overseas</a></li>
+									
+										</ul>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Source of Goods / Cost</label>
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft " type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu positionrel">
+											<li><a >Local</a></li>
+											<li><a >Overseas</a></li>
+									
+										</ul>
+									</div>
+								</div>
+
+	
+
+								</div>
+								
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								
+		<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Goods Delivered from</label>
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft " type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu ">
+											<li><a >Olam Warehouse</a></li>
+											<li><a >External Warehouse</a></li>
+									
+										</ul>
+									</div>
+								</div>
+				<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Destination of Goods / Cost</label>
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft " type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu ">
+											<li><a >Local</a></li>
+											<li><a >Overseas</a></li>
+									
+										</ul>
+									</div>
+								</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Goods Delivered to</label>
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft " type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu ">
+											<li><a >Local</a></li>
+											<li><a >Overseas</a></li>
+									
+										</ul>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Special Conditions</label>
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft " type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu ">
+											<li><a >Free Trade Zone</a></li>
+											<li><a > Uncleared goods</a></li>
+												<li><a >Goods in bonded warehouse</a></li>
+												<li><a >Custom cleared goods</a></li>
+												<li><a > Customer declaration</a></li>
+									
+										</ul>
+									</div>
+								</div>
+		<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Geo Mapping</label>
+									<input type="text" class="form-control font-15 font-regular " id="rate" value="" placeholder="">
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Tax Applicable?</label>
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft " type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li><a >Taxable</a></li>
+											<li><a >Non-Taxable</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<div class="ovr-flw">
+												<span class="pull-left padr20 padl0 colr-red font-regular font-14">Reverse Charge</span>
+												<span class="radio pricing-details">
+													<input type="radio" name="radio1215" id="radio1215" value="option25" class="rad_displ_yes">
+													<label for="radio1215" class="font-regular colr-4b536 font-14">Yes</label>
+												</span>
+												<span class="radio pricing-details">
+													<input type="radio" name="radio1215" id="radio1215" value="option25" class="rad_displ_no" checked>
+													<label for="radio1215" class="font-regular colr-4b536 font-14">No</label>
+												</span>								
+										</div>
+								</div>	
+															<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<div class="ovr-flw">
+												<span class="pull-left padr20 padl0 colr-red font-regular font-14">Exempt?</span>
+												<span class="radio pricing-details">
+													<input type="radio" name="radio1215" id="radio1215" value="option25" class="rad_displ_yes">
+													<label for="radio1215" class="font-regular colr-4b536 font-14">Yes</label>
+												</span>
+												<span class="radio pricing-details">
+													<input type="radio" name="radio1215" id="radio1215" value="option25" class="rad_displ_no" checked>
+													<label for="radio1215" class="font-regular colr-4b536 font-14">No</label>
+												</span>								
+										</div>
+								</div>
+					
+	<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Tax Name</label>
+									<input type="text" class="form-control font-15 font-regular " id="rate" value="" placeholder="">
+								</div>	
+		
+
+
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+							
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Remarks</label>
+									<input type="text" class="form-control font-15 font-regular " id="rate" value="" placeholder="">
+								</div>	
+								 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 accessories-block pull-right">
+                        <span class="pull-left"><i class="plus-icn-md"> &nbsp; </i></span>
+                        <span class="pull-left"><i class="delete-icn-md"> &nbsp; </i></span>
+                      </div>
+							</div>	
+
+                	</div>	
+              </accordion-group>
+                
+                   
+                   
+					</accordion>
+
+          	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn btn-default navbar-btn cancel-btn font-regular font-14 font-semibold">RESET</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-regular font-14 font-semibold">SAVE</button>					
+							<button type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-regular font-14 font-semibold">SUBMIT</button>					
+						</div>							
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

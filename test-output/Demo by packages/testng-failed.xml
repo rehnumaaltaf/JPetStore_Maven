@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Demo by packages]">
+  <test name="com.selenium.tests.Fiber(failed)">
+    <classes>
+      <class name="com.selenium.tests.Fiber.NPMSPortTest">
+        <methods>
+          <include name="FiberconnectionTest"/>
+        </methods>
+      </class> <!-- com.selenium.tests.Fiber.NPMSPortTest -->
+      <class name="com.selenium.tests.Fiber.MySparkTest">
+        <methods>
+          <include name="FiberconnectionTest"/>
+        </methods>
+      </class> <!-- com.selenium.tests.Fiber.MySparkTest -->
+      <class name="com.selenium.tests.Fiber.FiberconnectionTest">
+        <methods>
+          <include name="init"/>
+          <include name="FiberconnectionTest"/>
+        </methods>
+      </class> <!-- com.selenium.tests.Fiber.FiberconnectionTest -->
+      <class name="com.selenium.tests.Fiber.MySparkonlineTest">
+        <methods>
+          <include name="FiberconnectionTest"/>
+        </methods>
+      </class> <!-- com.selenium.tests.Fiber.MySparkonlineTest -->
+    </classes>
+  </test> <!-- com.selenium.tests.Fiber(failed) -->
+</suite> <!-- Failed suite [Demo by packages] -->

@@ -1,0 +1,76 @@
+<div [formGroup]="tenorMappingForm">
+	<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 pad0 plants-detail financial-cal-container">
+		<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<!--<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.FinancialCal.MonthName</label>-->
+			<label for="usr-field" class="colr-red font-regular font-14">Product</label>
+			<div class="dropdown positionrel">
+				<!--<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="productId" (change)="onChange($event.target.value)"
+				 type="button" data-toggle="dropdown" name="productId">
+        	<option *ngFor="let product of financialService.productMappingList" value="{{product.prodId}}">{{product.prodName}}</option>
+        </select>-->
+				<kendo-multiselect [data]="financialService.productMappingList" formControlName="productId" [textField]="'fkProdName'" [valueField]="'fkProdId'"></kendo-multiselect>
+				<span *ngIf="financialService.req_productId[ArrayIndex]== true" class="font-12 colr-red">* Please select Product</span>
+			</div>
+		</div>
+		<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<!--<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.FinancialCal.MonthName</label>-->
+			<label for="usr-field" class="colr-red font-regular font-14">Month Short Code</label>
+			<div class="dropdown positionrel">
+				<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="monthShortCode"
+				 (change)="onChange($event.target.value)" type="button" data-toggle="dropdown" name="monthShortCode" [ngClass]="{'valred': financialService.req_monthShortCode[ArrayIndex]== true,'val': financialService.req_monthShortCode[ArrayIndex]== false}">
+                <option *ngFor="let startmonth of monthList" value="{{startmonth}}">{{startmonth}}</option>
+                </select>
+				<span *ngIf="financialService.req_monthShortCode[ArrayIndex]== true" class="font-12 colr-red">* Please select Month Short Code</span>
+			</div>
+		</div>
+		<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<!--<label for="usr-field" class="colr-red font-regular font-14"  l10nTranslate>Master.FinancialCal.StartDate</label>-->
+			<label for="usr-field" class="colr-red font-regular font-14">Start Date</label>
+			<!--<input type="date" class="form-control font-15 font-regular " formControlName="startDate" id="startDate" value="DD/MM/YY"
+			 (change)="validateStartDate(this.tenorMappingForm)" placeholder="">-->
+			<kendo-datepicker formControlName="startDate"></kendo-datepicker>
+			<span *ngIf="financialService.req_startDate[ArrayIndex]== true" class="font-12 colr-red">* Please select Start Date</span>
+			<!--<kendo-datepicker [(value)]="value"></kendo-datepicker>-->
+		</div>
+
+		<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<!--<label for="usr-field" class="colr-red font-regular font-14"  l10nTranslate>Master.FinancialCal.EndDate</label>-->
+			<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>End Date</label>
+			<!--<input type="date" class="form-control font-15 font-regular " formControlName="endDate" id="endDate" value="DD/MM/YY" (change)="validateEndDate(this.tenorMappingForm)" placeholder="">-->
+			<kendo-datepicker formControlName="endDate"></kendo-datepicker>
+			<span *ngIf="financialService.req_endDate[ArrayIndex]== true" class="font-12 colr-red">* Please select End Date</span>
+		</div>
+
+		<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<!--<label for="usr-field" class="colr-red  font-regular font-14" l10nTranslate>Master.FinancialCal.Status</label>-->
+			<label for="usr-field" class="colr-red  font-regular font-14" l10nTranslate>Status</label>
+			<div class="dropdown positionrel">
+				<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="ctrmStatus" type="button"
+				 data-toggle="dropdown" name="ctrmStatus">
+                  <option *ngFor="let status of status" value="{{status}}">{{status}}</option>
+                  </select>
+				<span *ngIf="financialService.req_ctrmStatus[ArrayIndex]== true" class="font-12 colr-red">* Please select Status</span>
+			</div>
+		</div>
+		<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>ERP Status</label>
+			<!--<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.FinancialCal.ERPStatus</label>-->
+			<div class="dropdown positionrel">
+				<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="erpStatus" type="button"
+				 data-toggle="dropdown" name="erpStatus">
+                <option *ngFor="let status of status" value="{{status}}">{{status}}</option>
+                </select>
+				<span *ngIf="financialService.req_erpStatus[ArrayIndex]== true" class="font-12 colr-red">* Please select ERP Status</span>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade in error-modal" [style.display]="errorModal ? 'block' : 'none'" id="errorModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title"><span><img src="../../../assets/image/Confirm_Delete.svg"/></span>Error : {{errorMessage}}!!!</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

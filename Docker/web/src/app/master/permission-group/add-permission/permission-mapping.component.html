@@ -1,0 +1,75 @@
+<div [formGroup]="permissionMappingForm">
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 pad0 plants-detail">
+        <input type='hidden' formControlName='mappingId' [ngModel]="permissionMappingId ||  null " ng-init="permissionMappingId=null">
+        <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
+            <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Role</label>
+            <div class="dropdown positionrel">
+            <select formControlName="roleId"    id="role_{{this.title}}" [style.border-color]="getStylerole(this.title)" class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="role_{{this.title}}" [(ngModel)]="permissiongrpData" >
+               <option  selected>Select</option>
+                    <option *ngFor="let role of permissionGroupService.roles" [disabled]="role.id==0"  [value]=role.id>
+                    {{role.value}}
+                    </option>
+                </select>
+                <small *ngIf="checkrole(this.title)" id="" class="colr-red font-regular font-14" l10nTranslate >Select Role</small>
+            </div>
+        </div>
+        <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
+            <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Company</label>
+            <div class="dropdown positionrel">
+                <select formControlName="partyId" id="permissionCompany_{{this.title}}" [style.border-color]="getStyleparty(this.title)" class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 " [(ngModel)]="permissionPartyData" name="party_{{this.title}}"  >
+                    <option  selected>Select</option>
+                   <option *ngFor="let company of permissionGroupService.companies" [disabled]="company.id==0"  [value]="company.id">					
+                        {{company.value}}
+                    </option>
+                </select>	
+                <small *ngIf="checkparty(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Company</small>
+            </div>
+        </div>
+        <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
+            <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Product</label>
+            <div class="dropdown positionrel">
+
+                <select formControlName="productId"  id="permissionProduct_{{this.title}}" [style.border-color]="getStyleproduct(this.title)"class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 " [(ngModel)]="permissionProdData" name="product_{{this.title}}" >
+                     <option selected>Select</option>
+                   
+                    <option *ngFor="let product of permissionGroupService.products" [disabled]="product.id==0" value="{{product.id}}">
+                        {{product.value}}
+                    </option>
+                </select>
+                <small *ngIf="checkproduct(this.title)" class="colr-red font-regular font-14" l10nTranslate >Select Product</small>
+            </div>
+        </div>
+        <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
+            <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Unit</label>
+            <div class="dropdown positionrel">
+                <select formControlName="unitId"  id="permissionUnit_{{this.title}}" [style.border-color]="getStyleunit(this.title)" class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 " data-toggle="dropdown" [(ngModel)]="permissionUnitData" name="unit_{{this.title}}" >
+                    <option  selected>Select</option>
+                    <option *ngFor="let unit of permissionGroupService.units" [disabled]="unit.id==0" [value]="unit.id">
+                        {{unit.value}}									
+                    </option>
+                </select>
+                <small *ngIf="checkunit(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Unit</small>
+                
+
+            </div>
+        </div>
+        <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
+            <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Portfolio</label>
+            <div class="dropdown positionrel">
+            <select formControlName="portfolioId" id="permissionPortfolio_{{this.title}}" [style.border-color]="getStyleportfolio(this.title)" class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  [(ngModel)]="permissionPortData" name="portfolio_{{this.title}}" >
+                 <option  selected>Select</option>
+                    <option *ngFor="let item of permissionGroupService.portfolios" [value]="item.id"
+                        [disabled]="item.id==0">{{item.value}}</option>
+                    </select>
+                    <small *ngIf="checkportfolio(this.title)" class="colr-red font-regular font-14" l10nTranslate>Select Portfolio</small>
+            </div>
+        </div>
+
+        
+
+       
+     </div>
+
+
+
+</div>

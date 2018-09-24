@@ -1,0 +1,1271 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0 partymaster">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">{{pageTitle}}</h4>
+				<form class="user-detail font-sm" method="post" [formGroup]="partyMasterForm">
+					<accordion>
+						<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Basic Details
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Party Internal / External</label >
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" (change)="showFields($event.target.value)"
+									[(ngModel)]="partyDataList.partyBasicDetails.partyInternalExternal" formControlName="partyInternalExternal" (change)="getDropDownSelectGrp($event.target.value)" name="baseCode" [ngClass]="{'valred': ineternal_exeternal==true,'val': ineternal_exeternal==false}">
+											<option value="">Select</option>
+											<option value="Y">Internal</option>
+											<option value="N">External</option>
+											<!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+									</select>
+									<span *ngIf="ineternal_exeternal" class="font-12 colr-red">* Party Internal / External is required</span>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="ifedit">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Party Code</label>
+									<br>
+									<input type="text" class="form-control font-15 font-regular " readonly id="" [(ngModel)]="partyDataList.partyBasicDetails.partyCode"  formControlName="partyCode" id="partyCode">
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Party Name</label>
+									<input type="text" class="form-control font-15 font-regular " [(ngModel)]="partyDataList.partyBasicDetails.partyName" formControlName="partyName" id="partyName" placeholder="" [ngClass]="{'valred': partyName==true,'val': partyName==false}">
+									<span *ngIf="partyName" class="font-12 colr-red">* Party Name is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Party Full Name</label>
+									<input type="text" class="form-control font-15" id="PartyFullName" [(ngModel)]="partyDataList.partyBasicDetails.partyFullName"  formControlName="partyFullName" placeholder="">
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-12 col-md-12 col-sm-6 col-xs-12">
+									<div class="ovr-flw">
+										<span class="pull-left padr20 padl0 colr-4b536 colr-lblue font-regular font-14">Group Company</span>
+										<span class="radio pricing-details">
+											<input type="radio"  id="radio3"  value="Y"  formControlName="isGroupCompany" [(ngModel)]="isGroupCompany" >
+											<label for="radio3">Yes</label>
+										</span>
+										<span class="radio pricing-details">
+											<input type="radio"  id="radio4" value="N"   formControlName="isGroupCompany" [(ngModel)]="isGroupCompany" checked="checked">
+											<label for="radio4">No</label>
+										</span>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Select Group</label>
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="partyDataList.partyBasicDetails.selectGroup" formControlName="selectGroup">
+											<option value="">Select</option>
+											<option *ngFor="let option of selectgrpList" value="{{option.partyId}}" > {{option.partyName}} </option>
+										</select>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 mart30">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Select Geo Hierarchy</label>
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="partyDataList.partyBasicDetails.geoCountry" formControlName="geohierarchy" name="geohierarchy" [ngClass]="{'valred': geohierarchy==true,'val': geohierarchy==false}">
+												<option value="">Select</option>
+												<option *ngFor="let option of countryList" value="{{option.pkGeoId}}" > {{option.geoName}} </option>
+													<!--<option *ngFor="let option of countryList" value="{{option.}}" > {{option.}} </option>-->
+												<!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+										</select>
+										<span *ngIf="geohierarchy" class="font-12 colr-red">* Geo Hierarchy is required</span>
+								</div>
+
+
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Marketing Desk</label>
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="partyDataList.partyBasicDetails.marketingDesk" formControlName="marketingDesk" [ngClass]="{'valred': marketingDesk==true,'val': marketingDesk==false}">
+												<option value="">Select</option>
+												<option *ngFor="let option of marketingDeskList" value="{{option.pkMarketDeskId}}" > {{option.marketDeskName}} </option>
+										</select>
+									<span *ngIf="marketingDesk" class="font-12 colr-red">* Marketing Desk is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" [ngClass]="{'displayblock': creditAllowdflag==true,'displaynone': creditAllowdflag==false}">
+									<label for="usr-field" class="colr-red font-regular font-14">Credit Allowed</label>
+									<!--<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" (change)="grpCreditShow($event.target.value,this.title)"
+										formControlName="creditAllowed" [ngClass]="{'valred': creditAllowed==true,'val': creditAllowed==false}">
+												<option value="">Select</option>
+												<option value="Yes">Yes</option>
+												<option value="No">No</option>
+												<!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+										<!--</select>-->
+										
+										<span class="radio pricing-details">
+											<input type="radio"  id="radio3"  value="Y" (click)="radioChangeFalse()" formControlName="creditAllowed" [(ngModel)]="creditAllowed" >
+											<label for="radio3">Yes</label>
+										</span>
+										<span class="radio pricing-details">
+											<input type="radio"  id="radio4" value="N"  (click)="radioChangeTrue()" formControlName="creditAllowed" [(ngModel)]="creditAllowed" checked="checked">
+											<label for="radio4">No</label>
+										</span>
+									<span *ngIf="creditAllowedShow" class="font-12 colr-red">* Credit Allowed is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Party Rating</label>
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="partyDataList.partyBasicDetails.partyRatingName" formControlName="partyRating">
+												<option value="">Select</option>
+												<option *ngFor="let option of partyRatingList" value="{{option.pkPartyRatingRefId}}" >{{option.partyRatingName}}</option>
+												<!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+										</select>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" [ngClass]="{'displayblock': req_partyGrpCredit==true,'displaynone': req_partyGrpCredit==false}">
+									<label for="usr-field" class="colr-red font-regular font-14">Group Credit Limit</label>
+									<input type="text" class="form-control font-15" id="PartyFullName" (keypress) = "numberonly($event)" [(ngModel)]="partyDataList.partyBasicDetails.groupCreditLimit" formControlName="groupCreditLimit" value="" [ngClass]="{'valred': groupCreditLimit==true,'val': groupCreditLimit==false}"
+										placeholder="">
+									<span *ngIf="groupCreditLimit" class="font-12 colr-red">* Group Credit Limit is required</span>
+								</div>
+
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" [ngClass]="{'displayblock': req_partyGrpCreditTenor==true,'displaynone': req_partyGrpCreditTenor==false}">
+									<label for="usr-field" class="colr-red font-regular font-14">Group Credit Tenor</label>
+									<input type="text" class="form-control font-15" id="PartyFullName" (keypress) = "numberonly($event)" [(ngModel)]="partyDataList.partyBasicDetails.groupCreditTenorInDays" formControlName="groupCreditTenor" value="" [ngClass]="{'valred': groupCreditTenor==true,'val': groupCreditTenor==false}"
+										placeholder="">
+									<span *ngIf="groupCreditTenor" class="font-12 colr-red">* Group Credit Tenor is required</span>
+								</div>
+							</div>
+
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 mart15">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 type_select" [ngClass]="{'displayblock': req_partydiv==true,'displaynone': req_partydiv==false}">
+									<label for="usr-field" class="colr-red font-regular font-14 kendo_multiselect_preview">Party Type</label>
+									<!--<kendo-multiselect [data]="vanedorsubModel" [(ngModel)]="vendorModel" name="vendorModel" formControlName="partyType" [textField]="'vendorName'"
+										[valueField]="'vendorSubId'" (valueChange)="valueChangeForParty($event)"></kendo-multiselect>-->
+										<kendo-multiselect [data]="partyTypeList" [(ngModel)]="vendorModel" name="vendorModel"  formControlName="partyType" [textField]="'partyTypeName'"
+										[valueField]="'pkPartyTypeId'" (valueChange)="valueChangeForParty($event)"></kendo-multiselect>
+									<span *ngIf="partyTypeManadatory" class="font-12 colr-red">* Party Type is required</span>
+								</div>
+								<div class="internal form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 type_select">
+									<label for="" class="colr-lblue font-regular font-14 kendo_multiselect_preview">Party Classification</label>
+									<!--<kendo-multiselect name="partySubModel222" [data]="productsubModel1" formControlName="partyClassification" [(ngModel)]="partySubModel222"
+										name="processingSubType" (valueChange)="valueChange($event)" [textField]="'prosubName'" [valueField]="'prosubId'"></kendo-multiselect>-->
+                                     <kendo-multiselect name="partySubModel222" [data]="partyClassificationList"  formControlName="partyClassification" [(ngModel)]="partySubModel222"
+										 name="processingSubType" (valueChange)="valueChange($event)" [textField]="'partyClassName'" [valueField]="'pkPartyClassId'"></kendo-multiselect>
+								</div>
+								<!--<div class="external form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 type_select">
+										<label for="" class="colr-red font-regular font-14">Party Classification</label>
+										<div>
+											<select id="ddlCars5" multiple="multiple" class="">
+											<option value="Supplier">Global Roaster</option>
+											<option value="Customer">Large Roaster</option>
+											<option value="Service Provider">SME Roaster</option>
+											<option value="Warehouse">Trading House</option>
+											<option value="Broker">Government</option>
+											<option value="Broker">Speciality</option>
+											<option value="Certification">Certification Agency</option>
+											<option value="Exchange">Exchange</option>
+										</select>
+										</div>
+									</div> -->
+							</div>
+							<!--<div class="form-group col-lg-12 col-md-12 col-sm-6 col-xs-12 creditallowed displaynone">
+									<div class="ovr-flw">
+										<span class="pull-left padr20 padl0 colr-4b536 colr-lblue font-regular font-14">Credit Allowed</span>
+										<span class="radio pricing-details">
+											<input type="radio" name="radio12121" id="radio12121" value="option24">
+											<label for="radio12121" class="font-regular font-14">Yes</label>
+										</span>
+										<span class="radio pricing-details">
+											<input type="radio" name="radio12121" id="radio12121" value="option24">
+											<label for="radio12121" class="font-regular font-14">No</label>
+										</span>
+									</div>
+								</div>-->
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 mart15">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Company Registration No</label>
+									<input type="text" class="form-control font-15 font-regular " id="companyRegistration" [(ngModel)]="partyDataList.partyBasicDetails.companyRegistration" formControlName="companyRegistration"
+										placeholder="">
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Company Registration Date</label>
+									<!--<input type="date" class="form-control font-15 font-regular " id="PartyCode"  placeholder="">-->
+									<kendo-datepicker [(value)]="companyregdate" [format]="'dd-MM-yyyy'" [(ngModel)]="companyRegistrationDate" formControlName="companyRegistrationDate"></kendo-datepicker>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Tax Registration No</label>
+									<input type="text" class="form-control font-15 font-regular " id="GeoCode" [(ngModel)]="partyDataList.partyBasicDetails.partyTaxRegNo" formControlName="taxRegistrationNo" placeholder="">
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Tax Registration Date</label>
+									<!--<input type="date" class="form-control font-15 font-regular " id="PartyCode" formControlName="taxRegistrationDate" placeholder="">-->
+									<kendo-datepicker [(value)]="taxregdate" [format]="'dd-MM-yyyy'" [(ngModel)]="taxRegistrationDate" formControlName="taxRegistrationDate"></kendo-datepicker>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" [ngClass]="{'displayblock': fisrtDateWithOlam==true,'displaynone': fisrtDateWithOlam==false}">
+									<label for="usr-field" class="colr-lblue font-regular font-14">First Transaction Date with Olam</label>
+									<!--<input type="date" class="form-control font-15 font-regular " id="PartyCode" formControlName="taxRegistrationDate" placeholder="">-->
+									<kendo-datepicker [(value)]="firsttransactiondate" [(ngModel)]="firsttransactionDate" [format]="'dd-MM-yyyy'" formControlName="firsttransactionDate"></kendo-datepicker>
+								</div>
+								<div class="form-group col-lg-12 col-md-12 col-sm-6 col-xs-12" [ngClass]="{'displayblock': gtpFlag==true,'displaynone': gtpFlag==false}">
+									<div class="ovr-flw">
+										<span class="pull-left padr20 padl0 colr-4b536 colr-lblue font-regular font-14">Global Trade Program (GTP) Applicable</span>
+										<span class="radio pricing-details">
+                                            <input type="radio"  id="radio333"  value="Y"  formControlName="gtprogram" [(ngModel)]="gtprogram" >
+                                            <label for="radio3">Yes</label>
+                                        </span>
+										<span class="radio pricing-details">
+                                            <input type="radio"  id="radio444" value="N"   formControlName="gtprogram" [(ngModel)]="gtprogram">
+                                            <label for="radio4">No</label>
+                                        </span>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" [ngClass]="{'displayblock': req_functionalCurrency==true,'displaynone': req_functionalCurrency==false}">
+									<label for="usr-field" class="colr-red font-regular font-14">Functional Currency</label>
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="partyDataList.partyBasicDetails.functionalCurrencyId" formControlName="functionalCurrency"
+										name="functionalCurrency" [ngClass]="{'valred': functionalCurrency==true,'val': functionalCurrency==false}">
+                                                <option value="">Select</option>
+                                                <option *ngFor="let option of currencyList" value="{{option.pkCurrencyId}}">{{option.currencyName}} </option>
+                                        </select>
+									<span *ngIf="functionalCurrency" class="font-12 colr-red">* Functional Currency is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" [ngClass]="{'displayblock': req_OperationalCurrency==true,'displaynone': req_OperationalCurrency==false}">
+									<label for="usr-field" class="colr-red font-regular font-14">Operational Currency</label>
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="partyDataList.partyBasicDetails.operationalCurrencyId" formControlName="OperationalCurrency"
+										[ngClass]="{'valred': OperationalCurrency==true,'val': OperationalCurrency==false}">
+                                                <option value="">Select</option>
+                                                 <option *ngFor="let option of currencyList" value="{{option.pkCurrencyId}}">{{option.currencyName}} </option>
+                                        </select>
+									<span *ngIf="OperationalCurrency" class="font-12 colr-red">* Operational Currency is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" [ngClass]="{'displayblock': req_reportingUom==true,'displaynone': req_reportingUom==false}">
+									<label for="usr-field" class="colr-red font-regular font-14">Reporting UOM</label>
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="partyDataList.partyBasicDetails.defaultReportingUOMId" formControlName="reportingUom" [ngClass]="{'valred': reportingUom==true,'val': reportingUom==false}">
+                                                <option value="">Select</option>
+                                               	<option *ngFor="let option of commisionList" value="{{option.uomId}}" >{{option.uomCode}}</option>
+                                        </select>
+									<span *ngIf="reportingUom" class="font-12 colr-red">* Reporting UOM is required</span>
+								</div>
+							</div>
+
+			</div>
+			</accordion-group>
+			<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+				<div accordion-heading class="font-semibold">
+					Address / Bank / Contact Details
+					<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+				</div>
+				<div class="deflt_address_block">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 column-block1 add_addr1">
+							<h4 class="colr-lblue font-regular font-14">Primary Address</h4>
+
+							<div *ngIf="whenAddrModalSaved" class='marb17'>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-regular font-14 mart5 addr_brdr" *ngFor="let step of party_addr; let i=index">
+									<div class="pull-left font-14 colr-lblue">Default Address : {{step.paraddr_defaddrtypeToShowMOdal}}</div>
+									<div class="pull-right font-14" (click)="edit(step,i)"><span class="padr15 verti-align"><img src="../../../assets/image/Edit_Icon_Hover.png.svg">&nbsp;</span></div>
+									<div class="pull-right font-14" (click)="remove(i)"><span class="padr15 verti-align"><i class="delete-icn-md pull-left marr9"> &nbsp;</i></span></div>
+									<div class="clr-both ovr-flw ">
+										<span class="displayblock mart17 ">{{step.addressNameMOdalToshow}}</span>
+										<span class="pull-left mart17">
+												<i class="location-icn-sm marr9"> &nbsp; </i>
+											</span>
+										<span class="pull-left">
+												<span class="displayblock"></span>
+										<span class="displayblock  mart17">{{step.Address1ModalToShow}}</span>
+										<!--{{step._value.controls.paraddr_name._value}}-->
+										<span class="displayblock">{{step.Address2ModalToShow}}</span>
+										<span class="displayblock">{{step.CountryModalTOShow}} - {{step.zipToShowModal}}</span>
+										</span>
+									</div>
+									<div class="clr-both mart17"><span class="displayinline"><i class="phone-icn-sm marr9"> &nbsp; </i> {{step.phoneToShowMOdal}}</span></div>
+									<div class="colr-lblue mart17"><span class="displayinline"><i class="mail-icn-sm marr9"> &nbsp; </i> {{step.emailToShowMOdal}}</span></div>
+									<div class="clr-both mart17"><span class="displayinline"><i class="fax-icn-sm marr9"> &nbsp; </i> {{step.faxToShowModal}}</span></div>
+									<div class="colr-lblue mart17"><span class="displayinline"><i class="web-icn-sm marr9"> &nbsp; </i> {{step.websiteUrlToShowMOdal}}</span></div>
+
+
+								</div>
+							</div>
+							<div class="add_addr2 footer">
+								<!--<h4 class="colr-lblue font-regular font-14">Primary Address</h4>-->
+								<div class="font-regular font-14" (click)="address()"><span data-toggle="modal" data-target="#add_addr" class="padr15 verti-align"><i class="plus-icn-md pull-left marr9"> &nbsp;</i> Add Address</span></div>
+							</div>
+						</div>
+
+
+						<!-- mc -->
+						<!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 column-block1 add_addr2">
+										<h4 class="colr-lblue font-regular font-14">Primary Address</h4>
+										<div class="font-regular font-14 ovr-flw footer" (click)="address()"><span data-toggle="modal" data-target="#add_addr" class="padr15 verti-align"><i class="plus-icn-md pull-left marr9"> &nbsp;</i> Add Address</span></div>
+									</div>-->
+						<!-- mc end -->
+
+
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 column-block2 add_bank1">
+							<h4 class="colr-lblue font-regular font-14">Primary Bank Details</h4>
+							<div *ngIf="whenbankModalSaved">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-regular font-14 mart5 addr_brdr" *ngFor="let step of party_bank; let i=index">
+									<div class="pull-left font-14 colr-lblue">Default Bank : {{step.parbank_defaultshow}}</div>
+									<div class="pull-right font-14" (click)="editbank(step,i)"><span class="padr15 verti-align"><img src="../../../assets/image/Edit_Icon_Hover.png.svg">&nbsp;</span></div>
+									<div class="pull-right font-14" (click)="removebank(i)"><span class="padr15 verti-align"><i class="delete-icn-md pull-left marr9"> &nbsp;</i></span></div>
+									<div class="clr-both ovr-flw">
+										<span class="pull-left">
+												<i class="bank-icn-sm marr9"> &nbsp; </i>
+											</span>
+										<span class="pull-left col-lg-11 col-md-11 col-sm-11 col-xs-11 pad0">
+												<span>{{step.parbank_banknameshow}}</span>
+										<span class="displayblock mart10"><span class="colr-lblue">Account No </span><span>{{step.parbank_AccountNameshow}}</span></span>
+										<span class="displayblock mart10"><span class="colr-lblue">BIC Code </span><span>{{step.parbank_BicCodeshow}}</span></span>
+										<span class="displayblock mart10"><span class="colr-lblue">Swift Code </span><span>{{step.parbank_swiftCodeshow}}</span></span>
+										</span>
+									</div>
+									<div class="clr-both ovr-flw mart30">
+										<span class="pull-left">
+												<i class="location-icn-sm marr9"> &nbsp; </i>
+											</span>
+										<span class="pull-left">
+												<span class="displayblock">{{step.parbank_countryshow}}</span>
+										<span class="displayblock mart17">{{step.parbank_address1show}}</span>
+										<span class="displayblock mart15">{{step.parbank_address2show}}</span>
+										</span>
+									</div>
+
+								</div>
+							</div>
+							<div class="add_addr2 footer">
+								<div class="font-regular font-14" (click)="bank()"><span class="padr15 verti-align"><i class="plus-icn-md pull-left marr9"> &nbsp;</i> Add Bank Details</span>
+									<!--<span class="padl15"><i class="view-icn-sm marr9"> &nbsp;</i> View All</span>-->
+								</div>
+							</div>
+						</div>
+
+						<!-- mc -->
+						<!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 column-block2 add_bank2">
+										<h4 class="colr-lblue font-regular font-14">Primary Bank Details</h4>
+										<div class="font-regular font-14 ovr-flw footer" (click)="bank()"><span data-toggle="modal" data-target="#add_bank" class="padr15 verti-align" ><i class="plus-icn-md pull-left marr9"> &nbsp;</i> Add Bank Details</span></div>
+									</div>-->
+						<!-- mc end -->
+
+
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 column-block3 add_con1" [ngClass]="{'displayblock': req_primaryContact==true,'displaynone': req_primaryContact==false}">
+							<h4 class="colr-lblue font-regular font-14">Primary Contact Details</h4>
+							<div *ngIf="whencontactModalSaved">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-regular font-14 mart5 addr_brdr" *ngFor="let step of party_contact; let i=index">
+									<!--<div class="form-group col-lg-12 col-md-12 col-sm-6 col-xs-12 pad0">
+												<div class="ovr-flw">
+													<span class="pull-left padr0 padl0 colr-4b536 colr-lblue font-regular font-14">Default Contact</span>
+													<span class="radio pricing-details">
+													<input type="radio" name="radio21" id="radio19" value="option19">
+													<label for="radio19" class="font-regular font-14">Yes</label>
+												</span>
+													<span class="radio pricing-details">
+													<input type="radio" name="radio21" id="radio20" value="option19">
+													<label for="radio20" class="font-regular font-14">No</label>
+												</span>
+												</div>
+											</div>-->
+									<div class="pull-left font-14 colr-lblue">Default Bank : {{step.parcontact_defaultshow}}</div>
+									<div class="pull-right font-14" (click)="editcontact(step,i)"><span class="padr15 verti-align"><img src="../../../assets/image/Edit_Icon_Hover.png.svg">&nbsp;</span></div>
+									<div class="pull-right font-14" (click)="removecontact(i)"><span class="padr15 verti-align"><i class="delete-icn-md pull-left marr9"> &nbsp;</i></span></div>
+									<div class="clr-both ovr-flw">
+										<span class="pull-left  mart15">
+												<i class="prn-icn-sm marr9"> &nbsp; </i>
+											</span>
+										<span class="pull-left col-lg-11 col-md-11 col-sm-11 col-xs-11 pad0 prm-contact-detail mart15">
+												<span class="displayblock"><span class="colr-lblue">Department</span><span>{{step.parcontact_departmentshow}}</span></span>
+										<span class="displayblock"><span class="colr-lblue">Full Name </span><span>{{step.parcontact_fullnameshow}}</span></span>
+										<span class="displayblock"><span class="colr-lblue">Designation </span><span>{{step.parcontact_designationshow}}</span></span>
+										</span>
+									</div>
+									<div class="clr-both mart20"><span><i class="phone-icn-sm marr9"> &nbsp; </i>{{step.parcontact_phoneworkshow}}</span></div>
+									<div class="colr-lblue clr-both mart17"><span><i class="mail-icn-sm marr9"> &nbsp; </i>{{step.parcontact_mobileshow}}</span></div>
+									<div class="clr-both mart15"><span><i class="fax-icn-sm marr9"> &nbsp; </i>{{step.parcontact_faxshow}}</span></div>
+								</div>
+							</div>
+							<div class="add_addr2 footer">
+								<div class="font-regular font-14" (click)="contact()"><span class="padr15 verti-align"><i class="plus-icn-md pull-left marr9"> &nbsp;</i> Add Contact Details</span>
+									<!--<span class="padl15"><i class="view-icn-sm marr9"> &nbsp;</i> View All</span>-->
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</accordion-group>
+			<div [ngClass]="{'displayblock': req_partygradediv==true,'displaynone': req_partygradediv==false}">
+				<accordion-group #group22 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+					<div accordion-heading class="font-semibold">
+						Party Grade Definition
+						<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group22?.isOpen, 'acc-up': !group22?.isOpen}"></i>
+					</div>
+					<div class="extrl-sys-map-container">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 extrl-sys-map pad0">
+							<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+								<label for="usr-field" class="colr-lblue font-regular font-14">Product</label>
+								<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="partyDataList.partyGradeDefinition.prodId" formControlName="product">
+												   <option value="">Select</option>
+												   <!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+												   <option *ngFor="let option of productList" value="{{option.prodId}}" >{{option.prodName}}</option>
+											  </select>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+								<label for="usr-field" class="colr-lblue font-regular font-14">Party Grade Name</label>
+								<input type="text" class="form-control font-15 font-regular " id="" [(ngModel)]="partyDataList.partyGradeDefinition.partyGradeName" formControlName="partyGradeName" value="" placeholder="">
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+								<label for="usr-field" class="colr-lblue font-regular font-14">Party Grade Description</label>
+								<input type="text" class="form-control font-15 font-regular " id="" [(ngModel)]="partyDataList.partyGradeDefinition.partyGradeDescription" formControlName="partyGradeDesc" value="" placeholder="">
+							</div>
+						</div>
+					</div>
+				</accordion-group>
+			</div>
+			<div [ngClass]="{'displayblock': req_internalGradeMApping==true,'displaynone': req_internalGradeMApping==false}">
+				<accordion-group #group23 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+					<div accordion-heading class="font-semibold">
+						Internal Grade Mapping
+						<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group23?.isOpen, 'acc-up': !group23?.isOpen}"></i>
+					</div>
+					<div class="plants-detail-Stp">
+						<div formArrayName="internalGradeMapping">
+							<div *ngFor="let feature  of getIntGradeCodeMapping(partyMasterForm); let i=index">
+								<!--<span style="display: none" > {{i + 1}}</span>-->
+								<div [formGroupName]="i">
+									<app-base-product-intgrade [group]="partyMasterForm.controls.internalGradeMapping.controls[i]" [title]="i" [financialCalendarModelsGrade]=financialCalendarModelsGrade></app-base-product-intgrade>
+									<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+										<span class="pull-left"><i class="plus-icn-md" (click)="addGradeMapping()" > &nbsp; </i></span>
+										<span class="pull-left"><i class="delete-icn-md" (click)="removeIntGradeMapping(i) " > &nbsp; </i></span>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</accordion-group>
+			</div>
+			<div [ngClass]="{'displayblock': req_defaultPayment==true,'displaynone': req_defaultPayment==false}">
+				<accordion-group #group24 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+					<div accordion-heading class="font-semibold">
+						Default Payment Terms
+						<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group24?.isOpen, 'acc-up': !group24?.isOpen}"></i>
+					</div>
+					<div class="extrl-sys-map-container">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 extrl-sys-map pad0">
+							<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+								<label for="usr-field" class="colr-lblue font-regular font-14">Payment Term</label>
+								<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="partyDataList.paymentTermDetails.paymentTermId"  formControlName="paymentTerm" name="baseCode" (change)="onchangePaymentTerm()">
+												   <option value="">Select</option>
+												   <option *ngFor="let option of paymentTermLstList" value="{{option.paymentTermId}}"> {{option.payTermName}}</option>
+										</select>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12">
+								<label for="usr-field" class="colr-lblue font-regular font-14">Description</label>
+								<br>
+								<label for="usr-field" class="font-regular font-14">{{paymentDesc}}</label>
+							</div>
+						</div>
+					</div>
+				</accordion-group>
+			</div>
+			<div [ngClass]="{'displayblock': req_plant==true,'displaynone': req_plant==false}">
+				<accordion-group #group25 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+					<div accordion-heading class="font-semibold">
+						Plant Details
+						<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group25?.isOpen, 'acc-up': !group25?.isOpen}"></i>
+					</div>
+					<div class="extrl-sys-map-container">
+						<div formArrayName="plantDetails">
+							<div *ngFor="let feature  of getIntDefaultMapping(partyMasterForm); let i=index">
+								<div [formGroupName]="i">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 extrl-sys-map pad0">
+								<app-plant-intgrade [group]="partyMasterForm.controls.plantDetails.controls[i]" [titlePlant]="i" [financialCalendarModelsPlant]=financialCalendarModelsPlant></app-plant-intgrade>
+								<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+										<span class="pull-left"><i class="plus-icn-md" (click)="addDefaultPayment()" > &nbsp; </i></span>
+										<span class="pull-left"><i class="delete-icn-md" (click)="removeIntDefaultMapping(i) " > &nbsp; </i></span>
+									</div>
+								</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</accordion-group>
+			</div>
+
+
+
+
+			<accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+				<div accordion-heading class="font-semibold">
+					External System Mapping
+					<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+				</div>
+				<div class="extrl-sys-map-container">
+					<div formArrayName="externalSystemMapping">
+						<div *ngFor="let feature  of getExternalMapping(partyMasterForm); let i=index">
+							<div [formGroupName]="i">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 extrl-sys-map pad0">
+								<app-externalSystem-intgrade [group]="partyMasterForm.controls.externalSystemMapping.controls[i]" [titleExternal]="i" [financialCalendarModelsExternal]=financialCalendarModelsExternal></app-externalSystem-intgrade>
+									<div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 accessories-block">
+										<span class="pull-left"><i class="plus-icn-md"  (click)="addExternalMapping()"> &nbsp; </i></span>
+										<span class="pull-left"><i class="delete-icn-md"  (click)="removeIntExternalMapping(i)"> &nbsp; </i></span>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</accordion-group>
+
+			<div [ngClass]="{'displayblock': req_credit==true,'displaynone': req_credit==false}">
+				<accordion-group #group26 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+					<div accordion-heading class="font-semibold">
+						Credit Limit
+						<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group26?.isOpen, 'acc-up': !group26?.isOpen}"></i>
+					</div>
+					<div class="extrl-sys-map-container">
+						<div formArrayName="creditLimit">
+							<div *ngFor="let feature  of getIntCredit(partyMasterForm); let i=index">
+								<div [formGroupName]="i">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 extrl-sys-map pad0">
+									<app-creditLimit-intgrade [group]="partyMasterForm.controls.creditLimit.controls[i]" [titleCredit]="i" [financialCalendarModelsCredit]=financialCalendarModelsCredit></app-creditLimit-intgrade>
+										<div class="col-lg-1 col-md-4 col-sm-3 col-xs-3 accessories-block">
+											<span class="pull-left"><i class="plus-icn-md" (click)="addCredit()"> &nbsp; </i></span>
+											<span class="pull-left"><i class="delete-icn-md" (click)="removeIntCreditMapping(i)" > &nbsp; </i></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</accordion-group>
+			</div>
+			<div [ngClass]="{'displayblock': req_partyLimits==true,'displaynone': req_partyLimits==false}">
+				<accordion-group #group27 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+					<div accordion-heading class="font-semibold">
+						Party Limits
+						<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group27?.isOpen, 'acc-up': !group27?.isOpen}"></i>
+					</div>
+					<div class="extrl-sys-map-container">
+						<div formArrayName="partyLimit">
+							<div *ngFor="let feature  of getIntPartyCodeMapping(partyMasterForm); let i=index">
+								<div [formGroupName]="i">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 extrl-sys-map pad0">
+									<app-party-intgrade [group]="partyMasterForm.controls.partyLimit.controls[i]" [titleParty]="i" [financialCalendarModelsParty]=financialCalendarModelsParty></app-party-intgrade>
+										<div class="col-lg-1 col-md-4 col-sm-3 col-xs-3 accessories-block">
+											<span class="pull-left"><i class="plus-icn-md" (click) ="addParty()" > &nbsp; </i></span>
+											<span class="pull-left"><i class="delete-icn-md" (click) ="removeIntPartyMapping(i)"> &nbsp; </i></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</accordion-group>
+			</div>
+
+
+			<accordion-group #group3 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+				<div accordion-heading class="font-semibold">
+					Name in alternate language
+					<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+				</div>
+				<div>
+					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<label for="usr-field" class="colr-lblue font-regular font-14">Language</label>
+						<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  formControlName="nameLanguage" 
+							name="baseCode">
+						<option value="">Select</option>
+						<option *ngFor="let option of languageList" value="{{option.languageId}}" >{{option.languageFullName}}</option>
+					</select>
+					</div>
+					<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+						<label for="usr-field" class="colr-lblue font-regular font-14">Name</label>
+						<input type="text" class="form-control font-15 font-regular " [(ngModel)]="partyTranslationssssss.alternativeName" formControlName="alternativeName" id="" value="" placeholder="">
+					</div>
+					<div class="form-group col-lg-2 col-md-3 col-sm-6 col-xs-12">
+						<label for="usr-field" class="colr-lblue font-regular font-14">Full name</label>
+						<input type="text" class="form-control font-15 font-regular " [(ngModel)]="partyTranslationssssss.alternativeFullName"  formControlName="alternativeFullName" id="" value="" placeholder="">
+					</div>
+				</div>
+
+			</accordion-group>
+			<accordion-group #group5 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+				<div accordion-heading class="font-semibold">
+					Address in Alternative Language
+					<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+				</div>
+				<div class="address_alt-lang-contr">
+					<div formArrayName="translatedAddress">
+						<div *ngFor="let feature  of getaddressalternativelanguage(partyMasterForm); let i=index">
+							<div [formGroupName]="i">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 address-alt-lang">
+								<app-address-multiple [group]="partyMasterForm.controls.translatedAddress.controls[i]" [titleAddress]="i" [financialCalendarModelsAddress]=financialCalendarModelsAddress></app-address-multiple>
+									<div class="col-lg-2 col-md-3 col-sm-6 col-xs-1 accessories-block mart30 padt10">
+										<span class="pull-left add-icon"><i class="plus-icn-md" (click) = addaddressAlternativeMulti()> &nbsp; </i></span>
+										<span class="pull-left"><i class="delete-icn-md" (click)="removealernativeAddress(i)"> &nbsp; </i></span>
+									</div>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</accordion-group>
+			<div [ngClass]="{'displayblock': req_wareHouse==true,'displaynone': req_wareHouse==false}">
+				<accordion-group #group6 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+					<div accordion-heading class="font-semibold">
+						Warehouse Location
+						<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+					</div>
+					<div class="fin-Yr-Stp warlocation_cont">
+						<div formArrayName="warehouseLocation">
+							<div *ngFor="let feature  of getIntWarehouseMapping(partyMasterForm); let i=index">
+								<div [formGroupName]="i">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 doc-block pad0 warehouse war-stc">
+									<app-wareHouse-intgrade [group]="partyMasterForm.controls.warehouseLocation.controls[i]" [titleWare]="i" [financialCalendarModelsWare]=financialCalendarModelsWare></app-wareHouse-intgrade>
+											<div class="col-lg-2 col-md-3 col-sm-6 col-xs-1 accessories-block mart30 padt10">
+												<span class="pull-left add-icon"><i class="plus-icn-md" (click)="addWarehouse()"> &nbsp; </i></span>
+												<span class="pull-left"><i class="delete-icn-md" (click) ="removeIntWarehouse(i)"> &nbsp; </i></span>
+											</div>
+									</div>
+										</div>
+								</div>
+							</div>
+						</div>
+				</accordion-group>
+			</div>
+			<div [ngClass]="{'displayblock': req_exchange==true,'displaynone': req_exchange==false}">
+				<accordion-group #group28 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+					<div accordion-heading class="font-semibold">
+						Exchange Details
+						<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group28?.isOpen, 'acc-up': !group28?.isOpen}"></i>
+					</div>
+					<div class="extrl-sys-map-container">
+						<div formArrayName="exchangeDetails">
+							<div *ngFor="let feature  of getIntExhange(partyMasterForm); let i=index">
+								<div [formGroupName]="i">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 extrl-sys-map pad0">
+                           <app-exchange-intgrade [group]="partyMasterForm.controls.exchangeDetails.controls[i]" [titleEx]="i" [financialCalendarModelsEx]=financialCalendarModelsEx></app-exchange-intgrade>
+										<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 accessories-block">
+											<span class="pull-left"><i class="plus-icn-md" (click)="addExchange()"> &nbsp; </i></span>
+											<span class="pull-left"><i class="delete-icn-md" (click)="removeExchange(i)"> &nbsp; </i></span>
+										</div>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</accordion-group>
+			</div>
+			<div [ngClass]="{'displayblock': req_broker==true,'displaynone': req_broker==false}">
+				<accordion-group #group10 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+					<div accordion-heading class="font-semibold">
+						Broker Details
+						<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+					</div>
+					<div class="brdetails_cont">
+						<div class="ovr-flw">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 doc-block pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Trading Account Number</label>
+									<input type="text" class="form-control font-15 font-regular " [(ngModel)]="partyDataList.brokerDetails.tradingAccountNumber"  formControlName="tradingAccountNumber" id="GeoCode" value="WRF12, WRF16"
+										placeholder="" maxlength="100">
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Commission</label>
+									<input type="text" class="form-control font-15 font-regular " (keypress) = "numberonly($event)" [(ngModel)]="partyDataList.brokerDetails.commission" formControlName="commmission" id="GeoCode" value="WRF12, WRF16"
+										placeholder="">
+								</div>
+
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Commission UOM</label>
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="partyDataList.brokerDetails.commissionUOM" formControlName="commissionUom" [ngClass]="{'valred': commissionUom==true,'val': commissionUom==false}"
+										name="baseCode">
+													<option value="">Select</option>
+													<option *ngFor="let option of commisionList" value="{{option.uomId}}" >{{option.uomCode}}</option>
+											</select>
+									<span *ngIf="commissionUom" class="font-12 colr-red">* Commission UOM is required</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</accordion-group>
+			</div>
+			<div [ngClass]="{'displayblock': req_document==true,'displaynone': req_document==false}">
+				<accordion-group #group29 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+					<div accordion-heading class="font-semibold">
+						Documents
+						<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group29?.isOpen, 'acc-up': !group29?.isOpen}"></i>
+					</div>
+					<div class="brdetails_cont">
+						<div class="ovr-flw">
+							<div formArrayName="partyDocuments">
+								<div *ngFor="let feature  of getIntDocument(partyMasterForm); let i=index">
+									<div [formGroupName]="i">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 doc-block pad0">
+										  <app-documnet-multiple [group]="partyMasterForm.controls.partyDocuments.controls[i]" [titleDoc]="i" [financialCalendarModelsdoc]=financialCalendarModelsdoc></app-documnet-multiple>
+											<div class="col-lg-1 col-md-4 col-sm-3 col-xs-3 accessories-block">
+												<span class="pull-left"><i class="plus-icn-md" (click) = "addDocument()"> &nbsp; </i></span>
+												<span class="pull-left"><i class="delete-icn-md" (click) = "removeDocument(i)"> &nbsp; </i></span>
+											</div>
+											</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</accordion-group>
+			</div>
+			<!--<accordion-group #group11 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Certification Details
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div class="cerdetails_cont ">
+								<div class="ovr-flw">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 doc-block pad0">
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Certificaton Code</label>
+											<input type="text" class="form-control font-15 font-regular " id="GeoCode" value="" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-red font-regular font-14">Certification Name</label>
+											<input type="text" class="form-control font-15 font-regular " id="GeoCode" value="" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-red font-regular font-14">Description</label>
+											<input type="text" class="form-control font-15 font-regular " id="GeoCode" value="" placeholder="">
+										</div>
+										<div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Logo</label>
+											<input size="50" style="border: 0px;border-radius: 0px;box-shadow: none;padding: 4px 0px 7px 0px;height: 50px;border-radius:4px;"
+											 type="file">
+											<span class="fileupload-preview"></span>
+										</div>
+										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 accessories-block">
+											<span class="pull-left"><i class="plus-icn-md"> &nbsp; </i></span>
+											<span class="pull-left"><i class="delete-icn-md"> &nbsp; </i></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>-->
+
+
+			</accordion>
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="addPartyButtons">
+				<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+					<button type="reset" id="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="reset()">Reset</button>
+				</div>
+				<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+					<button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+						(click)="saveParty('Draft')">Save</button>
+					<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+						(click)="saveParty('L1 Approved')">Submit</button>
+				</div>
+			</div>
+
+
+			<!-- Edit-->
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="whenToDraft">
+				<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+					<button type="reset" id="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="cancel()" l10nTranslate>Master.Party.CANCEL</button>
+				</div>
+				<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+					<button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+						(click)="updatePartywithoutStatus()" l10nTranslate>Master.Party.UPDATE</button>
+					<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+						(click)="updateParty('L1 Approved')" l10nTranslate>Master.Party.l1approval</button>
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"  *ngIf="whenL2Approved">
+				<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+					<button type="reset" id="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="cancel()" l10nTranslate>Master.Party.CANCEL</button>
+				</div>
+				<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+					<button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+						(click)="updatePartywithoutStatus()" l10nTranslate>Master.Party.UPDATE</button>
+					<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+						(click)="updateParty('Active')" l10nTranslate>Master.Party.l2approval</button>
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"  *ngIf="whenActive">
+				<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+					<button type="reset" id="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="cancel()" l10nTranslate>Master.Party.CANCEL</button>
+				</div>
+				<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+					<button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+						(click)="updatePartywithoutStatus()" l10nTranslate>Master.Party.UPDATE</button>
+					<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+						(click)="updateParty('Active')" l10nTranslate>Master.Party.Active</button>
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"  *ngIf="whenStatusActive">
+				<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+					<button type="reset" id="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="cancel()" l10nTranslate>Master.Party.CANCEL</button>
+				</div>
+				<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+					<button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+						(click)="updatePartywithoutStatus()" l10nTranslate>Master.Party.UPDATE</button>
+				</div>
+			</div>
+			<!-- Edit End -->
+
+			<!-- Add Address -->
+			<!--<div class="modal right fade" id="add_addr" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">-->
+			<div [config]="{backdrop: 'static', show: false }" bsModal #addressmodals="bs-modal" class="modal right fade add_addr" tabindex="-1"
+				role="dialog" aria-hidden="true">
+				<div class="modal-dialog" role="document" style="width:40%;">
+					<div class="modal-content">
+
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="bankmodal.hide()" ><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel2" style="padding-left: 14px;padding-top: 14px;">Add Address</h4>
+						</div>
+
+						<div class="modal-body" style="padding: 0px 15px 80px !important;">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="user-detail font-sm">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+											<div class="ovr-flw">
+												<span class="pull-left padr20 padl0 colr-4b536 font-regular font-14">Default Address</span>
+												<span class="radio pricing-details">
+													<input type="radio" name="paraddr_defaddr" id="paraddr_defaddr" value=""  value="Y" name="paraddr_defaddr" [(ngModel)]="addressModal.paraddr_defaddr" formControlName="paraddr_defaddr">
+													<label for="paraddr_defaddr" class="font-regular font-14">Yes</label>
+												</span>
+												<span class="radio pricing-details">
+													<input type="radio" name="paraddr_defaddr" id="paraddr_defaddr" value="" value="N" name="paraddr_defaddr" [(ngModel)]="addressModal.paraddr_defaddr" formControlName="paraddr_defaddr">
+													<label for="paraddr_defaddr" class="font-regular font-14">No</label>
+												</span>
+											</div>
+										</div>
+
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Address Type</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" name="paraddr_addrtype" [(ngModel)]="addressModal.paraddr_addrtype"
+												formControlName="paraddr_addrtype">
+											  <option value="">Select</option>
+											 <option *ngFor="let option of addressType" value="{{option.pkAddrTypeRefId}}" >{{option.addrTypeRefName}}</option>
+											
+									</select>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Name</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" placeholder="" name="addressModal.paraddr_name"
+												[(ngModel)]="addressModal.paraddr_name" formControlName="paraddr_name">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Address 1</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" placeholder="" name="paraddr_address1" [(ngModel)]="addressModal.paraddr_address1"
+												formControlName="paraddr_address1">
+										</div>
+
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Address 2</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" placeholder="" name="paraddr_address2" [(ngModel)]="addressModal.paraddr_address2"
+												formControlName="paraddr_address2">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Zipcode</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" placeholder="" name="paraddr_zipcode" [(ngModel)]="addressModal.paraddr_zipcode"
+												formControlName="paraddr_zipcode">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Country</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" name="paraddr_country" [(ngModel)]="addressModal.paraddr_country"
+												formControlName="paraddr_country">
+												<option value="">Select</option>
+													<!--<option *ngFor="let option of countryList" value="{{option.}}" > {{option.}} </option>-->
+												<!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+										  <option *ngFor="let option of countryList" value="{{option.pkGeoId}}" > {{option.geoName}} </option> 
+									</select>
+									</div>
+
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 ">
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Email</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" placeholder="" name="paraddr_email" [(ngModel)]="addressModal.paraddr_email"
+											(keypress) = "checkEmail($event.target.value)"	formControlName="paraddr_email">
+											<span *ngIf="emailvalidation" class="font-12 colr-red">* Enter a valid email address</span>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 ctry_code">
+											<label for="usr-field" class="font-regular font-14">Phone</label>
+											<input type="text" class="form-control font-regular" id="phone_id" value="" placeholder="" name="paraddr_phone" [(ngModel)]="addressModal.paraddr_phone"
+												formControlName="paraddr_phone">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 ctry_code">
+											<label for="usr-field" class="font-regular font-14">Fax</label>
+											<input type="text" class="form-control font-regular" id="phone_id" value="" placeholder="" name="paraddr_fax" [(ngModel)]="addressModal.paraddr_fax"
+												formControlName="paraddr_fax">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Website Url</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" placeholder="" name="paraddr_weburl" [(ngModel)]="addressModal.paraddr_weburl"
+												formControlName="paraddr_weburl">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<input type="checkbox" id="check_all12" class="k-checkbox">
+
+										</div>
+									</div>
+									<div style="position: fixed;bottom: 0 !important;width: 100%;left:0 !important;right:0 !important;background:#9fc800 !important;">
+										<button type="button" style="border-radius: 0 !important;height: 40px;background: #e6e6e6 !important;width: 50% !important;display: inline-block !important;border: 0px !important;font-size: 1.2em !important;"
+											class="btn btn-default  cancel-btn" id="add-addr-cancel" (click)="closeaddress()">CANCEL</button>
+										<button style="border-radius:0 !important;   height: 40px;width:49% !important;display:inline-block !important;margin: 0px 0px 0px 0px !important;border:0px !important;font-size:1.2em !important;"
+											id="add-addr-save" type="button" class="btn btn-default  save-btn" (click)="saveaddress(paraddr,i)" *ngIf="!update_address">SAVE</button>
+										<button style="border-radius:0 !important;   height: 40px;width:49% !important;display:inline-block !important;margin: 0px 0px 0px 0px !important;border:0px !important;font-size:1.2em !important;"
+											id="add-addr-save" type="button" class="btn  save-btn" (click)="updateaddress(paraddr,i)"
+											*ngIf="update_address">Update</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- modal-content -->
+				</div>
+				<!-- modal-dialog -->
+			</div>
+			<!-- modal -->
+			<!-- Add Address End -->
+			<!-- Add Bank -->
+			<div [config]="{backdrop: 'static', show: false }" bsModal #bankmodal="bs-modal" class="modal right fade add_addr" tabindex="-1"
+				role="dialog" aria-hidden="true">
+				<div class="modal-dialog" role="document" style="width:40%;">
+					<div class="modal-content">
+
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="bankmodal.hide()" ><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel2" style="padding-left: 14px;padding-top: 14px;">Add Bank</h4>
+						</div>
+
+						<div class="modal-body">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" style="height: 400px;overflow: auto;">
+								<div class="user-detail font-sm">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+											<div class="ovr-flw">
+												<span class="pull-left padr20 padl0 colr-4b536 font-regular font-14">Default Bank</span>
+												<span class="radio pricing-details">
+													<input type="radio" name="parbank_default" id="parbank_default" value=""  value="Y" name="parbank_default" [(ngModel)]="bankModalVlaues.parbank_default" formControlName="parbank_default">
+													<label for="parbank_default" class="font-regular font-14">Yes</label>
+												</span>
+												<span class="radio pricing-details">
+													<input type="radio" name="parbank_default" id="parbank_default" value="" value="N" name="parbank_default" [(ngModel)]="bankModalVlaues.parbank_default" formControlName="parbank_default">
+													<label for="parbank_default" class="font-regular font-14">No</label>
+												</span>
+											</div>
+										</div>
+
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Bank Name</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" name="parbank_bankname" [(ngModel)]="bankModalVlaues.parbank_bankname"
+												formControlName="parbank_bankname" placeholder="">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Branch</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" name="parbank_branch" [(ngModel)]="bankModalVlaues.parbank_branch"
+												formControlName="parbank_branch" placeholder="">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Country</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" name="parbank_country" [(ngModel)]="bankModalVlaues.parbank_country"
+												formControlName="parbank_country">
+											<option value="">Select</option>
+												<option value="">Select</option>
+													<!--<option *ngFor="let option of countryList" value="{{option.}}" > {{option.}} </option>-->
+												<!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+										  <option *ngFor="let option of countryList" value="{{option.pkGeoId}}" > {{option.geoName}} </option>
+								   </select>
+										</div>
+
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Account Type</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" name="parbank_AccountType" [(ngModel)]="bankModalVlaues.parbank_AccountType"
+												formControlName="parbank_AccountType">
+											<option value="">Select</option>
+											<option *ngFor="let option of accountTypeList" value="{{option.pkAccountTypeId}}" >{{option.accountTypeName}}</option>
+											
+									</select>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Account Number</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" name="parbank_AccountName" [(ngModel)]="bankModalVlaues.parbank_AccountName"
+												formControlName="parbank_AccountName" placeholder="">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">BIC Code</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" name="parbank_BicCode" (keypress) = "numberonly($event)" [(ngModel)]="bankModalVlaues.parbank_BicCode"
+												formControlName="parbank_BicCode" placeholder="">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 btm-5">
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Swift Code</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" name="parbank_swiftCode" (keypress) = "numberonly($event)" [(ngModel)]="bankModalVlaues.parbank_swiftCode"
+												formControlName="parbank_swiftCode" placeholder="">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 ctry_code">
+											<label for="usr-field" class="font-regular font-14">Routing</label>
+											<input type="text" class="form-control font-regular" id="phone_id" value="" name="parbank_routing" [(ngModel)]="bankModalVlaues.parbank_routing"
+												formControlName="parbank_routing" placeholder="">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Address 1</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" name="parbank_address1" [(ngModel)]="bankModalVlaues.parbank_address1"
+												formControlName="parbank_address1" placeholder="">
+										</div>
+
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Address 2</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" name="parbank_address2" [(ngModel)]="bankModalVlaues.parbank_address2"
+												formControlName="parbank_address2" placeholder="">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Zipcode</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" name="parbank_zip" [(ngModel)]="bankModalVlaues.parbank_zip"
+												formControlName="parbank_zip" placeholder="">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Country</label>
+
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" name="parbank_country1" [(ngModel)]="bankModalVlaues.parbank_country1"
+												formControlName="parbank_country1">
+											<option value="">Select</option>
+												<option value="">Select</option>
+													<!--<option *ngFor="let option of countryList" value="{{option.}}" > {{option.}} </option>-->
+												<!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+										   <option *ngFor="let option of countryList" value="{{option.pkGeoId}}" > {{option.geoName}} </option>
+										
+									</select>
+										</div>
+
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 ">
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Email</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" name="parbank_email" [(ngModel)]="bankModalVlaues.parbank_email"
+											(keypress) = "checkEmail($event.target.value)" formControlName="parbank_email" placeholder="">
+											<span *ngIf="emailvalidation" class="font-12 colr-red">* Enter a valid email address</span>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 ctry_code">
+											<label for="usr-field" class="font-regular font-14">Phone</label>
+											<input type="text" class="form-control font-regular" id="phone_id" value="" name="parbank_phone" [(ngModel)]="bankModalVlaues.parbank_phone"
+												formControlName="parbank_phone" placeholder="">
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 ctry_code">
+											<label for="usr-field" class="font-regular font-14">Fax</label>
+											<input type="text" class="form-control font-regular" id="phone_id" value="" name="parbank_fax" [(ngModel)]="bankModalVlaues.parbank_fax"
+												formControlName="parbank_fax" placeholder="">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Website Url</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" name="parbank_website" [(ngModel)]="bankModalVlaues.parbank_website"
+												formControlName="parbank_website" placeholder="">
+										</div>
+									</div>
+									<div style="position: fixed;bottom: 0 !important;width: 100%;left:0 !important;right:0 !important;background:#9fc800 !important;">
+										<button type="button" style="border-radius:0 !important;    height: 40px;background:#e6e6e6 !important;width:50% !important;display:inline-block !important;border:0px !important;font-size:1.2em !important;"
+											class="btn btn-default  cancel-btn" id="add-bank-cancel" (click)="closebank()">CANCEL</button>
+											<button style="border-radius:0 !important;   height: 40px;width:49% !important;display:inline-block !important;margin: 0px 0px 0px 0px !important;border:0px !important;font-size:1.2em !important;"
+											id="add-addr-save" type="button" class="btn btn-default  save-btn" (click)="saveBank(bankModal,index)" *ngIf="!update_bank">SAVE</button>
+										<button style="border-radius:0 !important;width:49% !important; height: 40px;display:inline-block !important;margin: 0px 0px 0px 0px !important;border:0px !important;font-size:1.2em !important;background:#9fc800 !important;color:white;"
+											id="add-bank-save" type="button" class="btn  save-btn" (click)="updateBank(bankModal,index)"
+											*ngIf="update_bank">UPDATE</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- modal-content -->
+				</div>
+				<!-- modal-dialog -->
+			</div>
+			<!-- modal -->
+			<!-- Add Bank End -->
+			<div [config]="{backdrop: 'static', show: false }" bsModal #contactmodals="bs-modal" class="modal right fade add_addr" tabindex="-1"
+				role="dialog" aria-hidden="true">
+				<div class="modal-dialog" role="document" style="width:35%;">
+					<div class="modal-content">
+
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="bankmodal.hide()" ><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel2" style="padding-left: 14px;padding-top: 14px;">Add Contact</h4>
+						</div>
+
+						<div class="modal-body">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="user-detail font-sm">
+									<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+										<label for="usr-field" class="font-regular font-14">Department</label>
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" name="parcontact_department" [(ngModel)]="contactModalVlaues.parcontact_department"
+											formControlName="parcontact_department">
+											<option value="">Select</option>
+									      <option *ngFor="let option of departmentList" value="{{option.deptId}}" >{{option.deptName}}</option>
+										</select>
+									</div>
+									<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+										<label for="usr-field" class="font-regular font-14">Product</label>
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" name="parcontact_product" [(ngModel)]="contactModalVlaues.parcontact_product"
+											formControlName="parcontact_product">
+											<option value="">Select</option>
+											 <option *ngFor="let option of productList" value="{{option.prodId}}" >{{option.prodName}}</option>
+										</select>
+									</div>
+
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Full Name</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" placeholder="" name="parcontact_fullname" [(ngModel)]="contactModalVlaues.parcontact_fullname"
+												formControlName="parcontact_fullname">
+										</div>
+										<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Designation</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" placeholder="" name="parcontact_designation" [(ngModel)]="contactModalVlaues.parcontact_designation"
+												formControlName="parcontact_designation">
+										</div>
+
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+											<label for="usr-field" class="font-regular font-14">Email</label>
+											<input type="text" class="form-control font-regular" id="gl_id" value="" placeholder="" name="parcontact_email" [(ngModel)]="contactModalVlaues.parcontact_email"
+											(keypress) = "checkEmail($event.target.value)"	formControlName="parcontact_email">
+											<span *ngIf="emailvalidation" class="font-12 colr-red">* Enter a valid email address</span>
+										</div>
+										<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ctry_code">
+											<label for="usr-field" class="font-regular font-14">Phone - Work</label>
+											<input type="text" class="form-control font-regular" id="phone_id" value="" placeholder="" name="parcontact_phonework" [(ngModel)]="contactModalVlaues.parcontact_phonework"
+												formControlName="parcontact_phonework">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ctry_code">
+											<label for="usr-field" class="font-regular font-14">Phone - Mobile</label>
+											<input type="text" class="form-control font-regular" id="phone_id" value="" placeholder="" name="parcontact_mobile" [(ngModel)]="contactModalVlaues.parcontact_mobile"
+												formControlName="parcontact_mobile">
+										</div>
+										<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ctry_code">
+											<label for="usr-field" class="font-regular font-14">Fax</label>
+											<input type="text" class="form-control font-regular" id="phone_id" value="" placeholder="" name="parcontact_fax" [(ngModel)]="contactModalVlaues.parcontact_fax"
+												formControlName="parcontact_fax">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+											<div class="ovr-flw">
+												<span class="pull-left padr20 padl0 colr-4b536 font-regular font-14">Default</span>
+												<span class="radio pricing-details">
+																	<input type="radio" name="radio1215" id="radio1212" value="Y" name="parcontact_default" [(ngModel)]="contactModalVlaues.parcontact_default" formControlName="parcontact_default" >
+																	<label for="radio1216" class="font-regular font-14">Yes</label>
+																</span>
+												<span class="radio pricing-details">
+																	<input type="radio" name="radio1215" id="radio1212" value="N" name="parcontact_default" [(ngModel)]="contactModalVlaues.parcontact_default" formControlName="parcontact_default" >
+																	<label for="radio1216" class="font-regular font-14">No</label>
+																</span>
+											</div>
+										</div>
+
+									</div>
+									<div style="position: fixed;bottom: 0 !important;width: 100%;left:0 !important;right:0 !important;background:#9fc800 !important;">
+										<button type="button" style="border-radius: 0 !important;height: 40px;background: #e6e6e6 !important;width: 50% !important;display: inline-block !important;border: 0px !important;font-size: 1.2em !important;"
+											class="btn btn-default cancel-btn" id="add-con-cancel" (click)="closecontact()">CANCEL</button>
+										<button style="border-radius:0 !important;   height: 40px;width:49% !important;display:inline-block !important;background:#9fc800 !important;color:white;margin: 0px 0px 0px 0px !important;border:0px !important;font-size:1.2em !important;"
+											id="add-con-save" type="button" class="btn btn-default save-btn" (click)="saveContact()" *ngIf="!update_contact">SAVE</button>
+										<button style="border-radius:0 !important;   height: 40px;width:49% !important;display:inline-block !important;background:#9fc800 !important;color:white;margin: 0px 0px 0px 0px !important;border:0px !important;font-size:1.2em !important;"
+											id="add-con-save" type="button" class="btn btn-default save-btn" (click)="updateContact()" *ngIf="update_contact">UPDATE</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- modal-content -->
+				</div>
+				<!-- modal-dialog -->
+			</div>
+			<!-- modal -->
+			<!--Add Contact End -->
+			<div class="modal fade success-modal something_wrong" bsModal #validate="bs-modal" [config]="{backdrop: 'static', show: false }"
+				tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog modal-md">
+					<div class="modal-content">
+						<div class="modal-content">
+							<div class="modal-header">
+								<div class="modal-title"><span><img src="../../assets/image/Error Message_Icon.svg"/></span>This page contains {{count}} errors.Please correct the highlighted fields.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="modal fade delete-popup"  [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #duplicatedError="bs-modal" [config]="{backdrop: 'false',show: false}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						<div class="modal-dialog " style="height:440px !important; color:white !important;">
+										<div class="modal-content  del-modal">
+										<div class="modal-header">
+																		<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+														</div>
+														<div class="col-md-12 product_img text-center" style="padding-top:15px;">
+																		<img src="../../assets/image/Confirm_Delete.svg" />
+														</div>
+														<div class="modal-body">
+																		<div class="row">
+																						
+																						<div class="col-md-12 product_img text-center">
+																								{{partyMasterService.errorMessage}}
+																						</div>
+																						<div class="col-md-12 product_img text-center"></div>
+																						
+																		</div>
+														</div>
+														<div class="del-btn-group">
+																		<div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="close()">Cancel</button></div>
+																		<div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="close()">Ok</button></div>
+														</div>
+										</div>
+						</div>
+				</div>
+				<div class="modal fade delete-popup"  [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #duplicatedError="bs-modal" [config]="{backdrop: 'false',show: false}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						<div class="modal-dialog " style="height:440px !important; color:white !important;">
+										<div class="modal-content  del-modal">
+										<div class="modal-header">
+																		<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+														</div>
+														<div class="col-md-12 product_img text-center" style="padding-top:15px;">
+																		<img src="../../assets/image/Confirm_Delete.svg" />
+														</div>
+														<div class="modal-body">
+																		<div class="row">
+																						
+																						<div class="col-md-12 product_img text-center">
+																								{{partyMasterService.errorMessage}}
+																						</div>
+																						<div class="col-md-12 product_img text-center"></div>
+																						
+																		</div>
+														</div>
+														<div class="del-btn-group">
+																		<div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="close()">Cancel</button></div>
+																		<div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="close()">Ok</button></div>
+														</div>
+										</div>
+						</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>

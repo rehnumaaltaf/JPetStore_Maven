@@ -1,0 +1,13 @@
+#Thu Jun 15 11:27:59 IST 2017
+.datasources/ds-module.wk\:///demo2/paraTest.tst\#0000000000/datasources=ds_1523307613_1488274957830_2110568563
+.datasources/ds-module.wk\:///demo2/paraTest.tst\#0000000000/ds_1523307613_1488274957830_2110568563.closeconn=true
+.datasources/ds-module.wk\:///demo2/paraTest.tst\#0000000000/ds_1523307613_1488274957830_2110568563.first_row=0
+.datasources/ds-module.wk\:///demo2/paraTest.tst\#0000000000/ds_1523307613_1488274957830_2110568563.first_row.internal=1
+.datasources/ds-module.wk\:///demo2/paraTest.tst\#0000000000/ds_1523307613_1488274957830_2110568563.last_row=0
+.datasources/ds-module.wk\:///demo2/paraTest.tst\#0000000000/ds_1523307613_1488274957830_2110568563.last_row.internal=1
+.datasources/ds-module.wk\:///demo2/paraTest.tst\#0000000000/ds_1523307613_1488274957830_2110568563.name=Book2
+.datasources/ds-module.wk\:///demo2/paraTest.tst\#0000000000/ds_1523307613_1488274957830_2110568563.sheet=Sheet1
+.datasources/ds-module.wk\:///demo2/paraTest.tst\#0000000000/ds_1523307613_1488274957830_2110568563.type=Excel
+.datasources/ds-module.wk\:///demo2/paraTest.tst\#0000000000/ds_1523307613_1488274957830_2110568563.use_all_rows=true
+.datasources/ds-module.wk\:///demo2/paraTest.tst\#0000000000/ds_1523307613_1488274957830_2110568563.xls_file=C\:\\Program Files\\Parasoft\\SOAtest\\9.9\\examples\\datasources\\Books.xls
+project.path=/demo2

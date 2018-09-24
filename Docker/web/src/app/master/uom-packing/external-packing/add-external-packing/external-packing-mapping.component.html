@@ -1,0 +1,36 @@
+<div [formGroup]="extPackMappingForm">
+    <!--<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 pad0 plants-detail financial-cal-container">-->
+		<!--<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 pad0">-->
+      <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field"  class="colr-lblue font-regular font-14 ">Origin</label>
+									<div class="dropdown positionrel">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkOriginId" type="button" data-toggle="dropdown" name="fkOriginId">
+											<option *ngFor="let origin of externalPackingService.originCodeList" value="{{origin.originDto.pkOriginId}}">{{origin.originDto.originName}}</option>
+										</select>
+									</div>	
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field"  class="colr-lblue font-regular font-14 ">Product Name</label>
+									<div class="dropdown positionrel">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkProdId" type="button" data-toggle="dropdown" name="fkProdId">
+											<option *ngFor="let product of externalPackingService.productMappingList" value="{{product.prodId}}">{{product.prodName}}</option>
+											<!--<option value="1">Product 1</option>
+											<option value="2">Product 2</option>
+											<option value="3">Product 3</option>-->
+										</select>
+									</div>	
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field"  class="colr-lblue font-regular font-14 ">Primary Packing Type Name</label>
+									<div class="dropdown positionrel">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkPrimaryPackingTypeId" type="button" data-toggle="dropdown" name="fkPrimaryPackingTypeId">
+											<option *ngFor="let primaryPack of externalPackingService.primaryPackingList" value="{{primaryPack.internalPackingTypeId}}">{{primaryPack.internalPackingTypeName}}</option>
+										</select>
+									</div>	
+								</div>
+								<div class="form-group col-lg-2 col-md-3 col-sm-4 col-xs-12 padr0">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Units per Secondary Packing</label>
+									<input type="text" class="form-control font-15 font-regular " id="PartyCode" value="" placeholder="" formControlName="countOfPrimary">
+								</div>
+     <!--</div>-->
+</div>

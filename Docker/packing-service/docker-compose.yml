@@ -1,0 +1,12 @@
+version: "3"
+services:
+ packing-service:
+    image: ctrmdev.azurecr.io/packing-service:latest
+    deploy:
+      replicas: 1
+      resources:
+        restart_policy:
+          condition: on-failure
+    container_name: packing-service
+    ports:
+      - "8095:8095"

@@ -1,0 +1,338 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+			
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Shipment Week List</h4>
+	
+
+				<!-- Serach Icon pannel -->
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid cropyear-inline">
+					<div class="accordion">
+						<!-- Kendo Grid starts-->
+						<div class="party-grade_block">
+							<form novalidate #myForm="ngForm">
+								<kendo-grid [groupable]="true" (sortChange)="sortChange($event)" [kendoGridBinding]="shipmentMonthService.shipmentdetails"
+								 [selectable]="true" [sortable]="true" [sort]="sort" [scrollable]="true" [editable]="true" [pageSize]="state.take"
+								 [skip]="state.skip" [filterable]="true" (dataStateChange)="dataStateChange($event)"  [pageable]="false"
+								 (pageChange)="pageChange($event)" (edit)="editHandler($event)" (add)="addHandler($event)" (cancel)="cancelHandler($event)"
+								 (save)="saveHandler($event)">
+
+									<ng-template kendoGridToolbarTemplate>
+									 <span class=" k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+										<img class="addshipment" src="../../assets/image/add.png" kendoGridAddCommand />
+									</ng-template>
+									<kendo-grid-column media="xs" title="ShipmentWeek">
+										<ng-template kendoGridCellTemplate let-dataItem>
+											<!-- template for mobile -->
+
+											<h4>
+												{{ dataItem.shipmentTimeframeCode }}
+											</h4>
+											<dl>
+												<dt>Name</dt>
+												<dd>{{ dataItem.shipmentTimeframeName }}</dd>
+
+												<dt>Description</dt>
+												<dd>{{ dataItem.shipmentTimeframeDesc }}</dd>
+											</dl>
+											<!-- template for mobile Ends-->
+										</ng-template>
+									</kendo-grid-column>
+									<kendo-grid-column field='' title='' [width]="40">
+										<ng-template kendoGridHeaderTemplate let-dataItem>
+											<input type="checkbox" id="checkall" class="k-checkbox" (change)="checkorUnCheckAll($event)" />
+											<label class="k-checkbox-label chk_head" for="checkall"></label>
+										</ng-template>
+										<ng-template kendoGridCellTemplate let-dataItem>
+											<input type="checkbox" class="k-checkbox" id="dataItem.shipmentWeekTimeframeId" name="dataItem.shipmentWeekTimeframeId" (change)="selectUnSelectAllChecked($event)"
+											 [(ngModel)]="dataItem.checked" />
+											<label class="k-checkbox-label" for="dataItem.shipmentWeekTimeframeId"></label>
+										</ng-template>
+									</kendo-grid-column>
+
+									<kendo-grid-column media="sm" field="shipmentTimeframeCode" title="Week Code">
+										<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+											<input [(ngModel)]="dataItem.shipmentTimeframeCode" maxlength="20" 
+											 name="shipmentTimeframeCode" class="k-textbox valred" required/>
+											<small  class="colr-red font-regular font-14">*</small>
+										</ng-template>
+									</kendo-grid-column>
+
+									<kendo-grid-column media="sm" field="shipmentTimeframeName" title="Week Name">
+										<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+											<input [(ngModel)]="dataItem.shipmentTimeframeName" maxlength="200" 
+											 name="shipmentTimeframeName" class="k-textbox valred" required/>
+											<small  class="colr-red font-regular font-14">*</small>
+										</ng-template>
+									</kendo-grid-column>
+
+
+									<kendo-grid-column media="sm" field="shipmentTimeframeDesc" title="Description">
+										<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+											<input [(ngModel)]="dataItem.shipmentTimeframeDesc" maxlength="500" name="shipmentTimeframeDesc" class="k-textbox" required/>
+										</ng-template>
+									</kendo-grid-column>
+
+
+									<kendo-grid-column media="sm" class="kendoinlinedropdown" field="shipmentRuleName" title="Rule">
+										<!--<ng-template kendoGridCellTemplate let-dataItem="dataItem">
+													<span *ngFor="let item of dataItem.shipmentRule; let isLast=last">
+														{{item.shipmentRuleName}}{{isLast ? '' : ', '}}
+													</span>
+												</ng-template>-->
+										<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+											<span class="inline-edit-mandatory">
+											<kendo-dropdownlist  [data]="shipmentRuleList" class="valred"
+											 [(ngModel)]="dataItem.shipmentRule" [textField]="'shipmentRuleName'" [valueField]="'shipmentRuleName'" name="shipmentRuleName">
+											</kendo-dropdownlist>
+											<!--<select>
+											<option *ngFor="let item of shipmentRule" [ngValue]="item.shipmentRuleId">
+														{{item.shipmentRuleName}}
+													</option> 
+											</select>-->
+											<!--<div class="dropdown " >
+                
+                          <select class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 ">
+                   						 <option *ngFor="let item of shipmentRule" [ngValue]="item.shipmentRuleName">
+                    									{{item.shipmentRuleName}}
+                    					</option>
+									      	</select>  
+								
+									</div>-->
+									<small  class="colr-red font-regular font-14 inline-edit-astrik">*</small>
+									</span>
+											
+										</ng-template>
+									</kendo-grid-column>
+
+									<kendo-grid-column media="sm" field="printDescription" title="Print Description" >
+										<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+											<input [(ngModel)]="dataItem.printDescription" name="printDescription" class="k-textbox" required/>
+										</ng-template>
+									</kendo-grid-column>
+
+									<kendo-grid-column media="sm" field="statusName" title="Status" >
+										<ng-template kendoGridCellTemplate let-dataItem="dataItem">
+											<label field="statusName" [ngClass]="{'status-draft': dataItem.statusName=='Draft','status-active': dataItem.statusName=='Active','status-inactive': dataItem.statusName=='InActive'}">{{dataItem.statusName}}</label>
+										</ng-template>
+
+										<!--<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+													
+													 <kendo-dropdownlist
+														[data]="statusDropDown"
+														textField="status.label"
+														valueField="status.value"
+														>
+														</kendo-dropdownlist>
+												</ng-template>-->
+									</kendo-grid-column>
+
+
+									<kendo-grid-command-column field="" title="" >
+										<ng-template kendoGridCellTemplate let-dataItem="dataItem" let-isNew="isNew">
+											<!--<div style="float:left" class="inline-edit-img" >
+													<span id="d1">-->
+											<div class="" style="float:left;">
+												<span id="d1" class="confirm-delete">
+														<img kendoGridEditCommand src="../../../assets/image/Edit_Icon_Hover.png.svg"></span>
+											</div>
+											<div class="" style="float:left;"> <span id="" [hidden]="create"><img kendoGridSaveCommand class="button-bg" src="../../../assets/image/Save_Update_Icon.svg" (click)='shipmentweekDraft(dataItem)'></span></div>
+											<div class="" style="float:left;"> <span id="" [hidden]="edit"><img kendoGridSaveCommand class="button-bg" src="../../../assets/image/Save_Update_Icon.svg" (click)='editshipmentweek(dataItem)'></span></div>
+											<div class="" style="float:left;"> <span id="" [hidden]="!submit"><img  (click)='shipmentweekActive(dataItem)' kendoGridSaveCommand class="button-bg" src="../../../assets/image/submit.png"  style="display:block;"></span></div>
+											<div style="display:inline-block;">
+												<div [hidden]="draft">
+													<img kendoGridSaveCommand class="button-bg" src="../../../assets/image/submit.png" (click)='editshipmentweekwithstatus(dataItem)'>
+													<img kendoGridSaveCommand class="" src="../../../assets/image/Delete icon.svg" (click)='confirmdelete(dataItem)'
+													>
+													<!--<img kendoGridRemoveCommand src="../../../assets/image/Delete icon.svg" (click)='confirmdelete(dataItem)'>-->
+												</div>
+												<div [hidden]="active"><img kendoGridSaveCommand class="button-bg" src="../../../assets/image/Deactiveicon2.svg"													 (click)='editshipmentweekwithstatus(dataItem)'></div>
+												<div [hidden]="inactive">
+													<img kendoGridSaveCommand class="button-bg" src="../../../assets/image/Reactivate2.svg" 
+													 (click)='editshipmentweekwithstatus(dataItem)'>
+													<!--<img kendoGridCancelCommand src="../../../assets/image/Cancel_Reset_Icon.svg">-->
+												</div>
+											</div>
+											<div style="display:inline-block" [ngClass]="{'displaynone': dataItem.statusName=='InActive'}">
+
+												<img kendoGridCancelCommand class="button-bg" src="../../../assets/image/Cancel_Reset_Icon.svg">
+											</div>
+											<div style="display: inline-block;">
+												<div [ngClass]="{'displaynone': dataItem.statusName=='InActive' || dataItem.statusName=='Active'}">
+													<span id="d1" class="confirm-delete" >
+														<img kendoGridRemoveCommand class="" src="../../../assets/image/Delete icon.svg" (click)='confirmdelete(dataItem)'>
+													</span>
+												</div>
+											</div>
+										</ng-template>
+									</kendo-grid-command-column>
+									<kendo-grid-excel fileName="ShipmentWeek.xlsx"></kendo-grid-excel>
+								</kendo-grid>
+							</form>
+						</div>
+						<!--Kendo grid Ends-->
+					</div>
+				</div>
+
+				<div *ngIf="errormodal" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHidden()" class="modal fade something_wrong"
+				 bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+				 aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>This page contains {{counter}} errors.Please
+										correct the highlighted fields.</div>
+								</div>
+						</div>
+					</div>
+				</div>
+
+				<!--Delete Pop up-->
+				<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup"
+				 bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+				 aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content  del-modal">
+							<div class="modal-header text-center">
+								<img src="../../assets/image/Confirm_Delete.svg" />
+							</div>
+							<div class="modal-body">
+									<div class="col-md-12 product_img text-center font-14 font-regular">
+										Are you sure you want to delete Week Code {{shipmentName}} in {{status}} status ?
+									</div>
+							</div>
+							<div class="del-btn-group modal-window-footer btn-shodow">
+								<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+								<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Add Success Modal -->
+<div class="modal fade success-modal" bsModal #weekdded="bs-modal" [config]="{backdrop: 'false'}" tabindex="-1" role="dialog"
+ aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Shipment Week {{shipmentCode}} Added</div>
+				</div>
+		</div>
+	</div>
+</div>
+<!-- Add Success Modal - End -->
+<!-- Edit Success Modal -->
+<div class="modal fade success-modal" bsModal #weekedit="bs-modal" [config]="{backdrop: 'false'}" tabindex="-1" role="dialog"
+ aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Shipment Week {{shipmentCode}} Updated and {{statusmsg}}</div>
+				</div>
+		</div>
+	</div>
+</div>
+<!-- Edit Success Modal - End -->
+<!-- Delete Success Modal -->
+<div class="modal fade success-modal" bsModal #weekdelete="bs-modal" [config]="{backdrop: 'false'}" tabindex="-1" role="dialog"
+ aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Shipment Week {{shipmentCode}} Deleted</div>
+				</div>
+		</div>
+	</div>
+</div>
+<!-- Delete Success Modal - End -->
+<!--Confirm Delete Pop up-->
+<div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #confirmdel="bs-modal" [config]="{backdrop: 'false'}"
+ tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content  del-modal">
+			<div class="modal-header text-center">
+				<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+				<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>			
+			<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular">
+						Are you sure you want to {{deleteStatus}} Shipment {{shipmentName}} in {{status}} status ?
+					</div>
+			</div>
+			<div class="del-btn-group modal-window-footer btn-shodow">
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="confirmdel.hide()">Cancel</button></div>
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="deleteshipmentweek($event)">Confirm</button></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Confirm Delete End-->
+<!--Error Pop up-->
+<div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false'}"
+ tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content  del-modal">
+			<div class="modal-header text-center">
+				<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+				<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>
+			<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular">
+						{{errorMessageforshipment}}
+					</div>
+			</div>
+
+			<div class="del-btn-group modal-window-footer btn-shodow">
+				<div class=""><button class="del-cancel  btn btn-default btn-lg font-semibold" (click)="pagebackModal.hide()">Cancel</button></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Error Popup End-->
+<!--Validation Pop up-->
+<div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #validation="bs-modal" [config]="{backdrop: 'false'}"
+ tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content  del-modal">
+			<div class="modal-header text-center">
+				<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+				<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>
+			<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular">
+						Fill all the fields...
+					</div>
+			</div>
+			<div class="del-btn-group modal-window-footer btn-shodow">
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="Validation.hide()">Cancel</button></div>
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="validation.hide()">Ok</button></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Validation Popup End-->
+
+
+<div *ngIf="errormodals" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHidden()" class="modal fade something_wrong"
+ bsModal #deletesuccessModals="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+ aria-hidden="true">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>Please fill the mandatory fields.
+					</div>
+				</div>
+		</div>
+	</div>
+</div>

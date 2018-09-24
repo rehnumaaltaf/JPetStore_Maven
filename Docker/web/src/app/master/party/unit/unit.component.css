@@ -1,0 +1,110 @@
+.add_Uom_unit .ui-chkbox-box.ui-state-active, .ui-radiobutton-box.ui-state-active{
+    background: white;
+}
+.add_Uom_unit .ui-chkbox-box.ui-state-active, .ui-radiobutton-box.ui-state-active{
+     border-color: #7f7f7f;
+}
+ .add_Uom_unit .unit-hyperlink{
+    color: #0000EE !important;
+    cursor: pointer;
+}
+.add_Uom_unit .ui-widget-content{
+    border:none;
+}
+
+/* grid styling starts*/
+
+
+.add_Uom_unit .ui-widget-content:hover{
+background: #dceffd !important;
+}
+.add_Uom_unit .ui-datatable tbody > tr.ui-widget-content.ui-datatable-odd {
+    background-color: white;
+}  
+.add_Uom_unit .ui-chkbox-box {
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 0px !important; 
+    background: white;
+    border-color: #7f7f7f;
+    margin-left: 15px !important;
+}
+.add_Uom_unit .ui-state-active:before{
+    content: "\2713";
+    color: #4F89AD;
+    font-size: 13px;    
+    position: relative;
+}
+.add_Uom_unit .ui-chkbox-box.ui-state-active, .ui-radiobutton-box.ui-state-active{
+    background: white;
+}
+.add_Uom_unit .ui-chkbox-box.ui-state-active, .ui-radiobutton-box.ui-state-active{
+     border-color: #7f7f7f;
+}
+.add_Uom_unit .ui-datatable .ui-datatable-thead>tr>th, .add_Uom_unit .ui-datatable .ui-datatable-tfoot>tr>td,.add_Uom_unit  .ui-datatable .ui-datatable-data>tr>td {
+     border-color: white !important; 
+    box-sizing: border-box;   
+    border-width: 0px !important; 
+     border-style: none; 
+}
+.add_Uom_unit .ui-inputtext{
+    background-color: transparent;
+    font-size: 15px;
+  
+}
+.add_Uom_unit input, .add_Uom_unit input:focus{
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 0px;
+    box-shadow: none;   
+}
+.add_Uom_unit .ui-datatable .ui-editable-column input{
+    width:75%;    
+}
+.add_Uom_unitl table tr{
+    border:0px solid #ffffff !important;
+}
+.add_Uom_unitl .ui-cell-data{
+       color: #333333;
+    font-size: 15px;
+    font-family: "Roboto-Regular";
+}
+.add_Uom_unit .ui-datatable .ui-datatable-data>tr>td.ui-editable-column{
+    padding-top:19px;
+    padding-bottom:19px;
+}
+.add_Uom_unit .ui-datatable-odd{
+    background: #fbfcfe !important;
+}
+.add_Uom_unit .ui-datatable th.ui-state-default{
+    background: #ffffff;
+}
+.add_Uom_unit .ui-column-title{
+    color: #648b99;
+    font-size: 14px;
+    font-family: "Roboto-Medium";
+}
+.add_Uom_unit .ui-chkbox-box:not(.ui-state-disabled):not(.ui-state-active):hover{
+border-color: #70acd1;
+background: #ffffff;
+}
+.add_Uom_unit .ui-chkbox-box{
+border-color: #70acd1;
+background: #ffffff;
+}
+.add_Uom_unit table .ui-state-default{
+    text-align: left;
+}
+.add_Uom_unit .ui-datatable th.ui-sortable-column:not(.ui-state-active):hover {
+    background: #ffffff;
+    border-color: #ffffff;
+}  
+.add_Uom_unit table .ui-cell-data{
+    color:#333;
+    font-size: 14px;
+    font-family:"Roboto-Regular"; 
+}
+
+
+

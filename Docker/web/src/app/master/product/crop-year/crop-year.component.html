@@ -1,0 +1,391 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Crop Year List</h4>
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<!--a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a-->
+					<!--img src="../../assets/image/add.png" (click)="changeShowStatus()" /-->
+
+
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid cropyear-inline">
+					<div class="accordion">
+						<!-- Kendo Grid starts-->
+						<div class="party-grade_block">
+							<form novalidate #myForm="ngForm">
+								<kendo-grid #grid [groupable]="true" (sortChange)="sortChange($event)" [kendoGridBinding]="cropYearService.cropyearDetails" [selectable]="true"
+									[group]="group" [sortable]="true" [sort]="sort" [scrollable]="true"
+									[editable]="true" [pageSize]="state.take" [skip]="state.skip" [filterable]="true" (dataStateChange)="dataStateChange($event)"
+								 [pageable]="false" (pageChange)="pageChange($event)" (edit)="editHandler($event)" (add)="addHandler($event)"
+									(cancel)="cancelHandler($event)" (save)="saveHandler($event)">
+
+									<ng-template kendoGridToolbarTemplate>
+
+									<span class="k-i-file-excel" kendoGridExcelCommand><img src="../../assets/image/Excel.svg" class="excel-img"/> <kendo-grid-excel fileName="Cropyear.xlsx" [data]="cropYearService.cropyearDetails">
+												<kendo-excelexport-column field="cropYearCode" title="Crop Year Code">
+												</kendo-excelexport-column>
+												<kendo-excelexport-column field="cropYearName" title="Crop Year Name">
+												</kendo-excelexport-column>
+												<kendo-excelexport-column field="cropYearDescription" title="Description">
+												</kendo-excelexport-column>
+												<kendo-excelexport-column field="cropYearProductDto[0].prodName" title="Product">
+												</kendo-excelexport-column>
+												<kendo-excelexport-column field="statusName" title="Status">
+												</kendo-excelexport-column>
+										</kendo-grid-excel>
+									</span>
+
+										<img class="addcrop" src="../../assets/image/add.png" kendoGridAddCommand />
+
+									</ng-template>
+									<kendo-grid-column media="xs" title="CropYear">
+										<ng-template kendoGridCellTemplate let-dataItem>
+											<!-- template for mobile -->
+
+											<h4>
+												{{ dataItem.cropYearCode }}
+											</h4>
+											<dl>
+												<dt>Name</dt>
+												<dd>{{ dataItem.cropYearName }}</dd>
+
+												<dt>Description</dt>
+												<dd>{{ dataItem.cropYearDescription }}</dd>
+
+												<dt>Product Group</dt>
+												<dd>{{ dataItem.productGroup }}</dd>
+											</dl>
+											<!-- template for mobile Ends-->
+										</ng-template>
+									</kendo-grid-column>
+									<kendo-grid-column field='' title='' [width]="40">
+										<ng-template kendoGridHeaderTemplate let-dataItem>
+											<input type="checkbox" id="checkall" class="k-checkbox" ng-model="allItemsChecked" (change)="checkorUnCheckAll($event)" />
+											<label class="k-checkbox-label chk_head" for="checkall"></label>
+										</ng-template>
+										<ng-template kendoGridCellTemplate let-dataItem  #check>
+											<input #cycheckbox type="checkbox" class="k-checkbox" id="dataItem.cropYearCode" name="dataItem.cropYearCode" ng-model="dataItem.cropYearCode"
+											/>
+											<label class="k-checkbox-label" for="dataItem.cropYearCode"></label>
+										</ng-template>
+									</kendo-grid-column>
+
+									<!--<kendo-grid-column field="checked" title="">
+											<ng-template kendoGridHeaderTemplate let-dataItem>
+											<input type="checkbox" 	(change)="checkAllClicked($event)" />
+											
+											</ng-template> 
+										</kendo-grid-column>-->
+									<!--<kendo-grid-column media="sm" field="uomCode" title="Code">
+										</kendo-grid-column>-->
+
+									<!--kendo-grid-column media="lg" field="dataItem.cropYearCode" title="Crop Season Code" width=200-->
+									<!--ng-template kendoGridCellTemplate let-dataItem>
+												<div (click)="viewById(dataItem)"  class="view-all">{{dataItem.cropYearDto.cropYearCode}}</div>
+											</ng-template-->
+									<kendo-grid-column media="sm" field="cropYearCode" title="Crop Year Code" [style.background-color]="getStyle()">
+										<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+											<input [(ngModel)]="dataItem.cropYearCode" maxlength="20" 
+												name="cropYearCode" class="k-textbox valred" required/>
+											<small class="colr-red font-regular font-14">*</small>
+										</ng-template>
+									</kendo-grid-column>
+
+									<kendo-grid-column media="sm" field="cropYearName" title="Crop Year Name">
+										<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+											<input [(ngModel)]="dataItem.cropYearName" maxlength="200" 
+												name="cropYearName" class="k-textbox valred" required/>
+											<small class="colr-red font-regular font-14">*</small>
+										</ng-template>
+									</kendo-grid-column>
+
+
+									<kendo-grid-column media="sm" field="cropYearDescription" title="Description">
+										<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+											<input [(ngModel)]="dataItem.cropYearDescription" maxlength="500" name="cropYearDescription" class="k-textbox" required/>
+										</ng-template>
+									</kendo-grid-column>
+
+
+
+									<kendo-grid-column media="sm" field="cropYearProductDto[0].prodName" title="Product">	
+										<ng-template kendoGridCellTemplate let-dataItem="dataItem">
+											<span *ngFor="let item of dataItem.cropYearProductDto; let isLast=last">
+														{{item.prodName}}{{isLast ? '' : ', '}}
+													</span>
+										</ng-template>
+										<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+											<span class="cropyear">
+											<kendo-multiselect  [data]="productList"   [(ngModel)]="dataItem.cropYearProductDto"
+												[textField]="'prodName'" [valueField]="'prodCode'" name="product" [style.border-color]="getStyle()" (valueChange)="applyDropDownChange($event)"></kendo-multiselect>
+												<small class="colr-red font-regular font-14">*</small>
+											</span>
+												<!--kendo-multiselect [data]="PrdtDTOarr" [(ngModel)]="value"></kendo-multiselect-->
+										</ng-template>
+										<small *ngIf="req_prodName" class="colr-red font-regular font-14">*</small>
+									</kendo-grid-column>
+
+									<kendo-grid-column media="sm" field="statusName" title="Status">
+										<ng-template kendoGridCellTemplate let-dataItem="dataItem">
+											<label field="statusName" [ngClass]="{'status-draft': dataItem.statusName=='Draft','status-active': dataItem.statusName=='Active','status-inactive': dataItem.statusName=='InActive'}">{{dataItem.statusName}}</label>
+										</ng-template>
+
+										<!--<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+													
+													 <kendo-dropdownlist
+														[data]="statusDropDown"
+														textField="status.label"
+														valueField="status.value"
+														>
+														</kendo-dropdownlist>
+												</ng-template>-->
+									</kendo-grid-column>
+
+
+
+
+
+									<kendo-grid-command-column field="" title="" >
+										<ng-template kendoGridCellTemplate let-dataItem="dataItem" let-isNew="isNew">
+											<!--<div style="float:left" class="inline-edit-img" >
+													<span id="d1">-->
+											<div class="" style="float:left;">
+												<span id="d1" class="confirm-delete" >
+														<img kendoGridEditCommand src="../../../assets/image/Edit_Icon_Hover.png.svg"></span>
+											</div>
+											<div class="" style="float:left;"> <span id="" [hidden]="create"><img kendoGridSaveCommand class="button-bg" src="../../../assets/image/Save_Update_Icon.svg" (click)='cropDraft(dataItem)'></span></div>
+											<div class="" style="float:left;"> <span id="" [hidden]="edit"><img kendoGridSaveCommand class="button-bg" src="../../../assets/image/Save_Update_Icon.svg" (click)='editcropyear(dataItem)'></span></div>
+											<div class="" style="float:left;"> <span id="" [hidden]="!submit"><img  (click)='cropActive(dataItem)' kendoGridSaveCommand class="button-bg" src="../../../assets/image/submit.png"  style="display:block;"></span></div>
+											<div style="display:inline-block;">
+												<div [hidden]="draft">
+													<img kendoGridSaveCommand class="button-bg" src="../../../assets/image/submit.png"  (click)='editcropyearwithstatus(dataItem)'>
+													<img kendoGridSaveCommand  src="../../../assets/image/Delete icon.svg" (click)='confirmdelete(dataItem)'>
+													<!--<img kendoGridRemoveCommand src="../../../assets/image/Delete icon.svg" (click)='confirmdelete(dataItem)'>-->
+												</div>
+												<div [hidden]="active"><img kendoGridSaveCommand class="button-bg" src="../../../assets/image/Deactiveicon2.svg"  (click)='editcropyearwithstatus(dataItem)'></div>
+												<div [hidden]="inactive">
+													<img kendoGridSaveCommand class="button-bg" src="../../../assets/image/Reactivate2.svg"  (click)='editcropyearwithstatus(dataItem)'>
+													<!--<img kendoGridCancelCommand src="../../../assets/image/Cancel_Reset_Icon.svg">-->
+												</div>
+											</div>
+											<div style="display:inline-block" [ngClass]="{'displaynone': dataItem.statusName=='InActive'}">
+														
+														<img kendoGridCancelCommand class="button-bg" src="../../../assets/image/Cancel_Reset_Icon.svg">
+											</div>
+											<div style="display: inline-block;" >
+											<div *ngIf='dataItem.statusName=="Draft"'>
+												<span id="d1" class="confirm-delete" >
+														<img kendoGridRemoveCommand  src="../../../assets/image/Delete icon.svg" (click)='confirmdelete(dataItem)'>
+													</span>
+											</div>
+											</div>
+										</ng-template>
+									</kendo-grid-command-column>
+									<!--<kendo-grid-excel fileName="CropYear.xlsx"></kendo-grid-excel>-->
+									</kendo-grid>
+							</form>
+						</div>
+						<!--Kendo grid Ends-->
+					</div>
+				</div>
+
+				<div *ngIf="errormodal" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHidden()" class="modal fade something_wrong"
+					bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>This page contains {{counter}} errors.Please
+										correct the highlighted fields.</div>
+								</div>
+						</div>
+					</div>
+			</div>
+			
+			<div *ngIf="errormodal1" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHidden()" class="modal fade something_wrong"
+					 bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					 aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">								
+									<div class="modal-header">
+										<div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>
+										{{errorMsg}}
+											</div>
+									</div>
+							
+							</div>
+						</div>
+					</div>
+
+			<!--Delete Pop up-->
+			<!--<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" (onHidden)="onHidden()" bsModal #successModals="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" 
+aria-labelledby="mySmallModalLabel" aria-hidden="true">-->
+			<div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #confirmdels="bs-modal" [config]="{backdrop: 'false'}"
+				tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content  del-modal">
+						<div class="modal-header text-center">
+							<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+							<img src="../../assets/image/Confirm_Delete.svg" />
+						</div>						
+						<div class="modal-body">
+								<div class="col-md-12 product_img text-center font-14 font-regular">
+									Are you sure you want to delete the Crop season Code {{cropcode}} in {{status}} status ?
+								</div>
+						</div>
+						<div class="del-btn-group modal-window-footer btn-shodow">
+							<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="confirmdels.hide()">Cancel</button></div>
+							<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="deletecropyear($event,cropcode)">Confirm</button></div>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+
+
+<!-- Add Success Modal -->
+<div class="modal fade success-modal" bsModal #cropadded="bs-modal" [config]="{backdrop: 'false'}" tabindex="-1" role="dialog"
+	aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Crop Year {{cropcode}} Added</div>
+				</div>
+		</div>
+	</div>
+	</div>
+	<!-- Add Success Modal - End -->
+	<!-- Edit Success Modal -->
+	<div class="modal fade success-modal" bsModal #cropedit="bs-modal" [config]="{backdrop: 'false'}" tabindex="-1" role="dialog"
+		aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+						<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Crop Year {{cropcode}} Updated with Status {{statusmsg}}</div>
+					</div>
+			</div>
+		</div>
+		</div>
+		<!-- Edit Success Modal - End -->
+
+		<!-- Edit Success without status Modal -->
+	<div class="modal fade success-modal" bsModal #cropedits="bs-modal" [config]="{backdrop: 'false'}" tabindex="-1" role="dialog"
+		aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+						<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Crop Year {{cropcode}} updated</div>
+					</div>
+			</div>
+		</div>
+		</div>
+		<!-- Edit Success Modal - End -->
+
+		<!-- Delete Success Modal -->
+		<div class="modal fade success-modal" bsModal #cropdelete="bs-modal" [config]="{backdrop: 'false'}" tabindex="-1" role="dialog"
+			aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+						<div class="modal-header">
+							<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Crop Year {{cropcode}} deleted</div>
+						</div>
+				</div>
+			</div>
+			</div>
+			<!-- Delete Success Modal - End -->
+			<!--Confirm Delete Pop up-->
+			<div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #confirmdel="bs-modal" [config]="{backdrop: 'false'}"
+				tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content  del-modal">
+						<div class="modal-header text-center">
+							<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+							<img src="../../assets/image/Confirm_Delete.svg" />
+						</div>
+						<div class="modal-body">
+								<div class="col-md-12 product_img text-center font-14 font-regular">
+									Are you sure you want to {{deleteStatus}} the Crop Year Code {{cropcode}} in {{status}} status ?
+								</div>
+						</div>
+						<div class="del-btn-group modal-window-footer btn-shodow">
+							<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="confirmdel.hide()">Cancel</button></div>
+							<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="deletecropyear($event,cropcode)">Confirm</button></div>
+						</div>
+					</div>
+				</div>
+				</div>
+				<!--Confirm Delete End-->
+
+
+				<!--Error Pop up-->
+				<div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #errormsg="bs-modal" [config]="{backdrop: 'false'}"
+					tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content  del-modal">
+							<div class="modal-header text-center">
+								<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+								<img src="../../assets/image/Confirm_Delete.svg" />
+							</div>							
+							<div class="modal-body">
+									<div class="col-md-12 product_img text-center font-14 font-regular">
+										Fill all fields...
+									</div>
+							</div>
+							<div class="del-btn-group modal-window-footer btn-shodow">
+								<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="errormsg.hide()">Cancel</button></div>
+								<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="errormsg.hide()">Ok</button></div>
+							</div>
+						</div>
+					</div>
+					</div>
+					<!--Error Popup End-->
+					<!--Validation Pop up-->
+					<!--<div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #validation="bs-modal" [config]="{backdrop: 'false'}"
+						tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						<div class="modal-dialog ">
+							<div class="modal-content  del-modal">
+								<div class="modal-header text-center">
+									<img src="../../assets/image/Confirm_Delete.svg" />
+								</div>
+								
+								<div class="modal-body">
+
+										<div class="col-md-12 product_img text-center font-14 font-regular" *ngFor="let error of croperror;">
+											{{error}}
+										</div>
+								</div>
+								<div class="del-btn-group modal-window-footer btn-shodow">
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="Validation.hide()">Cancel</button></div>
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="validation.hide()">Ok</button></div>
+								</div>
+							</div>
+						</div>
+						</div>-->
+						<!--Validation Popup End-->
+						<div class="modal fade something_wrong"
+					bsModal #validation="bs-modal" [config]="{backdrop: 'false',show: false}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>
+									 <span *ngFor="let error of croperror;"><span>{{error}}</span><br></span>
+										</div>
+								</div>
+						</div>
+					</div>
+			</div>

@@ -1,0 +1,118 @@
+<div [formGroup]="cnfCostForm">
+	<accordion>
+		<accordion-group #group6 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+			<div accordion-heading  class="font-semibold">
+								Clearing & Forwarding Cost Matrix Basic
+				<i class="pull-right float-xs-right glyphicon"
+				></i>
+			</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+					<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12 clr-both">
+					<label for="usr-field" class="colr-red font-regular font-14">Legal Entity</label>
+					<div  class="dropdown"> 
+						<kendo-multiselect name="fkPartyId" formControlName="fkPartyId" [data]="costMatrixService.partyList" [textField]="'partyName'" [valueField]="'partyId'"></kendo-multiselect>
+					</div>
+				</div>
+				
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<label for="usr-field" class="colr-red font-regular font-14">Product</label>
+							<div class="dropdown">
+								<select formControlName="fkProdId" name="fkProdId" class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-15" id=""  > 
+								<option *ngFor="let option of cnfCostMatrixService.productOption" value="{{option.prodId}}">{{option.prodName}}</option>
+								</select>
+							</div>
+				</div>  
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<label for="usr-field" class="colr-red font-regular font-14">Warehouse</label>
+							<div class="dropdown">
+								<select formControlName="fkWarehousePartyId" name="fkWarehousePartyId" class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-15"  id="warehouse" name="warehouse" > 
+							
+								<option *ngFor="let option of warehouse" value="{{option.value}}">{{option.label}}</option>
+								</select>
+							</div>
+				</div>
+
+				<!-- <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<label for="usr-field" class="colr-lblue font-regular font-14">Group or Detailed Cost Level</label>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+						<span class="radio pricing-details no-margin-left">
+							<input type="radio" name="costIsDetailedInd{{arrIndex}}" id="radio3cnf{{arrIndex}}" value="1" formControlName="costIsDetailedInd{{arrIndex}}">
+							<label for="radio3cnf{{arrIndex}}">Group </label>
+						</span>
+						<span class="radio pricing-details">
+							<input type="radio" name="costIsDetailedInd{{arrIndex}}" id="radio4cnf{{arrIndex}}"  value="0" formControlName="costIsDetailedInd{{arrIndex}}">
+							<label for="radio3cnf{{arrIndex}}">Detailed</label>
+						</span>  
+					</div>
+				</div> -->
+			<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+				<label for="usr-field" class="colr-lblue font-regular font-14">Group or Detailed Cost Level</label>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+					<span class="radio pricing-details no-margin-left">
+						<input type="radio" name="costIsDetailedInd{{arrIndex}}" id="radio3wh{{arrIndex}}" value="1" formControlName="costIsDetailedInd{{arrIndex}}">
+						<label for="radio3wh{{arrIndex}}">Group </label>
+					</span>
+					<span class="radio pricing-details">
+						<input type="radio" name="costIsDetailedInd{{arrIndex}}" id="radio4wh{{arrIndex}}" value="0" formControlName="costIsDetailedInd{{arrIndex}}">
+						<label for="radio3wh{{arrIndex}}">Detailed</label>
+					</span>
+				</div>
+			</div>
+
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12 clr-both">
+					<label for="usr-field" class="colr-red font-regular font-14">Warehouse Location</label>
+						<div  class="dropdown"> 
+							<kendo-multiselect formControlName="fkPartyWhStockLocationId" [data]="warehouseloc" [textField]="'label'" [valueField]="'value'"></kendo-multiselect>
+						</div>
+				</div>
+
+								
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<label for="usr-field" class="colr-lblue font-regular font-14">Contract Reference Number</label>
+					<input type="text" formControlName="cnfCostContrRefNo" class="form-control font-15 font-regular " id="" value="" placeholder="">
+				</div>
+				
+			 	<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<label for="usr-field" class="colr-red font-regular font-14">Valid From Date</label>
+					<kendo-datepicker formControlName="cnfCostValidFrom"></kendo-datepicker>
+				</div>
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<label for="usr-field" class="colr-red font-regular font-14">Valid To Date</label>
+						<kendo-datepicker formControlName="cnfCostValidTo"></kendo-datepicker>
+				</div> 
+					
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12 clr-both">
+					<label for="usr-field" class="colr-lblue font-regular font-14">Remarks</label>
+					<input type="text" class="form-control font-15 font-regular " id="cnfCostMatrixRemarks" formControlName="cnfCostRemarks" value="" placeholder="">
+				</div>
+
+				
+				
+				</div>
+
+	</accordion-group>
+	<accordion-group  #group7 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+	<div accordion-heading class="font-semibold">
+									Clearing & Forwarding Cost Matrix 
+					<i class="pull-right float-xs-right glyphicon"
+					></i>
+				</div>		
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+			<div formArrayName="masterCnfCostDetail">
+				<div *ngFor="let cnfMapping of getCnfCostMatrixMappingList(this.cnfCostForm); let k=index" class="panel panel-default">
+					<div [formGroupName]="k">
+						<app-add-cnf-cost-mapping [group]="cnfCostForm.controls.masterCnfCostDetail.controls[k]" [addEditId]=addEditId [cnfarrayIndex]=k [cnfMappingList]=cnfMappingList></app-add-cnf-cost-mapping>
+						
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 accessories-block">
+							<span class="pull-left"><i class="plus-icn-md" (click)="addCNFMappingList()"> &nbsp; </i></span>
+							<span class="pull-left"><i class="delete-icn-md" (click)="removeCNFmat(k)"> &nbsp; </i></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</accordion-group>
+
+	</accordion>
+<!--</form>-->
+</div>				

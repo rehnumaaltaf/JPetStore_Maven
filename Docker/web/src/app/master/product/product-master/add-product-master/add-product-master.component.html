@@ -1,0 +1,292 @@
+<div class="container-fluid">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">{{pageTitle}}</h4>
+				<form class="user-detail font-sm" method="post" [formGroup]="productMasterForm">
+					<accordion>
+						<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Basic Details
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Product Code</label>
+									<input type="text" [typeahead]="productCodeList"  (focus)="productCodeSuggestion($event)" class="form-control font-15 font-regular" [(ngModel)]='userRoleDataList.prodCode' formControlName="prodCode" [ngClass]="{'valred': pcode==true,'val': pcode==false}"
+									 id="productCode" value="" placeholder="">
+									<span *ngIf="pcode" class="font-12 colr-red">* Product Code is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Product Name</label>
+									<input type="text" [typeahead]="productNameList" (focus)="productNameSuggestion($event)" class="form-control font-15 font-regular " [(ngModel)]='userRoleDataList.prodName' formControlName="prodName" [ngClass]="{'valred': pname==true,'val': pname==false}"
+									 id="productName" value="" placeholder="">
+									<span *ngIf="pname" class="font-12 colr-red">* Product Name is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Product Full Name</label>
+									<input type="text" class="form-control font-15" id="PartyFullName" [(ngModel)]='userRoleDataList.prodFullName' [ngClass]="{'valred': pfname==true,'val': pfname==false}"
+									 formControlName="prodFullName" value="" placeholder="">
+									<span *ngIf="pfname" class="font-12 colr-red">* Product Full Name is required</span>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 party-radio">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Specialty Applicable?</label>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+										<span class="radio pricing-details">
+											<input type="radio" id="radio3"  value="Y"  formControlName="specialityApplicable" [(ngModel)]="specialityApplicable" name="specialityApplicable">
+											<label for="radio3">Yes</label>
+										</span>
+										<span class="radio pricing-details">
+											<input type="radio" id="radio4" value="N"   formControlName="specialityApplicable" [(ngModel)]="specialityApplicable" name="specialityApplicable" checked="checked">
+											<label for="radio4">No</label>
+										</span>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 party-radio">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Base Product</label>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+										<span class="radio pricing-details">
+											<input type="radio" (click)="radioChangeFalse()" id="radio3"  value="Y"  formControlName="isBaseProduct" [(ngModel)]="isBaseProduct" >
+											<label for="radio3">Yes</label>
+										</span>
+										<span class="radio pricing-details">
+											<input type="radio" (click)="radioChangeTrue()" id="radio4" value="N"   formControlName="isBaseProduct" [(ngModel)]="isBaseProduct" checked="checked">
+											<label for="radio4">No</label>
+										</span>
+									</div>
+								</div>
+								<div *ngIf="toShowParentProd" >
+								<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Parent ProductName</label>
+									<div class="dropdown ngxdropdown">
+										<ngx-dropdown-treeview-select [config]="config" [items]="items"  [(value)]="userRoleDataList.parentProductName"  (selectedChange)="selectedItem = $event" ></ngx-dropdown-treeview-select>
+
+									</div>
+								</div>
+								</div>
+							</div>
+						</accordion-group>
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Processing Type
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group1?.isOpen, 'acc-up': !group1?.isOpen}"></i>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Processing Code</label>
+									<input type="text" class="form-control font-15 font-regular " formControlName="processingCode" [(ngModel)]='userRoleDataList.processingCode' id="productName" value="" placeholder="">
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Processing Name</label>
+									<input type="text" class="form-control font-15 font-regular " id="procname" formControlName="processingName"  name="processingName" value="" [(ngModel)]="userRoleDataList.processingName" placeholder="" (keyup)='washedtype($event,userRoleDataList.processingName)' >
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 kendo_multiselect_preview"  *ngIf="washed">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Processing Sub Type</label>
+								<kendo-multiselect [data]="productsubModel" name="processingSubType" formControlName="processingSubType" [(ngModel)]="userRoleDataList.processingSubType"
+									 [textField]="'subTypeName'" [valueField]="'processSubTypeRefId'"></kendo-multiselect>
+								</div>
+							</div>
+						</accordion-group>
+						<accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								ICO Index
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Code</label>
+									<input type="text" class="form-control font-15 font-regular " formControlName="icoCode" id="productName" [(ngModel)]="userRoleDataList.icoCode" value="" placeholder="">
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Name</label>
+									<input type="text" class="form-control font-15 font-regular " formControlName="icoName" id="productName" [(ngModel)]="userRoleDataList.icoName" value="" placeholder="">
+								</div>
+							</div>
+						</accordion-group>
+						<accordion-group #group3 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Product & Arbitration Mapping
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group3?.isOpen, 'acc-up': !group3?.isOpen}"></i>
+							</div>
+							<div class="plants-detail-Stp">
+								<div formArrayName="productArbitrationCollection">
+									<div *ngFor="let feature  of getUserRoleArray(productMasterForm); let i=index">
+										<!--<span style="display: none" > {{i + 1}}</span>-->
+										<div [formGroupName]="i">
+											<app-base-product-mapping [group]="productMasterForm.controls.productArbitrationCollection.controls[i]" [title]="i" [financialCalendarModelArbb]=financialCalendarModelArbb></app-base-product-mapping>
+											<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+												<span class="pull-left"><i class="plus-icn-md" (click)="addPermissionMapping()" > &nbsp; </i></span>
+												<span class="pull-left"><i class="delete-icn-md" (click)="removePermissionMapping(i) " > &nbsp; </i></span>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</accordion-group>
+
+						<accordion-group #group5 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								International Product / Grade Code Mapping
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group5?.isOpen, 'acc-up': !group5?.isOpen}"></i>
+							</div>
+							<div class="plants-detail-Stp">
+								<div formArrayName="gradeCodeMappingCollection">
+									<div *ngFor="let feature  of getIntGradeCodeMapping(productMasterForm); let i=index">
+										<!--<span style="display: none" > {{i + 1}}</span>-->
+										<div [formGroupName]="i">
+											<app-base-product-intgrade [group]="productMasterForm.controls.gradeCodeMappingCollection.controls[i]" [title]="i" [financialCalendarModelsGrade]=financialCalendarModelsGrade></app-base-product-intgrade>
+											<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+												<span class="pull-left"><i class="plus-icn-md" (click)="addGradeMapping()" > &nbsp; </i></span>
+												<span class="pull-left"><i class="delete-icn-md" (click)="removeIntGradeMapping(i) " > &nbsp; </i></span>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+
+						<accordion-group #group4 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								External System Mapping
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group4?.isOpen, 'acc-up': !group4?.isOpen}"></i>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Destination System</label>
+									<div class="dropdown ">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="destinationSystemId" [(ngModel)]="userRoleDataList.destinationSystemId" placeholder="" >
+											<option value="">Select</option>
+											<option *ngFor="let option of arbshortname"  [selected]="userRoleDataList.destinationSystemId === option.externalSystemRefId"  value="{{option.externalSystemRefId}}" >{{option.externalSystemRefName}}</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Attribute 1 </label>
+									<input type="text" class="form-control font-15" formControlName="attribute1" id="" [(ngModel)]="userRoleDataList.attribute1" value="" placeholder="">
+								</div>
+								<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Attribute 2</label>
+									<input type="text" class="form-control font-15" formControlName="attribute2" id="" [(ngModel)]="userRoleDataList.attribute2" value="" placeholder="">
+								</div>
+							</div>
+						</accordion-group>
+					</accordion>
+				<!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn">
+					<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+						<button type="reset" class="btn btn-default navbar-btn cancel-btn font-semibold font-14">RESET</button>
+					</div>
+					<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+						<button type="button" (click)="saveproduct()" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14">SAVE</button>
+						<button type="button" (click)="submitproduct()" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14">SUBMIT</button>
+					</div>
+				</div>-->
+				      <div *ngIf="whenDataNotTobeEdited">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="reset"  class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="reset()" l10nTranslate >Reset</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="saveproduct('Draft')" l10nTranslate >Save</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="saveproduct('Active')" l10nTranslate >Submit</button>					
+						</div>							
+					</div>						
+					</div>
+					<div *ngIf="whenDataEdited">
+					 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="cancel()">Cancel</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="update()">Save</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updatewithStatus('Active')">Submit</button>					
+						</div>
+						</div>							
+					</div>
+					<div *ngIf="whenStatusInactive">
+					 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="cancel()">Cancel</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="update()" >Update</button>					
+						
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updatewithStatus('Active')" >Reactivate</button>					
+											
+						</div>
+						</div>							
+					</div>
+					<div *ngIf="whenStatusactive">
+					 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="cancel()">Cancel</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="update()" >update</button>					
+						
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updatewithStatus('InActive')" >Deactivate</button>					
+											
+						</div>
+						</div>							
+					</div>
+					<div *ngIf="errormodal1" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHidden()" class="modal fade something_wrong"
+					 bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					 aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">								
+									<div class="modal-header">
+										<div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>
+										{{errorMsg}}
+											</div>
+									</div>
+							
+							</div>
+						</div>
+					</div>
+
+<!-- Delete Success Modal -->
+<div *ngIf="notvalid" class="modal fade success-modal something_wrong" (onHidden)="onHidden()" bsModal #validate="bs-modal"
+ [config]="{ backdrop: 'true',show: true }"  tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>Please Fill the required fields.</div>
+				</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade delete-popup" *ngIf="ispagebackPopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup"  bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+										<div class="modal-content  del-modal">
+										<div class="modal-header text-center">
+											<img src="../../assets/image/Confirm_Delete.svg" />
+										</div>
+														<div class="modal-body">
+																						
+																						<div class="col-md-12 product_img text-center font-14 font-regular">
+																								{{productMasterService.errorMessage}}
+																						</div>
+														</div>
+														<div class="del-btn-group modal-window-footer btn-shodow">
+																		<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (onHidden)="onHidden1()">Cancel</button></div>
+																		<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (onHidden)="onHidden1()" >Ok</button></div>
+														</div>
+										</div>
+						</div>
+				</div>
+				
+	
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Delete Success Modal - End -->

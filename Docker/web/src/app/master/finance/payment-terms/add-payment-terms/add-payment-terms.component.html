@@ -1,0 +1,300 @@
+<div class="container-fluid"><!--<loading-animation [loadingData]="loadingData"></loading-animation>-->   
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">{{pagetitle}}</h4>			 			
+				<form [formGroup]="paymentTermsForm"  method="POST"  class="user-detail font-sm">
+					<accordion>
+						 <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                Basic Details 
+                  <i class="pull-right float-xs-right glyphicon"
+                    [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                  
+              
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Term Code</label>
+									<input type="text" class="form-control font-15 font-regular " maxlength="20" [style.border-color]="getStyletermcode()" formControlName="payTermCode"  id="payTermCode" [(ngModel)] ="paymentterms.payTermCode" value="" placeholder="">
+									<small *ngIf="req_termcode" class="colr-red font-regular font-14">Enter Term Code</small>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Term Name</label>
+									<input type="text" class="form-control font-15 font-regular " maxlength="200" [style.border-color]="getStyletermname()" formControlName="payTermName"  id="payTermName" [(ngModel)] = "paymentterms.payTermName" value="" placeholder="">
+									<small *ngIf="req_termname" class="colr-red font-regular font-14">Enter Term Name</small>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Term Description</label>
+									<input type="text" class="form-control font-15 font-regular " maxlength="500"  formControlName="payTermDesc"  id="payTermDesc" [(ngModel)] = "paymentterms.payTermDesc" value="" placeholder="">
+									<input type="hidden"  formControlName="statusName" [(ngModel)]="paymentterms.statusName"  name="statusName" id="statusName"   value="" placeholder="">
+										<input type="hidden"  formControlName="paymentTermId" [(ngModel)]="paymentterms.paymentTermId"  name="statusName" id="statusName"   value="" placeholder="">
+										<input type='hidden' formControlName='updateStatusName' [ngModel]="0" ng-init="updateStatusName=0" value="0" >
+								</div>					
+								
+									
+							
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Base Payment Term Code</label>
+									<div class="dropdown">
+										<select formControlName="paymentTermBaseId" (change)="onchange($event.target.value)"  id="paymentTermBaseId" [(ngModel)] = "paymentterms.paymentTermBaseId"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="paymentTermBaseId"  >
+											<option  selected>Select</option>
+											 <option *ngFor="let role of basecodedata"  [value]=role.id>
+											{{role.value}}
+											</option>
+										
+										</select>
+									</div>
+								
+								</div>	
+
+								
+								    <div *ngIf ="lccheck" >
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 credittype ">
+									<label for="usr-field" class="colr-red font-regular font-14">At Sight / Usance</label>
+									<div class="dropdown">
+										<select formControlName="atSightUsanceFlagId" [style.border-color]="getStyletermatsight()"  [(ngModel)] = "paymentterms.atSightUsanceFlagId"  id="atSightUsanceFlagId"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="atSightUsanceFlagId"  >
+											<option  selected>Select</option>
+											 <option *ngFor="let role of atsightdata"  [value]=role.value>
+											{{role.label}}
+											</option>
+											
+										
+										</select>
+										<small *ngIf="req_atsight" class="colr-red font-regular font-14">Select At Sight / Usance</small>
+									</div>
+									
+								</div>	
+								
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 lctype ">
+									<label for="usr-field" class="colr-red font-regular font-14">Revocable / Irrevocable</label>
+									<div class="dropdown">
+										<select formControlName="revocableIrrevocableFlagId" [style.border-color]="getStyletermrevocable()" [(ngModel)] = "paymentterms.revocableIrrevocableFlagId"   id="revocableIrrevocableFlagId"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="revocableIrrevocableFlagId"  >
+											<option  selected>Select</option>
+											 <option *ngFor="let role of revocabledata"  [value]=role.value>
+											{{role.label}}
+											</option>
+											
+											
+										</select>
+										<small *ngIf="req_revocable" class="colr-red font-regular font-14">Select Revocable / Irrevocable</small>
+									</div>
+									
+								</div>	
+								
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 ctype ">
+									<label for="usr-field" class="colr-red font-regular font-14">Confirmed / Non Confirmed</label>
+									<div class="dropdown">
+										<select formControlName="confirmedNonconfirmedFlagId" [style.border-color]="getStyletermconfirm()"  [(ngModel)] = "paymentterms.confirmedNonconfirmedFlagId"  id="confirmedNonconfirmedFlagId"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="confirmedNonconfirmedFlagId"  >
+											<option  selected>Select</option>
+											 <option *ngFor="let role of confirmeddata"  [value]=role.value>
+											{{role.label}}
+											</option>
+											
+											
+										</select>
+										<small *ngIf="req_confirmation" class="colr-red font-regular font-14">Select Confirmed / Non Confirmed</small>
+									</div>
+									
+								</div>	
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Basis</label>
+									<div class="dropdown">
+										<select formControlName="paymentBasisRefId" [style.border-color]="getStyletermbasis()" [(ngModel)] = "paymentterms.paymentBasisRefId"   id="paymentBasisRefId"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="paymentBasisRefId"  >
+											<option  selected>Select</option>
+											 <option *ngFor="let role of basisdata"  [value]=role.paymentBasisRefId>
+											{{role.paymentBasisName}}
+											</option>
+											
+										</select>
+										<small *ngIf="req_basis" class="colr-red font-regular font-14">Select Basis</small>
+									</div>
+									
+								</div>	
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Due Days</label>
+									<input type="text" class="form-control font-15 font-regular " (keypress) = "numberonly($event)" (focusout)="focusOutFunction1()" [style.border-color]="getStyletermdueday()" formControlName="dueDays" [(ngModel)] = "paymentterms.dueDays" id="dueDays" name="dueDays" value="" placeholder="">
+									<small *ngIf="req_dueday" class="colr-red font-regular font-14">Enter Due Days</small>
+								</div>
+								
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Contingency Days</label>
+									<input type="text" class="form-control font-15 font-regular " (keypress) = "numberonly($event)" (focusout)="focusOutFunction()" [style.border-color]="getStyletermcontingencyday()" formControlName="contingencyDays" [(ngModel)] ="paymentterms.contingencyDays" id="contingencyDays" name="contingencyDays" value="" placeholder="">
+									<small *ngIf="req_contingencyDays" class="colr-red font-regular font-14">Enter Contingency Days</small>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Print Description</label>
+									<input type="text" class="form-control font-15 font-regular " formControlName="printDescription" id="printDescription" [(ngModel)] = "paymentterms.printDescription" value="" placeholder="" name="printDescription" >
+								</div>
+							</div>						
+					                   						
+                </div>
+				 </accordion-group>
+             <accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                  External System Mapping
+                  <i class="pull-right float-xs-right glyphicon"
+                    [ngClass]="{'acc-down': group1?.isOpen, 'acc-up': !group1?.isOpen}"></i>
+                </div>
+				
+
+				<div class="plants-detail-Stp">	
+								<div formArrayName="externalMappingCollection">
+									<div *ngFor="let externalMappingCollection of getPaymentExternalMappingList(paymentTermsForm); let i=index" >
+										<span style="display: none" > {{i + 1}}</span>										 
+										<div  [formGroupName]="i">
+											
+												<app-external-system-mapping [group]="paymentTermsForm.controls.externalMappingCollection.controls[i]" [paymentTerm]="paymentterms" [title]="i"
+												  ></app-external-system-mapping>
+
+												
+												<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+													<span class="pull-left"  ><i class="plus-icn-md" (click)="addExternalMapping()" > &nbsp; </i></span>
+													<span class="pull-left"><i class="delete-icn-md" (click)="removeExternalMapping(i) " > &nbsp; </i></span>
+														
+														
+												</div>
+
+												<!--div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+                                                <span class="pull-left" [hidden]="showplus[i]"  ><i class="plus-icn-md" (click)="addExternalGlMapping()" > &nbsp; </i></span>
+                                                <span class="pull-left" [hidden]="showcross[i]"><i class="delete-icn-md" (click)="removePermissionMapping(i) " > &nbsp; </i></span>
+                                            </div--> 
+										</div>
+									</div>
+								</div>	
+               </div>
+
+             </accordion-group>
+					</accordion>
+          	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+							
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngIf="addpage">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="clear()" >Reset</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_mastersave" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="savedata()">Save</button>					
+							<button type="button" id="save_party_mastersubmit" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="saveandsubmit()" >Submit</button>					
+						</div>							
+					</div>
+
+				
+					<div  *ngIf="editpage" >
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngIf="draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()" >Cancel</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_mastersaveedit" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="savedata()">Save</button>					
+							<button type="button" id="save_party_mastersubmitedit" class="btn default-btn primary-btn multiplebtn-width font-semibold font-18" (click)="saveandsubmit()" >Submit</button>					
+						</div>							
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0"   *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()">Cancel</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" (click)="saveactive()"   id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18">Update</button>					
+							<button type="button" (click)="submitactivetodeactive()"  id="save_party_master1" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18">  Deactivate</button>					
+						</div>							
+					</div>
+
+					
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0"   *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()">Cancel</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" (click)="savedeactive()"   id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18">Update</button>					
+							<button type="button" (click)="submitdeactivetoreactive()"  id="save_party_master1" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"> Reactivate</button>					
+						</div>							
+					</div>
+
+					</div>	
+
+
+					</div>
+				</form>
+			</div>
+
+	<div class="modal fade delete-popup" *ngIf="isError" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHiddenIsError()"  class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog ">
+		<div class="modal-content  del-modal">
+		
+			<div class="modal-header">        
+				<div class="modal-title text-center">
+					<img src="../../assets/image/Confirm_Delete.svg" />
+				</div>
+			</div>
+			<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular">
+							{{errorMessageForPaymentterm}}
+					</div>
+			</div>
+			<div class="del-btn-group modal-window-footer btn-shodow">
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closeIsError()">Cancel</button></div>
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="closeIsError()">Ok</button></div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+</div>
+<div *ngIf="errormodal" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHidden()" class="modal fade something_wrong"  bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+                <div class="modal-header"> 
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>This page contains {{checkdropdown}} errors.Please correct the highlighted fields.</div>
+                </div> 
+
+        </div>
+
+    </div>
+
+</div>
+<div *ngIf="errormodalList" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHidden()" class="modal fade something_wrong"  bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">   
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>{{errorMsg}}</div>
+				</div> 
+        </div>
+    </div>
+</div>
+<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" (onHidden) = "onHiddenisDeletePopupModal()" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content  del-modal">
+			<div class="modal-header text-center">
+                <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a> -->
+				<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>			
+			<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isDraftStatus" >
+							Are you sure you want to Delete the Payment Terms {{paytemname}} in {{status}} status ?
+					</div>
+                     <div class="col-md-12 product_img text-cente font-14 font-regularr" *ngIf="isActiveStatus" >
+                            Are you sure you want to De-Activate the Payment Terms {{paytemname}} in {{status}} status ?
+                    </div>
+			</div>
+				<div class="del-btn-group modal-window-footer btn-shodow">
+					<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+					<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+				</div>
+		</div>
+	</div>
+</div>
+<!---->
+		</div>
+	</div>
+</div>

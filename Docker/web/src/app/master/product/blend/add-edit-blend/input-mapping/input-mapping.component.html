@@ -1,0 +1,39 @@
+<div [formGroup]="InputMappingForm">
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 pad0 plants-detail blend-output-container">
+        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Blend.Product</label>
+            <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkProdId"
+              type="button" data-toggle="dropdown" name="fkProdId" [ngClass]="{'valred': blendService.reqInProduct[arrInIndex]== true,'val': blendService.reqInProduct[arrInIndex]== false}"> <!--[ngClass]="{'valred': costService.reqWhFkProdId[arrIndex]== true,'val': costService.reqWhFkProdId[arrIndex]== false}"-->
+                <option [ngValue]="undefined" selected>Select</option>
+                <option *ngFor="let prod of blendService.blendProductList" value="{{prod.prodId}}">{{prod.prodName}}</option>                
+            </select>
+            <span *ngIf="blendService.reqInProduct[arrInIndex]== true" class="font-12 colr-red">* Please select Product</span>
+        </div> 
+                        
+        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate >Master.Blend.Origin</label>
+          <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkOriginId"
+              type="button" data-toggle="dropdown" name="fkOriginId" [ngClass]="{'valred': blendService.reqInOrigin[arrInIndex]== true,'val': blendService.reqInOrigin[arrInIndex]== false}">
+                <option [ngValue]="undefined" selected>Select</option>
+                <option *ngFor="let origin of blendService.blendOriginList" value="{{origin.pkOriginId}}">{{origin.originName}}</option>                
+          </select>
+          <span *ngIf="blendService.reqInOrigin[arrInIndex]== true" class="font-12 colr-red">* Please select Origin</span>
+      </div>
+
+      <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <label for="usr-field" class="colr-red font-regular font-14"  l10nTranslate>Master.Blend.ProductGrade</label>
+        <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkGradeId"
+              type="button" data-toggle="dropdown" name="fkGradeId" [ngClass]="{'valred': blendService.reqInGrade[arrInIndex]== true,'val': blendService.reqInGrade[arrInIndex]== false}">
+                <option [ngValue]="undefined" selected>Select</option>
+                <option *ngFor="let gr of blendService.blendGradeList" value="{{gr.gradeId}}">{{gr.gradeName}}</option>                
+          </select>
+          <span *ngIf="blendService.reqInGrade[arrInIndex]== true" class="font-12 colr-red">* Please select Grade</span>
+      </div> 
+
+      <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <label for="usr-field" class="colr-red  font-regular font-14" l10nTranslate>Master.Blend.InputPercentage</label>
+        <input type="text" class="form-control font-15 font-regular"  id="quantityPercentage" value="" placeholder="" formControlName="quantityPercentage" name="quantityPercentage" [ngClass]="{'valred': blendService.reqInPer[arrInIndex]== true,'val': blendService.reqInPer[arrInIndex]== false}">
+        <span *ngIf="blendService.reqInPer[arrInIndex]== true" class="font-12 colr-red">* Please fill Output Quantity Percentage</span>
+      </div>  
+  </div>
+</div>

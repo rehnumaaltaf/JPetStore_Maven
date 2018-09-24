@@ -1,0 +1,39 @@
+<div [formGroup]="basePaymentMappingform">  
+    <div *ngIf="whentoEdit">
+		 <input type='hidden' formControlName='nagotiationTermId' [ngModel]="data0 || '0'" ng-init="data0=0">
+							<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pad0 assoc_block" >
+							<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12 padr0">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate >Master.BasePayment.NegotiationTermCode</label>
+									<input type="text" class="form-control font-15 font-regular " formControlName="nagotiationCode" [(ngModel)]="data1" id="PartyCode" value="" placeholder="" maxlength="20">
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12 padr0">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate >Master.BasePayment.NegotiationTermName</label>
+									<input type="text" class="form-control font-15 font-regular " formControlName="nagotiationName" [(ngModel)]="data2" id="PartyCode" value="" placeholder="" maxlength="200">
+								</div>
+								<div class="form-group col-lg-3 col-md-3 col-sm-8 col-xs-12 padr0">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate >Master.BasePayment.PrintDescription </label>
+									<input type="text" class="form-control font-15 font-regular " formControlName="printDescription"  [(ngModel)]="data3" id="PartyCode" value="" placeholder="" maxlength="500">
+								</div>
+								
+							</div>
+		</div>
+
+		<div *ngIf="whentoAdd">
+							<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pad0 assoc_block" >
+							<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12 padr0">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate >Master.BasePayment.NegotiationTermCode</label>
+									<input type="text" class="form-control font-15 font-regular " formControlName="nagotiationCode" [(ngModel)]="data1" id="PartyCode" value="" placeholder="" maxlength="20">
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-8 col-xs-12 padr0">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate >Master.BasePayment.NegotiationTermName </label>
+									<input type="text" class="form-control font-15 font-regular " formControlName="nagotiationName" [(ngModel)]="data2" id="PartyCode" value="" placeholder="" maxlength="200">
+								</div>
+								<div class="form-group col-lg-3 col-md-3 col-sm-8 col-xs-12 padr0">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate >Master.BasePayment.PrintDescription </label>
+									<input type="text" class="form-control font-15 font-regular " formControlName="printDescription"  [(ngModel)]="data3" id="PartyCode" value="" placeholder="" maxlength="500">
+								</div>
+								
+							</div>
+		</div>
+
+</div>

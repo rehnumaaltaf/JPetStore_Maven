@@ -1,0 +1,95 @@
+<div [formGroup]="freightForm">
+
+	<accordion>
+		<accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+			<div accordion-heading class="font-semibold">
+				Freight Cost Basic Details
+				<i class="pull-right float-xs-right glyphicon" ></i>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12 type_select">
+					<label for="usr-field" class="colr-red font-regular font-14">Legal Entity</label>
+					<div  class="dropdown"> <!-- dropdown -->
+				   <kendo-multiselect name="fkPartyId" formControlName="fkPartyId"  [data]="costMatrixService.partyList" [textField]="'partyName'" [valueField]="'partyId'"></kendo-multiselect>
+					</div>
+				</div>
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<label for="usr-field" class="colr-red font-regular font-14">Product</label>
+					<!--<div class="dropdown positionrel">
+						<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="fkProdId" name="fkProdId" formControlName="fkProdId">
+                                         <option [ngValue]="undefined" selected>Select</option>
+                                         <option value="1">Arabica</option>
+                                         <option value="2">Oracle</option>
+                                         </select>
+					</div>-->
+					<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkProdId"
+						type="button" data-toggle="dropdown" name="fkProdId">
+							<option *ngFor="let prod of costMatrixService.defaultUnitProductList" value="{{prod.prodId}}">{{prod.prodName}}</option>                
+					</select>
+				</div>
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<label for="usr-field" class="colr-lblue font-regular font-14">Group or Detailed Cost Level</label>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+						<span class="radio pricing-details no-margin-left">
+											<input type="radio" name="freightCostIsDetailedInd{{arrIndex}}" id="radio3fr{{arrIndex}}" value="1"  formControlName="freightCostIsDetailedInd{{arrIndex}}">
+											<label for="radio3fr{{arrIndex}}">Group </label>
+										</span>
+						<span class="radio pricing-details">
+											<input type="radio" name="freightCostIsDetailedInd{{arrIndex}}" id="radio3fr{{arrIndex}}" value="0"  formControlName="freightCostIsDetailedInd{{arrIndex}}">
+											<label for="radio3fr{{arrIndex}}">Detailed </label>
+										</span>
+					</div>
+				</div>
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<label for="usr-field" class="colr-lblue font-regular font-14">Shipping / Trucking Line</label>
+					<div class="dropdown positionrel">
+						<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="fkServiceProviderPartyId" name="fkServiceProviderPartyId" formControlName="fkServiceProviderPartyId">
+                                         <option [ngValue]="undefined" selected>Select</option>
+                                         <option value="1">DHL</option>
+                                         <option value="2">Sample Data</option>
+                                         </select>
+					</div>
+				</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<label for="usr-field" class="colr-lblue font-regular font-14">Contract Reference</label>
+					<input type="text" class="form-control font-15 font-regular " id="freightCostContrRefNo" value="" name="freightCostContrRefNo" formControlName="freightCostContrRefNo" placeholder="">
+				</div>
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<label for="usr-field" class="colr-red font-regular font-14">Valid from Date</label>
+						<kendo-datepicker formControlName="freightCostValidFrom"></kendo-datepicker>
+					</div>
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<label for="usr-field" class="colr-red font-regular font-14">Valid to Date</label>
+					<kendo-datepicker formControlName="freightCostValidTo"></kendo-datepicker>
+				</div>
+				<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<label for="usr-field" class="colr-lblue font-regular font-14">Remarks</label>
+					<input type="text" class="form-control font-15 font-regular " id="freightCostRemarks" formControlName="freightCostRemarks" name="freightCostRemarks" value="" placeholder="">
+				</div>
+			</div>
+		</accordion-group>
+
+
+		<accordion-group #group3 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+			<div accordion-heading class="font-semibold">
+				Freight Cost
+				<i class="pull-right float-xs-right glyphicon" ></i>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+				<div formArrayName="masterFreightCostdetailDto">
+					<div *ngFor="let frieght of getFreightMappingList(this.freightForm); let k=index" class="panel panel-default">
+						<div [formGroupName]="k">
+							<app-freight-mapping [group]="freightForm.controls.masterFreightCostdetailDto.controls[k]" [addEditId]=addEditId [freightarrayIndex]=k [freightDtlList]=freightDtlList></app-freight-mapping>
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 accessories-block">
+								<span class="pull-left add-icon"><i class="plus-icn-md" (click)="addFreightMapping()"> &nbsp; </i></span>
+								<span class="pull-left"><i class="delete-icn-md" (click)="removeFreightMapping(k)"> &nbsp; </i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</accordion-group>
+	</accordion>
+</div>

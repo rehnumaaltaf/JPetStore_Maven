@@ -1,0 +1,12 @@
+version: "3"
+services:
+ ctrm-gateway:
+    image: ctrmdev.azurecr.io/ctrm-gateway:latest
+    deploy:
+      replicas: 1
+      resources:
+        restart_policy:
+          condition: on-failure
+    container_name: ctrm-gateway
+    ports:
+      - "80:80"

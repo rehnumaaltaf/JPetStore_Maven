@@ -1,0 +1,67 @@
+{
+	"Confirm": {
+		"Common":{
+			"Reset": "Do you really want to reset?",
+			"Deactivate":"Please confirm to deactivate ##",
+			"Delete":"Please confirm to delete ##",
+			"Reactivate":"Please confirm to reactivate ##",
+			"CancelConfirm": "Do you really want to cancel?",
+			"Cancel": "Cancel",
+			"Confirm": "Confirm"
+		}
+	},
+	"Message": {
+		"Common":{
+			"UploadedRemoveFirst" : "Please remove the selected file and upload",
+			"NumericAllowed": "Only numeric inputs allowed",
+			"Mandatory": "Please fill all the mandatory highlighted fields",
+			"Unique": "already exists, please provide unique ##",
+			"Cancel": "Do you really want to cancel?",
+			"Update": "Success : ##  ## updated",
+			"Delete": "Success : ## ## deleted",
+			"Activate": "Success: ## ## activated",
+			"Deactivate": "Success : ## ## deactivated",
+			"Reactivate": "Success : ## ## reactivated",
+			"Save": "Success : ## ## saved",
+			"Submit": "Success : ## ## activated"
+		},
+		"Location":{
+			"Save":"Location ## & ## has been saved successfully",
+			"Deactivate":"Location ## & ## has been saved and Deactivated",
+			"Activate":"Location ## & ## has been saved and Activated",
+			"Delete":"Location ## & ##  has been successfully deleted",
+			"NumericValidation": "Only numeric inputs allowed"
+		},
+		"Cost":{
+			"Submit":"Successfully added ##",
+			"Save":"Saved ## as Draft",
+			"Update":"Successfully updated ##"
+		},
+		"Currency":{
+			"Save":"Success: Currency ## Saved",
+			"Submit":"Success: Currency ## Activated",
+			"Update":"Success: Currency ## Updated",
+			"Activate":"Success: Currency ## Reactivated",
+			"DeActivate":"Success: Currency ## Deactivated",
+			"Delete":"Success: Currency ## Deleted",
+			"Mandatory": "Please fill all the mandatory highlighted fields"
+		},
+		"Blend": {
+			"Save":"Saved ## as Draft",
+			"Submit":"Blend ## has been created and saved in 'Active' mode",
+			"Update":"Successfully updated ##",
+			"Percentage":"## cannot be more than 100 %",
+			"addClone":"Cannot Add other ## as ## equals 100",
+			"validatePer": "## should be equal to 100" 
+		},
+		"SecondaryPacking": {
+			"Save":"Success: Secondary Packing Material ## Saved",
+			"Submit":"Success: Secondary Packing Material ## Activated",
+			"Update":"Success: Secondary Packing Material ## Updated",
+			"Activate":"Success: Secondary Packing Material ## Activated",
+			"Deactivate":"Success: Secondary Packing Material ## Deactivated",
+			"Reactivate":"Success: Secondary Packing Material ## Reactivated",
+			"Delete":"Success: Secondary Packing Material ## Deleted"
+		}
+	}
+}

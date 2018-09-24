@@ -1,0 +1,238 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt30 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Currency Master Details</h4>
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<!--a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a-->
+					<!--<img src="../../assets/image/add.png" (click)="changeShowStatus()" />-->
+
+
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+						<!-- [sort]="sort"
+								(sortChange)="sortChange($event)"
+								{
+								allowUnsort: allowUnsort,
+								mode: multiple ? 'multiple' : 'single'
+								}
+								-->
+                            <!-- Kendo Grid starts-->
+							<div  class="currency_detail">
+								<form novalidate #myForm="ngForm" autocomplete="off" >
+								<kendo-grid [groupable]="true"
+								[kendoGridBinding]="currencyService.currencyDetails"
+								[groupable]="true"
+								[group]="state.group"
+								[scrollable]="'virtual'"
+								[editable]="true"
+								[pageSize]="state.take"
+								[skip]="state.skip"
+								[sortable]="true"	
+								[filterable]="true"
+								(dataStateChange)="dataStateChange($event)"
+								[height]="gridHeight"
+								[pageable]="false"
+								(pageChange)="pageChange($event)" 
+								(edit)="editHandler($event)"
+								(add)="addHandler($event)"
+								(cancel)="cancelHandler($event)"
+								(save)="saveHandler($event)">
+
+								
+										<ng-template kendoGridToolbarTemplate>
+										<span class="k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+										<button kendoGridAddCommand class="k-button-wrapper"><img src="../../assets/image/add.png" /></button>
+										</ng-template>
+										
+										<kendo-grid-column media="xs" title="Currency">
+										<ng-template kendoGridCellTemplate let-dataItem>
+											<!-- template for mobile -->
+											
+											<h4>
+											{{ dataItem.currencyCode }}
+											</h4>
+											<dl>
+											<dt>Currency Name</dt>
+											<dd>{{ dataItem.currencyName }}</dd>
+
+											<dt>Currency Description</dt>
+											<dd>{{ dataItem.currencyDesc }}</dd>
+
+											<dt>Currency Symbol</dt>
+											<dd>{{ dataItem.currencySymbol }}</dd>
+											</dl>
+											<!-- template for mobile Ends-->
+										</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column  title=''  width="40">
+											<ng-template kendoGridHeaderTemplate let-dataItem>                       
+											<input type="checkbox"  id="checkall" class="k-checkbox"name="all-select" [(ngModel)]="allItemsChecked" (change)="checkAllClicked($event)" />
+											<label class="k-checkbox-label chk_head" for="checkall"></label>
+											</ng-template> 
+											<ng-template kendoGridCellTemplate let-dataItem>
+											<input type="checkbox"  class="k-checkbox" id="dataItem.pkCurrencyId" name="dataItem.pkCurrencyId" (change)="selectUnSelectAllChecked($event)" [(ngModel)]="dataItem.checked"/>
+											<label class="k-checkbox-label" for="dataItem.pkCurrencyId"></label>
+											</ng-template>
+										</kendo-grid-column>
+											 <kendo-grid-column media="sm" field="currencyCode" title="Currency Code">
+												<ng-template kendoGridCellTemplate let-dataItem sort>													
+													<span title="{{dataItem?.currencyCode}}">{{dataItem?.currencyCode}}</span>
+												</ng-template>
+												<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+												 <input  #currencyCode
+													 type="text" 
+													 class="form-control font-15 font-regular"
+													 (keyup)="currencyCodeSuggestion($event)" 
+													  [ngClass]="{'inValid': true}" 
+													 name="currencyCode" id="currencyCode"
+													  [typeahead]="currencyCodeList" 
+													  [(ngModel)]="currencyService.currencyDetail.currencyCode"
+													  maxlength="20"
+													  class="k-textbox" required/>
+												</ng-template>
+											</kendo-grid-column>
+											
+											 <kendo-grid-column media="sm" field="currencyName" title="Currency Name">
+												<ng-template kendoGridCellTemplate let-dataItem>													
+													<span title="{{dataItem?.currencyName}}">{{dataItem?.currencyName}}</span>
+												</ng-template>
+												<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+													<!--<input 
+													 #currencyName
+													 type="text" 
+													 class="form-control font-15 font-regular "
+													 [ngClass]="{'inValid': reqcurrencyName}" 
+													 (keyup)="currencyNameSuggestion($event)" 
+													 name="currencyName" id="currencyName"
+													  [typeahead]="currencyNameList" 
+													  (change)="reqcurrencyName=false"
+															maxlength="200"
+													  [(ngModel)]="currencyService.currencyDetail.currencyName" class="k-textbox" required/>
+													<sup style="color:red;top: 7px;  font-size: 25px;display:inline-block;">*</sup>-->
+													<input 
+													 #currencyName
+													 type="text" 
+													 class="form-control font-15 font-regular"
+													 (keyup)="currencyNameSuggestion($event)" 
+													 [ngClass]="{'inValid': true}" 
+													 name="currencyName" id="currencyName"
+													 [typeahead]="currencyNameList" 
+													 maxlength="200"
+													 [(ngModel)]="currencyService.currencyDetail.currencyName" class="k-textbox" required/>
+												</ng-template>
+											</kendo-grid-column>
+											
+												
+											 <kendo-grid-column media="sm" field="currencyDesc" title="Currency Description">
+												<ng-template kendoGridCellTemplate let-dataItem>													
+													<span title="{{dataItem?.currencyDesc}}">{{dataItem?.currencyDesc}}</span>
+												</ng-template>
+												<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+													<input [(ngModel)]="currencyService.currencyDetail.currencyDesc" maxlength="500" name="currencyDesc" class="k-textbox" required/>
+												</ng-template>
+											</kendo-grid-column>
+
+											<kendo-grid-column media="sm" field="currencySymbol" title="Currency Symbol">
+												<ng-template kendoGridCellTemplate let-dataItem>													
+													<span title="{{dataItem?.currencySymbol}}">{{dataItem?.currencySymbol}}</span>
+												</ng-template>
+												<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+													<input [(ngModel)]="currencyService.currencyDetail.currencySymbol" (keypress)="NumberRestrictions($event)" maxlength="20" name="currencySymbol" class="k-textbox" required/>
+												</ng-template>
+											</kendo-grid-column>
+											 
+											
+												
+											 
+
+											<kendo-grid-column media="sm" field="statusName" title="Status">
+												<ng-template kendoGridCellTemplate let-dataItem="dataItem">
+													<label field="status" title="{{dataItem.statusName}}" [ngClass]="{'status-draft': dataItem.statusName=='Draft','status-active': dataItem.statusName=='Active','status-inactive': dataItem.statusName=='InActive'}">{{dataItem.statusName}}</label>
+												<!--<img *ngIf="dataItem.statusName=='Draft'" class="status-image" src='../../../assets/image/reactivate.svg' />
+												<img *ngIf="dataItem.statusName=='Active'" class="status-image" src='../../../assets/image/activate.svg' />
+												<img *ngIf="dataItem.statusName=='InActive'" class="status-image" src='../../../assets/image/deactivate.svg' />-->
+													</ng-template>
+											</kendo-grid-column>
+										
+
+
+
+
+										<kendo-grid-command-column  title="" width="160">							     
+											<ng-template kendoGridCellTemplate let-i="rowIndex" let-dataItem="dataItem" let-isNew="isNew">
+												<div *ngIf="!dataItem.action" class="show" style="float:left" ><span id="e1" style="font-size:8px !important;">
+													<img kendoGridEditCommand alt="Edit" title="Edit" class='k-button k-button-wrapper' src="../../../assets/image/Edit_Icon_Hover.png.svg">
+												</span></div>
+												<div style="float:left" >
+													 <span  *ngIf="create && !dataItem.pkCurrencyId" id="e1" style="font-size:8px !important;"><img 
+													 class='k-button k-button-wrapper' alt="Save" title="Save" kendoGridSaveCommand src="../../../assets/image/Save_Update_Icon.svg" (click)='currencySaveAsDraft(dataItem)'>
+													  </span>
+
+									 
+													<span *ngIf="edit && dataItem.pkCurrencyId && currencyService.currencyDetail.pkCurrencyId === dataItem.pkCurrencyId && dataItem.statusName =='Draft'" id="e1" style="font-size:8px !important;">
+													<img class='k-button k-button-wrapper' alt="Save" title="Save"
+													 src="../../../assets/image/Save_Update_Icon.svg" (click)='currencySaveAsDraft(dataItem)'>
+													 </span>
+
+													<!--<span *ngIf="edit && dataItem.pkCurrencyId && currencyService.currencyDetail.pkCurrencyId === dataItem.pkCurrencyId && dataItem.statusName=='Draft'" id="e1" style="font-size:8px !important;"><a
+													 (click)='currencySaveAsActive(dataItem)' href='javascript:void(0)' class="k-button k-button-wrapper"><img alt="Submit" title="Submit"  src="../../../assets/image/activate.svg" style="width:25px;"  /></a>
+													 </span>-->
+													 <span *ngIf="edit && dataItem.pkCurrencyId && currencyService.currencyDetail.pkCurrencyId === dataItem.pkCurrencyId && dataItem.statusName=='Draft'" id="e1" style="font-size:8px !important;"><a
+													 (click)='currencySaveAsActive(dataItem)' href='javascript:void(0)' class="k-button k-button-wrapper"><img alt="Submit" title="Submit" src="../../../assets/image/submit.png" /></a>
+													 </span>
+
+													<span *ngIf="edit && dataItem.pkCurrencyId && currencyService.currencyDetail.pkCurrencyId === dataItem.pkCurrencyId && dataItem.statusName!='Draft'" id="e1" style="font-size:8px !important;"><img alt="Update" title="Update" class='k-button k-button-wrapper'  src="../../../assets/image/Save_Update_Icon.svg"
+													 (click)='updatecurrencyDetails(dataItem)'>
+													 </span>
+													<span *ngIf="submit && !dataItem.pkCurrencyId" id="e1" style="font-size:8px !important;"><a  kendoGridSaveCommand href='javascript:void(0)' alt="Submit" title="Submit" class="k-button k-button-wrapper" (click)='currencySaveAsActive(dataItem)'><img  src="../../../assets/image/submit.png" style="width:25px;"  /></a>
+													</span>
+												</div> 
+												
+												<div *ngIf="!dataItem.action" class="" style="padding-left:30px;">
+													<span id="d1" class="confirm-delete" style="font-size:8px !important;" >
+														<span *ngIf="(editedRowIndex==-1 || editedRowIndex !== i) && dataItem.statusName == 'Draft'"><img alt="Delete" title="Delete" class='k-button k-button-wrapper' src="../../../assets/image/Delete icon.svg" (click)='openConfirmAction(dataItem)'></span>
+														<span *ngIf="(editedRowIndex === i) && dataItem.statusName == 'Draft' && isDelete "><img alt="Delete" title="Delete" class='k-button k-button-wrapper' src="../../../assets/image/Delete icon.svg" (click)='openConfirmAction(dataItem)'></span>
+														<span *ngIf="(editedRowIndex === i) && dataItem.statusName == 'Active'"><img class='k-button k-button-wrapper' alt="Deactivate" title="Deactivate" src="../../../assets/image/deactivate.svg" style="width:24px;" (click)='openConfirmAction(dataItem)'></span>
+														<span *ngIf="(editedRowIndex === i) && dataItem.statusName == 'InActive'"><img class='k-button k-button-wrapper' alt="Reactivate" title="Reactivate" src="../../../assets/image/activate.svg" style="width:24px;" (click)='openConfirmAction(dataItem)'></span>
+
+														
+													</span>
+                                                   
+												     <span *ngIf="create && !dataItem.pkCurrencyId"  id="e1" style="font-size:8px !important;"><img alt="Reset" title="Reset" class='k-button k-button-wrapper currency_cancel' src="../../../assets/image/Cancel_Reset_Icon.svg"  (click)="reset()"/>
+													</span>
+													<span  *ngIf="edit && dataItem.pkCurrencyId && currencyService.currencyDetail.pkCurrencyId === dataItem.pkCurrencyId" id="e1" style="font-size:8px !important;"><img alt="Cancel"  title="Cancel" class='k-button k-button-wrapper currency_cancel'  src="../../../assets/image/Cancel_Reset_Icon.svg"  (click)="reset()"/>
+													</span>
+												</div>
+											</ng-template>
+										</kendo-grid-command-column>
+										<kendo-grid-excel fileName="currency.xlsx" ></kendo-grid-excel>
+									</kendo-grid>
+								</form>
+									</div>
+									<!--Kendo grid Ends-->
+                     </div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<app-message [(msgs)]="currencyService.messages"></app-message>
+<!--<app-confirm-box></app-confirm-box>-->
+
+

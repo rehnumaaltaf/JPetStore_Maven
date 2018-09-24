@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="272 -268.5 512 512" style="enable-background:new 272 -268.5 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#698714;}
+	.st1{clip-path:url(#SVGID_2_);}
+	.st2{opacity:0.4;enable-background:new    ;}
+	.st3{fill:#FFFFFF;}
+	.st4{fill:#F9F9F9;}
+</style>
+<title>UOM_packing_highlight</title>
+<g id="Layer_4">
+	<circle id="_Path_" class="st0" cx="528" cy="-12.5" r="256"/>
+	<g id="_Clip_Group_">
+		<g>
+			<defs>
+				<circle id="SVGID_1_" cx="528" cy="-12.5" r="256"/>
+			</defs>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+			</clipPath>
+			<g class="st1">
+				<polygon id="_Path_2" class="st2" points="484.3,155.2 654,308 804,247 856,181 632,-101.5 599,-134.5 598,-199.5 560,-193.5 
+					475,-171.5 450,-110.5 393.7,-68.2 				"/>
+			</g>
+		</g>
+	</g>
+	<path id="_Path_3" class="st3" d="M437-100.5"/>
+</g>
+<g id="Layer_3">
+	<g id="_Group_">
+		<g id="_Group_2">
+			<path id="_Path_4" class="st4" d="M394.7-68l90.9,65.7c0,0-11.2-52.2-39.9-107.2C445.8-109.6,401.4-88.3,394.7-68z"/>
+			<path id="_Path_5" class="st4" d="M398.6,72.8l87,82.5V6.6L394.7-63C386.9-21.5,398.6,72.8,398.6,72.8z"/>
+			<path id="_Compound_Path_" class="st4" d="M603.5-136.2v-56.4c0.2-6.4-4.8-11.7-11.2-11.9c-0.7,0-1.4,0-2.1,0.1l-127.3,16
+				c-7.6,1.1-13.2,7.5-13.4,15.1v58.9c0,0,38.7,72.4,48,136.4c9.3,64-8.4,135.5-8.4,135.5l168.3-49.7c0,0,39.6-57.2,14.3-134.7
+				S603.5-136.2,603.5-136.2z M559.4-148.2l-53.3,9.5c-7.8,1.2-15.1-4.2-16.3-12c-1.1-7.5,3.8-14.6,11.3-16.2l53.3-9.5
+				c7.7-1.6,15.3,3.4,16.9,11.2c1.6,7.7-3.4,15.3-11.2,16.9C559.9-148.3,559.7-148.3,559.4-148.2L559.4-148.2z"/>
+		</g>
+	</g>
+</g>
+</svg>

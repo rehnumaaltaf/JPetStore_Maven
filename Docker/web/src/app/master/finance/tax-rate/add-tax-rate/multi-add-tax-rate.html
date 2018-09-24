@@ -1,0 +1,49 @@
+<div [formGroup]="TaxRateMappingform" class="certification-add">
+	<div *ngIf="whentoEdit">
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 pad0 assoc_block">
+			<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
+				<label for="usr-field"  class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.EffectiveFrom</label>
+					<br>
+					<kendo-datepicker  [min]="min"   [max]="max"  formControlName="effectiveFrom"   [(ngModel)]="data0"   [format]="'dd-MMM-yy'"
+					 value=""></kendo-datepicker>
+						<small *ngIf="reqEffectiveFromDate" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.ErrEffective</small>
+		</div>
+		<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
+			<label for="usr-field"  class="colr-lblue font-regular font-14" l10nTranslate>Master.TaxRate.EffectiveTo</label>
+				<br>
+				<kendo-datepicker [min]="min"   [max]="max" [(ngModel)]="data1"      formControlName="expirationDate" [format]="'dd-MMM-yy'"></kendo-datepicker>
+	</div>
+
+	<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.TaxRatesPercentage</label>
+		<input type="text" class="form-control font-15 font-regular " id="" [(ngModel)]="data2" value="data2" placeholder="" formControlName="taxRatePercentage">
+		<small *ngIf="reqTaxRate" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.ErrTaxRatesPercentage</small>
+	</div>
+
+</div>
+</div>
+<div *ngIf="whentoAdd">
+	<div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 pad0 assoc_block">
+		<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+			<label for="usr-field"  class="colr-red font-regular font-14">Effective From</label><br>
+				<kendo-datepicker  [min]="min"   [max]="max"  formControlName="effectiveFrom"   [(ngModel)]="data0"  [(value)]="taxregdate"
+				 [ngModelOptions]="{standalone: true}"  [format]="'dd-MMM-yy'"></kendo-datepicker>
+					<small *ngIf="reqEffectiveFromDate" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.ErrEffective</small>
+	</div>
+	<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+
+		<label for="usr-field"  class="colr-lblue font-regular font-14" l10nTranslate>Master.TaxRate.EffectiveTo</label><br>
+			<kendo-datepicker [min]="min"   [max]="max"   [(ngModel)]="data1"  [ngModelOptions]="{standalone: true}" [(value)]="taxexpdate"
+			  formControlName="expirationDate" [format]="'dd-MMM-yy'"></kendo-datepicker>
+</div>
+
+<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+	<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.TaxRatesPercentage</label>
+	<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" formControlName="taxRatePercentage">
+	<small *ngIf="reqTaxRate" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.ErrTaxRatesPercentage</small>
+</div>
+
+</div>
+</div>

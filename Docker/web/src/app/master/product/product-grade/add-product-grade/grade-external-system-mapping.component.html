@@ -1,0 +1,29 @@
+<div [formGroup]="gradeExternalSystemMappingForm" >
+    <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 pad0">
+        <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+             <!--<input type='hidden' formControlName='externalSystemMappingId' [ngModel]="gradeMappingId || null " ng-init="gradeMappingId= null">-->
+             <input type='hidden' formControlName='externalSystemMappingId' [ngModel]="gradeMappingId" />
+            <label for="usr-field" class="colr-lblue  font-regular font-14" l10nTranslate>Master.ProductGrade.dessystem</label>
+            <div class="dropdown">
+               <select  formControlName="externalSystemId"     id="externalSystemId_{{this.title}}"  class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "  name="externalSystemId_{{this.title}}" [(ngModel)] = "gradeextsysData" >
+                      <option selected > Select</option>       
+                     <option *ngFor="let externalsys of productGradeService.externallist"  [value]=externalsys.value>
+                        {{externalsys.label}}
+                    </option>
+                   
+                </select>
+            </div>
+            
+        </div>	
+        <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.ProductGrade.attribute1</label>
+            <input type="text" class="form-control font-15 font-regular " maxlength="200"  formControlName="attribute1" id="attribute1_{{this.title}}" name ="attribute1_{{this.title}}" value="" placeholder="" [(ngModel)] = "gradeattr1Data">
+        </div>
+
+        <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.ProductGrade.attribute2</label>
+            <input type="text" class="form-control font-15 font-regular " maxlength="200"  formControlName="attribute2" id="attribute2_{{this.title}}" name ="attribute2_{{this.title}}" value="" placeholder="" [(ngModel)] = "gradeattr2Data">
+        </div>
+       
+    </div>
+</div>

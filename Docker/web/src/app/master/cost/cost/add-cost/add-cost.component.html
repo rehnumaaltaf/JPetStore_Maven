@@ -1,0 +1,324 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+
+					
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 *ngIf="!isEditPage" class="padb10 padt10 colr-1e2f4d font-18 font-bold">Add Cost Master</h4>
+				<h4 *ngIf="isEditPage" class="padb10 padt10 colr-1e2f4d font-18 font-bold">Edit Cost Master</h4>
+				<form class="user-detail font-sm" [formGroup]="costMasterForm">
+					<accordion>
+						<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Basic Details
+								<i class="pull-right float-xs-right glyphicon" ></i>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<!--<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Company</label>
+									<div  class="dropdown">
+											<kendo-multiselect name="fkPartyId" formControlName="fkPartyId" [ngClass]="{'valred': costService.reqFkPartyId==true,'': costService.reqFkPartyId==false}" [data]="costService.partyList" [textField]="'fkPartyName'" [valueField]="'fkPartyId'"></kendo-multiselect>
+										</div>
+									<span *ngIf="costService.reqFkPartyId" class="font-12 colr-red">* Please select Company</span>
+								</div>-->
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Cost Code</label>
+									<input type="text" maxlength="20" class="form-control font-15 font-regular " id="rolename" value="" [ngClass]="{'valred': costService.reqCostCode==true,'': costService.reqCostCode==false}" placeholder="" formControlName="costCode"
+									 name="costCode">
+									 <span *ngIf="costService.reqCostCode" class="font-12 colr-red">* Cost Code is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Cost Name</label>
+									<input type="text" maxlength="200" class="form-control font-15 font-regular " id="roledecr" value="" [ngClass]="{'valred': costService.reqCostName==true,'': costService.reqCostName==false}" placeholder="" formControlName="costName"
+									 name="costName">
+									 <span *ngIf="costService.reqCostName" class="font-12 colr-red">* Cost Name is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Cost Description</label>
+									<input type="text" maxlength="500" class="form-control font-15 font-regular " id="rolename" value="" placeholder="" formControlName="costFullName"
+									 name="costFullName">
+								</div>								
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 party-radio">
+									<label for="usr-field" class="colr-red font-regular font-14">Cost Type</label>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+										<span class="radio pricing-details">
+										<input type="radio"  name="radio1" id="radio1" value="Y" [checked]="costTypeIsPrimaryInd === 'Y'" formControlName="costTypeIsPrimaryInd" name="costTypeIsPrimaryInd">
+										<label for="radio1">Primary </label>
+										</span>
+										<span class="radio pricing-details">
+										<input type="radio" name="radio1" id="radio2" value="N" [checked]="costTypeIsPrimaryInd === 'N'" formControlName="costTypeIsPrimaryInd" name="costTypeIsPrimaryInd">
+										<label for="radio2">Secondary</label>
+										</span>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Cost Group</label>
+									<div class="dropdown">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [ngClass]="{'valred': costService.reqFkCostGroupId==true,'': costService.reqFkCostGroupId==false}" formControlName="fkCostGroupId" type="button"
+										 data-toggle="dropdown" name="fkCostGroupId" (change)="changedCostGroup()">
+													<option *ngFor="let costGroup of costService.costGroupList" value="{{costGroup.value}}">{{costGroup.label}}</option>
+										</select>
+										<span *ngIf="costService.reqFkCostGroupId" class="font-12 colr-red">* Please select Cost Group</span>
+									</div>
+								</div>
+								<!--{{costMasterForm.value.fkCostGroupId == selectMatrix.Freight || costMasterForm.value.fkCostGroupId == selectMatrix.Warehouse || costMasterForm.value.fkCostGroupId == selectMatrix.Clearing_Forwarding || costMasterForm.value.fkCostGroupId == selectMatrix.Crop_Season}}
+								--{{costMasterForm.value.fkCostGroupId}}-- {{selectMatrix.Freight}} {{ selectMatrix.Warehouse }} {{selectMatrix.Clearing_Forwarding}} {{selectMatrix.Crop_Season}}-->
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 matrix_appli" *ngIf="costService.costMasterModel.fkCostGroupId == selectMatrix.Freight || costService.costMasterModel.fkCostGroupId == selectMatrix.Warehouse || costService.costMasterModel.fkCostGroupId == selectMatrix.Clearing_Forwarding || costService.costMasterModel.fkCostGroupId == selectMatrix.Crop_Season">
+									<label for="usr-field" class="colr-red font-regular font-14">Matrix Applicable</label>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+										<span class="radio pricing-details no-margin-left">
+										<input type="radio" name="radio2" id="radio3" value="Y" [checked]="matrixApplicableInd === 'Y'" (click)="setDefaultFlag(false)" formControlName="matrixApplicableInd" name="matrixApplicableInd">
+										<label for="radio3">Yes </label>
+										</span>
+														<span class="radio pricing-details">
+										<input type="radio" name="radio2" id="radio4" value="N" [checked]="matrixApplicableInd === 'N'" (click)="setDefaultFlag(true)" formControlName="matrixApplicableInd" name="matrixApplicableInd">
+										<label for="radio4">No</label>
+										</span>
+									</div>
+								</div>
+								<!--<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 select_matrix" *ngIf="matrixApplicableInd === 'Y' && costMasterForm.value.fkCostGroupId == selectMatrix.Freight || costMasterForm.value.fkCostGroupId == selectMatrix.Warehouse || costMasterForm.value.fkCostGroupId == selectMatrix.Clearing_Forwarding || costMasterForm.value.fkCostGroupId == selectMatrix.Crop_Season">
+									<label for="usr-field" class="colr-red font-regular font-14">Select Matrix</label>
+									<input type="text" class="form-control font-15 font-regular selected_matrix" disabled formControlName="fkMatrixDemoValue" name="fkMatrixDemoValue" >
+									<select class="hidden btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [ngClass]="{'valred': costService.reqFkMatrixEntityId==true,'': costService.reqFkMatrixEntityId==false}" formControlName="fkMatrixEntityId"
+									 type="button" data-toggle="dropdown" name="fkMatrixEntityId">
+											<option *ngFor="let matrix of costService.selectMatrixList" value="{{matrix.value}}">{{matrix.label}}</option>
+									</select>
+									<span *ngIf="costService.reqFkMatrixEntityId" class="font-12 colr-red">* Please select Matrix</span>
+								</div>-->
+								<div *ngIf="defaultFlag" class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Default Value Type</label>
+									<div class="dropdown">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkIndexUomId"
+									 type="button" data-toggle="dropdown" name="fkIndexUomId">
+												<option value="1">Percentage</option>
+												<option value="2">Lump-Sum</option>
+												<option value="3">Index</option>
+												<option value="4">Unit</option>
+											</select>
+									</div>
+								</div>
+								<div *ngIf="defaultFlag" class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Default Value</label>
+									<input type="text" class="form-control font-15" id="DefaultValue" value="" placeholder="" formControlName="costDefaultValue"
+									 name="costDefaultValue">
+								</div>
+								<!--*ngIf="costService.costMasterModel.fkCostGroupId != selectMatrix.Freight && costService.costMasterModel.fkCostGroupId != selectMatrix.Warehouse && costService.costMasterModel.fkCostGroupId != selectMatrix.Clearing_Forwarding"   -->
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="costService.costMasterModel.matrixApplicableInd === 'N' && costService.costMasterModel.fkCostGroupId != selectMatrix.Freight && costService.costMasterModel.fkCostGroupId != selectMatrix.Warehouse && costService.costMasterModel.fkCostGroupId != selectMatrix.Clearing_Forwarding">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Default Unit Basis</label>
+									<div class="dropdown">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkcostDefValueTypeId"
+									 type="button" data-toggle="dropdown" name="fkcostDefValueTypeId">
+												<option value="1">List UOM</option>
+												<option value="2">Primary Packing</option>
+												<option value="3">Secondary Packaging</option>
+											</select>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="costMasterForm.value.fkcostDefValueTypeId == defaultUnit.uom">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Default Unit UOM</label>
+										<div class="dropdown">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkDefaultValueUomId"
+									 type="button" data-toggle="dropdown" name="fkDefaultValueUomId">
+										 <option *ngFor="let defaultUnitUom of costService.defaultUnitUomList" value="{{defaultUnitUom.uomId}}">{{defaultUnitUom.uomName}}</option>                
+									</select>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="costMasterForm.value.fkcostDefValueTypeId == defaultUnit.primaryPack">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Default Unit Primary Packaging</label>
+										<div class="dropdown">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkDefValPrimaryPackingId"
+									 type="button" data-toggle="dropdown" name="fkDefValPrimaryPackingId">
+											<option *ngFor="let defaultUnitPrimaryPack of costService.defaultUnitPrimaryPackList" value="{{defaultUnitPrimaryPack.internalPackingTypeId}}">{{defaultUnitPrimaryPack.internalPackingTypeName}}</option>                
+									</select>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="costMasterForm.value.fkcostDefValueTypeId == defaultUnit.secondaryPack">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Default Unit Secondary Packaging</label>
+									<div class="dropdown">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkDefValSecondaryPackingId"
+									 type="button" data-toggle="dropdown" name="fkDefValSecondaryPackingId">
+											<option *ngFor="let defaultUnitSecondatryPack of costService.defaultUnitSecondaryPackList" value="{{defaultUnitSecondatryPack.secondaryPackingTypeCode}}">{{defaultUnitSecondatryPack.secondaryPackingTypeName}}</option>                
+									</select>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="costService.costMasterModel.matrixApplicableInd === 'N' && costService.costMasterModel.fkCostGroupId != selectMatrix.Freight && costService.costMasterModel.fkCostGroupId != selectMatrix.Warehouse && costService.costMasterModel.fkCostGroupId != selectMatrix.Clearing_Forwarding">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Default Currency</label>
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkCurrencyId"
+									 type="button" data-toggle="dropdown" name="fkCurrencyId">
+									 	        <option [ngValue]="undefined" selected></option>
+												<option *ngFor="let party of costService.currencyList" value="{{party.pkCurrencyId}}">{{party.currencyName}}</option>
+											</select>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Netted For MTM</label>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+										<span class="radio pricing-details no-margin-left">
+										<input type="radio" name="radio3" id="radio5" value="Y" [checked]="nettedForMtmInd === 'Y'" formControlName="nettedForMtmInd" name="nettedForMtmInd">
+										<label for="radio5">Yes </label>
+										</span>
+										<span class="radio pricing-details">
+										<input type="radio" name="radio3" id="radio6" value="N" [checked]="nettedForMtmInd === 'N'" formControlName="nettedForMtmInd" name="nettedForMtmInd">
+										<label for="radio6">No</label>
+										</span>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Realized</label>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+										<span class="radio pricing-details no-margin-left">
+										<input type="radio" name="radio4" id="radio7" value="Y" [checked]="realizedInd === 'Y'" formControlName="realizedInd" name="realizedInd">
+										<label for="radio7">Yes </label>
+										</span>
+										<span class="radio pricing-details">
+										<input type="radio" name="radio4" id="radio8" value="N" [checked]="realizedInd === 'N'" formControlName="realizedInd" name="realizedInd">
+										<label for="radio8">No</label>
+										</span>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Capitalize the cost In Inventory</label>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+										<span class="radio pricing-details no-margin-left">
+										<input type="radio" name="radio5" id="radio9" value="Y" [checked]="capitalizeCostInd === 'Y'" formControlName="capitalizeCostInd" name="capitalizeCostInd">
+										<label for="radio9">Yes </label>
+										</span>
+										<span class="radio pricing-details">
+										<input type="radio" name="radio5" id="radio10" value="N" [checked]="capitalizeCostInd === 'N'" formControlName="capitalizeCostInd" name="capitalizeCostInd">
+										<label for="radio10">No</label>
+										</span>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Revenue GL Account</label>
+									<div class="dropdown">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [ngClass]="{'valred': costService.reqFkRevenueGlId==true,'': costService.reqFkRevenueGlId==false}" formControlName="fkRevenueGlId" type="button"
+									 data-toggle="dropdown" name="fkRevenueGlId">
+												<option value="1">GL Account 1</option>
+												<option value="2">GL Account 2</option>
+												<option value="3">GL Account 3</option>
+											</select>
+									<span *ngIf="costService.reqFkRevenueGlId" class="font-12 colr-red">* Please select Revenue GL Account</span>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Expense GL Account</label>
+									<div class="dropdown">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [ngClass]="{'valred': costService.reqFkExpenseGlId==true,'': costService.reqFkExpenseGlId==false}" formControlName="fkExpenseGlId" type="button"
+									 data-toggle="dropdown" name="fkExpenseGlId">
+												<option value="1">GL Account 1</option>
+												<option value="2">GL Account 2</option>
+												<option value="3">GL Account 3</option>
+											</select>
+									<span *ngIf="costService.reqFkExpenseGlId" class="font-12 colr-red">* Please select Expense GL Account</span>
+									</div>
+								</div>								
+							</div>
+						</accordion-group>
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								External System Mapping
+								<i class="pull-right float-xs-right glyphicon" ></i>
+							</div>
+							<div formArrayName="exterPackAssoc">
+								<div *ngFor="let secMapping of getExtSystemMappingList(costMasterForm); let i=index" class="panel panel-default">
+									<div [formGroupName]="i">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+											<app-add-cost-external-mapping [extSystemMappingForm]="costMasterForm.controls.exterPackAssoc.controls[i]" [addEditId]=addEditCostMasterId
+											 [arrayIndex]=i [mappingList]=mappingList></app-add-cost-external-mapping>
+											<div class="col-lg-1 col-md-2 col-sm-6 col-xs-1 accessories-block mart30 padt10">
+												<span class="pull-left add-icon"><i class="plus-icn-md" (click)="addExtSystemMapping()"> &nbsp; </i></span>
+												<span class="pull-left"><i class="delete-icn-md" (click)="removeExtSystemMapping(i)"> &nbsp; </i></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+						<!--
+						<app-view-warehouse-mapping *ngIf="costMasterForm.value.matrixApplicableInd ==='Y' && costMasterForm.value.fkMatrixEntityId == selectMatrix.Warehouse" [wareHouseData]=costService.whDataList [wareHouseLength]=wareHouseLength [addEditId]=addEditCostMasterId></app-view-warehouse-mapping>
+                        <app-view-freight-mapping *ngIf="costMasterForm.value.matrixApplicableInd ==='Y' && costMasterForm.value.fkMatrixEntityId == selectMatrix.Freight" [freightData]=freightlist [freightDataLength]=freightDataLength [addEditId]=addEditCostMasterId></app-view-freight-mapping>
+						<app-view-cnf-mapping *ngIf="costMasterForm.value.matrixApplicableInd ==='Y' && costMasterForm.value.fkMatrixEntityId == selectMatrix.Clearing_Forwarding"  [cnfCostData]=cnfCostList [cnfCostLength]=cnfCostLength [addEditId]=addEditCostMasterId ></app-view-cnf-mapping>-->
+						
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf=!isEditPage>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onReset()" l10nTranslate >Reset</button>
+						</div>
+						<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="save()" l10nTranslate >Save</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="submit()" l10nTranslate >Submit</button>					
+						</div>							
+					</div>						
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()" l10nTranslate >Cancel</button>
+						</div>
+						<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="save()" l10nTranslate >Save</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="submit()" l10nTranslate >Submit</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()" l10nTranslate >Cancel</button>
+						</div>
+						<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updateCost()" l10nTranslate >Update</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="openConfirmAction()" l10nTranslate >Deactivate</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()" l10nTranslate >Cancel</button>
+						</div>
+						<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updateCost()" l10nTranslate >Update</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="openConfirmAction()" l10nTranslate >Reactivate</button>					
+						</div>							
+					</div>
+						<!--
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  btn-footer default-btn"  *ngIf="!isEditPage">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" class="btn btn-default navbar-btn cancel-btn font-semibold font-14" (click)="onReset()">RESET</button>
+							</div>
+							<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 ">
+								<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="save()">SAVE</button>					
+								<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="submit()">SUBMIT</button>					
+							</div>							
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  btn-footer default-btn" *ngIf="isEditPage && draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="update-cancel-btn btn navbar-btn cancel-btn font-semibold font-14" (click)="onCancel()">CANCEL</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 ">
+							<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="save()">SAVE</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"  (click)="submit()" >SUBMIT</button>
+						</div>				               
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  btn-footer default-btn"  *ngIf="isEditPage && active" > 
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+									<button type="button" class="update-cancel-btn btn navbar-btn cancel-btn font-semibold font-14" (click)="onCancel()">CANCEL</button>
+								</div>
+								<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 ">
+									<button type="button" id="save_party_master-s"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="updateCost()">UPDATE</button>																									  
+									<button type="button" id="save_party_master-sd"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="openConfirmAction()">DEACTIVATE</button>
+								</div>				
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  btn-footer default-btn" *ngIf="isEditPage && inactive" >
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" class="update-cancel-btn btn navbar-btn cancel-btn font-semibold font-14" (click)="onCancel()">CANCEL</button>
+							</div>
+							<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 ">
+								<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="updateCost()">UPDATE</button>					
+							<button type="button" id="save_party_master-sr"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14"  (click)="openConfirmAction()">REACTIVATE</button>
+							</div>
+						</div>-->
+					</accordion>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<app-message [(msgs)]="costService.messages"></app-message>

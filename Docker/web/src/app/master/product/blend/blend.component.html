@@ -1,0 +1,110 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+    	<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+       	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt30 create-view">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" >Blend Master List</h4>
+					</div>
+          <div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<!--<a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a>-->
+					<img src="../../assets/image/add.png" (click)="goToAddBlend()" />
+        </div>   
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+			<div class="accordion">
+                            <!-- Kendo Grid starts-->
+							<div class="party-grade_block">
+								<kendo-grid [kendoGridBinding]="blendService.blendMasterList" [selectable]="true" [groupable]="true" [group]="state.group"
+										[scrollable]="true" [editable]="true" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [filter]="state.filter"
+										[sortable]="true" [filterable]="true" [height]="640" [pageable]="false"
+										(pageChange)="pageChange($event)">
+
+										<ng-template kendoGridToolbarTemplate>
+										<button type="button" kendoGridExcelCommand><span class="k-icon k-i-file-excel"></span>Export to Excel</button>
+										</ng-template>
+									<!-- Serach Icon pannel-->
+						
+										<kendo-grid-column media="xs" title="blendService.blendMasterList">
+										<ng-template kendoGridCellTemplate let-dataItem>
+											<!-- template for mobile -->
+											
+											<h4>
+											{{ dataItem.templateCode }}
+											</h4>
+											<dl>
+											<dt>Blend Template Name</dt>
+											<dd>{{ dataItem.templateName }}</dd>
+
+											<dt>Blend Template Description</dt>
+											<dd>{{ dataItem.templateDesc }}</dd>
+
+											</dl>
+											<!-- template for mobile Ends-->
+										</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field='' title=''  width="80">
+												<ng-template kendoGridHeaderTemplate let-dataItem>
+												<input type="checkbox" id="checkall" class="k-checkbox" ng-model="allItemsChecked" (change)="checkAllClicked($event)" />
+												<label class="k-checkbox-label chk_head" for="checkall"></label>
+											</ng-template> 
+											<ng-template kendoGridCellTemplate let-dataItem >
+												<input type="checkbox" class="k-checkbox" id="dataItem.templateCode " name="dataItem.templateCode" ng-model="dataItem.templateCode "/>
+												<label class="k-checkbox-label" for="dataItem.templateCode"></label>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="sm" field="templateCode" title="Blend Template Code" class="view-all">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<a href="javascript:void(0)" [routerLink]="['view-blend',dataItem.pkBlendTemplateId]" > 
+												{{dataItem?.templateCode}}</a>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="templateName" title="Blend Template Name">
+												<ng-template kendoGridCellTemplate let-dataItem sort>													
+													<span title="{{dataItem?.templateName}}">{{dataItem?.templateName}}</span>
+												</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="templateDesc" title="Blend Template  Description">
+												<ng-template kendoGridCellTemplate let-dataItem sort>													
+													<span title="{{dataItem?.templateDesc}}">{{dataItem?.templateDesc}}</span>
+												</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="lg" field="statusName" title="Status">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<label title="{{dataItem.statusName}}" field="status"
+												 [ngClass]="{'status-draft': dataItem.statusName=='Draft','status-active': dataItem.statusName=='Active','status-inactive': dataItem.statusName=='InActive'}">
+													{{dataItem.statusName}}</label>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field="" title="">
+											<ng-template kendoGridCellTemplate let-dataItem let-i="rowIndex">
+												<div class="show" style="float:left" ><a href="javascript:void(0)" [routerLink]="['edit',dataItem.pkBlendTemplateId]"><span id="e1" data-attr="draft">
+                                                   <img src="../../../assets/image/Edit_Icon_Hover.png.svg"></span></a></div>
+											<div *ngIf="dataItem.statusName===STATUS_DRAFT" class="" style="display:block;padding-left:30px;"  (click)="DeleteBlendDetails(dataItem.pkBlendTemplateId,dataItem.templateCode,dataItem.statusName,i , dataItem)" [ngClass]="{'displaynone': dataItem.statusName===STATUS_DRAFT}" >
+												<span id="d1" class="confirm-delete pointer" style="font-size:8px !important;" >
+												<img src="../../../assets/image/Delete icon.svg"></span></div>
+<!-- 											<div *ngIf="dataItem.statusName==='Active'" class="" style="display:block;padding-left:30px;"  (click)="DeleteBlendDetails(dataItem.pkBlendTemplateId,dataItem.templateCode,dataItem.statusName,i , dataItem)" [ngClass]="{'displaynone': dataItem.statusName==='Active'}" >
+												<span id="d1" class="confirm-delete pointer" style="font-size:8px !important;" >
+												<img src="../../../assets/image/Activeicon.svg"></span></div>
+											<div *ngIf="dataItem.statusName==='InActive'" class="" style="display:block;padding-left:30px;"  (click)="DeleteBlendDetails(dataItem.pkBlendTemplateId,dataItem.templateCode,dataItem.statusName,i , dataItem)" [ngClass]="{'displaynone': dataItem.statusName==='InActive'}" >
+												<span id="d1" class="confirm-delete pointer" style="font-size:8px !important;" >
+												<img src="../../../assets/image/Deactiveicon2.svg"></span></div> -->
+											</ng-template>
+										</kendo-grid-column>
+									
+										
+										<kendo-grid-excel fileName="BlendMaster.xlsx"></kendo-grid-excel>
+									</kendo-grid>
+									</div>
+									<!--Kendo grid Ends-->
+									
+                     </div>
+					</div>
+					 	 
+		<app-message [(msgs)]="blendService.messages"></app-message>
+
+         	</div>
+    	</div>
+  </div>
+</div>

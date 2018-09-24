@@ -1,0 +1,4 @@
+_setValue(_textbox("txtUserID"), "Abhishek.hegde");
+_setValue(_password("txtPassword"), "Abhi@2016");
+_click(_submit("Login"));
+_click(_link("Log out"));

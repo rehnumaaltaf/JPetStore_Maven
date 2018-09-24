@@ -1,0 +1,364 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Brand Master Details</h4>
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<!--a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a-->
+					<!--<img src="../../assets/image/add.png" (click)="changeShowStatus()" />-->
+
+
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+							<div  class="brand_detail">
+								<form novalidate #myForm="ngForm" autocomplete="off" >
+								<kendo-grid
+								[kendoGridBinding]="brandService.brandDetails"
+								[groupable]="true"
+								[scrollable]="'virtual'"
+								[editable]="true"
+								[pageSize]="state.take"
+								[skip]="state.skip"
+								[sortable]="true"	
+								[filterable]="true"
+								(dataStateChange)="dataStateChange($event)"
+								[height]="gridHeight"
+								[pageable]="false"
+								(pageChange)="pageChange($event)" 
+								(edit)="editHandler($event)"
+								(add)="addHandler($event)"
+								(cancel)="cancelHandler($event)"
+								(save)="saveHandler($event)">
+										<ng-template kendoGridToolbarTemplate>
+									 <span class="k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+										<button kendoGridAddCommand class="k-button-wrapper"><img src="../../assets/image/add.png" /></button>
+										
+										</ng-template>
+										<kendo-grid-column media="xs" title="Brand">
+										<ng-template kendoGridCellTemplate let-dataItem>
+											<!-- template for mobile -->
+											
+											<h4>
+											{{ dataItem.brandCode }}
+											</h4>
+											<dl>
+											<dt>Brand Name</dt>
+											<dd>{{ dataItem.brandName }}</dd>
+
+											<dt>Brand Full Name</dt>
+											<dd>{{ dataItem.brandFullName }}</dd>
+
+											<dt>Internal / External</dt>
+											<dd>{{ dataItem.brandIsInternal }}</dd>
+											</dl>
+											<!-- template for mobile Ends-->
+										</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column  title='' [width]="40">
+											<ng-template kendoGridHeaderTemplate let-dataItem>                       
+											<input type="checkbox"  id="checkall" class="k-checkbox"name="all-select" [(ngModel)]="allItemsChecked" (change)="checkAllClicked($event)" />
+											<label class="k-checkbox-label chk_head" for="checkall"></label>
+											</ng-template> 
+											<ng-template kendoGridCellTemplate let-dataItem>
+											<input type="checkbox"  class="k-checkbox" id="dataItem.brandId" name="dataItem.brandId" (change)="selectUnSelectAllChecked($event)" [(ngModel)]="dataItem.checked"/>
+											<label class="k-checkbox-label" for="dataItem.brandId"></label>
+											</ng-template>
+										</kendo-grid-column>
+											 <kendo-grid-column media="sm" field="brandCode" title="Brand Code">
+												<ng-template kendoGridCellTemplate let-dataItem sort>													
+													<span title="{{dataItem?.brandCode}}">{{dataItem?.brandCode}}</span>
+												</ng-template>
+												<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+													<!--<input  #brandCode
+													 type="text" 
+													 class="form-control font-15 font-regular "
+													 [ngClass]="{'inValid': reqBrandCode}" 
+													 (keyup)="brandCodeSuggestion($event)" 
+													 name="brandCode" id="brandCode"
+													  [typeahead]="brandCodeList" 
+													  [(ngModel)]="brandService.brandDetail.brandCode"
+													  (change)="reqBrandCode=false"
+														maxlength="20"
+													   class="k-textbox" required/>
+													<sup style="color:red;top: 7px;  font-size: 25px;display:inline-block;">*</sup>-->
+													<input  #brandCode
+													 type="text" 
+													 class="form-control font-15 font-regular"
+													 (keyup)="brandCodeSuggestion($event)" 
+													  [ngClass]="{'inValid': true}" 
+													 name="brandCode" id="brandCode"
+													  [typeahead]="brandCodeList" 
+													  [(ngModel)]="brandService.brandDetail.brandCode"
+													  maxlength="20"
+													  class="k-textbox" required/>
+												</ng-template>
+											</kendo-grid-column>
+											
+											 <kendo-grid-column media="sm" field="brandName" title="Brand Name">
+												<ng-template kendoGridCellTemplate let-dataItem>													
+													<span title="{{dataItem?.brandName}}">{{dataItem?.brandName}}</span>
+												</ng-template>
+												<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+													<!--<input 
+													 #brandName
+													 type="text" 
+													 class="form-control font-15 font-regular "
+													 [ngClass]="{'inValid': reqBrandName}" 
+													 (keyup)="brandNameSuggestion($event)" 
+													 name="brandName" id="brandName"
+													  [typeahead]="brandNameList" 
+													  (change)="reqBrandName=false"
+															maxlength="200"
+													  [(ngModel)]="brandService.brandDetail.brandName" class="k-textbox" required/>
+													<sup style="color:red;top: 7px;  font-size: 25px;display:inline-block;">*</sup>-->
+													<input 
+													 #brandName
+													 type="text" 
+													 class="form-control font-15 font-regular"
+													 (keyup)="brandNameSuggestion($event)" 
+													 [ngClass]="{'inValid': true}" 
+													 name="brandName" id="brandName"
+													 [typeahead]="brandNameList" 
+													 maxlength="200"
+													 [(ngModel)]="brandService.brandDetail.brandName" class="k-textbox" required/>
+												</ng-template>
+											</kendo-grid-column>
+											
+												
+											 <kendo-grid-column media="sm" field="brandFullName" title="Brand Full Name">
+												<ng-template kendoGridCellTemplate let-dataItem>													
+													<span title="{{dataItem?.brandFullName}}">{{dataItem?.brandFullName}}</span>
+												</ng-template>
+												<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+													<input [(ngModel)]="brandService.brandDetail.brandFullName" 
+													maxlength="500" name="brandFullName" class="k-textbox" required/>
+												</ng-template>
+											</kendo-grid-column>
+											 <kendo-grid-column media="sm"  width="{{(create || edit)?'150':'120'}}" title="Brand Logo">
+												<ng-template kendoGridHeaderTemplate let-dataItem>                       
+													<a class="k-link" href="#">Brand Logo</a>
+												</ng-template>
+												<ng-template kendoGridCellTemplate let-dataItem="dataItem">
+													<img *ngIf="dataItem.logoBlob" style='padding:2px;' width="40" height="40" src="data:image/png;base64,{{dataItem?.logoBlob}}" />
+												</ng-template>
+												<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+												<!--<kendo-upload
+													[autoUpload]="false"
+													[multiple]="false"
+													[restrictions]="uploadRestrictions" 
+													(select)="selectEventHandler($event,dataItem)"
+													(clear)="clearEventHandler($event)"
+													(remove)="removeEventHandler($event)">
+												</kendo-upload>	-->
+												  <span data-toggle="modal" (click)="browse()"  [ngClass]="{'small-btn': flag }"><img src="../../../../assets/image/upload.png" /></span>
+												 <div class="inline-block" *ngIf="flag && brandService.brandDetail.logoBlob"><span><img class="preview-img" src="data:image/png;base64,{{brandService.brandDetail.logoBlob}}"/></span>
+												 <span class="preview-image-inline"><img src="../../../../assets/image/Delete_icon.svg" (click)="clearimg()"></span></div>
+												</ng-template>					
+											</kendo-grid-column>
+											 <kendo-grid-column media="sm" field="brandIsInternal" title="Internal / External">
+												<ng-template kendoGridCellTemplate let-dataItem>													
+													<span title="{{dataItem?.brandIsInternal}}">{{dataItem?.brandIsInternal}}</span>
+												</ng-template>
+												<ng-template kendoGridEditTemplate let-dataItem="dataItem">
+													<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" data-toggle="dropdown"
+										 					name="brandIsInternal" [(ngModel)]="brandService.brandDetail.brandIsInternalCode" >
+                            							 <option value="1">Internal</option>
+														  <option value="0">External</option>
+                             						</select>
+													 <!--[(ngModel)]="brandService.brandDetail.brandIsInternalCode"
+													 -->
+													<!-- <kendo-dropdownlist
+													    name="brandIsInternal"
+													 	[data] = "brandInternalExternal"														
+														[textField]="'value'"
+														[valueField]="'code'"
+													>
+													</kendo-dropdownlist>-->
+												</ng-template>
+											</kendo-grid-column>
+												
+											 
+
+											<kendo-grid-column media="sm" width="120" field="status" title="Status">
+												<ng-template kendoGridCellTemplate let-dataItem="dataItem">
+													<label field="status" title="{{dataItem.status}}" [ngClass]="{'status-draft': dataItem.status==status.draft,'status-active': dataItem.status==status.active,'status-inactive': dataItem.status==status.inactive}">{{dataItem.status}}</label>
+												</ng-template>
+											</kendo-grid-column>
+										
+
+
+
+
+										<kendo-grid-command-column  title="">		
+
+											<ng-template kendoGridCellTemplate let-i="rowIndex" let-dataItem="dataItem" let-isNew="isNew">
+												<div *ngIf="!dataItem.action" class="show" style="float:left" ><span id="e1" style="font-size:8px !important;">
+													<img kendoGridEditCommand alt="Edit" title="Edit" class='k-button k-button-wrapper' src="../../../assets/image/Edit_Icon_Hover.png.svg">
+												</span></div>
+												<div style="float:left" >
+													 <span  *ngIf="create && !dataItem.brandId" id="e1" style="font-size:8px !important;"><img 
+													 class='k-button k-button-wrapper' alt="Save" title="Save" kendoGridSaveCommand src="../../../assets/image/Save_Update_Icon.svg" (click)='brandSaveAsDraft(dataItem)'>
+													  </span>
+
+									 
+													<span *ngIf="edit && dataItem.brandId && brandService.brandDetail.brandId === dataItem.brandId && dataItem.status == status.draft" id="e1" style="font-size:8px !important;">
+													<img class='k-button k-button-wrapper' alt="Save" title="Save"
+													 src="../../../assets/image/Save_Update_Icon.svg" (click)='brandSaveAsDraft(dataItem)'>
+													 </span>
+
+													<!--<span *ngIf="edit && dataItem.brandId && brandService.brandDetail.brandId === dataItem.brandId && dataItem.status == status.draft" id="e1" style="font-size:8px !important;"><a
+													 (click)='brandSaveAsActive(dataItem)' href='javascript:void(0)' class="k-button k-button-wrapper"><img alt="Submit" title="Submit"  src="../../../assets/image/activate.svg" style="width:25px;"  /></a>
+													 </span>-->
+													 <span *ngIf="edit && dataItem.brandId && brandService.brandDetail.brandId === dataItem.brandId && dataItem.status == status.draft" id="e1" style="font-size:8px !important;"><a
+													 (click)='brandSaveAsActive(dataItem)' href='javascript:void(0)' class="k-button k-button-wrapper"><img alt="Submit" title="Submit" src="../../../assets/image/submit.png" /></a>
+													 </span>
+
+													<span *ngIf="edit && dataItem.brandId && brandService.brandDetail.brandId === dataItem.brandId && dataItem.status != status.draft" id="e1" style="font-size:8px !important;"><img alt="Update" title="Update" class='k-button k-button-wrapper'  src="../../../assets/image/Save_Update_Icon.svg"
+													 (click)='updateBrandDetails(dataItem)'>
+													 </span>
+													<span *ngIf="submit && !dataItem.brandId" id="e1" style="font-size:8px !important;"><a  kendoGridSaveCommand href='javascript:void(0)' alt="Submit" title="Submit" class="k-button k-button-wrapper" (click)='brandSaveAsActive(dataItem)'><img  src="../../../assets/image/submit.png" style="width:25px;"  /></a>
+													</span>
+												</div> 
+												
+												<div *ngIf="!dataItem.action" class="" style="padding-left:30px;">
+													<span id="d1" class="confirm-delete" style="font-size:8px !important;" >
+														<span *ngIf="(editedRowIndex==-1 || editedRowIndex !== i) &&dataItem.status == status.draft"><img alt="Delete" title="Delete" class='k-button k-button-wrapper' src="../../../assets/image/Delete icon.svg" (click)='openConfirmAction(dataItem)'></span>
+														<span *ngIf="(editedRowIndex === i) && dataItem.status == status.draft && isDelete "><img alt="Delete" title="Delete" class='k-button k-button-wrapper' src="../../../assets/image/Delete icon.svg" (click)='openConfirmAction(dataItem)'></span>
+														<span *ngIf="(editedRowIndex === i) && dataItem.status == status.active"><img class='k-button k-button-wrapper' alt="Deactivate" title="Deactivate" src="../../../assets/image/deactivate.svg" style="width:24px;" (click)='openConfirmAction(dataItem)'></span>
+														<span *ngIf="(editedRowIndex === i) && dataItem.status == status.inactive"><img class='k-button k-button-wrapper' alt="Reactivate" title="Reactivate" src="../../../assets/image/activate.svg" style="width:24px;" (click)='openConfirmAction(dataItem)'></span>
+
+														
+													</span>
+                                                   
+												     <span *ngIf="create && !dataItem.brandId"  id="e1" style="font-size:8px !important;"><img alt="Reset" title="Reset" class='k-button k-button-wrapper brand_cancel' src="../../../assets/image/Cancel_Reset_Icon.svg"  (click)="reset()"/>
+													</span>
+													<span  *ngIf="edit && dataItem.brandId && brandService.brandDetail.brandId === dataItem.brandId" id="e1" style="font-size:8px !important;"><img alt="Cancel"  title="Cancel" class='k-button k-button-wrapper brand_cancel'  src="../../../assets/image/Cancel_Reset_Icon.svg"  (click)="reset()"/>
+													</span>
+												</div>
+											</ng-template>
+											<!--
+											<ng-template kendoGridCellTemplate let-i="rowIndex" let-dataItem="dataItem" let-isNew="isNew">
+												<div *ngIf="!dataItem.action" class="show" style="float:left" ><span id="e1">
+													<img kendoGridEditCommand alt="Edit" title="Edit" class='k-button k-button-wrapper' src="../../../assets/image/Edit_Icon_Hover.png.svg">
+												</span></div>
+												<div style="float:left" >
+													<span *ngIf="create && !dataItem.brandId" id="e1" ><img alt="Reset" title="Reset" class='k-button k-button-wrapper' src="../../../assets/image/Cancel_Reset_Icon.svg"  (click)="reset()"/>
+													</span>
+													<span  *ngIf="edit && dataItem.brandId && brandService.brandDetail.brandId === dataItem.brandId" id="e1" ><img alt="Cancel" title="Cancel" class='k-button k-button-wrapper'  src="../../../assets/image/Cancel_Reset_Icon.svg"  (click)="reset()"/>
+													</span>
+													<span  *ngIf="create && !dataItem.brandId" id="e1" ><img 
+													 class='k-button k-button-wrapper' alt="Save" title="Save" kendoGridSaveCommand src="../../../assets/image/Save_Update_Icon.svg" (click)='brandSaveAsDraft(dataItem)'>
+													</span>
+
+													
+													<span *ngIf="edit && dataItem.brandId && brandService.brandDetail.brandId === dataItem.brandId && dataItem.status==status.draft" id="e1" >
+													<img class='k-button k-button-wrapper' alt="Save" title="Save"
+													 src="../../../assets/image/Save_Update_Icon.svg" (click)='brandSaveAsDraft(dataItem)'>
+													 </span>
+													<span *ngIf="edit && dataItem.brandId && brandService.brandDetail.brandId === dataItem.brandId && dataItem.status==status.draft" id="e1"><a
+													 (click)='brandSaveAsActive(dataItem)' href='javascript:void(0)' class="k-button k-button-wrapper"><img alt="Submit" title="Submit" src="../../../assets/image/submit.png" /></a>
+													 </span>
+
+													<span *ngIf="edit && dataItem.brandId && brandService.brandDetail.brandId === dataItem.brandId && dataItem.status!=status.draft" id="e1"><img alt="Update" title="Update" class='k-button k-button-wrapper'  src="../../../assets/image/Save_Update_Icon.svg"
+													 (click)='updateBrandDetails(dataItem)'>
+													 </span>
+													<span *ngIf="submit && !dataItem.brandId" id="e1" ><a  kendoGridSaveCommand href='javascript:void(0)' alt="Submit" title="Submit" class="k-button k-button-wrapper" (click)='brandSaveAsActive(dataItem)'><img  src="../../../assets/image/submit.png" /></a>
+													</span>
+												</div> 
+												<div *ngIf="!dataItem.action" class="" >
+													<span id="d1" class="confirm-delete"  >
+														<span *ngIf="(editedRowIndex==-1 || editedRowIndex !== i) && dataItem.status == status.draft"><img alt="Delete" title="Delete" class='k-button k-button-wrapper' src="../../../assets/image/Delete icon.svg" (click)='openConfirmAction(dataItem)'></span>
+														<span *ngIf="dataItem.status == status.active"><img class='k-button k-button-wrapper' alt="Deactivate" title="Deactivate" src="../../../assets/image/Activeicon.svg"  (click)='openConfirmAction(dataItem)'></span>
+														<span *ngIf="dataItem.status == status.inactive"><img class='k-button k-button-wrapper' alt="Reactivate" title="Reactivate" src="../../../assets/image/Deactiveicon2.svg" 
+														(click)='openConfirmAction(dataItem)'></span>	
+														
+													</span>
+												</div>
+											</ng-template>-->
+										</kendo-grid-command-column>
+										<kendo-grid-excel fileName="Brand.xlsx" ></kendo-grid-excel>
+									</kendo-grid>
+								</form>
+									</div>
+									<!--Kendo grid Ends-->
+                     </div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<app-message [(msgs)]="brandService.messages"></app-message>
+
+<app-confirm-box></app-confirm-box>
+
+<!-- new code end -->
+<!--<div class="modal right fade in" id="Attach" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" style="opacity:1;">-->
+<div class="modal right fade in" bsModal #filebrowse="bs-modal" [config]="{backdrop: 'true'}" tabindex="-1" role="dialog"
+  aria-labelledby="mySmallModalLabel" aria-hidden="true" (onHide)="handler('onHide', $event)">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pad0 col-lg-11 col-md-11 pull-left mart5 font-semibold font-15" id="Att-Title">ATTACHMENTS</h4>
+        <button type="button" (click)="filebrowse.hide()" class="close pull-right" data-dismiss="modal" aria-label="Close">
+			<i aria-hidden="true" class="glyphicon glyphicon-remove font-14">&nbsp;</i></button>
+      </div>
+      <div class="modal-body">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 padr0">
+          <div class="imageUploadBlock content">
+			  <div class="instruction">
+				  Upload Instruction:<br/>
+					  <ul>
+					  <li>Logo must be in thumbnail size maximum of 200LX200W</li>
+					  <li>Logo size should not be more than 200KB</li>
+					  <li>Select logo from browser option given below</li>
+					  </ul>
+			  </div>
+               <kendo-upload style="margin-right:50px;"
+                    [autoUpload]="false"
+                    [restrictions]="uploadRestrictions"
+                    (select)="selectEventHandler($event)"
+                    (clear)="clearEventHandler($event)"
+                    (remove)="removeEventHandler($event)"
+                    (complete)="completeEventHandler($event)">
+                  </kendo-upload>
+				  <div class='img-errors'>
+				   <ul>
+					<li *ngFor="let error of errors" style="color:red;">
+					{{ error }}
+					</li>
+				   </ul>
+				  </div>
+                  <div *ngIf="imagePreviews.length" class="img-preview example-config">
+                    <img *ngFor="let image of imagePreviews" 
+					  src="data:image/png;base64,{{image}}"
+                      alt="image preview" style="max-width:100px;max-height:100px;"
+                       class="preview-image"/>
+                  </div>
+          </div>
+          <br>
+          <div *ngIf="imagePreviews.length" class="imageupload-btn"><button style="height:56px;border-radius: 0 !important;width: 50%;margin: 0px 0px 0px 0px;font-size: 16px;" id="add-addr-save"
+            type="button" class="btn btn-default navbar-btn save-btn popup-save" (click)="upload()">Upload</button> </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal-content -->
+  </div>
+  <!-- modal-dialog -->
+</div>
+<!-- modal -->
+<!--Duplicate UOM code Pop up-->

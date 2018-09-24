@@ -1,0 +1,215 @@
+<div class="container-fluid">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content addgl pad0">
+			
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div">
+
+				<!--<h4 class="padb10 padt10  colr-1e2f4d font-18 font-bold head-show" l10nTranslate>ADD GL DETAILS</h4>-->
+				<h4 class="padb10 padt10  colr-1e2f4d font-18 font-bold head-show" [hidden]="!showcreate" l10nTranslate>ADD GL DETAILS</h4>
+				<h4 class="padb10 padt10  colr-1e2f4d font-18 font-bold head-show" [hidden]="!showedit" l10nTranslate >EDIT GL DETAILS</h4>
+				<form class="user-detail font-sm" [formGroup]="externalGlForm"  method="post">
+					<div class="panel-group" id="accordion">
+						
+						<div class="panel panel-default marb30">
+
+							<div id="collapse1" class="panel-collapse collapse in">
+															 	
+                          <accordion>
+						<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading  class="font-semibold">
+							  BASIC DETAILS
+							  <i class="pull-right float-xs-right"
+								 [ngClass]="{'acc-up': group?.isOpen, 'acc-down': !group?.isOpen}"></i>
+							</div> 								
+						      <div>
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12"> 
+											<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Legal Entity</label>
+		
+											<input type="text" class="form-control font-15 font-regular " [style.border-color]="getStyle()" [(ngModel)]="glBasicDto.partyName" name="partyName" formControlName="partyName" (focusout)="validate()" id="partyName" required maxlength="20" (keydown.space)="$event.preventDefault()"  value="" placeholder="">
+
+											<small *ngIf="partyType" class="colr-red font-regular font-14">Enter Legal Entity</small>												
+											
+										 </div> 
+										</div>
+									</div>
+									<div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+											<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>GL Code</label>
+											<input type="text" class="form-control font-15 font-regular " [style.border-color]="getStyle()" [(ngModel)]="glBasicDto.glCode" name="glCode" formControlName="glCode" (focusout)="validate()" id="glCode" required maxlength="20" (keydown.space)="$event.preventDefault()"  value="" placeholder="">
+										    	<small *ngIf="req_glCode" class="colr-red font-regular font-14">Enter GL Code</small>
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+											<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>GL Name</label>
+											<input type="text" class="form-control font-15 font-regular " [style.border-color]="getStyle2()" [(ngModel)]="glBasicDto.glName" name="glName" formControlName="glName" (focusout)="validate()" required maxlength="20" placeholder="">
+										<small *ngIf="req_glName" class="colr-red font-regular font-14">Enter GL Name</small>	
+										</div>
+										<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+											<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>GL Description</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="glBasicDto.glDesc" formControlName="glDesc" name="glDesc" placeholder="">
+										</div>
+
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>GL Type</label>
+												<div class="dropdown ">
+													<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="glBasicDto.glType"  formControlName="glType" name="glType" >
+													<option [ngValue]="undefined" selected>Select</option>
+													<option *ngFor="let option of glTypeRefName" value="{{option.pkGlTypeRefId}}">{{option.glTypeRefName}}</option>
+												</select>
+													
+												</div>
+											</div>
+										
+										<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 party-radio">
+											<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Is Group</label>																	
+									
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+										<span class="radio pricing-details">
+
+											<input type="radio" id="radio3" value="Y" [(ngModel)]="glBasicDto.glIsGroup" formControlName="glIsGroup" name="glIsGroup">
+											<label for="radio3">Yes</label>
+										</span>
+
+										<span class="radio pricing-details">
+
+											<input type="radio" id="radio4" value="N" [(ngModel)]="glBasicDto.glIsGroup" formControlName="glIsGroup" name="glIsGroup" checked="checked">
+											<label for="radio4">No</label>
+										</span>
+									</div>
+								</div>
+										 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Parent GL</label>
+											<div class="dropdown ">
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="glBasicDto.parentGl" formControlName="parentGl" name="parentGl" >
+												<option [ngValue]="undefined" selected>Select</option>
+												<option *ngFor="let option of parentGLName" value="{{option.glBasicDto.glId}}">{{option.glBasicDto.glCode}}-{{option.glBasicDto.glName}}</option>
+											</select>
+												
+											</div>
+										</div> 
+									</div>
+									
+								</div>
+						</accordion-group>
+								</accordion>
+   
+							</div>
+						</div>				
+
+							<accordion>
+						<accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading  class="font-semibold">
+							 EXTERNAL GL MAPPING
+							  <i class="pull-right float-xs-right glyphicon"
+								 [ngClass]="{'acc-up': group2?.isOpen, 'acc-down': !group2?.isOpen}"></i>
+							</div> 
+
+								<div>
+                                   <div formArrayName="externalGLMapping">
+								 <div *ngFor="let externalGlMapping of getExternalMappingList(externalGlForm); let i=index" >
+									<span style="display: none">  {{i + 1}}</span>										 
+									 <div  [formGroupName]="i">  
+
+												<app-external-mapping [group]="externalGlForm.controls.externalGLMapping.controls[i]" [title]="i" [glData]="glData"  ></app-external-mapping>
+											<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+												<span class="pull-left" [hidden]="showplus[i]"	><i class="plus-icn-md" (click)="addExternalGlMapping()" > &nbsp; </i></span>
+												<span class="pull-left" [hidden]="showcross[i]"><i class="delete-icn-md" (click)="removePermissionMapping(i) " > &nbsp; </i></span>
+											</div>
+								 </div> 
+
+									</div>
+
+                                   </div>
+                                     
+								</div>
+						</accordion-group>
+							</accordion>						
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" [hidden]="!showcreate">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-regular font-18 font-semibold" (click)="reset()">Reset</button>
+						</div>
+							<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" name="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+								 (click)="save()" l10nTranslate>Save</button>
+								<button type="button" name="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+								 (click)="submit()" l10nTranslate>Submit</button>
+							</div>
+						</div>
+					</div>
+					<!--Buttons for edit GL Modal-->
+                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" [hidden]="!showdraftbutton">
+									   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                                       <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-regular font-18 font-semibold"  (click)="close()">Cancel</button>
+										</div>
+										<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+										<button type="button" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"  (click)="updateGL(glData.glBasicDto.glId, glData.glBasicDto.statusName)">Save</button>
+										<button  id="update" type="button" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"  (click)="updateGLwithStatus(glData.glBasicDto.glId, glData.glBasicDto.statusName)">Submit</button>					
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" [hidden]="!showactivebutton">
+									   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                                       <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-regular font-18 font-semibold"  (click)="close()">Cancel</button>
+										</div>
+										<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+										<button type="button" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"  (click)="updateGL(glData.glBasicDto.glId, glData.glBasicDto.statusName)">Update</button>
+										<button  id="update" type="button" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"  (click)="updateGLwithStatus(glData.glBasicDto.glId, glData.glBasicDto.statusName)">Deactivate</button>					
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" [hidden]="!showinactivebutton">
+										<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+										<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-18 font-semibold"  (click)="close()">Cancel</button>
+										</div>
+										<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+										<button type="button" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"  (click)="updateGL(glData.glBasicDto.glId, glData.glBasicDto.statusName)">Update</button>
+										<button  id="update" type="button" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"  (click)="updateGLwithStatus(glData.glBasicDto.glId, glData.glBasicDto.statusName)">Reactivate</button>					
+										</div>
+										</div>
+				</form>
+			</div>
+		</div>
+
+<!-- some thing Went Wrong Starts-->
+
+	<div *ngIf="countModal" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHiddenReset()" class="modal fade something_wrong"  bsModal #invalidCount="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">   
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>Please fill all the required fields</div>
+				</div>  
+        </div>
+    </div>
+</div>
+<!-- some thing Went Wrong Ends-->
+
+        <!--Duplicate GL code Pop up-->
+<div class="modal fade delete-popup" *ngIf="isDuplicateGLPopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                  <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+												    <img src="../../assets/image/Confirm_Delete.svg" />
+                                                </div>
+                                                                <div class="modal-body">
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     {{glAccountService.errorMessage}}
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="close()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="close()">Ok</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+
+
+
+
+	</div>
+</div>

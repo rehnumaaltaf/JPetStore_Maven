@@ -1,0 +1,12 @@
+.kendoinlinedropdown .k-select{
+    display: none;
+
+}
+.kendoinlinedropdown .k-input{
+    background-position: 85% 10px !important;
+    margin-top:0 !important;
+    border-bottom: 1px solid #ddd;
+}
+.kendoinlinedropdown{
+    padding-right: 0 !important;
+}

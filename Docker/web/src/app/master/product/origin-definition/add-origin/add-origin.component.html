@@ -1,0 +1,301 @@
+<div class="container-fluid">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold head-show" l10nTranslate>Master.OriginLocale.AddTitle</h4>
+				<form [formGroup]="origionRegionGroupForm" method="POST" class="user-detail font-sm" id="originAddForm">
+					<!--<form id="origin_form" [formGroup]="originForm"   class="user-detail font-sm" #formDir="ngForm" novalidate>-->
+					<accordion>
+						<accordion-group #group [isOpen]="statuses.isFirstOpen" [isDisabled]="statuses.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Origin Base Details
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+
+							<div formGroupName="originDto">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.OriginLocale.Code</label>
+										<input type="text" class="form-control font-15 font-regular" [style.border-color]="getOriginCodeStyle()" [(ngModel)]="originDefinition.originCode"
+										 id="originCode" maxlength="20" name="originCode" value="" placeholder="" formControlName="originCode">
+
+									</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.OriginLocale.Name</label>
+										<input type="text" class="form-control font-15 font-regular" [style.border-color]="getOriginNameStyle()" [(ngModel)]="originDefinition.originName"
+										 maxlength="200" id="originName" value="" placeholder="" formControlName="originName">
+
+									</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.OriginLocale.FullName</label>
+										<input type="text" class="form-control font-15 font-regular" [(ngModel)]="originDefinition.originFullName" maxlength="500"
+										 id="originFullName" value="" placeholder="" formControlName="originFullName">
+
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.OriginLocale.Country</label>
+										<div class="dropdown ">
+											<!--<select formControlName="geoName1"  class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14">
+										<option disabled>select</option>
+										<option>SOUTH AMERICA</option>
+										<option>EAST SOUTH AMERICA</option>
+										<option>BRASIL</option>
+										<option>Asia</option>
+										<option>South Asia</option>
+										<option>East Asia</option>
+										<option>West Asia</option>
+										</select>-->
+
+											<select formControlName="geoName" id="geoName" class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 ">
+                   						 <option *ngFor="let geo of originCountryResp" [ngValue]="geo.pkGeoId">
+                    									{{geo.geoName}}
+                    					</option>
+										</select>
+
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+
+
+						<accordion-group #group2 [isOpen]="statuses.isFirstOpen" [isDisabled]="statuses.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Origin Grade Group
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+							</div>
+							<div class="plants-detail-Stp">
+								<div formArrayName="originCupProfileDto">
+									<div *ngFor="let originCupProfileDto of getOriginCupProfileList(origionRegionGroupForm); let i=index">
+										<span style="display: none">Address {{i + 1}}</span>
+
+										<div [formGroupName]="i">
+											<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 pad0 plants-detail">
+												<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+													<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.OriginLocale.GradeGroupCode</label>
+													<input type="text" class="form-control font-15 font-regular" formControlName="originCupProfileCode" maxlength="200" id="originCupProfileCode"
+													 value="" placeholder="">
+
+												</div>
+
+												<div class="form-group col-lg-5 col-md-5 col-sm-5 col-xs-12">
+													<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.OriginLocale.GradeGroupName</label>
+													<input type="text" class="form-control font-15 font-regular" formControlName="originCupProfileName" maxlength="200" id="originCupProfileName"
+													 value="" placeholder="">
+
+												</div>
+
+												<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+													<span class="pull-left" [hidden]="showplus[i]"><i class="plus-icn-md" (click)="addOriginCupProfileMultiple()" > &nbsp; </i></span>
+													<span class="pull-left" [hidden]="showcross[i]"><i class="delete-icn-md" (click)="removeOriginCupProfileMultiple(i)" > &nbsp; </i></span>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+						<accordion-group #group1 [isOpen]="statuses.isFirstOpen" [isDisabled]="statuses.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Default Packing
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group1?.isOpen, 'acc-up': !group1?.isOpen}"></i>
+							</div>
+							<div class="plants-detail-Stp">
+								<div formArrayName="originRegionDto">
+									<div *ngFor="let originRegionDto of getOriginRegionList(origionRegionGroupForm); let i=index">
+										<span style="display: none">Address {{i + 1}}</span>
+
+										<div [formGroupName]="i">
+											<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 pad0 plants-detail">
+												<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+													<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.OriginLocale.Product</label>
+													<div class="dropdown ">
+														<!--  <select formControlName="originRegionCode" id="regionEstate" class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14">
+                                                <option disabled>select</option>
+                                                <option>Robusta</option>
+                                                <option>Arabica</option>
+                                                <option>Processed</option>
+                                            </select> -->
+														<select formControlName="originRegionCode" id="originRegionCode" class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 ">
+                   						 <option *ngFor="let product of originDefinitionService.originRegionCodeResp" [ngValue]="product">
+                    									{{product}}
+                    					</option>
+                						</select>
+													</div>
+												</div>
+
+												<div class="form-group col-lg-5 col-md-5 col-sm-5 col-xs-12">
+													<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.OriginLocale.Packing</label>
+													<div class="dropdown ">
+														<select formControlName="originRegionName" id="originRegionName" class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 ">
+                                                    <option *ngFor="let product of originDefinitionService.originRegionNameResp" [ngValue]="product.packingMaterialName">
+                                                                    {{product.packingMaterialName}}
+                                                    </option>
+                									</select>
+													</div>
+												</div>
+
+												<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+
+													<span class="pull-left" [hidden]="showPlusDefaultPacking[i]"><i class="plus-icn-md" (click)="addOriginRegionMultiple()" > &nbsp; </i></span>
+													<span class="pull-left" [hidden]="showCrossDefaultPacking[i]"><i class="delete-icn-md" (click)="removeOriginRegionMultiple(i) " > &nbsp; </i></span>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</accordion-group>
+
+						<accordion-group #group3 [isOpen]="statuses.isFirstOpen" [isDisabled]="statuses.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								External System Packing
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group3?.isOpen, 'acc-up': !group3?.isOpen}"></i>
+							</div>
+							<div class="plants-detail-Stp">
+								<div formArrayName="externalSystemMappingDto">
+									<div *ngFor="let externalSystemMappingDto of getExternalSystemMappingList(origionRegionGroupForm); let i=index">
+										<span style="display: none">Address {{i + 1}}</span>
+
+										<div [formGroupName]="i">
+											<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 pad0 plants-detail">
+												<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+													<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.OriginLocale.DestinationSystem</label>
+													<div class="dropdown ">
+														<select formControlName="destinationSystem" id="originRegionName" class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 ">
+                                                    <option *ngFor="let system of originDefinitionService.destinationSystemResp" [ngValue]="system.externalSystemRefName">
+                                                                    {{system.externalSystemRefName}}
+                                                    </option>
+                								</select>
+
+													</div>
+												</div>
+
+												<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+													<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.OriginLocale.Type</label>
+													<input type="text" class="form-control font-15 font-regular" maxlength="500" id="type" value="" placeholder="" formControlName="type">
+												</div>
+
+												<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+													<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.OriginLocale.Mapping</label>
+													<input type="text" class="form-control font-15 font-regular" maxlength="500" id="mapping" value="" placeholder="" formControlName="mapping">
+												</div>
+												<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+
+													<span class="pull-left" [hidden]="showPlusExternalSystemPacking[i]"><i class="plus-icn-md" (click)="addExternalSystemMappingMultiple()" > &nbsp; </i></span>
+													<span class="pull-left" [hidden]="showCrossExternalSystemPacking[i]"><i class="delete-icn-md" (click)="removeExternalSystemMappingMultiple(i) " > &nbsp; </i></span>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</accordion-group>
+					</accordion>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" id="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="reset()" l10nTranslate>Master.OriginLocale.Reset</button>
+							</div>
+							<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="submit" id="id_saveorigin"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="saveOrigin(originDefinition.originName)" l10nTranslate>Master.OriginLocale.Save</button>					
+								<button type="submit" id="id_submitorigin"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="submitOrigin(originDefinition.originName)" l10nTranslate >Master.OriginLocale.Submit</button>					
+							</div>							
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="submit" id="id_saveorigin" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="saveOrigin(originDefinition.originName)"
+							 l10nTranslate>Master.OriginLocale.Save</button>
+							<button type="submit" id="id_submitorigin" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="submitOrigin(originDefinition.originName)"
+							 l10nTranslate>Master.OriginLocale.Submit</button>
+						</div>
+					
+				</form>
+			</div>
+		</div>
+
+
+		<div class="modal fade delete-popup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal
+		 #pagebackModal="bs-modal" [config]="{backdrop: 'false'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+		 aria-hidden="true">
+			<div class="modal-dialog ">
+				<div class="modal-content  del-modal">
+					<div class="modal-header">
+						<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+					</div>
+					<div class="col-md-12 product_img text-center" style="padding-top:15px;">
+						<img src="../../assets/image/Confirm_Delete.svg" />
+					</div>
+					<div class="modal-body">
+						<div class="row">
+
+							<div class="col-md-12 product_img text-center">
+								{{errorMessageForOrigin}}
+							</div>
+							<div class="col-md-12 product_img text-center"></div>
+
+						</div>
+					</div>
+					<div class="del-btn-group">
+						<div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="pagebackModal.hide()">Cancel</button></div>
+						<div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="close()">Ok</button></div>
+					</div>
+				</div>
+			</div>
+		</div>-->
+
+		<div class="modal fade delete-popup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                              <div class="modal-dialog ">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                   <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                    				<img src="../../assets/image/Confirm_Delete.svg" />
+									            </div>                                                                
+                                                                <div class="modal-body modal-window-footer btn-shodow">                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     {{errorMessageForOrigin}}
+                                                                                                </div>                                                                                                
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="pagebackModal.hide()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="close()">Ok</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+		</div>
+
+		<div class="modal fade delete-popup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                              <div class="modal-dialog ">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                   <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                    				<img src="../../assets/image/Confirm_Delete.svg" />
+									            </div>                                                                
+                                                                <div class="modal-body modal-window-footer btn-shodow">                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     {{errorMessageForOrigin}}
+                                                                                                </div>                                                                                                
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="pagebackModal.hide()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="close()">Ok</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+		</div>
+
+
+
+
+	</div>
+</div>

@@ -1,0 +1,22 @@
+<div [formGroup]="extSystemMappingForm">
+	<input type="hidden" formControlName="pkCostExternalMappingId" name="pkCostExternalMappingId" />
+	<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+		<label for="usr-field" class="colr-lblue font-regular font-14">Destination System</label>
+		<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkExternalSystemRefId"
+		 type="button" data-toggle="dropdown" name="fkExternalSystemRefId">
+		 <!--<option *ngFor="let party of costService.costMasterModel.partyList" value="{{party.partyId}}">{{party.partyName}}</option>-->
+		 <option value="1">SAP</option>
+		 <option value="2">Oracle</option>
+		</select>
+	</div>
+	<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+		<label for="usr-field" class="colr-lblue font-regular font-14">Attribute 1</label>
+		<input type="text" class="form-control font-15 font-regular " id="pergrupname" value="" placeholder="" formControlName="mappingType"
+		 name="mappingType">
+	</div>
+	<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+		<label for="usr-field" class="colr-lblue font-regular font-14">Attribute 2</label>
+		<input type="text" class="form-control font-15 font-regular " id="pergrupname" value="" placeholder="" formControlName="externalCode"
+		 name="externalCode">
+	</div>
+</div>

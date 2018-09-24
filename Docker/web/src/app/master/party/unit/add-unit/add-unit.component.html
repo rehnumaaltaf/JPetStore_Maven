@@ -1,0 +1,158 @@
+<!--<app-header></app-header>-->
+<div class="container-fluid">
+  <div class="row">
+    <app-nav-bar></app-nav-bar>
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view single-block ">	
+				<h4 *ngIf="!isEditPage" class="padb10 padt10 colr-1e2f4d font-18 font-bold">ADD UNIT DEATILS</h4>
+				<h4 *ngIf="isEditPage" class="padb10 padt10 colr-1e2f4d font-18 font-bold">EDIT UNIT DETAILS</h4>
+				<!--<form class="user-detail font-sm" [formGroup]="profitCenterForm" novalidate>	-->
+					<form class="user-detail font-sm" novalidate>
+					 <h3 class="font-semibold">Basic Details</h3>
+					 <div class="container-fluid-block">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+							<div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Unit Code</label>
+									<input type="text"  class="form-control font-15 font-regular " [style.border-color]="getUnitCodeStyle()" id="UnitCode" value="" placeholder="" [(ngModel)]="profitCenterModel.unitCode" name="unitCode" (focusout)="validateUnitCode()" maxlength="20">
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Unit Name</label>
+									<input type="text" class="form-control font-15 font-regular " [style.border-color]="getUnitNameStyle()" id="UnitName" value="" placeholder="" [(ngModel)]="profitCenterModel.unitName" name="unitName" (focusout)="validateUnitName()" (focus)="fcunitName" maxlength="200">
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Unit Full Name</label>
+									<input type="text" class="form-control font-15" id="UnitFullName" [style.border-color]="getUnitFullNameStyle()" value="" placeholder="" [(ngModel)]="profitCenterModel.unitFullName" name="unitFullName" (focusout)="validateUnitFullName()" maxlength="500">
+								</div>
+							</div>
+							<!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 party-radio">
+								<label for="usr-field" class="colr-lblue font-regular font-14">Group Unit</label>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+										<span class="radio pricing-details">
+											<input type="radio" id="radio3" value="1" [checked]="profitCenterModel.groupUnit === '1'" [(ngModel)]="profitCenterModel.groupUnit" name="groupUnit" (change)="disableParentUnit()">
+											<label for="radio3">Yes</label>
+										</span>
+										<span class="radio pricing-details">
+											<input type="radio" id="radio4" value="0" [checked]="profitCenterModel.groupUnit === '0'" [(ngModel)]="profitCenterModel.groupUnit" name="groupUnit" (change)="disableParentUnit()">
+											<label for="radio4">No</label>
+										</span>
+									</div>
+								</div>	
+								
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" [hidden]="puDisabled">
+								<label for="usr-field"  class="colr-lblue font-regular font-14 ">Parent Unit</label>
+								<div class="dropdown">
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="profitCenterModel.parentUnitId" name="parentUnit">
+												<option *ngFor="let pu of profitCenterModel.parentUnitList" value="{{pu.code}}">{{pu.value}}</option>
+											</select>
+								</div>								
+								</div>	
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Legal Entity</label>
+									<div class="dropdown">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="profitCenterModel.legalEntity" name="legalEntity">
+											<option *ngFor="let pu of profitCenterModel.legalEntityList" value="{{pu.code}}">{{pu.value}}</option>
+										</select>
+									</div>								
+								</div>									
+							</div>-->
+
+							
+						</div>	
+						</div>
+
+
+
+
+
+						<!--<h3 class="font-semibold">GL MAPPING</h3>-->
+							<!--<accordion>
+                        <accordion-group #group1>
+                            <div accordion-heading  class="font-semibold">
+                              GL MAPPING
+                              <i class="pull-right float-xs-right glyphicon"
+                                 [ngClass]="{'acc-up': group1?.isOpen, 'acc-down': !group1?.isOpen}"></i>
+                            </div>
+						<div class="fin-Yr-Stp">
+							<div class="ovr-flw fin-Yr-block">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 doc-block pad0 fin-Yr">
+									<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Legal Entity</label>
+										<div class="dropdown">
+											<button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-15" type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+											<ul class="dropdown-menu positionrel">
+												<li *ngFor="let le of profitCenterModel.legalEntityList" (click)="setLegalEntity(le.code)">{{le.value}}</li>
+											</ul>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="profitCenterModel.legalEntity" name="legalEntity">
+												<option *ngFor="let pu of profitCenterModel.legalEntityList" value="{{pu.code}}">{{pu.value}}</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">GL Code</label>
+										<div class="dropdown">
+											<button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-15" type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+											<ul class="dropdown-menu positionrel">
+												<li *ngFor="let gl of profitCenterModel.glCodeList" (click)="setGlCode(gl.code)">{{gl.value}}</li>											
+											</ul>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="profitCenterModel.glCode" name="glCode">
+												<option *ngFor="let pu of profitCenterModel.glCodeList" value="{{pu.code}}">{{pu.value}}</option>
+											</select>
+										</div>
+									</div>																
+									<div class="col-lg-1 col-md-1 col-sm-6 col-xs-1 accessories-block mart30 padt10">
+										<span class="pull-left add-icon"><i class="plus-icn-md"> &nbsp; </i></span>
+										<span class="pull-left"><i class="delete-icn-md"> &nbsp; </i></span>
+									</div>								
+								</div>
+							</div>
+						</div>
+
+						</accordion-group>
+					                    </accordion>-->
+					
+					<div *ngIf="!isEditPage" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-regular font-18 font-semibold" (click)="reset()">Reset</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button [disabled]="disableSaveBtn" type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-regular font-18 font-semibold" (click)="saveProfitCenter()">Save</button>					
+							<button [disabled]="disableSubmitBtn" type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-regular font-18 font-semibold" (click)="submitProfitCenter()">Submit</button>					
+						</div>							
+					</div>
+				</form>				
+			</div>
+			<div class="update-modal-btn mod-bottom" *ngIf="statusDraft && isEditPage">
+						<button type="button" class="btn btn-default navbar-btn update-cancel-btn cancel-btn" style="width:33% !important;" (click)="cancelEdit()">CANCEL</button>
+						<button type="button" class="btn btn-default navbar-btn update-cancel-btn cancel-btn" style="width:33%  !important;" (click)="onSubmitBtnClick('SAVE')">SAVE</button>
+						<button  id="update" type="button" class="btn btn-default navbar-btn update-btn save-btn" style="width:33%  !important;" (click)="onSubmitBtnClick('SUBMIT')">SAVE & SUBMIT</button>					
+					</div>
+					<div class="update-modal-btn mod-bottom" *ngIf="statusActive && isEditPage">
+						<button type="button" class="btn btn-default navbar-btn update-cancel-btn cancel-btn" style="width:33% !important;" (click)="cancelEdit()">CANCEL</button>
+						<button  id="update" type="button" class="btn btn-default navbar-btn update-cancel-btn cancel-btn" style="width:33%  !important;" (click)="onSubmitBtnClick('UPDATE')">UPDATE</button>
+						<button type="button" class="btn btn-default navbar-btn update-btn save-btn" style="width:33%  !important;" (click)="onSubmitBtnClick('UPDATEACIVE')">UPDATE & DEACTIVATE</button>
+					</div>
+					<div class="update-modal-btn mod-bottom" *ngIf="statusInactive && isEditPage">
+						<button type="button" class="btn btn-default navbar-btn update-cancel-btn cancel-btn" style="width:33% !important;" (click)="cancelEdit()">CANCEL</button>
+						<button type="button" class="btn btn-default navbar-btn update-cancel-btn cancel-btn" style="width:33%  !important;" (click)="onSubmitBtnClick('UPDATE')">UPDATE</button>
+						<button  id="update" type="button" class="btn btn-default navbar-btn update-btn save-btn" style="width:33%  !important;" (click)="onSubmitBtnClick('UPDATEINACIVE')">UPDATE & REACTIVATE</button>					
+					</div>
+    </div>
+
+  </div>
+</div>
+<!--<p-growl [life]="3000" [(value)]="msgs" item-width="50%"></p-growl>-->
+<!--<div *ngIf="isShowValModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">-->
+<div *ngIf="isShowValModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<!--<div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>{{message}}</div>-->
+					<div class="modal-title font-regular font-14">{{valMessage}}</div>
+				</div>
+		</div>
+	</div>
+</div>

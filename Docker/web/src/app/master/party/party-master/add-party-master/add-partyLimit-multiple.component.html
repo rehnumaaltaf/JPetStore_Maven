@@ -1,0 +1,114 @@
+<div [formGroup]="partyLimit">  
+	 <input type='hidden' formControlName='uniqueMapping' [ngModel]="data0 || 'null'" ng-init="data0=null">
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Party Code</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  (change)="onchangePartyCodeForParty()" [(ngModel)]="party_limit.internalPartyCodeOrg" formControlName="internalPartyCodeOrg"
+												name="baseCode">
+												   <option value="">Select</option>
+												   <!--*ngFor="let option of basecodeOption" (change)="onchangePartyCodeForParty(i)" value="{{option.value}}" == {{option.label}}-->
+												   <option *ngFor="let option of partyCodeList" value="{{option.partyId}}">{{option.partyName}}</option>
+										</select>
+										</div>
+										<div *ngIf="whenPartyCodeinLimit" class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Internal Party Name</label>
+											<input type="text" class="form-control font-15 font-regular" readonly id="" value="" formControlName="internalPartyNameOrg"
+											[(ngModel)]="partyNameLimit" name= "internalPartyNameOrg"	placeholder="">
+											<!--<br>
+								         <label for="usr-field" class="font-regular font-14">{{partyNamedefaultParty}}</label>-->
+										
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Product</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  [(ngModel)]="party_limit.productId" formControlName="partyProduct" name="baseCode">
+												   <option value="">Select</option>
+												   <option *ngFor="let option of productList" value="{{option.prodId}}" >{{option.prodName}}</option>
+												   <!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+										</select>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Unit</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="party_limit.partyUnit" formControlName="partyUnit" name="baseCode">
+												   <option value="">Select</option>
+												    <option *ngFor="let option of unitList" value="{{option.unitId}}">{{option.unitName}}</option>
+										</select>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Limit Alert Level</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="party_limit.limitAlertLevel" formControlName="limitAlertLevelparty"
+												name="baseCode">
+												   <option value="">Select</option>
+												  <option *ngFor="let option of limitAlertLevel" value="{{option.pkLimitAlertLevelId}}">{{option.limitAlertLevelName}} </option>
+										</select>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Currency</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="party_limit.partyCurrency" formControlName="partyCurrency" name="baseCode">
+												   <option value="">Select</option>
+												   <option *ngFor="let option of currencyList" value="{{option.pkCurrencyId}}">{{option.currencyName}} </option>
+										</select>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">UOM</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="party_limit.partyUomId" formControlName="partyUom" name="baseCode">
+												   <option value="">Select</option>
+												  	<option *ngFor="let option of commisionList" value="{{option.uomId}}" >{{option.uomCode}}</option>
+										</select>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Fixed Qty Limit</label>
+											<input type="text" class="form-control font-15 font-regular " id="" value="" [(ngModel)]="party_limit.partyFixedQtyLimit" formControlName="partyFixedQtyLimit" placeholder="" (keypress) = "numberonly($event)">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Fixed Value Limit</label>
+											<input type="number" class="form-control font-15 font-regular " id="" value="" [(ngModel)]="party_limit.partyFixedVAlueLimit" formControlName="partyFixedVAlueLimit" placeholder="" (keypress) = "numberonly($event)">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Fixed  Forward Tenor</label>
+											<input type="text" class="form-control font-15 font-regular " id="" value="" [(ngModel)]="party_limit.fixedForwardTenor" formControlName="fixedForwardTenor" placeholder="" (keypress) = "numberonly($event)">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Diff Qty Limit</label>
+											<input type="text" class="form-control font-15 font-regular " id="" value="" [(ngModel)]="party_limit.diffQtyLimit" formControlName="diffQtyLimit" placeholder="" (keypress) = "numberonly($event)">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Diff Value Limit</label>
+											<input type="text" class="form-control font-15 font-regular " id="" value="" [(ngModel)]="party_limit.diffValueLimit"  formControlName="diffValueLimit" placeholder="" (keypress) = "numberonly($event)">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Diff  Forward Tenor</label>
+											<input type="text" class="form-control font-15 font-regular " id="" value="" [(ngModel)]="party_limit.diffForwardTenor" formControlName="diffForwardTenor" (keypress) = "numberonly($event)" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">M2M Limit</label>
+											<input type="text" class="form-control font-15 font-regular " id="" value="" (keypress) = "numberonly($event)" [(ngModel)]="party_limit.m2mLimit" formControlName="m2mLimit" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Var Limit</label>
+											<input type="text" class="form-control font-15 font-regular " id="" value="" (keypress) = "numberonly($event)" [(ngModel)]="party_limit.varLimit" formControlName="varLimit" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Total Qty Limit</label>
+											<input type="text" class="form-control font-15 font-regular " id="" value="" formControlName="totalQtyLimit" [(ngModel)]="party_limit.totalQtyLimit" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Total Value Limit</label>
+											<input type="text" class="form-control font-15 font-regular " id="" value="" formControlName="totalValueLimit" [(ngModel)]="party_limit.totalValueLimit" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Limit On</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="party_limit.limitOn" formControlName="limitOn" name="baseCode">
+												   <option value="">Select</option>
+												   <option *ngFor="let option of limitOnList" value="{{option.pkCounterPartyLimitTypeId}}"> {{option.counterPartyLimitTypeName}} </option>
+										</select>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Valid From</label>
+										<kendo-datepicker [(value)]="partyVaidFromDate" [format]="'dd-MM-yyyy'" [(ngModel)]="partyDateFrom" formControlName="partyValidFrom"></kendo-datepicker>
+											<!--<input type="text" class="form-control font-15 font-regular " id="" value="" formControlName="partyValidFrom" placeholder="">-->
+										</div>
+										<div class="form-group col-lg-2 col-md-2 col-sm-4 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Valid To</label>
+											<!--<input type="text" class="form-control font-15 font-regular " id="" formControlName="partyValidTo" value="" placeholder="">-->
+										<kendo-datepicker [(value)]="partyVaidtODate" [format]="'dd-MM-yyyy'"  [(ngModel)]="partyDateTo" formControlName="partyValidTo"></kendo-datepicker>
+										</div>
+</div>

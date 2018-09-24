@@ -1,0 +1,466 @@
+<div class="container-fluid">
+  <div class="row row-background">
+    <app-nav-bar></app-nav-bar>
+    <!-- ngx bootstrap - Accordion -->
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+        <h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">{{this.pageTitle}}</h4>
+        <form class="user-detail font-sm" >
+          <accordion>
+            <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+              <div accordion-heading class="font-semibold">
+                 Basic Details
+                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+              </div>
+              <div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Calendar Code</label>
+								<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="calendarCode" [(ngModel)]="calendarDetailsList.calendarCode"maxlength="20"  [ngClass]="{'valred': req_calendarCode==true,'val': req_calendarCode==false}">
+								<small *ngIf="req_calendarCode" class="colr-red font-regular font-14">Please enter Calendar Code</small> 
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Calendar Name</label>
+								<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="calendarName"  maxlength="200" [(ngModel)]="calendarDetailsList.calendarName" [ngClass]="{'valred': req_calendarName==true,'val': req_calendarName==false}" >
+								<small *ngIf="req_calendarName" class="colr-red font-regular font-14">Please enter Calendar Name</small>
+							</div>
+							<div class="form-group col-lg-4 col-md-3 col-sm-3 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Calendar Type</label>
+								<div class="dropdown select_matrix_drop">
+
+									 <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  name="calendarTypeName"  [(ngModel)]="calendarDetailsList.calendarTypeName" (change)="mychange()" [disabled]="isDropdownDisabled" [ngClass]="{'valred': req_calendarTypeName==true,'val': req_calendarTypeName==false}">
+											<option value="Physicals" >Physicals</option>	
+                      <option value="Futures" >Futures</option>	
+                      <option value="Options" >Options</option>
+                      <option value="Spread" >Spread</option>
+                      <option value="FX" >FX</option>
+										</select> 
+										<!-- <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  name="calendarTypeName" [(ngModel)]="calendarDetailsList.calendarTypeName"(change)="mychange()" [ngClass]="{'valred': req_calendarTypeName==true,'val': req_calendarTypeName==false}">
+										<option value="">Select</option>	
+										<option *ngFor="let option of calendartypeArray"[selected]="calendarTypeName === option.calendarTypeName" [ngValue]="option.calendarTypeName">{{option.calendarTypeId}}</option>
+										</select> -->
+			            	<small *ngIf="req_calendarTypeName" class="colr-red font-regular font-14">Select Calendar Type</small>
+
+
+								</div>
+							</div>
+							<div class="form-group col-lg-4 col-md-3 col-sm-3 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Exchange</label>
+								<div class="dropdown">
+									
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  name="exchangeName"  [(ngModel)]="calendarDetailsList.exchangeName">
+											<option value="ICE" >ICE</option>	
+                      <option value="BM&F" >BM&F</option>	
+                      <option value="ICE Futures Europe" >ICE Futures Europe</option>
+                      <option value="Tokyo Grain Exchange" >Tokyo Grain Exchange</option>
+										</select>
+									<small *ngIf="req_exchangeName" class="colr-red font-regular font-14">Select Exchange Name</small>
+								</div>
+							</div>
+							<div class="form-group col-lg-4 col-md-3 col-sm-3 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Product</label>
+								<div class="dropdown">
+									<!-- <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+									<span class="caret"></span></button>
+									<ul class="dropdown-menu positionrel">
+										<li><a href="#">Arabica</a></li>
+										<li><a href="#">Robusta</a></li> 
+										<li><a href="#">Spread</a></li>
+										<li><a href="#">FX</a></li>
+									</ul> -->
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  name="productName"  [(ngModel)]="calendarDetailsList.productName">
+											<option value="Arabica" >ICE</option>	
+                      <option value="Robusta" >BM&F</option>	
+                      <option value="Spread" >Spread </option>
+                      <option value="FX" >FX</option>
+										</select>
+									<small *ngIf="req_productName" class="colr-red font-regular font-14">Select Product Name</small>
+								</div>
+							</div>
+						</div>
+            </accordion-group>
+            <accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf="physicals" >
+              <div accordion-heading class="font-semibold">
+              Physical Calendar Definition
+                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group1?.isOpen, 'acc-up': !group1?.isOpen}"></i>
+              </div>
+              
+             <div class="Physical">
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Ticker Code</label>
+								<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="trickerCode"  maxlength="20" [(ngModel)]="calendarDetailsList.trickerCode" [ngClass]="{'valred': req_trickerCode==true,'val': req_trickerCode==false}">
+								<small *ngIf="req_trickerCode" class="colr-red font-regular font-14">Please enter Ticker Code</small>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Phy. Delivery Start Date</label>
+								 <!-- <input type="date" class="form-control font-15 font-regular " id="" value="" placeholder="" name="phyDlvryStrtDate" maxlength="20" [(ngModel)]="calendarDetailsList.phyDlvryStrtDate">  -->
+											 <kendo-datepicker  [min]="min"   [max]="max"   name="phyDlvryStrtDate"  [(ngModel)]="calendarDetailsList.phyDlvryStrtDate" [ngClass]="{'valred': req_phyDlvryStrtDate==true,'val': req_phyDlvryStrtDate==false}"
+
+					   [format]="'dd-MMM-yy'" value=""></kendo-datepicker> 
+								<small *ngIf="req_phyDlvryStrtDate" class="colr-red font-regular font-14">Please enter Physical Delivery Start Date</small>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Phy. Delivery End Date</label>
+								<!-- <input type="date" class="form-control font-15 font-regular " id="" value="" placeholder="" name="phyDlvryEndDate" maxlength="20" [(ngModel)]="calendarDetailsList.phyDlvryEndDate"> -->
+								 <kendo-datepicker  [min]="min"   [max]="max"   name="phyDlvryEndDate"  [(ngModel)]="calendarDetailsList.phyDlvryEndDate" [ngClass]="{'valred': req_phyDlvryEndDate==true,'val': req_phyDlvryEndDate==false}"
+
+					   [format]="'dd-MMM-yy'" value=""></kendo-datepicker>
+								<small *ngIf="req_phyDlvryEndDate" class="colr-red font-regular font-14">Please enter Physical Delivery End Date</small>
+							</div>
+							<div class="form-group col-lg-4 col-md-3 col-sm-3 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Futures Calendar</label>
+								<div class="dropdown">
+									<!-- <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+									<span class="caret"></span></button>
+									<ul class="dropdown-menu">
+										<li><a href="#">Physicals</a></li>
+										<li><a href="#">Futures</a></li> 
+										<li><a href="#">Spread</a></li>
+										<li><a href="#">FX</a></li>
+									</ul> -->
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  name="futursCalendarName"  [(ngModel)]="calendarDetailsList.futursCalendarName"[ngClass]="{'valred': req_futursCalendarName==true,'val': req_futursCalendarName==false}">
+											<option value="Physicals" >Physicals</option>	
+                      <option value="Futures" >Futures</option>	
+                      <option value="Spread" >Spread </option>
+                      <option value="FX" >FX</option>
+										</select>
+									<small *ngIf="req_futursCalendarName" class="colr-red font-regular font-14">Select Futures Calendar Name</small>
+								
+								</div>
+							</div>
+							<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Delivery Month</label>
+								<!-- <input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="dlvryMonth" maxlength="20" [(ngModel)]="calendarDetailsList.dlvryMonth">
+								<small *ngIf="req_dlvryMonth" class="colr-red font-regular font-14">Please enter Delivaery Month</small> -->
+						<!-- <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  name="dlvryMonth"  [(ngModel)]="calendarDetailsList.dlvryMonth">
+											<option value="Jan" >Jan</option>	
+                      <option value="Feb" >Feb</option>	
+                      <option value="Mar" >Mar </option>
+                      <option value="Apr" >Apr</option>
+										</select> -->
+										<kendo-datepicker  [min]="min"   [max]="max"   name="dlvryMonth"  [(ngModel)]="calendarDetailsList.dlvryMonth" [ngClass]="{'valred': req_dlvryMonth==true,'val': req_dlvryMonth==false}"
+					   [format]="'MMM-yy'" value=""></kendo-datepicker>
+									<small *ngIf="req_dlvryMonth" class="colr-red font-regular font-14">Select Delivery month</small>
+								
+							</div>
+						</div>
+            </accordion-group>
+            <accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf="futures">
+              <div accordion-heading class="font-semibold">
+               Futures Calendar Definition
+                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+              </div>
+              <div class="Futures">
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Ticker Code</label>
+								<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="trickerCode" maxlength="20" [(ngModel)]="calendarDetailsList.trickerCode"[ngClass]="{'valred': req_trickerCode==true,'val': req_trickerCode==false}">
+								<small *ngIf="req_trickerCode" class="colr-red font-regular font-14">Please enter Ticker Code</small>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Delivery Month</label>
+								<!-- <input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="dlvryMonth"  maxlength="20" [(ngModel)]="calendarDetailsList.dlvryMonth">
+								<small *ngIf="req_dlvryMonth" class="colr-red font-regular font-14">Please enter Calendar Code</small> -->
+									<!-- <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  name="dlvryMonth"  [(ngModel)]="calendarDetailsList.dlvryMonth">
+											<option value="Jan" >Jan</option>	
+                      <option value="Feb" >Feb</option>	
+                      <option value="Mar" >Mar </option>
+                      <option value="Apr" >Apr</option>
+										</select> -->
+										<kendo-datepicker  [min]="min"   [max]="max"   name="dlvryMonth"  [(ngModel)]="calendarDetailsList.dlvryMonth" maxlength="200" [ngClass]="{'valred': req_dlvryMonth==true,'val': req_dlvryMonth==false}"
+					   [format]="'MMM-yy'" value=""></kendo-datepicker>
+									<small *ngIf="req_dlvryMonth" class="colr-red font-regular font-14">Select Delivery month</small>
+							
+							</div>
+							<div class="form-group col-lg-4 col-md-3 col-sm-3 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">First Trade Date</label>
+								<div class="dropdown">
+									<!-- <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+									<span class="caret"></span></button>
+									<ul class="dropdown-menu">
+										<li><a href="#">12/10/2016</a></li>
+										<li><a href="#">13/11/2016</a></li> 
+										<li><a href="#">20/12/2016</a></li>
+										<li><a href="#">10/01/2017</a></li>
+									</ul> -->
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  name="firstTradeDate"  [(ngModel)]="calendarDetailsList.firstTradeDate">
+											<option value="12/10/2016" >12/10/2016</option>	
+                      <option value="13/11/2016" >13/11/2016</option>	
+                      <option value="20/12/2016" >20/12/2016 </option>
+                      <option value="10/01/2017" >10/01/2017</option>
+										</select>
+									<small *ngIf="req_firstTradeDate" class="colr-red font-regular font-14">Select First Trade Date</small>
+							
+								</div>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Last Trade Date</label>
+							
+								<kendo-datepicker  [min]="min"   [max]="max"   name="lastTradeDate"  [(ngModel)]="calendarDetailsList.lastTradeDate" [ngClass]="{'valred': req_lastTradeDate==true,'val': req_lastTradeDate==false}"
+					   [format]="'dd-MMM-yy'" value=""></kendo-datepicker>
+								<small *ngIf="req_lastTradeDate" class="colr-red font-regular font-14">Please enter Last Trade Date</small>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">First Notice Date</label>
+
+									<kendo-datepicker  [min]="min"   [max]="max"   name="firstNoticeDate"  [(ngModel)]="calendarDetailsList.firstNoticeDate" [ngClass]="{'valred': req_firstNoticeDate==true,'val': req_firstNoticeDate==false}"
+					   [format]="'dd-MMM-yy'" value=""></kendo-datepicker>
+								<small *ngIf="req_firstNoticeDate" class="colr-red font-regular font-14">Please enter First Notice Date</small>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Last Notice Date</label>
+
+								<kendo-datepicker  [min]="min"   [max]="max"   name="lastNoticeDate"  [(ngModel)]="calendarDetailsList.lastNoticeDate" [ngClass]="{'valred': req_lastNoticeDate==true,'val': req_lastNoticeDate==false}"
+					   [format]="'dd-MMM-yy'" value=""></kendo-datepicker>
+								<small *ngIf="req_lastNoticeDate" class="colr-red font-regular font-14">Please enter Last Notice Date</small>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">First Delivery Date</label>
+
+								<kendo-datepicker  [min]="min"   [max]="max"   name="firstDlvryDate"  [(ngModel)]="calendarDetailsList.firstDlvryDate" [ngClass]="{'valred': req_firstDlvryDate==true,'val': req_firstDlvryDate==false}"
+					   [format]="'dd-MMM-yy'" value=""></kendo-datepicker>
+								<small *ngIf="req_firstDlvryDate" class="colr-red font-regular font-14">Please enter First Delivery date</small>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Last Delivery Date</label>
+
+							<kendo-datepicker  [min]="min"   [max]="max"   name="lastDlvryDate"  [(ngModel)]="calendarDetailsList.lastDlvryDate" [ngClass]="{'valred': req_lastDlvryDate==true,'val': req_lastDlvryDate==false}"
+					   [format]="'dd-MMM-yy'" value=""></kendo-datepicker>
+								<small *ngIf="req_lastDlvryDate" class="colr-red font-regular font-14">Please enter Last Delivery Date</small>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Final Settlement Date</label>
+								<!-- <input type="date" class="form-control font-15 font-regular " id="" value="" placeholder="" name="finalStlmntDate" maxlength="20" [(ngModel)]="calendarDetailsList.finalStlmntDate"> -->
+							<kendo-datepicker  [min]="min"   [max]="max"   name="finalStlmntDate" [(ngModel)]="calendarDetailsList.finalStlmntDate" [ngClass]="{'valred': req_finalStlmntDate==true,'val': req_finalStlmntDate==false}"
+					   [format]="'dd-MMM-yy'" value=""></kendo-datepicker>
+								<small *ngIf="req_finalStlmntDate" class="colr-red font-regular font-14">Please enter Final Settlement Date</small>
+							</div>
+						</div>
+            </accordion-group>
+            <accordion-group #group3 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf="options">
+              <div accordion-heading class="font-semibold">
+               Options Calendar Definition
+                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group3?.isOpen, 'acc-up': !group3?.isOpen}"></i>
+              </div>
+              <div class="Options">
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Ticker Code</label>
+								<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="trickerCode"  maxlength="20" [(ngModel)]="calendarDetailsList.trickerCode" [ngClass]="{'valred': req_trickerCode==true,'val': req_trickerCode==false}">
+								<small *ngIf="req_trickerCode" class="colr-red font-regular font-14">Please enter Calendar Code</small>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Delivery Month</label>
+								<!-- <input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="dlvryMonth" maxlength="20" [(ngModel)]="calendarDetailsList.dlvryMonth">
+								<small *ngIf="req_dlvryMonth" class="colr-red font-regular font-14">Please enter Calendar Code</small> -->
+									<!-- <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  name="dlvryMonth"  [(ngModel)]="calendarDetailsList.dlvryMonth">
+											<option value="Jan" >Jan</option>	
+                      <option value="Feb" >Feb</option>	
+                      <option value="Mar" >Mar</option>
+                      <option value="Apr" >Apr</option>
+										</select> -->
+										<kendo-datepicker  [min]="min"   [max]="max"   name="dlvryMonth"  [(ngModel)]="calendarDetailsList.dlvryMonth" maxlength="200" [ngClass]="{'valred': req_dlvryMonth==true,'val': req_dlvryMonth==false}"
+					   [format]="'MMM-yy'" value=""></kendo-datepicker>
+									<small *ngIf="req_dlvryMonth" class="colr-red font-regular font-14">Select Delivery Month</small>
+							
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-3 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Futures Calendar</label>
+								<div class="dropdown">
+									<!-- <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+									<span class="caret"></span></button>
+									<ul class="dropdown-menu positionrel">
+										<li><a href="#">12/10/2016</a></li>
+										<li><a href="#">13/11/2016</a></li> 
+										<li><a href="#">20/12/2016</a></li>
+										<li><a href="#">10/01/2017</a></li>
+									</ul> -->
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  name="futursCalendarName"  [(ngModel)]="calendarDetailsList.futursCalendarName" [ngClass]="{'valred': req_futursCalendarName==true,'val': req_futursCalendarName==false}" >
+											<option value="12/10/2016" >12/10/2016</option>	
+                      <option value="13/11/2016" >13/11/2016</option>	
+                      <option value="20/12/2016" >20/12/2016 </option>
+                      <option value="10/01/2017" >10/01/2017</option>
+										</select>
+									<small *ngIf="req_futursCalendarName" class="colr-red font-regular font-14">Select Futures Calendar</small>
+							
+								</div>
+							</div>
+						</div>
+            </accordion-group>
+            <accordion-group #group4 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf="spread">
+              <div accordion-heading class="font-semibold">
+                Spread Calendar Definition
+                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group4?.isOpen, 'acc-up': !group4?.isOpen}"></i>
+              </div>
+              		<div class="Spread">
+							<!-- <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Ticker Code</label>
+								<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="trickerCode"  maxlength="20" [(ngModel)]="calendarDetailsList.trickerCode">
+								<small *ngIf="req_trickerCode" class="colr-red font-regular font-14">Please enter Ticker Code</small>
+							</div> -->
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Spread Month 1</label>
+								<!-- <input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="spreadMonth1"  maxlength="20" [(ngModel)]="calendarDetailsList.spreadMonth1">
+							<small *ngIf="req_spreadMonth1" class="colr-red font-regular font-14">Please enter Fisrt Spread Month</small> -->
+									<!-- <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  name="spreadMonth1"  [(ngModel)]="calendarDetailsList.spreadMonth1">
+											<option value="Jan" >Jan</option>	
+                      <option value="Feb" >Feb</option>	
+                      <option value="Mar" >Mar</option>
+                      <option value="Apr" >Apr</option>
+										</select>
+										 -->
+									 <kendo-datepicker  [min]="min"   [max]="max"   name="spreadMonth1"  maxlength="200" [(ngModel)]="calendarDetailsList.spreadMonth1" [ngClass]="{'valred': req_spreadMonth1==true,'val': req_spreadMonth1==false}"
+					   [format]="'MMM-yy'" value=""></kendo-datepicker>
+									<small *ngIf="req_spreadMonth1" class="colr-red font-regular font-14">Select Spread Month1</small>
+							
+						</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Spread Month 2</label>
+								<!-- <input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="spreadMonth2" maxlength="20" [(ngModel)]="calendarDetailsList.spreadMonth2">
+								<small *ngIf="req_spreadMonth2" class="colr-red font-regular font-14">Please enter Second Spread Month</small> -->
+									<!-- <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  name="spreadMonth2"  [(ngModel)]="calendarDetailsList.spreadMonth2">
+											<option value="Jan" >Jan</option>	
+                      <option value="Feb" >Feb</option>	
+                      <option value="Mar" >Mar</option>
+                      <option value="Apr" >Apr</option>
+										</select> -->
+										<kendo-datepicker  [min]="min"   [max]="max"   name="spreadMonth2"  [(ngModel)]="calendarDetailsList.spreadMonth2" [ngClass]="{'valred': req_spreadMonth2==true,'val': req_spreadMonth2==false}"
+					   [format]="'MMM-yy'" value=""></kendo-datepicker>
+									<small *ngIf="req_spreadMonth2" class="colr-red font-regular font-14">Select Spread Month2</small>
+							
+							</div>								
+						</div>
+            </accordion-group>
+           <accordion-group #group5 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf="fx">
+              <div accordion-heading class="font-semibold">
+               FX Calendar Definition
+                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group5?.isOpen, 'acc-up': !group5?.isOpen}"></i>
+              </div>
+        		<div class="FX">
+							<!-- <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Ticker Code</label>
+								<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="trickerCode" maxlength="20" [(ngModel)]="calendarDetailsList.trickerCode">
+								<small *ngIf="req_trickerCode" class="colr-red font-regular font-14">Please enter Ticker Code</small>
+							</div> -->
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Tenor</label>
+								<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="tenorName" maxlength="200" [(ngModel)]="calendarDetailsList.tenorName"  [ngClass]="{'valred': req_tenorName==true,'val': req_tenorName==false}">
+								<small *ngIf="req_tenorName" class="colr-red font-regular font-14">Please enter Tenor Name</small>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Span</label>
+								<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="span" maxlength="20" [(ngModel)]="calendarDetailsList.span" [ngClass]="{'valred': req_span==true,'val': req_span==false}">
+								<small *ngIf="req_span" class="colr-red font-regular font-14">Please enter Span</small>
+							</div>
+							<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<label for="usr-field" class="colr-red font-regular font-14">Duration Type</label>
+								<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" name="durationType" maxlength="20" [(ngModel)]="calendarDetailsList.durationType"[ngClass]="{'valred': req_durationType==true,'val': req_durationType==false}">
+								<small *ngIf="req_durationType" class="colr-red font-regular font-14">Please enter Duration Type</small>
+							</div>							
+						</div>
+            </accordion-group>
+          </accordion>
+<div *ngIf="whenDataNotTobeEdited">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+              <button type="reset" class="btn btn-default navbar-btn cancel-btn font-regular font-14 font-semibold">RESET</button>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+              <button type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-regular font-14 font-semibold" (click)="saveCalendarSetup('Draft')">SAVE</button>
+              <button type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-regular font-14 font-semibold" (click)="saveCalendarSetup('Active')">SUBMIT</button>
+            </div>
+					</div>
+</div>
+					<div *ngIf="whenDataEdited">						
+					 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn btn-default navbar-btn cancel-btn font-semibold font-14" (click)="cancel()">CANCEL</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="update('Draft')">SAVE</button>					
+							<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="update('Active')">SUBMIT</button>					
+						</div>
+						</div>							
+					</div>
+
+					<div *ngIf="whenStatusInactive">
+					 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn btn-default navbar-btn cancel-btn font-semibold font-14" (click)="cancel()">CANCEL</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="update('')" >UPDATE</button>					
+						
+							<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="updateStatus('Active')" >REACTIVATE</button>					
+											
+						</div>
+						</div>							
+					</div>
+					<div *ngIf="whenStatusactive">
+					 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn btn-default navbar-btn cancel-btn font-semibold font-14" (click)="cancel()">CANCEL</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="update('')" >UPDATE</button>					
+						
+							<button type="button" id="save_party_master"  class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="updateStatus('InActive')" >DEACTIVATE</button>					
+											
+						</div>
+						</div>							
+					</div>
+
+        </form>
+			</div>
+			
+			<div class="modal fade delete-popup" *ngIf="ispagebackPopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						<div class="modal-dialog " style="height:440px !important; color:white !important;">
+										<div class="modal-content  del-modal">
+										<div class="modal-header">
+													                                                                             -->
+														</div>
+														<div class="col-md-12 product_img text-center" style="padding-top:15px;">
+																		<img src="../../assets/image/Confirm_Delete.svg" />
+														</div>
+														<div class="modal-body">
+																		<div class="row">
+																						
+																						<div class="col-md-12 product_img text-center">
+																								{{calendarSetupService.errorMessage}}
+																						</div>
+																						<div class="col-md-12 product_img text-center"></div>
+																						
+																		</div>
+														</div>
+														<div class="del-btn-group">
+																		<div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="close()">Cancel</button></div>
+																		<div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="close()">Ok</button></div>
+														</div>
+										</div>
+						</div>
+				</div>
+<!-- 
+				<div *ngIf="errormodal" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHidden()" class="modal fade something_wrong"  bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-md">
+
+        <div class="modal-content">
+
+            <div class="modal-content">
+
+                <div class="modal-header">   
+
+                    <div class="modal-title"><span><img src="../../assets/image/Error Message_Icon.svg"/></span>This page contains {{count}} errors.Please correct the highlighted fields.</div>
+
+                                                </div>       
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div> -->
+
+
+				
+    </div>
+  </div>
+</div>

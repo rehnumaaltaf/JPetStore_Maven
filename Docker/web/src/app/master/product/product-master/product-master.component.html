@@ -1,0 +1,196 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Product List</h4>
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<!--a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a-->
+				
+
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+						<!-- Kendo Grid starts-- [kendoGridBinding]="unitMeasurementService.uomDetails" -->
+						<div class="party-grade_block">
+							<kendo-grid [kendoGridBinding]="productMasterService.baseProductdetails" [selectable]="true" [groupable]="true" [group]="state.group"
+								[scrollable]="true" [editable]="true" [sortable]="true" [filterable]="true"  [pageable]="false">
+								<kendo:grid-editable mode="inline" />
+								<ng-template kendoGridToolbarTemplate>
+									 <span class="k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+									<img src="../../assets/image/add.png" (click)="changeShowStatus()" />
+
+								</ng-template>
+								<kendo-grid-column media="xs" title="Product">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<h4>
+											{{ dataItem.prodCode }}
+										</h4>
+										<dl>
+											<dt>Name</dt>
+											<dd>{{ dataItem.prodName }}</dd>
+
+											<dt>Full Name</dt>
+											<dd>{{ dataItem.prodFullName }}</dd>
+
+											<dt>Conversion</dt>
+											<dd>{{ dataItem.parentProductName }}</dd>
+										</dl>
+										<!-- template for mobile Ends-->
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column field='' title='' [width]="40">
+									<ng-template kendoGridHeaderTemplate let-dataItem>
+										<input type="checkbox" id="checkall" class="k-checkbox" (change)="checkorUnCheckAll($event)" />
+										<label class="k-checkbox-label chk_head" for="checkall"></label>
+									</ng-template>
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<input type="checkbox" class="k-checkbox" id="dataItem.prodCode" name="dataItem.prodCode" ng-model="dataItem.productCode"
+										/>
+										<label class="k-checkbox-label" for="dataItem.prodCode"></label>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column media="sm" field="prodCode" title={{headerTermCode}}>
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<div (click)="viewById(dataItem)" class="view-all">{{dataItem.prodCode}}</div>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column media="sm" field="prodName" title={{headerTermName}}>
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="prodFullName" title={{headerTermfull}}>
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="parentProductName" title="Parent Product Name">
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="processingCode" title="Processing Code">
+								</kendo-grid-column>
+								<!--<kendo-grid-column media="lg" field="statusName" title="Status">
+										</kendo-grid-column>-->
+								<kendo-grid-column media="lg" field="statusName" title="Status">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<label field="statusName" [ngClass]="{'status-draft': dataItem.statusName=='Draft','status-active': dataItem.statusName=='Active','status-inactive': dataItem.statusName=='InActive'}">{{dataItem.statusName}}</label>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column field="" title="">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<div class="show" style="float:left" (click)="editBasePayment(dataItem)"><span id="e1" data-attr="draft">
+													<img src="../../../assets/image/Edit_Icon_Hover.png.svg"><span style="display:none;">draft</span></span>
+										</div>
+									<!--	<div class="" style="padding-left:30px;" (click)="product_delete(dataItem)" [ngClass]="{'displaynone': dataItem.statusName=='InActive'}">
+											<span id="d1" class="confirm-delete" style="font-size:8px !important;">
+													<img src="../../../assets/image/Delete icon.svg"></span></div>-->
+													<div class=""   [ngClass]="[dataItem.statusName=='Draft' ? 'displayblock' : 'displaynone']"  *ngIf='dataItem.statusName=="Draft"'>
+                                            <span id="d1" class="confirm-delete" >
+                                                    <!--<img src="../../../assets/image/Activeicon.svg"  (click)="updatewithStatus(dataItem,'Active')">-->
+                                                    <img src="../../../assets/image/Delete icon.svg"  (click)="product_delete(dataItem)" >
+                                                    </span>
+                                        </div>
+                                        <!--<div class=""  [ngClass]="[dataItem.statusName=='Active' ? 'displayblock' : 'displaynone']">
+                                            <span id="d1" class="confirm-delete" >
+                                                    <img src="../../../assets/image/Deactiveicon2.svg"  (click)="updatewithStatus(dataItem,'InActive')" >
+                                                    </span>
+                                        </div>
+                                        <div class="" style="padding-left:20px;"  [ngClass]="[dataItem.statusName=='InActive' ? 'displayblock' : 'displaynone']">
+                                            <span id="d1" class="confirm-delete">
+                                                    <img src="../../../assets/image/Reactivate2.svg"  (click)="updatewithStatus(dataItem,'Active')" >
+                                                    </span>
+                                        </div>-->
+
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-excel fileName="PRODUCT.xlsx"></kendo-grid-excel>
+							</kendo-grid>
+						</div>
+						<!--Kendo grid Ends-->
+					</div>
+				</div>
+
+				<!-- Success Modal -->
+				<div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" (onHidden)="onHideList()"
+					bsModal #successModal1="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success :Product {{productName}} saved</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div *ngIf="viewByIddelete" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHideList()" class="modal fade success-modal"
+					bsModal #deletesuccessModalview="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Product {{productName}} deleted </div>
+
+								</div>
+						</div>
+					</div>
+				</div>
+				<div *ngIf="deleteSuccessModal" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHideList()" class="modal fade success-modal"
+					bsModal #deletesuccessModalList="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+								<div class="modal-header">
+
+									<div class="modal-title font-14 font-regular" *ngIf="isDraftStatus"><img src="../../assets/image/Ok.jpg"/>Success : Product {{baseCodedelpop}} deleted</div>
+									<div class="modal-title font-14 font-regular" *ngIf="isActiveStatus"><img src="../../assets/image/Ok.jpg"/>Success : Product  {{baseCodedelpop}} deactivated</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<!-- Delete Success Modal -->
+
+				<div *ngIf="isupdateModal" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHideList()" class="modal fade success-modal"
+					bsModal #updateModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Product {{productName}} updated</div>
+								</div>
+						</div>
+					</div>
+				</div>
+
+				<!--Delete Pop up-->
+				<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup"
+					(onHidden)="onHideList()" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1"
+					role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<div class="modal-dialog ">
+						<div class="modal-content  del-modal">
+							<div class="modal-header text-center">
+								<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+								<img src="../../assets/image/Confirm_Delete.svg" />
+							</div>
+							<div class="modal-body">
+									<div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isDraftStatus">
+										Please confirm to delete {{baseCodedelpop}}
+									</div>
+
+									<div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isActiveStatus">
+										Please confirm to deactivate {{baseCodedelpop}}
+									</div>
+							</div>
+							<div class="del-btn-group modal-window-footer btn-shodow">
+								<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+								<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

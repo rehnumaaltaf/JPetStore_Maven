@@ -1,0 +1,16 @@
+{
+	"Master": {
+		"UOM": {
+            "Listing": "Unit of Measurement- Listing",
+            "Add": "Unit of Measurement- Add",
+            "Edit": "Unit of Measurement List- Edit",
+            "View": "Unit of Measurement List- View"
+        },
+        "Blend": {
+            "Listing": "Blend- Listing",
+            "Add": "Blend- Add",
+            "Edit": "Blend List- Edit",
+            "View": "Blend List- View"
+        }
+    }
+}

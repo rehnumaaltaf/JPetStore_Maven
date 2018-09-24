@@ -1,0 +1,12 @@
+version: "3"
+services:
+ cost-service:
+    image: ctrmdev.azurecr.io/cost-service:latest
+    deploy:
+      replicas: 1
+      resources:
+        restart_policy:
+          condition: on-failure
+    container_name: cost-service
+    ports:
+      - "8091:8091"

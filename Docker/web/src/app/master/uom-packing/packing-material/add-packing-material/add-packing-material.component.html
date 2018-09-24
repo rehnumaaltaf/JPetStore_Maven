@@ -1,0 +1,154 @@
+<div class="container-fluid">
+   <div class="row row-background" [ngClass]="{'white-bg': packingModel?.pkPackingMaterialId}">
+   	<app-nav-bar *ngIf="!packingModel?.pkPackingMaterialId"></app-nav-bar>
+    		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+        	
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view single-block" [ngClass]="{'white-bg': packingModel?.pkPackingMaterialId}">	
+			
+			   <h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold head-show" *ngIf="!packingModel?.pkPackingMaterialId" >Add Packing Material</h4>
+					<small  class="colr-red font-regular font-14">{{reqmsg}}</small>	
+					<form class="user-detail font-sm" name="packmaterial" id="packmaterial" novalidate autocomplete="off">
+						<h3 class="font-semibold" *ngIf="!packingModel?.pkPackingMaterialId">Basic Details</h3>
+						<div class="container-fluid-block marb30">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Packing Material Code</label><!--Master.AddEditPack.Code-->
+									<input type="text" class="form-control font-15 font-regular"  maxlength="20" id="packingMaterialCode" [ngClass]="{'inValid': reqPackingCode}" [(ngModel)]="packingModel.packingMaterialCode" name="packingMaterialCode" (focusout)="validatepackingMaterialCode('CODE')" placeholder="" [typeahead]="packingMaterialService.packCodeList" (keyup)="onCodeSuggestion($event)" required>
+								     <span *ngIf="reqPackingCode" class="font-12 colr-red">* Packing Material Code is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Packing Material Name</label><!--Master.AddEditPack.Name-->
+									<input type="text" class="form-control font-15 font-regular" maxlength="200"  id="packingMaterialName" [ngClass]="{'inValid': reqPackingName}" [(ngModel)]="packingModel.packingMaterialName" name="packingMaterialName" (focusout)="validatepackingMaterialName('NAME')" value="" placeholder="" [typeahead]="packingMaterialService.packNameList" (keyup)="onNameSuggestion($event)" required>
+								    <span *ngIf="reqPackingName" class="font-12 colr-red">* Packing Material Name is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="font-regular font-14 colr-lblue" l10nTranslate>Packing Material Description</label><!--Master.AddEditPack.Description-->
+									<input type="text" class="form-control font-15" maxlength="500" id="packingMaterialDesc" [(ngModel)]="packingModel.packingMaterialDesc" name="packingMaterialDesc"  value="" placeholder="">
+								</div>								
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">	
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 party-radio">
+							<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Bulk</label><!--Master.AddEditPack.Bulk-->
+
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+										<span class="radio pricing-details">
+
+											<input type="radio" id="radio3" value="1" [checked]="packingModel.packingMaterialIsBulk === '1'" [(ngModel)]="packingModel.packingMaterialIsBulk" name="packingMaterialIsBulk">
+											<label for="radio3">Yes</label>
+										</span>
+
+										<span class="radio pricing-details">
+
+											<input type="radio" id="radio4" value="0" [checked]="packingModel.packingMaterialIsBulk === '0'" [(ngModel)]="packingModel.packingMaterialIsBulk" name="packingMaterialIsBulk" checked="checked">
+											<label for="radio4">No</label>
+										</span>
+									</div>
+							</div>							
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="font-regular font-14 colr-red" l10nTranslate>Package Weight</label><!--Master.AddEditPack.Weight-->
+									<input type="text" class="form-control font-15" maxlength="22" id="packingMaterialWeight" (keydown)="validateNumericsOnly($event,packingModel.packingMaterialWeight)" [ngClass]="{'inValid': reqPackingWeight}" [(ngModel)]="packingModel.packingMaterialWeight" name="packingMaterialWeight" (focusout)="validatepackingMaterialWeight()"  value="" placeholder="" required>
+								    <span *ngIf="reqPackingWeight" class="font-12 colr-red">* Packing Material Weight is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" maxlength="20" class="colr-red font-regular font-14" l10nTranslate>Package UOM</label>	<!--Master.AddEditPack.Uom-->									
+											<div class="dropdown">
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-15" [ngClass]="{'inValid': reqUomValue}" [(ngModel)]="packingModel.uomValue" name="uomValue" required> 
+												<option [ngValue]="undefined" selected>Select</option>
+												<option *ngFor="let option of this.packingModel.uombaseOption" value="{{option.uomId}}">{{option.uomName}}</option>
+												</select>
+												<span *ngIf="reqUomValue" class="font-12 colr-red">* Packing Material UOM is required</span>
+											</div>
+								</div>
+							</div>
+
+						</div>
+						</div>
+
+				
+					
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="!packingModel?.pkPackingMaterialId">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" name="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="clear()" l10nTranslate>Reset</button><!--Master.AddEditPack.Reset-->
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" name="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+								 (click)="savePackingMaterial('save')" l10nTranslate>Save</button><!--Master.AddEditPack.Save-->
+								<button  id="update" type="button" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="savePackingMaterial('submit')" l10nTranslate>Submit</button>	<!--Master.AddEditPack.Submit-->				
+						</div>							
+					</div>
+				</form>				
+			</div>
+		</div>
+
+		<div class="modal-window-footer update-modal-btn mod-bottom" *ngIf="packingModel?.pkPackingMaterialId && packingModel?.statusName === 'Draft'">
+											
+        <button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4" (click)="onCancel()">CANCEL</button>
+        <button type="button" id="save_party_master"  class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4" (click)="updatePack('save')">SAVE</button>					
+        <button type="button" id="save_party_master"  class="btn btn-default primary col-lg-4 col-md-4 col-sm-4"  (click)="updatePack('submit')" >SUBMIT</button>					
+                    
+    </div>
+    <div class="modal-window-footer update-modal-btn mod-bottom"  *ngIf="packingModel?.pkPackingMaterialId && packingModel?.statusName === 'Active'" > 
+      <button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4"  (click)="onCancel()">CANCEL</button>
+      <button type="button" id="save_party_master-s"  class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4" (click)="updatePack('update')">UPDATE</button>
+	  <button type="button" id="save_party_master-sd"  class="btn btn-default primary col-lg-4 col-md-4 col-sm-4"  (click)="updatePack('InActive')">DEACTIVATE</button>					
+                    
+    </div>
+    <div class="modal-window-footer update-modal-btn mod-bottom" *ngIf="packingModel?.pkPackingMaterialId && packingModel?.statusName === 'InActive'" >
+      
+        <button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4"  (click)="onCancel()" >CANCEL</button>
+        <button type="button" id="save_party_master"  class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4" (click)="updatePack('update')">UPDATE</button>					
+        <button type="button" id="save_party_master-sr"  class="btn btn-default primary col-lg-4 col-md-4 col-sm-4"  (click)="updatePack('Active')">REACTIVATE</button>					
+                    
+    </div>
+
+    </div>    
+</div>
+<!--validation popup messages-->
+<app-message [(msgs)]="packingMaterialService.messages"></app-message>
+<div class="modal fade in error-modal" [style.display]="errorModal ? 'block' : 'none'" id="errorModal" role="dialog">
+			        <div class="modal-dialog">
+			      <div class="modal-content">
+					<div class="modal-header">        
+					  <div class="modal-title font-14 font-regular"><img src="../../../assets/image/Confirm_Delete.svg"/>Error : {{valMessagePack}}!!!</div>
+					</div>       
+				  </div>
+			</div>
+		</div>
+<!--<div *ngIf="isShowValModalPack" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-content" style="width: 118%;">
+				<div class="modal-header" style="background: red;">        
+					<div class="modal-title" style="background: red;">{{valMessagePack}}</div>
+				</div>       
+			</div>
+		</div>
+	</div>
+</div>-->
+<!--End of validation popup messages-->
+
+<div  *ngIf="isEditCancel" [config]="{backdrop:false,show: true }"
+ (onHidden)="onHiddenCancel()" bsModal  #cancelModal="bs-modal"
+  class="modal fade confirm-box delete-popup" 
+  tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content  del-modal"> <!-- *ngClass="{'confirmation-comment': config?.isCommentPresent}" -->
+              <div class="modal-header text-center">  
+				   <img src="../../assets/image/Confirm_Delete.svg" />              
+              </div>              
+              <div class="modal-body">                            
+                      <div class="col-md-12 product_img text-center font-14 font-regular">
+                          Do you really want to cancel?
+                      </div> 
+              </div>
+              <div class="del-btn-group modal-window-footer btn-shodow">
+                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closeConfirmBox()">Cancel</button></div>
+                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="confirmCancelation()">Confirm</button></div>
+              </div>
+          </div>
+      </div>
+</div>
+
+
+<app-message [(msgs)]="packingMaterialService.messages"></app-message>

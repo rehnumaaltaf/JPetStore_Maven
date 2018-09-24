@@ -1,0 +1,15 @@
+.panel.card.panel-default {
+    border:none !important;
+    box-shadow: none;
+}
+.addgl .party-radio{
+    margin-top:30px !important;
+
+}
+.right-side-content .btn-footer .primary-btn .navbar-btn:first-child {
+background-color: #ffffff;
+border-color:#9fc800;
+color:#9fc800;
+} 
+
+

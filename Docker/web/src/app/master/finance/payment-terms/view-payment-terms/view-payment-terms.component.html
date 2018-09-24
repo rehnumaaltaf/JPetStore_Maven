@@ -1,0 +1,267 @@
+<div class="container-fluid"><!--<loading-animation [loadingData]="loadingData"></loading-animation>-->   
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">View Payment Terms</h4>
+				<form  class="user-detail font-sm">
+					<accordion>
+						 <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                Basic Details 
+                  <i class="pull-right float-xs-right glyphicon"
+                    [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+            
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Term code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{paymentTerm.payTermCode}}</span></div></div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Term Name</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{paymentTerm.payTermName}}</span></div></div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Term Description</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{paymentTerm.payTermDesc}}</span></div></div>
+								</div>
+								
+							
+							
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0" >
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Base Payment Term Code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{paymentTerm.paymentTermBase}}</span></div></div>
+								</div>
+								<div *ngIf = "lccheck"  >
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">At Sight/Usance</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{paymentTerm.atSightUsance}} </span></div></div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Revocable/Irrecoverable</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{paymentTerm.revocableIrrevocableFlag}} </span></div></div>
+									</div>
+								
+								
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Confirmed/Non Confirmed</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{paymentTerm.confirmedNonconfirmedFlag}}</span> </div></div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Basis</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">:               </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{paymentTerm.paymentBasisRef}}</span></div></div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Due Days</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{paymentTerm.dueDays}}</span></div></div>
+								</div>
+								
+								
+							
+							
+							
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Contingency Days</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{paymentTerm.contingencyDays}}</span></div></div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Print Description</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{paymentTerm.printDescription}}</span></div></div>
+								</div>
+							
+								
+							</div>
+				
+						  </div>
+						 </accordion-group>
+           
+       <accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading  class="font-semibold">
+						External System Mapping
+							  <i class="pull-right float-xs-right glyphicon"
+                               [ngClass]="{'acc-up': group1?.isOpen, 'acc-down': !group1?.isOpen}"></i>
+							</div>
+						 <div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padl0 brdb marb20" style="border-bottom: 1px solid #ccc;padding-bottom: 8px;">
+									
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-6 col-md-6 col-sm-6 col-xs-6 padl0" >Dest System</label></div>
+									
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padl0 brdb marb20" style="border-bottom: 1px solid #ccc;padding-bottom: 8px;">
+									
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 brdb">Attribute 1</label></div>
+
+								</div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padl0 brdb marb20" style="border-bottom: 1px solid #ccc;padding-bottom: 8px;">
+									
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 brdb">Attribute 2</label></div>
+									
+								</div>
+							</div>
+						</div>
+              <!--drh-->
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngFor="let option1 of paymentTerm.externalMappingCollection">
+								<div class="col-lg-3 col-md-3 col-sm-2 col-xs-12 padl0">
+									
+										
+											<label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option1.externalSystemName}}</label>
+									
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-2 col-xs-12 padl0">
+									
+										
+											<label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option1.type}}</label>
+									
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-2 col-xs-12 padl0">
+									
+										
+											<label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option1.mapping}}</label>
+									
+								</div>
+								</div>
+								
+								
+							</div>
+              <!--gfh-->
+		
+  		</accordion-group>
+					</accordion>
+				
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer e-draft " *ngIf="draft" >
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)= "backtoPrev()">Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<a href="javascript:void(0)" [routerLink]="['edit',paymentTerm.paymentTermId]"><button type="button" id="e-draft"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18">Edit</button></a>					
+							<button type="button" id="update1"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="conf_status_change_draft()">Submit</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="payment_delete(paymentTerm.paymentTermId,paymentTerm.payTermName,paymentTerm.statusName)">Delete</button>					
+						</div>							
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)= "backtoPrev()">Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<a href="javascript:void(0)" [routerLink]="['edit',paymentTerm.paymentTermId]"><button type="button" id="update15"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"  >Edit</button></a>
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="conf_status_change_deactivate()">Deactivate</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"  *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)= "backtoPrev()">Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+						 <a href="javascript:void(0)" [routerLink]="['edit',paymentTerm.paymentTermId]"><button type="button" id="update15"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18"  >Edit</button></a>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="conf_status_change_to_active()">Reactivate</button>					
+						</div>							
+					</div>
+				</form>
+				<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModalDELTE="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog ">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+													 <img src="../../assets/image/Confirm_Delete.svg" />
+                                                </div>
+                                                                
+                                                                <div class="modal-body">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular ">
+                                                                                                     Are you sure you want to {{statusMsg}} this record in {{status}} status ?
+                                                                                                </div>
+                                                                                                
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" type="button" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" type="button" (click)="conf_delete($event)">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!--Delete Success Modal-->
+<div *ngIf="deleteSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                                <div class="modal-content">
+                                                                <div class="modal-header">        
+                                                                              <div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : {{statusMsg}} Payment Term</div>
+                                                                              
+                                                                </div>
+                                </div>
+                </div>
+</div>
+<!-- Delete Success Modal - End -->
+<!-- Success Updated Modal -->
+<div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : {{statusMsg}} Payment Term Code {{payTermCode}}</div>
+				</div> 
+		</div>
+	</div>
+</div>
+<!-- Success Modal - End -->
+<!-- Permission Group Cannot be delted Pop up-->
+<div class="modal fade delete-popup" *ngIf="isCannotDeletePopup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                     <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+													 <img src="../../assets/image/Confirm_Delete.svg" />
+                                                 </div>                                                               
+                                                                <div class="modal-body">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     {{errorMessage}}
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="closedeletepopup()">Ok</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+<!--Confirm Update -->
+<div class="modal fade delete-popup" *ngIf="status_change" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #statusChange="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal-dialog ">
+<div class="modal-content  del-modal">
+<div class="modal-header text-center">
+	<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+	<img src="../../assets/image/Confirm_Delete.svg" />
+</div>		
+		<div class="modal-body">	
+							<div class="col-md-12 product_img text-center font-14 font-regular" >
+									Are you sure you want to submit the Payment Term Code {{payTermCode}} in {{status}} status ?
+							</div>
+		</div>
+		<div class="del-btn-group modal-window-footer btn-shodow">
+						<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+						<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_status_change()">Confirm</button></div>
+		</div>
+</div>
+</div>
+</div>
+<!---->
+ <!--Duplicate UOM code Pop up-->
+<div class="modal fade delete-popup" *ngIf="isCannotDeletePopup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                  <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                	<img src="../../assets/image/Confirm_Delete.svg" />
+												 </div>                                                               
+                                                                <div class="modal-body">    
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     {{errorMessage}}
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="close()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="close()">Ok</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+			</div>
+		</div>
+	</div>
+</div>
+

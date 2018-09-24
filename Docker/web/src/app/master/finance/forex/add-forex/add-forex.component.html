@@ -1,0 +1,126 @@
+<div class="container-fluid">
+  <div class="row">
+    <app-nav-bar></app-nav-bar>
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view single-block ">	
+	      <h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>{{pageTitle}}</h4>
+			  <form class="user-detail font-sm" [formGroup]="forexForm" novalidate autocomplete="off">	
+				  <small  class="colr-red font-regular font-14">{{reqmsg}}</small>		
+				 <accordion>
+					<accordion-group #group>
+						<div accordion-heading  class="font-semibold">
+							BASIC DETAILS
+							<i class="pull-right float-xs-right"
+								[ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+						</div>
+
+					    <div class="container-fluid-block">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+							<div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12"> <!--Master.AddForex.Code-->
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>FOREX Code</label>
+									<input type="text"  class="form-control font-15 font-regular "  id="ForexCode" value="" placeholder="" formControlName="forexCode" name="ForexCode" (focusout)="validateForexCode('CODE')" maxlength="20">
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12"><!--Master.AddForex.Name-->
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>FOREX Name</label>
+									<input type="text" class="form-control font-15 font-regular" [style.border-color]="getForexNameStyle()" id="ForexName" value="" placeholder="" formControlName="forexName" name="ForexName" (focusout)="validateForexName('NAME')" [typeahead]="forexService.forexNameList" maxlength="100" (keyup)="onNameSuggestion($event)"> <!---->
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12"><!--Master.AddForex.Description-->
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>FOREX Description</label>
+									<input type="text" class="form-control font-15" id="ForexDescription" value="" placeholder="" formControlName="forexDesc" name="ForexDescription" maxlength="500" [typeahead]="forexService.forexDescList" (keyup)="onDescSuggestion($event)">
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="	form-group col-lg-4 col-md-4 col-sm-6 col-xs-12"><!--Master.AddForex.BaseCurency-->
+								<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>BASE Currency</label>
+									<div class="dropdown">
+									   <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="baseCurrency" [(ngModel)]="baseCurrency" name="baseCurrency" (change)="onCurrencyChange($event.target.value,'CP')">
+										  <option [ngValue]="undefined" selected>Select</option>
+										  <option *ngFor="let pu of forexModel.baseCurrencyList" value="{{pu.code}}" [disabled]="pu.id==0" [ngValue]="pu">{{pu.value}}</option>
+									   </select>
+								  </div>
+								</div>	
+								
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12"><!--Master.AddForex.CounterCurrency-->
+								<label for="usr-field"  class="colr-lblue font-regular font-14 " l10nTranslate>COUNTER Currency</label>
+								<div class="dropdown">
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="counterCurrency" [(ngModel)]="counterCurrency"  name="counterCurrency" (change)="onCurrencyChange($event.target.value,'CP')">
+									    <option [ngValue]="undefined" selected>Select</option>
+										<option *ngFor="let pu of forexModel.counterCurrencyList" value="{{pu.code}}" [ngValue]="pu" [disabled]="pu.id==0">{{pu.value}}</option>
+									</select>
+								</div>								
+								</div>	
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12"><!--Master.AddForex.Frequency-->
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Frequency</label>
+									<div class="dropdown">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="frequency" [(ngModel)]="frequency" name="frequency">
+											<option [ngValue]="undefined" selected>Select</option>
+											<option *ngFor="let pu of forexModel.frequencyList" value="{{pu.code}}" [ngValue]="pu" [disabled]="pu.id==0">{{pu.value}}</option>
+										</select>
+									</div>								
+								</div>									
+							</div>
+
+							
+						</div>	
+						</div>
+            
+                    </accordion-group></accordion>
+
+                    <!--tenor-->
+                    <accordion>
+                        <accordion-group #group2>
+                            <div accordion-heading  class="font-semibold">
+                              FORWARD TENOR
+                              <i class="pull-right float-xs-right"
+                                 [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+                            </div>
+
+							<div class="plants-detail-Stp ">	
+									<div formArrayName="tenorList">
+										<div *ngFor="let tenorList of getTenorList(forexForm); let i=index" class="panel panel-default">
+											<div [formGroupName]="i">
+												 <app-tenor-mapping [group]="forexForm.controls.tenorList.controls[i]"></app-tenor-mapping>
+												<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 accessories-block">
+														<span class="pull-left"><i class="plus-icn-md" (click)="addTenor()" > &nbsp; </i></span>
+														<span class="pull-left"><i class="delete-icn-md" (click)="removeTenor(i) " > &nbsp; </i></span>
+												</div>
+											</div>
+										</div>
+								</div>
+							</div>
+                        </accordion-group>
+					</accordion>
+				<!--end of tenor-->
+					
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-regular font-18 font-semibold" (click)="reset()" l10nTranslate>Reset</button> <!--Master.ForexBtn.reset-->
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button [disabled]="disableSaveBtn" type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-regular font-18 font-semibold" (click)="saveForex('SAVE')" l10nTranslate>Save</button>	<!--Master.ForexBtn.save-->		<button [disabled]="disableSubmitBtn" type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-regular font-18 font-semibold" (click)="saveForex('SUBMIT')" l10nTranslate>Submit</button>	<!--Master.ForexBtn.submit-->
+							<button [disabled]="disableUpdateBtn" type="button" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-regular font-18 font-semibold" (click)="updatForex('UPDATE')" l10nTranslate *ngIf="editDraft">Update</button>	<!--Master.ForexBtn.update-->
+							<button [disabled]="disableUpdateBtn" type="button" class="btn default-btn primary-btn multiplebtn-width edit-form font-regular font-18 font-semibold" (click)="updatForex('UPDATEINACIVE')" l10nTranslate *ngIf="editActivate">Reactivate</button> <!--Master.ForexBtn.updateReactive-->
+							<button [disabled]="disableUpdateBtn" type="button" class="default-btn primary-btn multiplebtn-width edit-form font-regular font-18 font-semibold" (click)="updatForex('UPDATEACIVE')" l10nTranslate *ngIf="editDeactivate">Deactivate</button>	<!--Master.ForexBtn.updateInactive-->	
+						</div>							
+					</div>
+				</form>				
+			</div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!--validation popup messages-->
+<div *ngIf="isShowValModalForex" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<!--<div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>{{message}}</div>-->
+					<div class="modal-title font-14 font-regular">{{valMessageForex}}</div>
+				</div>
+		</div>
+	</div>
+</div>

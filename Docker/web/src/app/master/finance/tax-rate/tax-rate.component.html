@@ -1,0 +1,106 @@
+<div class="container-fluid ">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt30 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Master.TaxRate.Title</h4>
+				</div>
+
+				<!-- <div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+
+					<img src="../../assets/image/add.png" (click)="changeShowStatus()" />
+
+
+				</div> -->
+
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+						<div class="party-grade_block">
+							<kendo-grid [kendoGridBinding]="taxRateService.taxRatedetails" [selectable]="true" [groupable]="true" [group]="state.group"
+							 [scrollable]="'virtual'" [editable]="true" [sortable]="true" [filterable]="true" [height]="500" [pageable]="false">
+								<kendo:grid-editable mode="inline" />
+								<ng-template kendoGridToolbarTemplate>
+									<span class="k-icon k-i-file-excel" kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+									<img src="../../assets/image/add.png" (click)="changeShowStatus()" />
+								</ng-template>
+
+								<kendo-grid-column media="xs" title="TAX RATE">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<h4>
+											{{ dataItem.taxRateCode }}
+										</h4>
+										<dl>
+											<dt></dt>
+											<dd>{{ dataItem.taxRateDescription }}</dd>
+
+											<dt></dt>
+											<dd>{{ dataItem.taxRateCountry }}</dd>
+
+											<dt></dt>
+											<dd>{{ dataItem.govtaxRateRef }}</dd>
+										</dl>
+										<!-- template for mobile Ends-->
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column field='' title='' >
+									<ng-template kendoGridHeaderTemplate let-dataItem>
+										<input type="checkbox" id="checkall" class="k-checkbox" (change)="checkorUnCheckAll($event)" />
+										<label class="k-checkbox-label chk_head" for="checkall"></label>
+									</ng-template>
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<input type="checkbox" class="k-checkbox" id="dataItem.taxRateCode" name="dataItem.taxRateCode" ng-model="dataItem.taxRateCode"
+										/>
+										<label class="k-checkbox-label" for="dataItem.taxRateCode"></label>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column media="sm" field="taxCode" title={{headerTermCode}}>
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<div (click)="viewById(dataItem)" class="view-all">{{dataItem.taxCode}}</div>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column media="sm" field="taxDescription" title={{headerTermName}}>
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="taxCountryName" title={{headerTermCountry}}>
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="govTaxRef" title={{headerTermRef}}>
+								</kendo-grid-column>
+								<kendo-grid-column media="md" field="taxByLine" title={{headerTermLine}}>
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<label field="taxByLine" [ngClass]="{'taxByLine-yes': dataItem.taxByLine=='Yes','taxByLine-No': dataItem.taxByLine=='No'}" l10nTranslate>{{dataItem.taxByLine=='Y' ? 'Yes' : 'No'}}</label>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column media="lg" field="status" title="STATUS">
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<label field="status" [ngClass]="{'status-draft': dataItem.status=='Draft','status-active': dataItem.status=='Active','status-inactive': dataItem.status=='InActive'}">{{dataItem.status}}</label>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-column field="" title="" >
+									<ng-template kendoGridCellTemplate let-dataItem>
+										<div class="show" style="float:left" (click)="editTaxRate(dataItem)"><span id="e1" data-attr="draft" >
+													<img src="../../../assets/image/Edit_Icon_Hover.png.svg"><span style="display:none;" l10nTranslate>Master.TaxRate.Draft</span></span>
+										</div>
+										<div class=""  (click)="taxrate_delete(dataItem)" [ngClass]="{'displaynone': dataItem.status=='InActive'}">
+											<span id="d1" class="confirm-delete" >
+													<img src="../../../assets/image/Delete icon.svg"></span></div>
+									</ng-template>
+								</kendo-grid-column>
+								<kendo-grid-excel fileName="TAXRATE.xlsx"></kendo-grid-excel>
+
+
+							</kendo-grid>
+						</div>
+					</div>
+
+				
+
+
+					<!--Update message Modal - end -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<app-message [(msgs)]="taxRateService.messages"></app-message>

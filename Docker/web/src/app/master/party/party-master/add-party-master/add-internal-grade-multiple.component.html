@@ -1,0 +1,57 @@
+<div [formGroup]="baseProductMappingforms">  
+   <div *ngIf="whentoEdit">
+	<!--<div class="extrl-sys-map-container">-->
+								<!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 extrl-sys-map pad0">-->
+								 <input type='hidden' formControlName='uniqueMapping' [ngModel]="data0 || 'null'" ng-init="data0=null">
+									<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Origin</label>
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="gradelList.origin" formControlName ="origin" name="baseCode">
+												   <option value="">Select</option>
+												  <option *ngFor="let option of  originList" value="{{option.originDto.pkOriginId}}" > {{option.originDto.originName}} </option>
+										</select>
+									</div>
+									<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Internal Grade Name</label>
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="gradelList.gradeNameId" formControlName="gradeNameId" (change)="onchangePartyCodeForGrade()" name="baseCode">
+												   <option value="">Select</option>
+												   <option *ngFor="let option of  gradeList" value="{{option.gradeId}}" > {{option.gradeName}} </option>
+										</select>
+									</div>
+									<div  *ngIf="whenPartyCodeinLimit" class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Internal Grade Description</label>
+										<br>
+										<label for="usr-field" class="font-regular font-14">Description</label>
+									</div>
+									
+								<!--</div>-->
+							<!--</div>-->
+                            </div>
+							  <div *ngIf="whentoAdd">
+	
+								<!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 extrl-sys-map pad0">-->
+									<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Origin</label>
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName ="origin" name="baseCode">
+												   <option value="">Select</option>
+												   <!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+									<option *ngFor="let option of  originList" value="{{option.originDto.pkOriginId}}" > {{option.originDto.originName}} </option>
+										</select>
+									</div>
+									<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Internal Grade Name</label>
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="gradeNameId" (change)="onchangePartyCodeForGrade()" name="baseCode">
+												   <option value="">Select</option>
+												   <!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+												     <option *ngFor="let option of  gradeList" value="{{option.gradeId}}" > {{option.gradeName}} </option>
+										</select>
+									</div>
+									<div *ngIf="whenPartyCodeinLimit" class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Internal Grade Description</label>
+										<br>
+										<label for="usr-field" class="font-regular font-14">Description</label>
+									</div>
+									
+								<!--</div>-->
+							
+                            </div>
+</div>

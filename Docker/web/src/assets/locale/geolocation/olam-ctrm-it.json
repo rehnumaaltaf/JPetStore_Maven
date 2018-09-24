@@ -1,0 +1,17 @@
+{
+	"Master": {
+		"Location": {
+			"Title": "Location List",
+			"Code": "UOM Code",
+			"Name": "UOM Name",
+			"FullName": "UOM Full Name",
+			"Base": "Base UOM Code",
+			"Conversion": "Conversion Factor",
+			"Satus": "Status",
+			"Reset": "RESET",
+			"Save": "SAVE",
+			"Submit": "SAVE & SUBMIT",
+			"AddTitle": "ADD UOM"
+		}
+	}
+}

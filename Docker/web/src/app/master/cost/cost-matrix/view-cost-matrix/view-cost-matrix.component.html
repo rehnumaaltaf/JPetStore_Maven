@@ -1,0 +1,825 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">Cost Master</h4>
+				<form class="user-detail font-sm">
+					<accordion>
+						<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf="costdata">
+							<div accordion-heading class="font-semibold">
+								Basic Details
+								<i class="pull-right float-xs-right glyphicon" ></i>
+							</div>
+							{{costdata | json}}
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Matrix code</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.matrixCode}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Matrix Name</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.matrixName}}</span>
+										</div>
+									</div>
+								</div>
+							<!--</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Matrix Description</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.matrixDesc}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Cost Group</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.matrixTypeName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Cost Name</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{costdata?.fkCostName}} </span>
+										</div>
+									</div>
+								</div>								
+							</div>
+						</accordion-group>
+						
+						<!-- For Frieght Cost-->
+						<div *ngIf="costdata?.matrixTypeName === 'Freight'">
+						<div *ngFor="let freightdata of costdata.masterFreightCostMatrixDto; let i=index">		
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Freight Cost Matrix Basic
+								<i class="pull-right float-xs-right glyphicon" ></i>
+							</div>
+							<div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Legal Entity</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightdata?.fkPartyName}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Product</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightdata?.fkProdName}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Group or Detailed Cost Level</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{(freightdata?.costIsDetailedInd=='1')?'Yes': 'No'}} </span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Shipping / Trucking Line</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightdata?.fkServiceProviderPartyName}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Contract Reference</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightdata?.freightCostContrRefNo}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Valid from Date</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightdata?.freightCostValidFrom}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Valid to Date</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightdata?.freightCostValidTo}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Remarks</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightdata?.freightCostRemarks}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Freight Cost Matrix
+								<i class="pull-right float-xs-right glyphicon" ></i>
+							</div>
+							<div *ngFor="let freightDetail of freightdata.masterFreightCostdetailDto; let j=index">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">From Country / Region</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightDetail?.fkSourceGeoName}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">From Port / Location</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightDetail?.fkSourceLocationName}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">To Country / Region</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightDetail?.fkDestinationGeoName}} </span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">To Port / Location</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightDetail?.fkDestinationLocationName}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate Basis</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightDetail?.fkRateBasisRefName}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div *ngIf="freightDetail.rateBasis ===defaultUnit.uom ">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate UOM</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightDetail?.fkRateUomName}}</span>
+											</div>
+											</div>
+											<div *ngIf="freightDetail.rateBasis ===defaultUnit.primaryPack ">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Primary Packing</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightDetail?.fkRatePrimaryPackingName}}</span>
+											</div>
+											</div>
+											<div *ngIf="freightDetail.rateBasis ===defaultUnit.secondaryPack ">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Secondary Packing</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightDetail?.fkRateSecondaryPacking}}</span>
+											</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightDetail?.rate}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate Currency</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightDetail?.fkRateCurrencyName}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Transit Days</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightDetail?.transitDays}}</span>
+											</div>
+										</div>
+									</div>
+                                  </div>
+								 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+								    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Free Days - Load Port</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightDetail?.freeDaysAtLoadPort}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Free Days - Destination Port</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{freightDetail?.freeDaysAtDestiantionPort}}</span>
+											</div>
+										</div>
+									</div>	 
+								 </div>	 
+							</div>
+						</accordion-group>
+						</div>
+						</div>
+						<!-- Frieght Cost End-->
+						<!-- Ware House Cost-->
+						<div *ngIf="costdata?.matrixTypeName === 'Warehouse'">
+						<div *ngFor="let whdata of costdata.wareHouseCostDto; let i=index">		
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								WareHouse cost Matrix Basic
+								<i class="pull-right float-xs-right glyphicon" ></i>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Legal Entity</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0"><span *ngFor="let legalE of whdata.legalEntity">{{legalE.fkPartyName}}</span></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Product</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whdata?.fkProdValue}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Group or Detailed Cost Level</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{(costdata?.costIsDetailedInd=='Y')?'Yes': 'No'}} </span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Warehouse</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whdata?.wareHouseValue}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Warehouse Location</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0"><span *ngFor="let whLoc of whdata.wareHouseLocation">{{whLoc.fkPartyWhStockLocIdName}}</span></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Contract Reference</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whdata?.whCostContrRefNo}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Valid from Date</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whdata?.whCostValidFrom}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Valid To Date</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whdata?.whCostValidTo}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Remarks</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whdata?.whCostRemarks}}</span>
+										</div>
+									</div>
+								</div>
+								<!--<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Free Period Type</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whdata?.whCostFreePeriodType}}</span>
+										</div>
+									</div>
+								</div>-->
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Number of free days</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whdata?.whCostNoOfFreeDays}}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Warehouse Cost
+								<i class="pull-right float-xs-right glyphicon" ></i>
+							</div>
+							<div *ngFor="let whDetail of whdata.whCostDetailArray; let j=index">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Cost Name</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whDetail?.costNameValue}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate Basis</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whDetail?.fkRateBasisName}}</span>
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div *ngIf="whDetail.rateBasis ===defaultUnit.uom ">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate UOM</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whDetail?.whfkDefaultValueUomName}}</span>
+										</div>
+										</div>
+										<div *ngIf="whDetail.rateBasis ===defaultUnit.primaryPack">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Primary Packing</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whDetail?.whfkDefValPrimaryPackingName}}</span>
+										</div>
+										</div>
+										<div *ngIf="whDetail.rateBasis ===defaultUnit.secondaryPack">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Secondary Packing</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whDetail?.whfkDefValSecondaryPackingName}}</span>
+										</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate Currency</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whDetail.fkCurrencyName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whDetail?.rate}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Time Basis</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{whDetail?.fkTimeBaisisName}}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>
+						</accordion-group>
+						</div>
+						</div>
+                        <div *ngIf="costdata?.matrixTypeName === 'Clearing & Forwarding'">
+						<div *ngFor="let cnf of costdata.cnfCostDto; let i=index">	
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Clearing and Forwarding Matrix Basic
+								<i class="pull-right float-xs-right glyphicon" ></i>
+							</div>
+							<div>							
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Legal Entity</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnf?.fkPartyName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Product</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnf?.fkProdName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Group or Detailed Cost Level</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{(cnf?.costIsDetailedIndValue=='1')?'Yes': 'No'}} </span>
+										</div>
+									</div>
+								</div>								
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Warehouse</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnf?.fkWarehousePartyName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Warehouse Location</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnf?.fkPartyWhStockLocationName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Contract Reference Number</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnf?.cnfCostContrRefNo}}</span>
+										</div>
+									</div>
+								</div>								
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Valid From Date</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnf?.cnfCostValidFrom}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Valid To Date</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnf?.cnfCostValidTo}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Remarks</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnf?.cnfCostRemarks}}</span>
+										</div>
+									</div>
+								</div>								
+							</div>
+						</div>
+						</accordion-group>
+						
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Clearing and Forwarding Matrix
+								<i class="pull-right float-xs-right glyphicon" ></i>
+							</div>
+							
+							<div *ngFor="let cnfDetail of cnf.masterCnfCostDetail; let j=index">	
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">From INCOTERM</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnfDetail?.fkFromContractTermsName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">To INCOTERM</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnfDetail?.fkToContractTermsName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">To Country / Region</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnfDetail?.fkToCountryName}}</span>
+										</div>
+									</div>
+								</div>								
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">To Location</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnfDetail?.fkToLocationName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate Basis</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnfDetail?.fkRateBasisRefName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate UOM</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnfDetail?.fkRateUomName}}</span>
+										</div>
+									</div>
+								</div>								
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnfDetail?.pkCnfCostDetailId}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Rate Currency</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnfDetail?.fkRateCurrencyName}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Transit Days</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{cnfDetail?.transitDays}}</span>
+										</div>
+									</div>
+								</div>								
+							</div>
+						</div>
+						</accordion-group>
+						</div>
+						</div>
+
+						<div *ngIf="costdata?.matrixTypeName === 'cropseason'">
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Crop Season Matrix Basic 
+								<i class="pull-right float-xs-right glyphicon" ></i>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Company</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">OLAM LAMCO</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Product</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Coffee</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Unit</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Olam Brazil</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Origin</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Agro Brazil</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Base Crop Season</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">92-93</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+                      </accordion-group>
+					  <accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                            <div accordion-heading  class="font-semibold">
+                                              Crop Season Matrix
+                                <i class="pull-right float-xs-right glyphicon"
+                                ></i>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666"> Current  Plus/Minus</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">+4</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Premium</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">10</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Discount</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">10</span>
+										</div>
+									</div>
+								</div>								
+							</div>
+                         </accordion-group>
+						</div>
+
+
+					</accordion>
+					<!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn e-draft displayblock" data-attr="footer-edraft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn btn-default navbar-btn cancel-btn font-semibold font-14" (click)="backtoPrev()">BACK</button>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button type="button" id="update13" class="btn btn-default navbar-btn save-btn edit-form1 font-semibold font-14" style="width:20% !important;" (click)='edit()'>EDIT</button>					
+						<span id="status-draft" *ngIf="costdata?.fkStatusName === 'Draft'">
+							<button type="button" id="update14" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" style="width:20% !important;" (click)='onSubmitBtnClick(this.costdata)' >SUBMIT</button>					
+							<button type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" style="width:20% !important;" (click)='openConfirmAction(this.costdata,this.costdata?.fkStatusName)' >DELETE</button>					
+						</span>
+						<span id="status-active" *ngIf="costdata?.fkStatusName === 'Active'">
+							<button type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" style="width:20% !important;" (click)='openConfirmAction(this.costdata,this.costdata?.fkStatusName)'>DEACTIVATE</button>					
+						</span>
+						<span id="status-inactive" *ngIf="costdata?.fkStatusName === 'InActive'">
+							<button type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-semibold font-14" style="width:20% !important;" (click)='openConfirmAction(this.costdata,this.costdata?.fkStatusName)' >REACTIVATE</button>					
+						</span>
+						</div>							
+					</div>-->
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn e-draft displayblock" data-attr="footer-edraft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtoPrev()">BACK</button>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 pull-right text-right pad0 ">
+							<button type="button" id="update13" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" style="width:20% !important;" (click)='edit(this.costdata?.matrixTypeName)'>EDIT</button>					
+						<span id="status-draft" *ngIf="costdata?.fkStatusName === 'Draft'">
+							<button type="button" id="update14" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" style="width:20% !important;" (click)='onSubmitBtnClick(this.costdata)' >SUBMIT</button>					
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" style="width:20% !important;" (click)='openConfirmAction(this.costdata,this.costdata?.fkStatusName)' >DELETE</button>					
+						</span>
+						<span id="status-active" *ngIf="costdata?.fkStatusName === 'Active'">
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" style="width:20% !important;" (click)='openConfirmAction(this.costdata,this.costdata?.fkStatusName)'>DEACTIVATE</button>					
+						</span>
+						<span id="status-inactive" *ngIf="costdata?.fkStatusName === 'InActive'">
+							<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" style="width:20% !important;" (click)='openConfirmAction(this.costdata,this.costdata?.fkStatusName)' >REACTIVATE</button>					
+						</span>
+						</div>							
+					</div>
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<app-message [(msgs)]="messages"></app-message>

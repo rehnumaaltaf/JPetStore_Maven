@@ -1,0 +1,43 @@
+.dropdown[_ngcontent-c2]   .dropdown-menu[_ngcontent-c2]   .dropdown-container[_ngcontent-c2]{padding:0px;} 
+.dropdown-container label {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    width: 100%;
+}
+.dropdown-container{padding:0px !important;}
+.dropdown-container label:hover{color: #262626;text-decoration: none; background-color: #f5f5f5;}
+ngx-treeview-item {width: 110%;}
+
+.treeview-header .row-filter input{
+    width: 90%;
+    margin: 0 auto;
+}
+.ngxdropdown button{
+border:0;
+border-radius: 0px;
+border-bottom: 1px solid #cfdee7;
+outline: none;
+background-image:url("../../../../../assets/image/Dropdown_btn.svg");
+background-position: 99% 68%;
+background-repeat: no-repeat;
+background-color: #ffffff;
+}
+.panel-heading.card-header{
+    display:none;
+}
+.treeview-container .fa {
+    width: .8rem;
+    cursor: pointer;
+    padding-left: 7px;
+    position: relative;
+    top: 24px;
+}
+
+label.pull-right.form-check-label:hover{
+    background:none;
+}

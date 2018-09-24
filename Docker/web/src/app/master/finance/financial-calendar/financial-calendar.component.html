@@ -1,0 +1,177 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<div class="col-lg-11  col-sm-11 col-xs-12 right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<!--<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Master.FinancialCal.Title</h4>-->
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Financial Calendar</h4>
+				</div>
+				<!-- Search Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+		
+				
+				</div>
+        <!--end of Search Icon pannel -->
+ <div class="grid-container">
+          <div class="financial_detail">
+              <kendo-grid [kendoGridBinding]="financialCalendar" [selectable]="true"  [groupable]="true" [group]="groups"
+                  [scrollable]="true" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [filter]="state.filter"
+                  [sortable]="true" [filterable]="true" (dataStateChange)="dataStateChange($event)" [pageable]="false"
+                  (pageChange)="pageChange($event)" >
+
+                  <ng-template kendoGridToolbarTemplate>
+                 <span class="k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+                 	<img src="../../assets/image/add.png" (click)="financialAddView()" />
+								  </ng-template>
+
+                  <kendo-grid-column media="xs" title="Financial Calendar">
+                  <ng-template kendoGridCellTemplate let-dataItem>
+                    <!-- template for mobile -->
+                    
+                    <h4>
+                    {{ dataItem.fiscalYear }}
+                    </h4>
+                    <dl>
+                    <dt>Start year</dt>
+                    <dd>{{ dataItem.startYear }}</dd>
+
+                    <dt>Start Month</dt>
+                    <dd>{{ dataItem.startMonth }}</dd>
+
+                    <dt>End Year</dt>
+                    <dd>{{ dataItem.endYear }}</dd>
+
+                    <dt>End Month</dt>
+                    <dd>{{ dataItem.endMonth }}</dd>
+                    </dl>
+
+                    <!-- template for mobile Ends-->
+                  </ng-template>
+                  </kendo-grid-column>
+                  <kendo-grid-column field='' title='' [width]="40">
+                      <ng-template kendoGridHeaderTemplate let-dataItem>                       
+                      <input type="checkbox"  id="checkall" class="k-checkbox" [(ngModel)]="allItemsChecked" (change)="checkAllClicked($event)" />
+                      <label class="k-checkbox-label chk_head" for="checkall"></label>
+                    </ng-template> 
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                      <input type="checkbox"  class="k-checkbox" id="dataItem.pkFinCalId" name="dataItem.pkFinCalId" (change)="selectUnSelectAllChecked($event)" [(ngModel)]="dataItem.checked"/>
+                      <label class="k-checkbox-label" for="dataItem.pkFinCalId"></label>
+                    </ng-template>
+                  </kendo-grid-column>
+                  <kendo-grid-column media="sm" title="Fiscal Year"  field="fiscalYear" class="view-all" >
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                     <a href="javascript:void(0)" (click)="goToViewPage(dataItem.pkFinCalId)" > 
+                       {{dataItem?.fiscalYear}}</a>
+                    </ng-template>
+                  </kendo-grid-column>
+                  <kendo-grid-column media="sm" field="startYear" title="Start year">
+                  </kendo-grid-column>
+                  <kendo-grid-column media="md" field="startMonth" title="Start Month">
+                  </kendo-grid-column>
+                  <kendo-grid-column media="md" field="endYear" title="End Year">
+                  </kendo-grid-column>
+				          <kendo-grid-column media="md" field="endMonth" title="End Month">
+                  </kendo-grid-column>
+                  <!--<kendo-grid-column media="lg" title="Location Type"  field="locationTypeNames">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                      <label >{{dataItem?.locationTypeNames}}</label>
+                    </ng-template>
+                  </kendo-grid-column>-->
+                  <kendo-grid-column media="lg" title="Status">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                      <!--<label field="statusName" 
+                      [ngClass]="{'status-draft': dataItem.statusName==='Draft', 'status-active': dataItem.statusName==='Active','status-inactive': dataItem.statusName==='Inactive'}">{{status[dataItem.statusName]}}</label>-->
+                    <label field="statusName"  class="text-center" [ngClass]="{'status-draft': dataItem.statusName== 'Draft', 'status-active': dataItem.statusName=='Active','status-inactive': dataItem.statusName=='InActive'}">{{((dataItem.statusName=='Draft')?'Draft':(dataItem.statusName=='InActive'?'Inactive':'Active'))}}</label>
+				        	</ng-template>
+                  </kendo-grid-column>
+                  <kendo-grid-column field="" title="" >
+                    <ng-template kendoGridCellTemplate let-dataItem let-i="rowIndex">
+                      <div class="show" style="float:left" ><a href="javascript:void(0)" [routerLink]="['edit-financial-cal',dataItem.pkFinCalId]"><span id="e1" data-attr="draft">
+                        <img src="../../../assets/image/Edit_Icon_Hover.png.svg"></span></a></div>
+                      <div class=""   (click)="DeleteFincaneDetails(dataItem.pkFinCalId,dataItem.fiscalYear,dataItem.statusName,i)" [ngClass]="{'displaynone': dataItem.statusName=== 'InActive'}"  *ngIf='dataItem.statusName=="Draft"' ><span id="d1" class="confirm-delete"  >
+                        <img src="../../../assets/image/Delete icon.svg"></span></div>
+                    </ng-template>
+                  </kendo-grid-column>
+                
+                  
+                  <kendo-grid-excel fileName="financialcalendar.xlsx" [fetchData]="allData"></kendo-grid-excel>
+                </kendo-grid>
+          </div>
+        </div>
+
+<!--Update message Modal - start -->
+<!--<div *ngIf="isupdateModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #updateModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>Success : Unit Details Updated</div>
+				</div>       
+			</div>
+		</div>
+	</div>
+</div>-->
+<!--Update message Modal - end -->
+<!-- Delete Success Modal -->
+<div *ngIf="deleteSuccessModal" (onHidden)="onHidden()" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: true,show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>{{deactivateSuccessDialog}}</div>
+				</div> 
+		</div>
+	</div>
+</div>
+<!-- Delete Success Modal - End -->
+
+<!--Delete Pop up-->
+<div class="modal fade delete-popup"  (onHidden)="onHiddenpopup()" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: true,show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content  del-modal">
+		   <div class="modal-header text-center">
+				<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+					<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>
+			<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular">							
+						{{dialogValue}}
+					</div>
+			</div>
+			<div class="del-btn-group modal-window-footer btn-shodow">
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete()">Confirm</button></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!---->
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- Save Success Modal -->
+<!--<div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal in fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>{{message}}</div>
+				</div>       
+			</div>
+		</div>
+	</div>
+</div>-->
+
+<div class="modal fade in success-modal" [style.display]="showModal ? 'block' : 'none'" id="successModal"  role="dialog">
+			<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">        
+					  <div class="modal-title font-14 font-regular"><img src="../../../assets/image/Ok.jpg"/>{{message}}</div>
+					</div>       
+				  </div>
+			</div>
+		</div>

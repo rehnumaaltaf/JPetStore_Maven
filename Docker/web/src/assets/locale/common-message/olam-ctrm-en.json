@@ -1,0 +1,18 @@
+{
+    "Master" :{
+        "CommonMessage" : {
+            "success" : "Success :",
+            "update" : "updated",
+            "delete" : "deleted",
+            "activateorsubmit": "activated",
+            "deactivate": "deactivated",
+            "reactivate":"reactivated",
+            "save": "saved",
+            "duplicatecheck" :"exists. Please reenter valid unique value",
+            "confirmdeactivate": "Please confirm to deactive ",
+            "confirmdelete": "Please confirm to deactive ",
+            "confirmreactive" :"Please confirm to reactive"
+
+        }
+    }
+}

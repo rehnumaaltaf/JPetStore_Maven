@@ -1,0 +1,215 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">{{this.pageTitle}}</h4>
+				<form class="user-detail font-sm" [formGroup]="taxRateForm">
+					<accordion>
+						<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold" l10nTranslate>
+								Master.TaxRate.Basic
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.Code</label>
+										<input name="usr-field" type="text" class="form-control font-15 font-regular" name="taxCode" formControlName="taxCode" [(ngModel)]="taxRateDetailsList.taxCode"
+										 maxlength="20" [ngClass]="{'valred': req_taxCode==true,'val': req_taxCode==false}">
+										<small *ngIf="req_taxCode" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.ErrTaxCode</small>
+									</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.TaxName</label>
+										<input type="text" class="form-control font-15 font-regular " value="" placeholder="" formControlName="taxName" [(ngModel)]="taxRateDetailsList.taxName"
+										 maxlength="200" [ngClass]="{'valred': req_taxName==true,'val': req_taxName==false}">
+										<small *ngIf="req_taxName" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.ErrTaxName</small>
+									</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.TaxRate.Description</label>
+										<input type="text" class="form-control font-15 font-regular " value="" placeholder="" formControlName="taxDescription" maxlength="500"
+										 [(ngModel)]="taxRateDetailsList.taxDescription">
+
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.Country</label>
+										<div class="dropdown ">
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="taxCountryID" [(ngModel)]="taxRateDetailsList.taxCountryID"
+											 [ngClass]="{'valred': req_taxCountryID==true,'val': req_taxCountryID==false}">
+											<option value="" l10nTranslate>Master.TaxRate.Select</option>	
+										<option *ngFor="let option of countryList" [selected]="taxCountryID === option.pkGeoId" [ngValue]="option.pkGeoId">{{option.geoName}}</option>
+										</select>
+											<small *ngIf="req_taxCountryID" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.ErrCountry</small>
+										</div>
+									</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.GovtTaxRef</label>
+										<input type="text" class="form-control font-15 font-regular " value="" placeholder="" formControlName="govTaxRef" [(ngModel)]="taxRateDetailsList.govTaxRef"
+										 maxlength="20" [ngClass]="{'valred': req_govtTaxRef==true,'val': req_govtTaxRef==false}">
+										<small *ngIf="req_govtTaxRef" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.ErrGovtTaxRef</small>
+									</div>
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<div class="ovr-flw">
+											<span class="pull-left padr20 padl0 colr-red font-regular font-14" l10nTranslate>Master.TaxRate.TaxByLine</span>
+											<span class="radio pricing-details">
+													<input type="radio"  id="radio8" value="Y" class="rad_displ_yes" formControlName="taxByLine" [(ngModel)]="taxBylineardio" >
+													<label for="radio8" class="font-regular colr-4b536 font-14" l10nTranslate>Yes</label>
+												</span>
+											<span class="radio pricing-details">
+													<input type="radio"  id="radio9" value="N" class="rad_displ_no" formControlName="taxByLine"   [(ngModel)]="taxBylineardio" checked="checked">
+													<label for="radio9" class="font-regular colr-4b536 font-14" l10nTranslate>No</label>
+												
+												</span>
+											<small *ngIf="req_taxByLine" class="colr-red font-regular font-14" l10nTranslate>Master.TaxRate.ErrTaxByLine</small>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+						</accordion-group>
+					</accordion>
+
+
+					<accordion>
+						<accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold" l10nTranslate>
+								Master.TaxRate.TaxRates
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+							</div>
+							<div class="plants-detail-Stp ">
+								<div formArrayName="taxRateDetails">
+									<div *ngFor="let feature  of getTaxRateArray(taxRateForm); let i=index">
+
+										<div [formGroupName]="i">
+											<app-tax-rate-mapping [group]="taxRateForm.controls.taxRateDetails.controls[i]" [title]="i" [financialCalendarModel]=financialCalendarModel
+											 [reqEffectiveFromDate]=req_fromDate [reqTaxRate]=req_taxRate></app-tax-rate-mapping>
+											<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0 mart30 wid12">
+												<!-- <span class="pull-left"><i *ngIf="(i+1)==cntPlusButton"  class="plus-icn-md" (click)="addPermissionMapping()" > &nbsp; </i></span>
+														<span class="pull-left"><i *ngIf="showCrossButton" class="delete-icn-md" (click)="removePermissionMapping(i) " > &nbsp; </i></span> -->
+												<span class="pull-left"><i *ngIf="(i+1)==cntPlusButton"  class="plus-icn-md" (click)="addPermissionMapping()" > &nbsp; </i></span>
+												<span class="pull-left"><i  *ngIf="showCrossButton" class="delete-icn-md" (click)="removePermissionMapping(i) " > &nbsp; </i></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+					</accordion>
+
+					<div *ngIf="whenDataNotTobeEdited">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="reset()" l10nTranslate>Master.TaxRate.Reset</button>
+							</div>
+							<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+								 (click)="saveTaxRate('Draft')" (click)="saveTaxRate('Draft')" l10nTranslate>Master.TaxRate.Save</button>
+								<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+								 (click)="saveTaxRate('Active')" l10nTranslate>Master.TaxRate.Submit</button>
+							</div>
+						</div>
+					</div>
+
+					<div *ngIf="whenDataEdited">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="cancel()" l10nTranslate>Master.TaxRate.Cancel</button>
+							</div>
+							<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+								 (click)="update('Draft')" l10nTranslate>Master.TaxRate.Save</button>
+								<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+								 (click)="update('Active')" l10nTranslate>Master.TaxRate.Submit</button>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div *ngIf="whenStatusInactive">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="cancel()" l10nTranslate>Master.TaxRate.Cancel</button>
+							</div>
+							<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+								 (click)="update('')" l10nTranslate>Master.TaxRate.update</button>
+
+								<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+								 (click)="updateStatus('Active')" l10nTranslate>Master.TaxRate.Reactivate</button>
+
+							</div>
+						</div>
+					</div>
+
+					<div *ngIf="whenStatusactive">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="cancel()" l10nTranslate>Master.TaxRate.Cancel</button>
+							</div>
+							<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+								 (click)="update('')" l10nTranslate>Master.TaxRate.update</button>
+
+								<button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+								 (click)="updateStatus('InActive')" l10nTranslate>Master.TaxRate.Deactivate</button>
+
+							</div>
+						</div>
+					</div>
+
+					
+
+
+				</form>
+
+			</div>
+
+			<div *ngIf="errormodal" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHidden()" class="modal fade something_wrong"
+			 bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+			 aria-hidden="true">
+
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg" />This page contains {{count}} errors.Please correct the highlighted
+								fields.</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="modal fade delete-popup" *ngIf="ispagebackPopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup"
+			 bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+			 aria-hidden="true">
+				<div class="modal-dialog ">
+					<div class="modal-content  del-modal">
+						<div class="modal-header text-center">
+							<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+							<img src="../../assets/image/Confirm_Delete.svg" />
+						</div>
+						<div class="modal-body">
+
+							<div class="col-md-12 product_img text-center font-14 font-regular">
+								{{taxRateService.errorMessage}}
+							</div>
+						</div>
+						<div class="del-btn-group modal-window-footer btn-shodow">
+							<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="close()">Cancel</button></div>
+							<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="close()">Ok</button></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<app-message [(msgs)]="taxRateService.messages"></app-message>

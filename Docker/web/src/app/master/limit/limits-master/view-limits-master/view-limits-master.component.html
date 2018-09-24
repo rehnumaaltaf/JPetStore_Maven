@@ -1,0 +1,281 @@
+<div class="container-fluid">
+    <!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+    <div class="row row-background">
+        <app-nav-bar></app-nav-bar>
+        <!-- ngx bootstrap - Accordion -->
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0"  >
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div view-page">
+                <h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate> Master.LimitMaster.viewrecordtitle</h4>	
+                <form class="user-detail font-sm">
+                    <accordion>
+                        <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                            <div accordion-heading class="font-semibold" l10nTranslate>
+                            Master.LimitMaster.subtitle1
+
+                                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                            </div>
+                     		<div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate > Master.LimitMaster.limitnumber</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">	<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{limitdata.limitHeaderNo}}</span></div></div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate> Master.LimitMaster.limitBasis</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">	<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{limitdata.limitBasisTypeName}}</span></div></div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate> Master.LimitMaster.basisName</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" l10nTranslate>{{limitdata.limitBasisName}}</span></div></div>
+								</div>
+								
+							</div>
+							
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate> Master.LimitMaster.additionalBasis</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" l10nTranslate>{{limitdata.additionallimitBasisTypeName}}</span></div></div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate> Master.LimitMaster.additionalbasisName</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{limitdata.additionallimitBasisName}}</span></div></div>
+								</div>
+							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate> Master.LimitMaster.status</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{limitdata.statusName}}</span></div></div>
+								</div>
+
+							</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate > Master.LimitMaster.updateby</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{limitdata.createdBy}}</span></div></div>
+								</div>
+											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate > Master.LimitMaster.datetime</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{limitdata.modifiedDate | date: 'dd/MM/yyyy HH:mm'}}</span></div></div>
+								</div>
+
+
+											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0"> 
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate> Master.LimitMaster.comments</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0" ><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+									   <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0" *ngFor="let item of commentText">
+										   {{item}}
+										   </span>
+										   </div>
+										   </div>
+								</div>
+								</div>
+					
+						</div>
+                        </accordion-group>
+            
+                    <!--<h3 class="font-semibold colr-lblue">Outturn Ratio </h3>-->
+                
+						<accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf=' limitdata.limitBasisTypeName == "Party" || limitdata.limitBasisTypeName == "PRODUCT" || limitdata.limitBasisTypeName == "UNIT" || limitdata.limitBasisTypeName == "TRADER" '>
+						<!-- || 'limitdata.limitBasisTypeName == "PRODUCT"' || 'limitdata.limitBasisTypeName == "UNIT"' || 'limitdata.limitBasisTypeName == "TRADER"''> -->
+                            <div accordion-heading class="font-semibold" l10nTranslate>
+                               Master.LimitMaster.subtitle2
+
+                                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+                            </div>
+                		<div class="party-grade_block">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 warehouse-block">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+										<label class="font-regular font-14 col-lg-3 col-md-2 col-sm-3 col-xs-12 brdb padl0" l10nTranslate>Master.LimitMaster.outright</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.LimitMaster.basis</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.LimitMaster.structure</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.LimitMaster.drawdown</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.LimitMaster.var</label>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15"  *ngFor="let item of limitdata.limitDetails">
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val padl0" *ngIf='item.limitOutRightAttribute.limitVolumeValueRefName=="VALUE"'>{{item.limitOutRightAttribute.limitVolumeValueRefName}} | {{item.limitOutRightAttribute.limitCurrencyCode}} | {{item.limitOutRightAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val padl0" *ngIf='item.limitOutRightAttribute.limitVolumeValueRefName=="VOLUME"'>{{item.limitOutRightAttribute.limitVolumeValueRefName}} | {{item.limitOutRightAttribute.limitVolumeUomCode}}   | {{item.limitOutRightAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.limitBasisAttribute.limitVolumeValueRefName=="VALUE"'>{{item.limitBasisAttribute.limitVolumeValueRefName}} | {{item.limitBasisAttribute.limitCurrencyCode}} | {{item.limitBasisAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.limitBasisAttribute.limitVolumeValueRefName=="VOLUME"'>{{item.limitBasisAttribute.limitVolumeValueRefName}} | {{item.limitBasisAttribute.limitVolumeUomCode}} | {{item.limitBasisAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.limitStructureAttribute.limitVolumeValueRefName=="VALUE"'>{{item.limitStructureAttribute.limitVolumeValueRefName}} | {{item.limitStructureAttribute.limitCurrencyCode}} | {{item.limitStructureAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.limitStructureAttribute.limitVolumeValueRefName=="VOLUME"'>{{item.limitStructureAttribute.limitVolumeValueRefName}} | {{item.limitStructureAttribute.limitVolumeUomCode}} | {{item.limitStructureAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.limitDrawDownAttribute.limitVolumeValueRefName=="VALUE"'>{{item.limitDrawDownAttribute.limitVolumeValueRefName}} | {{item.limitDrawDownAttribute.limitCurrencyCode}} | {{item.limitDrawDownAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.limitDrawDownAttribute.limitVolumeValueRefName=="VOLUME"'>{{item.limitDrawDownAttribute.limitVolumeValueRefName}} | {{item.limitDrawDownAttribute.limitVolumeUomCode}} | {{item.limitDrawDownAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.limitVaRAttribute.limitVolumeValueRefName=="VALUE"'>{{item.limitVaRAttribute.limitVolumeValueRefName}} | {{item.limitVaRAttribute.limitCurrencyCode}} | {{item.limitVaRAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.limitVaRAttribute.limitVolumeValueRefName=="VOLUME"'>{{item.limitVaRAttribute.limitVolumeValueRefName}} | {{item.limitVaRAttribute.limitVolumeUomCode}} | {{item.limitVaRAttribute.limit}}</label>
+									</div>
+
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+										<label class="font-regular font-14 col-lg-3 col-md-2 col-sm-3 col-xs-12 brdb padl0" l10nTranslate >Master.LimitMaster.delta</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.LimitMaster.gamma</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate >Master.LimitMaster.vega</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.LimitMaster.validity</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.LimitMaster.temp</label>
+									</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15"  *ngFor="let item of limitdata.limitDetails">
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val padl0" *ngIf='item.limitDeltaAttribute.limitVolumeValueRefName=="VALUE"'>{{item.limitDeltaAttribute.limitVolumeValueRefName}} | {{item.limitDeltaAttribute.limitCurrencyCode}} | {{item.limitDeltaAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val padl0" *ngIf='item.limitDeltaAttribute.limitVolumeValueRefName=="VOLUME"'>{{item.limitDeltaAttribute.limitVolumeValueRefName}} | {{item.limitDeltaAttribute.limitVolumeUomCode}}   | {{item.limitDeltaAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.limitGammaAttribute.limitVolumeValueRefName=="VALUE"'>{{item.limitGammaAttribute.limitVolumeValueRefName}} | {{item.limitGammaAttribute.limitCurrencyCode}} | {{item.limitGammaAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.limitGammaAttribute.limitVolumeValueRefName=="VOLUME"'>{{item.limitGammaAttribute.limitVolumeValueRefName}} | {{item.limitGammaAttribute.limitVolumeUomCode}} | {{item.limitGammaAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.limitVegaAttribute.limitVolumeValueRefName=="VALUE"'>{{item.limitVegaAttribute.limitVolumeValueRefName}} | {{item.limitVegaAttribute.limitCurrencyCode}} | {{item.limitVegaAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.limitVegaAttribute.limitVolumeValueRefName=="VOLUME"'>{{item.limitVegaAttribute.limitVolumeValueRefName}} | {{item.limitVegaAttribute.limitVolumeUomCode}} | {{item.limitVegaAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val">{{item.validFrom | date: 'dd/MM/yyyy'}} &nbsp; {{item.validTo | date: 'dd/MM/yyyy'}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.isTemporary=="Y" || item.isTemporary=="y" ' >Temporary</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.isTemporary=="N" || item.isTemporary=="n" ' >Permanent</label>
+				
+									</div>
+								</div>								
+							</div>
+							
+						</div>
+									
+                        </accordion-group>
+
+						
+                        <accordion-group #group3 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf='limitdata.limitBasisTypeName == "FOREXCURRENCY"'>
+                            <div accordion-heading class="font-semibold" l10nTranslate>
+                               Master.LimitMaster.subtitle2
+
+                                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group3?.isOpen, 'acc-up': !group3?.isOpen}"></i>
+                            </div>
+                		<div class="party-grade_block">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 warehouse-block">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm" >
+										<label class="font-regular font-14 col-lg-3 col-md-2 col-sm-3 col-xs-12 brdb padl0" l10nTranslate >Master.LimitMaster.valueattr</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.LimitMaster.validity</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate>Master.LimitMaster.temp</label>
+			
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of limitdata.limitDetails">
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val padl0" *ngIf='item.valueAttribute.limitVolumeValueRefName=="VALUE"'>{{item.valueAttribute.limitVolumeValueRefName}} | {{item.valueAttribute.limitCurrencyCode}} | {{item.valueAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val padl0" *ngIf='item.valueAttribute.limitVolumeValueRefName=="VOLUME"'>{{item.valueAttribute.limitVolumeValueRefName}} | {{item.valueAttribute.limitVolumeUomCode}}   | {{item.valueAttribute.limit}}</label>
+											<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val">{{item.validFrom | date: 'dd/MM/yyyy'}} &nbsp; {{item.validTo | date: 'dd/MM/yyyy'}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.isTemporary=="Y" || item.isTemporary=="y" ' >Temporary</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.isTemporary=="N" || item.isTemporary=="n" ' >Permanent</label>
+				
+									</div>
+								</div>
+								
+								
+							</div>
+							
+						</div>
+									
+                        </accordion-group>
+
+
+
+                        <accordion-group #group4 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled" *ngIf='limitdata.limitBasisTypeName == "EXCHANGE"'>
+                            <div accordion-heading class="font-semibold" l10nTranslate>
+                               Master.LimitMaster.subtitle2
+                                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group4?.isOpen, 'acc-up': !group4?.isOpen}"></i>
+                            </div>
+                		<div class="party-grade_block">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 warehouse-block">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666 border-btm">
+										<label class="font-regular font-14 col-lg-3 col-md-2 col-sm-3 col-xs-12 brdb padl0" l10nTranslate> Master.LimitMaster.currentmonth</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate> Master.LimitMaster.forwardmonth </label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate> Master.LimitMaster.totalattr  </label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate> Master.LimitMaster.validity </label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb" l10nTranslate> Master.LimitMaster.temp </label>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15" *ngFor="let item of limitdata.limitDetails">
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val padl0" *ngIf='item.currentMonthAttribute.limitVolumeValueRefName=="VALUE"'>{{item.currentMonthAttribute.limitVolumeValueRefName}} | {{item.currentMonthAttribute.limitCurrencyCode}} | {{item.currentMonthAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val padl0" *ngIf='item.currentMonthAttribute.limitVolumeValueRefName=="VOLUME"'>{{item.currentMonthAttribute.limitVolumeValueRefName}} | {{item.currentMonthAttribute.limitVolumeUomCode}}   | {{item.currentMonthAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val padl0" *ngIf='item.forwardMonthAttribute.limitVolumeValueRefName=="VALUE"'>{{item.forwardMonthAttribute.limitVolumeValueRefName}} | {{item.forwardMonthAttribute.limitCurrencyCode}} | {{item.forwardMonthAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val padl0" *ngIf='item.forwardMonthAttribute.limitVolumeValueRefName=="VOLUME"'>{{item.forwardMonthAttribute.limitVolumeValueRefName}} | {{item.forwardMonthAttribute.limitVolumeUomCode}}   | {{item.forwardMonthAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val padl0" *ngIf='item.totalAttribute.limitVolumeValueRefName=="VALUE"'>{{item.totalAttribute.limitVolumeValueRefName}} | {{item.totalAttribute.limitCurrencyCode}} | {{item.totalAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val padl0" *ngIf='item.totalAttribute.limitVolumeValueRefName=="VOLUME"'>{{item.totalAttribute.limitVolumeValueRefName}} | {{item.totalAttribute.limitVolumeUomCode}}   | {{item.totalAttribute.limit}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val">{{item.validFrom | date: 'dd/MM/yyyy'}} &nbsp; {{item.validTo | date: 'dd/MM/yyyy'}}</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.isTemporary=="Y" || item.isTemporary=="y" ' >Temporary</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val" *ngIf='item.isTemporary=="N" || item.isTemporary=="n" ' >Permanent</label>
+									</div>
+								</div>
+								
+								
+							</div>
+							
+						</div>
+									
+                        </accordion-group>
+
+                    </accordion>
+					
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer e-draft " *ngIf="draft" >
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)= "backtoPrev()" l10nTranslate> Master.LimitMaster.backbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-12 col-xs-8 pull-right text-right pad0">
+							 <a href="javascript:void(0)" [routerLink]="['edit',limitdata.limitHeaderId]"><button type="button" id="e-draft"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" l10nTranslate>Master.LimitMaster.editbutton</button></a>					
+							<button type="button" id="update1"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="conf_status_change_draft()"  l10nTranslate>Master.LimitMaster.submitbutton</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="product_grade_delete(gradeViewData.limitHeaderId)"  l10nTranslate>Master.LimitMaster.deltebutton</button>					
+						</div>							
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)= "backtoPrev()" l10nTranslate>Master.LimitMaster.backbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+				 <a href="javascript:void(0)" [routerLink]="['edit',limitdata.limitHeaderId]"><button type="button" id="e-draft"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" l10nTranslate>Master.LimitMaster.editbutton</button></a>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="conf_status_change_deactivate()" l10nTranslate>Master.LimitMaster.deactivebutton</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"  *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)= "backtoPrev()" l10nTranslate>Master.LimitMaster.backbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+						 <a href="javascript:void(0)" [routerLink]="['edit',limitdata.limitHeaderId]"><button type="button" id="e-draft"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"  l10nTranslate>Master.LimitMaster.editbutton</button></a>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="conf_status_change_to_active()" l10nTranslate>Master.LimitMaster.reactivebutton</button>					
+						</div>							
+					</div>
+                </form>
+            </div>
+		</div>
+		
+		
+    <div class="modal fade delete-popup" *ngIf="isDeletePopupModal" (onHidden) ="hide()" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #deletePopUpModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog ">
+		<div class="modal-content  del-modal">
+			<div class="modal-header text-center">
+               <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a> -->
+               <img src="../../assets/image/Confirm_Delete.svg" />
+			</div>
+			<div class="modal-body">
+								
+					<div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="deactiveStatus" >
+							{{statusmsg}} {{limitName}}  
+					</div>
+
+                     <div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isActiveStatus" >
+                           {{statusmsg}} {{limitName}}   
+                    </div>
+			</div>
+				<div class="del-btn-group modal-window-footer btn-shodow">
+					<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="deletePopUpModal.hide()">Cancel</button></div>
+					<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_deactive_reactive($event)">Confirm</button></div>
+				</div>
+		</div>
+	</div>
+</div>
+
+<div  *ngIf="servererrorflag" [style.display]="showModal ? 'block' : 'none'" (onHidden)="hide()" class="modal fade something_wrong"
+					bsModal #serverErrorModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+							<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title"><span><img src="../../assets/image/Error Message_Icon.svg"/></span>{{errorMessage}} </div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+{
+	"Master": {
+		"Forex": {
+			"Title": "FOREX",
+			"Code": "FOREX CODE",
+			"Name": "FOREX NAME",
+			"Description": "FOREX DESCRIPTION",
+			"BaseCurency": "BASE CURRENCY",
+			"Counter Currency": "COUNTER CURRENCY",
+			"Frequency": "FREQUENCY",
+			"Status": "STATUS"
+		},
+		"AddForex":{
+            "Title":"ADD FOREX DETAILS",
+			"subTitle":"BASIC DETAILS",
+			"Code":"FOREX Code",
+			"Name":"FOREX Name",
+			"Description": "FOREX Description",
+			"BaseCurency": "Base Currency",
+			"CounterCurrency": "Counter Currency",
+			"Frequency": "Frequency"
+		},
+		"Tenor": {
+			"Title": "FORWARD TENOR",
+			"Code": "Ticker Code",
+			"Tenor": "Tenor",
+			"Span": "Span",
+			"Duration": "Duration",
+			"DayType":"Day Type"			
+		},
+		"ForexBtn":{
+			"reset": "RESET",
+			"save": "SAVE",
+			"submit": "SAVE & SUBMIT",
+			"update": "UPDATE",
+			"updateReactive": "UPDATE & REACTIVATE",
+			"updateInactive": "UPDATE & DEACTIVATE",
+			"cancel": "CANCEL"
+		}
+	}
+}

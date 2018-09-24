@@ -1,0 +1,186 @@
+<div class="container-fluid">
+  <!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+  <div class="row row-background">
+    <app-nav-bar></app-nav-bar>
+    <!-- ngx bootstrap - Accordion -->
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+        <h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" [hidden]="!showcreate">Add Holiday Calendar</h4>
+        <h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" [hidden]="!showedit">Edit Holiday Calendar</h4>
+        <form [formGroup]="holidayCalendarGroupForm" method="POST" class="user-detail font-sm" id="holidayCalendarAddForm">
+          <accordion>
+            <accordion-group #group [isOpen]="statuses.isFirstOpen" [isDisabled]="statuses.isFirstDisabled">
+              <div accordion-heading class="font-semibold">
+                Basic Details
+                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.HolidayCalendarLocale.Code</label>
+                  <input type="text" class="form-control font-15 font-regular " maxlength="20"  [style.border-color]="getStyleCode()" (keydown)="validate(0)" [(ngModel)]="holidayCalendarNgModelBinding.holidayCalCode"  (keydown.space)= "$event.preventDefault()"
+                    formControlName="holidayCalCode" id="holidayCalCode" value="" placeholder="">
+                    <span *ngIf="req_calendarCode"  class="colr-red font-regular font-14">{{reqMsgCalendarCode}}</span>
+                    <span  *ngIf="holidayCalendarGroupForm.controls.holidayCalCode.hasError('pattern')"  class="colr-red font-regular font-14" >Special Character not allowed</span>
+                </div>
+
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.HolidayCalendarLocale.Name</label>
+                  <input type="text" class="form-control font-15 font-regular " maxlength="200" [style.border-color]="getStyleName()" (keydown)="validate(1)" [(ngModel)]="holidayCalendarNgModelBinding.holidayCalName"
+                    formControlName="holidayCalName" id="holidayCalName" value="" placeholder="">
+                    <span  *ngIf="req_calendarName"  class="colr-red font-regular font-14">{{reqMsgCalendarName}}</span>
+                    <span  *ngIf="holidayCalendarGroupForm.controls.holidayCalName.hasError('pattern')"  class="colr-red font-regular font-14" >Special Character not allowed</span>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.HolidayCalendarLocale.Description</label>
+                  <input type="text" class="form-control font-15" maxlength="500" [(ngModel)]="holidayCalendarNgModelBinding.holidayCalDesc" formControlName="holidayCalDesc"
+                    id="holidayCalDesc" value="" placeholder="">
+                </div>
+
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.HolidayCalendarLocale.Country</label>
+                  <div class="dropdown ">
+
+                    <select [style.border-color]="getStyleCountry()" (keydown)="validate(2)"  [(ngModel)]="holidayCalendarNgModelBinding.geoId" formControlName="geoId"
+                       class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 ">
+                        <!-- <option value="" selected>select</option>> -->
+                   						 <option *ngFor="let geo of originCountryResp" [ngValue]="geo.pkGeoId">
+                    									{{geo.geoName}}
+                    					</option>
+                          </select>
+                      <span  *ngIf="req_country"  class="colr-red font-regular font-14">{{reqMsgCountry}}</span>
+
+                  </div>
+                </div>
+              </div>
+            </accordion-group>
+            <accordion-group #group1 [isOpen]="statuses.isFirstOpen" [isDisabled]="statuses.isFirstDisabled">
+              <div accordion-heading class="font-semibold">
+                Holiday List
+                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group1?.isOpen, 'acc-up': !group1?.isOpen}"></i>
+              </div>
+              <div class="plants-detail-Stp">
+                <div formArrayName="holidayListDto">
+                  <div *ngFor="let holidayListDto of getHolidayMultipleList(holidayCalendarGroupForm); let i=index">
+                    <span style="display: none">{{i + 1}}</span>
+
+                    <div [formGroupName]="i">
+                      <app-holiday-calendar-multiple [group]="holidayCalendarGroupForm.controls.holidayListDto.controls[i]" [title]="i" [holidayCalendarDto]="holidayCalendarNgModelBinding" [reqholidayName]="req_holidayName"  [reqholidayDate]="req_holidayDate"></app-holiday-calendar-multiple>
+                      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 accessories-block">
+                        <span class="pull-left" [hidden]="showPlusHolidayList[i]"><i class="plus-icn-md" (click)="addHolidayListMultiple()"> &nbsp; </i></span>
+                        <span class="pull-left" [hidden]="showCrossHolidayList[i]"><i class="delete-icn-md" (click)="removeHolidayListMultiple(i)"> &nbsp; </i></span>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+            </accordion-group>
+          </accordion>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" [hidden]="!showcreate">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+              <button type="button" id="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="reset()" l10nTranslate>Master.HolidayCalendarLocale.Reset</button>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+              <button type="submit" id="id_saveHolidayCalendar" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+                (click)="saveHolidayCalendar()" l10nTranslate>Master.HolidayCalendarLocale.Save</button>
+              <button type="submit" id="id_submitHolidayCalendar" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                (click)="submitHolidayCalendar()" l10nTranslate>Master.HolidayCalendarLocale.Submit</button>
+            </div>
+          </div>
+          <!--Buttons for edit GL Modal-->
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" [hidden]="!showdraftbutton">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+              <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-regular font-18 font-semibold" (click)="back()">Cancel</button>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+              <button type="button" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="updateHolidayCal(holidayCalendarNgModelBinding.holidayCalId, holidayCalendarNgModelBinding.statusName)">Save</button>
+              <button id="update" type="button" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updateHolidayCalwithStatus(holidayCalendarNgModelBinding.holidayCalId, holidayCalendarNgModelBinding.statusName)">Submit</button>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" [hidden]="!showactivebutton">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+              <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-regular font-18 font-semibold" (click)="back()">Cancel</button>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+              <button type="button" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updateHolidayCal(holidayCalendarNgModelBinding.holidayCalId, holidayCalendarNgModelBinding.statusName)">Update</button>
+              <button id="update" type="button" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updateHolidayCalwithStatus(holidayCalendarNgModelBinding.holidayCalId, holidayCalendarNgModelBinding.statusName)">Deactivate</button>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" [hidden]="!showinactivebutton">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+              <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-regular font-18 font-semibold" (click)="back()">Cancel</button>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+              <button type="button" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updateHolidayCal(holidayCalendarNgModelBinding.holidayCalId, holidayCalendarNgModelBinding.statusName)">Update</button>
+              <button id="update" type="button" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updateHolidayCalwithStatus(holidayCalendarNgModelBinding.holidayCalId, holidayCalendarNgModelBinding.statusName)">Reactivate</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal fade delete-popup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal
+      #pagebackModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog ">
+        <div class="modal-content  del-modal">
+          <div class="modal-header text-center">
+            <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+            <img src="../../assets/image/Confirm_Delete.svg" />
+          </div>
+          <div class="modal-body">
+
+              <div class="col-md-12 product_img text-center font-14 font-regular">
+                {{errorMessageForHoliday}}
+              </div>
+          </div>
+         <div class="del-btn-group modal-window-footer btn-shodow">
+            <div class="del-pop-btn col-lg-12 col-md-12 col-sm-12 pad0"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="pagebackModal.hide()">Cancel</button></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!--Confirm Update -->
+<div class="modal fade delete-popup" (onHidden)="onHiddenpopup()" *ngIf="isStatusChangePopupModal" [style.display]="isStatusChangePopupModal ? 'block' : 'none'" class="modal fade delete-popup" 
+bsModal #statusChangePopupModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                    <img src="../../assets/image/Confirm_Delete.svg" />               
+                                                </div>
+                                                               
+                                                                <div class="modal-body">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular" >
+                                                                                                     {{statusMsg}}
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="conf_update(false)">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_update(true)">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div> 
+
+        
+
+        			<div *ngIf="errormodal" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHiddenpopup()" class="modal fade something_wrong"  bsModal #invalidCount="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+                <div class="modal-header">   
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>{{invalidCountMsg}}</div>
+				        </div> 
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>

@@ -1,0 +1,54 @@
+.loader-hidden {
+    visibility: hidden;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+#loaders{
+    animation: spin 2s linear infinite;
+}
+.my-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 500000;
+}
+    
+.my-loading .dimmer {
+    /*position: absolute;
+    top: 0;
+    left: 0;*/
+    background-color:lightgrey;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+}
+
+/*.my-loading .loading-bg {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 15px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    z-index: 500000;
+}
+    */
+    
+    .loading-bg{
+    position: absolute;    
+    top: 40%;
+    left:43%;
+    text-align: center;
+    z-index: 500000;  
+    }
+ 

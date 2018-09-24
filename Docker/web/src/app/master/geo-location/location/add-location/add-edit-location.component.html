@@ -1,0 +1,207 @@
+<!--  <app-header></app-header>-->
+<div class="container-fluid">
+  <!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+  <div class="row row-background" [ngClass]="{'white-bg': pkLocId}">
+    <app-nav-bar *ngIf="!pkLocId"></app-nav-bar>
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0 single-block">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view" [ngClass]="{'white-bg': pkLocId}">
+        <h4 class="padb10 padt10  colr-1e2f4d font-18 font-bold head-show" l10nTranslate *ngIf="!pkLocId" l10nTranslate>Add Location Details</h4> <!-- Master.Location.AddFormTitle-->
+        <form class="user-detail font-sm" novalidate autocomplete="off">
+        
+              <h3 class="font-semibold" *ngIf="!pkLocId">Basic Details</h3>
+         <div class="container-fluid-block marb30">
+
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 white-bg">
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Port/Location Code</label><!--Master.Location.FormCode-->
+                  <input #locationCode type="text" class="form-control font-15 font-regular " [ngClass]="{'inValid': reqLocationCode}"  maxlength="20" 
+               (keyup)="locCodeSuggestion($event)" name="locationCode" id="locationCode" [typeahead]="locationCodeList" [(ngModel)]="locationDetail.locCode" placeholder=""> <!--  (focusout)="locationCodeIsUnique()" -->
+                <span *ngIf="reqLocationCode" class="font-12 colr-red">* Port/Location code is required</span>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Port/Location Name</label><!-- Master.Location.FormName-->
+                  <input #locationName type="text" class="form-control font-15 font-regular " [ngClass]="{'inValid': reqLocationName}" 
+                 (keyup)="locNameSuggestion($event)"  maxlength="200" name="locationName" id="locationName" [typeahead]="locationNameList" [(ngModel)]="locationDetail.locName" placeholder=""> <!--(focusout)="locationNameIsUnique()"  -->
+                   <span *ngIf="reqLocationName" class="font-12 colr-red">* Port/Location name is required</span>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                  <label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Port/Location Full Name</label><!-- Master.Location.FormFullName -->
+                  <input #locationFullName type="text" class="form-control font-15 font-regular " 
+                  (keyup)="locFullNameSuggestion($event)"  maxlength="500" name="locationFullName" id="locationFullName" (focusout)="locationFullNameIsUnique()" [typeahead]="locationFullNameList" [(ngModel)]="locationDetail.locFullName" placeholder="">
+                   <!--<span *ngIf="reqLocationFullName" class="font-12 colr-red">* Port/Location full name is required</span> [ngClass]="{'inValid': reqLocationFullName}"-->
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 clr-both">
+                  <label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Port/Location Country</label> <!-- Master.Location.FormCountry-->
+                  <div class="dropdown">
+                    <select (change)="reqLocationCountry = false" class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [ngClass]="{'inValid': reqLocationCountry}" [(ngModel)]="locationDetail.fkGeoId"
+                      name="locationCountry" id="locationCountry">
+										<option *ngFor="let country of countries" value="{{country.code}}">{{country.value}}</option>                
+                  </select>
+                  <span *ngIf="reqLocationCountry" class="font-12 colr-red">* Please select port/location country</span>
+                  </div>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label for="" class="colr-red font-regular font-14" l10nTranslate>Port/Location Type</label> <!-- Master.Location.FormType -->
+                  <div  class="ngxdropdown"> <!-- dropdown -->
+                    <!--<ngx-dropdown-treeview [config]="multiSelectConfig" [items]="locationType | ngxTreeview:'locationTypeName'" (selectedChange)="locationDetail.locationType = $event"></ngx-dropdown-treeview>-->
+                    <!--<ngx-dropdown-treeview [config]="multiSelectConfig" [items]="locationTypeItems"   (selectedChange)="applyDropDownChange($event)" ></ngx-dropdown-treeview>-->
+                     <!--<kendo-multiselect 
+                      [ngClass]="{'inValid': reqLocationType}"
+                      [data]="locationType" 
+                      [(ngModel)]="locationTypeItems"
+                      [textField]="'value'"
+                      [valueField]="'code'"
+                      name="locationType"
+                      (valueChange)="applyDropDownChange($event)"
+                      ></kendo-multiselect>-->
+                      <select  [ngClass]="{'inValid': reqLocationType}" (change)="reqLocationType = false" 
+                      class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"
+                       [(ngModel)]="locationDetail.fkLocTypeId"
+                      name="locationType" id="locationType">
+										<option *ngFor="let lt of locationType" value="{{lt.code}}">{{lt.value}}</option></select>
+                    <span *ngIf="reqLocationType" class="font-12 colr-red">* Please select port/location type</span>
+                  </div>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label for="" class="colr-lblue font-regular font-14" l10nTranslate>Terminal Handling Charges (THC)</label> <!-- Master.Location.FormType -->
+                  <input type="text" #thc  (focusout)="checkNumeric()" [ngClass]="{'inValid': reqThc}" class="form-control font-15 font-regular" name="thc" id="thc" [(ngModel)]="locationDetail.rate" placeholder="">
+                </div>
+              </div>
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 white-bg">
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label for="" class="colr-lblue font-regular font-14" l10nTranslate>Currency</label> <!-- Master.Location.FormType -->
+                  <div  class="dropdown">
+                    <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" 
+                   [(ngModel)]="locationDetail.fkCurrencyId"  name="fkCurrencyId" id="fkCurrencyId">
+										<option *ngFor="let currency of currencyList" value="{{currency.pkCurrencyId}}">{{currency.currencyCode}}</option>                
+                  </select>
+                  </div>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label for="" class="colr-lblue font-regular font-14" l10nTranslate>Rate Basis</label> <!-- Master.Location.FormType -->
+                  <div  class="dropdown">
+                    <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" 
+                   [(ngModel)]="locationDetail.fkRateBasisRefId"  name="fkRateBasisRefId" id="fkRateBasisRefId">
+										<option *ngFor="let rateBasis of rateBasisList" value="{{rateBasis.code}}">{{rateBasis.value}}</option>                
+                  </select>
+                  </div>
+                </div> 
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="locationDetail.fkRateBasisRefId == rateBasis.uom">
+                  <label for="" class="colr-lblue font-regular font-14" l10nTranslate>UOM</label> <!-- Master.Location.FormType -->
+                  <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" 
+                   [(ngModel)]="locationDetail.rateBasisUomId"  name="rateBasisUom" id="rateBasisUom">
+                   <option *ngFor="let defaultUnitUom of rateBasisUomList" value="{{defaultUnitUom.uomId}}">{{defaultUnitUom.uomName}}</option>                
+										<!--<option *ngFor="let rateBasisUom of rateBasisUomList" value="{{rateBasisUom.uomId}}">{{rateBasisUom.uomName}}</option> -->               
+                  </select>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngIf="locationDetail.fkRateBasisRefId == rateBasis.primaryPack">
+                  <label for="" class="colr-lblue font-regular font-14" l10nTranslate>Primary Packaging</label> <!-- Master.Location.FormType -->
+                  <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" 
+                   [(ngModel)]="locationDetail.rateBasisPrimaryPackingId"  name="rateBasisPrimaryPack" id="rateBasisPrimaryPack">
+                   <option *ngFor="let defaultUnitPrimaryPack of rateBasisPrimaryPackList" value="{{defaultUnitPrimaryPack.internalPackingTypeId}}">{{defaultUnitPrimaryPack.internalPackingTypeName}}</option>                
+										<!--<option *ngFor="let rateBasisPrimaryPack of rateBasisPrimaryPackList" value="{{rateBasisPrimaryPack.code}}">{{rateBasisPrimaryPack.value}}</option> -->
+                  </select>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12"  *ngIf="locationDetail.fkRateBasisRefId == rateBasis.secondaryPack">
+                  <label for="" class="colr-lblue font-regular font-14" l10nTranslate>Secondary Packaging</label> <!-- Master.Location.FormType -->
+                  <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" 
+                   [(ngModel)]="locationDetail.rateBasisSecondaryPackingId"  name="rateBasisSecondaryPackingId" id="rateBasisSecondaryPackingId">
+                   <option *ngFor="let defaultUnitSecondatryPack of rateBasisSecondaryPackList" value="{{defaultUnitSecondatryPack.pkSecondaryPackingTypeId}}">{{defaultUnitSecondatryPack.secondaryPackingTypeName}}</option>                
+										<!--<option *ngFor="let rateBasisSecondatryPack of rateBasisSecondaryPackList" value="{{rateBasisSecondatryPack.code}}">{{rateBasisSecondatryPack.value}}</option>  -->              
+                  </select>
+                </div>
+              </div>
+            </div>
+
+       
+           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="!pkLocId" >
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+              <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onReset()" l10nTranslate>Reset</button> <!-- Master.Location.Reset -->
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+              <!--<button type="button" id="save_party_master" class="save_party_master btn btn-default navbar-btn save-btn edit-form font-semibold font-14" (click)="confirmMessageTest()" l10nTranslate>test</button>-->
+              <button type="button" [disabled]="disableSaveBtn" id="save_location_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="savOrSubmitLocationDetails(status.Draft,'SAVE')" l10nTranslate>SAVE</button> <!-- Master.Location.Save-->
+              <button type="button" [disabled]="disableSubmitBtn" id="submit_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="savOrSubmitLocationDetails(status.Active,'SUBMIT')" l10nTranslate>SUBMIT</button> <!-- Master.Location.Submit -->
+            </div>
+          </div>
+          
+          		
+
+        </form>
+      </div>
+    </div>
+    <div class="modal-window-footer update-modal-btn mod-bottom" *ngIf="pkLocId && locationDetail?.fkStatusId === status.Draft">
+											
+        <button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4" (click)="onCancel()">CANCEL</button>
+        <button type="button" id="save_party_master"  class=" btn btn-default secondary col-lg-4 col-md-4 col-sm-4" (click)="onSubmitBtnClick(status.Draft)">SAVE</button>					
+        <button type="button" id="save_party_master"  class="btn btn-default primary col-lg-4 col-md-4 col-sm-4"  (click)="onSubmitBtnClick(status.Active)" >SUBMIT</button>					
+                    
+    </div>
+    <div class="modal-window-footer update-modal-btn mod-bottom"  *ngIf="pkLocId && locationDetail?.fkStatusId === status.Active" > 
+      <button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4"  (click)="onCancel()">CANCEL</button>
+      <button type="button" id="save_party_master-s"  class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4" (click)="onSubmitBtnClick(status.Active)">UPDATE</button>																									  
+      <button type="button" id="save_party_master-sd"  class="btn btn-default primary col-lg-4 col-md-4 col-sm-4"  (click)="onSubmitBtnClick(status.Inactive)">DEACTIVATE</button>					
+                    
+    </div>
+    <div class="modal-window-footer update-modal-btn mod-bottom" *ngIf="pkLocId && locationDetail?.fkStatusId === status.Inactive" >
+      
+        <button type="button" class="btn btn-default bw-cancel col-lg-4 col-md-4 col-sm-4"  (click)="onCancel()" >CANCEL</button>
+        <button type="button" id="save_party_master"  class="btn btn-default secondary col-lg-4 col-md-4 col-sm-4" (click)="onSubmitBtnClick(status.Inactive)">UPDATE</button>					
+        <button type="button" id="save_party_master-sr"  class="btn btn-default primary col-lg-4 col-md-4 col-sm-4"  (click)="onSubmitBtnClick(status.Active)">REACTIVATE</button>					
+                    
+    </div>
+  </div>
+</div>
+<app-message [(msgs)]="locationService.vmessages" ></app-message>
+
+<!--<app-message [(msgs)]="messages" life="1000" id="success-message" (onClose)="goToViewPage($event)"></app-message>
+<app-message [(msgs)]="validationMessages" life="3000"  id="validation"></app-message>-->
+<!--<app-confirm-box [config]="confirmBoxConfigure" (doConfirm)="resetConfirm($event)" (doCancel)="resetCancel($event)"> </app-confirm-box>-->
+<!--<app-confirm-box [config]="confirmBoxConfigure" (doConfirm)="confirmCancelation($event)" (doCancel)="closeConfirmBox($event)"> </app-confirm-box>-->
+
+
+<!--
+<div  *ngIf="isReset" [config]="{backdrop:'static',show: true }"
+ (onHidden)="onHiddenReset()" bsModal  #resetModal="bs-modal"
+  class="modal fade confirm-box delete-popup" 
+  tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content  del-modal"> 
+              <div class="modal-header text-center">  
+                   <img src="../../assets/image/Confirm_Delete.svg" />              
+              </div>
+              <div class="modal-body">                              
+                      <div class="col-md-12 product_img text-center font-14 font-regular">
+                          Do you really want to reset?
+                      </div>   
+              </div>
+              <div class="del-btn-group modal-window-footer btn-shodow">
+                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="resetCancel()">Cancel</button></div>
+                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="resetConfirm()">Confirm</button></div>
+              </div>
+          </div>
+      </div>
+</div>-->
+
+<!-- 
+<div  *ngIf="isEditCancel" [config]="{backdrop:false,show: true }"
+ (onHidden)="onHiddenCancel()" bsModal  #cancelModal="bs-modal"
+  class="modal fade confirm-box delete-popup" 
+  tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content  del-modal"> 
+              <div class="modal-header text-center"> 
+                   <img src="../../assets/image/Confirm_Delete.svg" />               
+              </div>
+              <div class="modal-body">                              
+                      <div class="col-md-12 product_img text-center font-14 font-regular">
+                          Do you really want to cancel?
+                      </div>  
+              </div>
+              <div class="del-btn-group modal-window-footer btn-shodow">
+                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closeConfirmBox()">Cancel</button></div>
+                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="confirmCancelation()">Confirm</button></div>
+              </div>
+          </div>
+      </div>
+</div> -->

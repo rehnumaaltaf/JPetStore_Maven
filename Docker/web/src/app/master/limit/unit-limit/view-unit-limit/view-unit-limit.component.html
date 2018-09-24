@@ -1,0 +1,118 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">Unit Limit</h4>			 			
+				<form  class="user-detail font-sm">
+					<accordion>
+						 <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                          Basic Details
+                  <i class="pull-right float-xs-right glyphicon"
+                  [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                 
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Internal Party Name</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+                        <span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Nestle</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Product</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+                        <span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Coffee</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Limit Alert Level</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+                        <span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">Hard</span>
+                      </div>
+                    </div>
+                  </div>
+							  </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                  
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Unit of Measurement</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+                        <span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">MT</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Currency</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+                        <span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">FR</span>
+                      </div>
+                    </div>
+                  </div>
+							  </div>
+						 </accordion-group>
+              <accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                         UNIT LIMIT
+                  <i class="pull-right float-xs-right glyphicon"
+                  [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666">										
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb">Unit Name</label>
+                    <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb">Outright Limit</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb">Basis Limit</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb">Structure Limit</label>  
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15">
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val"> Olam Brazil </label>
+                    <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val"> 10</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val"> 50</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val">20</label>
+										
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 mart10">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666  mart10">
+                    <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb">Fixed Forward Tendor</label>									
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb">Var Limit</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb">M2M Limit</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb">Valid From </label>
+                    										
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15">
+                    <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val">30</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val"> 10</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val"> 20</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val">05/07/2017</label>                    
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 mart10">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666  mart10">
+                    <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb">Valid To</label>
+										<label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 brdb">Temporary/Permanent</label>									
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15">
+                    <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val">10/07/2017</label>
+									   <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-3 col-xs-12 label-val">Temporary</label>											
+									</div>
+								</div>
+              </accordion-group>
+					</accordion>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

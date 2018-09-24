@@ -1,0 +1,44 @@
+{
+	"Master": {
+		"CnfLocale": {
+			"Title": "CnF COST MATRIX List",
+			"Location": "Location",
+			"UOM": "UOM",
+			"FreightRate": "Freight Rate",
+			"Currency": "Currency",
+			"ValidityFrom": "Validity From",
+			"ValidityTo": "Validity To",
+			"ContractReferenceNumber": "Contract Reference Number",
+			"Remarks": "Remarks",
+			"Satus": "Status",
+			"Reset": "RESET",
+			"Save": "SAVE",
+			"Submit": "SAVE & SUBMIT",
+			"AddTitle": "ADD CnF COST MATRIX"
+		},
+		"WareHouseLocale":{
+			"AddTitle": "Warehouse Cost Matrix Basic",
+			"AddSubTitle": "Warehouse Cost",
+			"legalEntity": "Legal Entity",
+			"Product": "Product",
+			"GDCostLevel": "Group or Detailed Cost Level",
+			"Warehouse": "Warehouse",
+			"WhLocation": "Warehouse Location",
+			"RefNumber": "Contract Reference Number",
+			"FromDate": "Valid From Date",
+			"ToDate": "Valid To Date",
+			"Remarks": "Remarks",
+			"PeriodType": "Free Period Type",
+			"FreeDays": "Number of free days",
+			"CostName": "Cost Name",
+			"RateBasis": "Rate Basis",
+			"RateUom": "Rate UOM",
+			"PrimaryPack": "Rate Primary Packaging",
+			"SecondaryPack": "Rate Secondary Packaging",
+			"RateCurrency": "Rate Currency",
+			"Rate": "Rate",
+			"TimeBasis": "Time Basis"
+		}
+		
+	}
+}

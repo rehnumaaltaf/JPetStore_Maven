@@ -1,0 +1,257 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view single-block">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold head-show" l10nTranslate>Master.Geo.Title</h4>
+				<form class="user-detail font-sm">
+					
+							<h3 class="font-semibold">Basic Details</h3>
+							<div class="container-fluid-block marb30">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padt15">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Geo.geoCode</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{geodetails.geoCode}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Geo.geoName</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{geodetails.geoName}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Geo.geoDescription</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{geodetails.geoDescription}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Geo.geoType</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{geodetails.geoTypeName}}</span>
+												</div>
+										</div>
+									</div>
+									<div *ngIf="marketdesk" >
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Geo.marketingDesk</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{geodetails.marketDeskName}}</span>
+											</div>
+										</div>
+									</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Geo.parentGeoCode</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{geodetails.geoParentCode}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.Geo.parentGeoName</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+												<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+												<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{geodetails.geoParentName}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+				
+							</div>
+		<!--depending on status -->
+		  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer e-draft " *ngIf="draft" >
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)= "backtoPrev()" l10nTranslate>Master.Geo.Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<a href="javascript:void(0)" [routerLink]="['edit',geodetails.pkGeoId]" ><button type="button" id="e-draft"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" l10nTranslate>Master.Geo.Edit</button></a>					
+							<button type="button" id="update1"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="conf_status_change('Active')"l10nTranslate>Master.Geo.Submit</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="geo_delete(geodetails.pkGeoId,geodetails.geoName,geodetails.statusName)" l10nTranslate>Master.Geo.Delete</button>					
+						</div>							
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)= "backtoPrev()" l10nTranslate>Master.Geo.Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<a href="javascript:void(0)" [routerLink]="['edit',geodetails.pkGeoId]" ><button type="button" id="update15"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" l10nTranslate>Master.Geo.Edit</button></a>
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="conf_status_change('InActive')" l10nTranslate>Master.Geo.Deactivate</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"  *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)= "backtoPrev()" l10nTranslate>Master.Geo.Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+						 <a href="javascript:void(0)" [routerLink]="['edit',geodetails.pkGeoId]" ><button type="button" id="update15"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" l10nTranslate>Master.Geo.Edit</button></a>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="conf_status_change('Active')" l10nTranslate>Master.Geo.Reactivate</button>					
+						</div>							
+					</div>
+		</form>
+
+						<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModalDELTE="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog " style="height:440px !important; color:white !important;">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header">
+                                                                </div>
+                                                                <div class="col-md-12 product_img text-center" style="padding-top:15px;">
+                                                                                <img src="../../assets/image/Confirm_Delete.svg" />
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                                <div class="row">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center">
+                                                                                                     Are you sure you want to Delete the Geography {{geoCode}} in {{status}} status
+                                                                                                </div>
+                                                                                                <div class="col-md-12 product_img text-center"></div>
+                                                                                                
+                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group">
+                                                                                <div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" type="button" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" type="button" (click)="conf_delete($event)">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+								
+<!--Delete Success Modal-->
+<div *ngIf="deleteSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                                <div class="modal-content">
+                                                                <div class="modal-header">        
+                                                                              <div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>Success : {{statusMsg}} Geo</div>
+                                                                              
+                                                                </div>       
+                                                </div>
+                                </div>
+                </div>
+</div>
+<!-- Delete Success Modal - End -->
+<!-- Success Updated Modal -->
+<div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'"   (onHidden) = "onHiddenshowmodel()" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">        
+                    <div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>Success :  </div>
+                </div>       
+            </div>
+        </div>
+    </div>
+	
+    </div>
+<!-- Success Modal - End -->
+<!-- Permission Group Cannot be delted Pop up-->
+<div class="modal fade delete-popup" *ngIf="isCannotDeletePopup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog " style="height:440px !important; color:white !important;">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header">
+                                                                               <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                                </div>
+                                                                <div class="col-md-12 product_img text-center" style="padding-top:15px;">
+                                                                                <img src="../../assets/image/Confirm_Delete.svg" />
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                                <div class="row">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center">
+                                                                                                     {{errorMessage}}
+                                                                                                </div>
+                                                                                                <div class="col-md-12 product_img text-center"></div>
+                                                                                                
+                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group">
+                                                                                <div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="closedeletepopup()">Ok</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+<!--Confirm Update -->
+<div class="modal fade delete-popup" *ngIf="status_change" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #statusChange="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal-dialog " style="height:440px !important; color:white !important;">
+<div class="modal-content  del-modal">
+<div class="modal-header">
+						<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+		</div>
+		<div class="col-md-12 product_img text-center" style="padding-top:15px;">
+						<img src="../../assets/image/Confirm_Delete.svg" />
+		</div>
+		<div class="modal-body">
+						<div class="row">
+										
+							<div class="col-md-12 product_img text-center" >
+									Are you sure you want to submit the Geography {{geoCode}} in {{status}} status ?
+							</div>
+							<div class="col-md-12 product_img text-center"></div>
+										
+						</div>
+		</div>
+		<div class="del-btn-group">
+						<div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="closedeletepopup()">Cancel</button></div>
+						<div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="conf_status_change()">Confirm</button></div>
+		</div>
+</div>
+</div>
+</div>
+<!---->
+ <!--Duplicate UOM code Pop up-->
+<div class="modal fade delete-popup" *ngIf="isCannotDeletePopup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog " style="height:440px !important; color:white !important;">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header">
+                                                                               <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                                </div>
+                                                                <div class="col-md-12 product_img text-center" style="padding-top:15px;">
+                                                                                <img src="../../assets/image/Confirm_Delete.svg" />
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                                <div class="row">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center">
+                                                                                                     {{errorMessage}}
+                                                                                                </div>
+                                                                                                <div class="col-md-12 product_img text-center"></div>
+                                                                                                
+                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group">
+                                                                                <div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="close()">Cancel</button></div>
+                                                                                <div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="close()">Ok</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+	</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,108 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 *ngIf="!isEditPage" class="padb10 padt10 colr-1e2f4d font-18 font-bold">Add Matrix Matrix</h4>
+				<h4 *ngIf="isEditPage" class="padb10 padt10 colr-1e2f4d font-18 font-bold">Edit Matrix Matrix</h4>
+				<form class="user-detail font-sm" [formGroup]="costMatrixForm">
+					<accordion>
+						<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold">
+								Basic Details
+								<i class="pull-right float-xs-right glyphicon" ></i>
+							</div>
+							{{costMatrixService.costMatrixModel | json}}
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Matrix Code</label>
+									<input type="text" maxlength="20" class="form-control font-15 font-regular " id="rolename" value="" [ngClass]="{'valred': costMatrixService.reqMatrixCode==true,'': costMatrixService.reqMatrixCode==false}" placeholder="" formControlName="matrixCode"
+									 name="matrixCode">
+									 <span *ngIf="costMatrixService.reqMatrixCode" class="font-12 colr-red">* Matrix Code is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Matrix Name</label>
+									<input type="text" maxlength="200" class="form-control font-15 font-regular " id="roledecr" value="" [ngClass]="{'valred': costMatrixService.reqMatrixName==true,'': costMatrixService.reqMatrixName==false}" placeholder="" formControlName="matrixName"
+									 name="matrixName">
+									 <span *ngIf="costMatrixService.reqMatrixName" class="font-12 colr-red">* Matrix Name is required</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Matrix Description</label>
+									<input type="text" maxlength="500" class="form-control font-15 font-regular " id="rolename" value="" placeholder="" formControlName="matrixDesc"
+									 name="matrixDesc">
+								</div>	
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Cost Group</label>
+									<div class="dropdown">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [ngClass]="{'valred': costMatrixService.reqMatrixType==true}" formControlName="matrixTypeId" type="button"
+										 data-toggle="dropdown" name="matrixTypeId">
+										    <option [ngValue]="undefined" selected>Select</option>
+											<option *ngFor="let costGroup of costMatrixService.costGroupList" value="{{costGroup.value}}">{{costGroup.label}}</option>
+										</select>
+										<span *ngIf="costMatrixService.reqMatrixType" class="font-12 colr-red">* Please select Cost Group</span>
+									</div>
+								</div>
+
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14">Cost Name</label>
+									<div class="dropdown">
+										<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [ngClass]="{'valred': costMatrixService.reqFkCostId==true}" formControlName="fkCostId" type="button"
+										 data-toggle="dropdown" name="fkCostId">
+										    <option [ngValue]="undefined" selected>Select</option>
+											<option *ngFor="let costNames of costMatrixService.costNameList" value="{{costNames.pkCostId}}">{{costNames.costName}}</option>
+										</select>
+										<span *ngIf="costMatrixService.reqFkCostId" class="font-12 colr-red">* Please select Cost Name</span>
+									</div>
+								</div>					
+							</div>
+						</accordion-group>
+						
+						<!--<app-add-warehouse *ngIf="costMatrixForm.value.matrixTypeId == selectMatrix.Warehouse"></app-add-warehouse>-->
+						<app-view-warehouse-mapping *ngIf="costMatrixForm.value.matrixTypeId == selectMatrix.Warehouse" [wareHouseData]=costMatrixService.whDataList [wareHouseLength]=wareHouseLength [addEditId]=addEditCostMatrixId></app-view-warehouse-mapping>
+                        <app-view-freight-mapping *ngIf="costMatrixForm.value.matrixTypeId == selectMatrix.Freight" [freightData]=costMatrixService.freightlist [freightDataLength]=freightDataLength [addEditId]=addEditCostMatrixId></app-view-freight-mapping>
+						<app-view-cnf-mapping *ngIf="costMatrixForm.value.matrixTypeId == selectMatrix.Clearing_Forwarding"  [cnfMatrixData]=costMatrixService.cnfMatrixList [cnfMatrixLength]=cnfMatrixLength [addEditId]=addEditCostMatrixId ></app-view-cnf-mapping>
+						
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf=!isEditPage>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onReset()" l10nTranslate >Reset</button>
+						</div>
+						<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="save()" l10nTranslate >Save</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="submit()" l10nTranslate >Submit</button>					
+						</div>							
+						</div>						
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && draft">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()" l10nTranslate >Cancel</button>
+							</div>
+							<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="save()" l10nTranslate >Save</button>					
+								<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="submit()" l10nTranslate >Submit</button>					
+							</div>							
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && active">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()" l10nTranslate >Cancel</button>
+							</div>
+							<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updateMatrix()" l10nTranslate >Update</button>					
+								<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="openConfirmAction()" l10nTranslate >Deactivate</button>					
+							</div>							
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && inactive">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()" l10nTranslate >Cancel</button>
+							</div>
+							<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updateMatrix()" l10nTranslate >Update</button>					
+								<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="openConfirmAction()" l10nTranslate >Reactivate</button>					
+							</div>							
+						</div>
+					</accordion>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

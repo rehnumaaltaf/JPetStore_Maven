@@ -1,0 +1,398 @@
+<div class="container-fluid">
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" >{{title}}</h4>
+				<form class="user-detail font-sm" [formGroup]="incotermForm" method="post">
+					<accordion>
+						<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold" l10nTranslate>
+								Master.IncoTermLocale.Basic
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                                <input type='hidden'  formControlName="contractTermsId"  >
+
+								<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.IncoTermLocale.Code</label>
+									<input type="text" formControlName='contractTermsCode' class="form-control font-15 font-regular " id="rolename" value="" placeholder=""  maxlength="20" (keydown.space)= "$event.preventDefault()"
+									 [style.border-color]="incotermForm.controls.contractTermsCode.invalid && isSubmitted ? invalidColor : validColor">
+									<span  *ngIf="incotermForm.controls.contractTermsCode.hasError('required') && isSubmitted"  class="colr-red font-regular font-14" >Incoterm Code {{requiedMesssage}}</span>
+									<span  *ngIf="incotermForm.controls.contractTermsCode.hasError('pattern')"  class="colr-red font-regular font-14" >Special Character not allowed</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.IncoTermLocale.Name</label>
+									<input type="text" formControlName="contractTermsName" class="form-control font-15 font-regular " id="rolename" value="" placeholder=""  maxlength="200" [style.border-color]="incotermForm.controls.contractTermsName.invalid && isSubmitted ? invalidColor : validColor">
+									<span  *ngIf="incotermForm.controls.contractTermsName.hasError('required') && isSubmitted"  class="colr-red font-regular font-14" >IncoTerm Name {{requiedMesssage}}</span>
+									<span  *ngIf="incotermForm.controls.contractTermsName.hasError('pattern')"  class="colr-red font-regular font-14" >Special Character not allowed</span>
+									
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.IncoTermLocale.Description</label>
+									<input type="text" formControlName="contractTermsDesc" class="form-control font-15 font-regular " id="roledecr" value="" placeholder=""  maxlength="500" [style.border-color]="incotermForm.controls.contractTermsDesc.invalid && isSubmitted ? invalidColor : validColor">
+								</div>
+							</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.IncoTermLocale.Products</label>
+									<!--<div class="dropdown ">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+													<span class="caret"></span></button>
+										<ul class="dropdown-menu ">
+											<li><a href="#">Arabica</a></li>
+											<li><a href="#">Robusta</a></li>
+										</ul>
+									</div>-->
+									<div class="dropdown ngxdropdown">
+										<ngx-dropdown-treeview-select [config]="config" [items]="items" [(value)] = "treeViewValue" (selectedChange)="selectedItem = $event" ></ngx-dropdown-treeview-select>
+
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.IncoTermLocale.BaseTerm</label>
+									<div class="dropdown">
+                                    <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [style.border-color]="incotermForm.controls.contractTermsBaseRefId.invalid && isSubmitted ? invalidColor : validColor"
+                                                                formControlName="contractTermsBaseRefId" name="costId" 
+                                                                > 
+												<option value="" selected>{{select}}</option>
+												<option *ngFor="let option of BaseRefDropdown" value="{{option.contractTermsBaseRefId}}">{{option.contractTermsBaseName}}</option>
+                                            </select>
+                                            <!--<span *ngIf= 'colors[i] === "#d43c3c"'  class="colr-red font-regular font-14">Finished Grade Code {{requiedMesssage}}</span>-->
+									<span  *ngIf="incotermForm.controls.contractTermsBaseRefId.invalid && isSubmitted"  class="colr-red font-regular font-14" >CostName {{requiedMesssage}}</span>
+
+                                            
+                                                        </div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.IncoTermLocale.Basis</label>
+									<div class="dropdown">
+                                    <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [style.border-color]="incotermForm.controls.contractTermsBasisRefId.invalid && isSubmitted ? invalidColor : validColor"
+                                                                formControlName="contractTermsBasisRefId" name="costId" 
+                                                                > 
+												<option value="" selected>{{select}}</option>
+												<option *ngFor="let option of Basis" value="{{option.contractTermsBasisRefId}}">{{option.contractTermsBasisName}}</option>
+                                            </select>
+                                            <!--<span *ngIf= 'colors[i] === "#d43c3c"'  class="colr-red font-regular font-14">Finished Grade Code {{requiedMesssage}}</span>-->
+									<span  *ngIf="incotermForm.controls.contractTermsBasisRefId.invalid && isSubmitted"  class="colr-red font-regular font-14" >CostName {{requiedMesssage}}</span>
+
+                                            
+                                                        </div>
+								</div>
+							</div>
+						</accordion-group>
+<!--2nd accordian-->
+						<accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold" l10nTranslate>
+								Master.IncoTermLocale.Purchase
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div formArrayName="contractTermsPurchaseDto" >
+							<div *ngFor="let contractTermsPurchaseDto of getcontractTermsPurchaseDto(incotermForm); let i=index">
+                                        <!--<span style="display: none">  {{i + 1}}</span>-->
+                                        <div [formGroupName]="i">
+
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 ">
+                                  <input type='hidden'  formControlName='contractTermsPurchaseId'  >
+
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" [ngClass] =  "getSomeClass('purchase', i)" l10nTranslate>Master.IncoTermLocale.CostGroupName</label>
+									<div class="dropdown">
+                                    <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" (change) = "changeColor('purchase', i, $event.target.value)"
+									 [style.border-color]="incotermForm.controls.contractTermsPurchaseDto.controls[i].controls.costGroupId.invalid && isSubmitted && !conditionalPurchase[i] ? invalidColor : validColor"
+                                        formControlName="costGroupId" name="costGroupId" 
+                                                                > 
+												<option value ="" selected>{{select}}</option>
+												<option *ngFor="let option of costGroup" value="{{option.costGroupId}}">{{option.costGroupName}}</option>
+                                            </select>
+                                            <!--<span *ngIf= 'colors[i] === "#d43c3c"'  class="colr-red font-regular font-14">Finished Grade Code {{requiedMesssage}}</span>-->
+									<span  *ngIf="incotermForm.controls.contractTermsPurchaseDto.controls[i].controls.costGroupId.invalid && isSubmitted && !conditionalPurchase[i]"  class="colr-red font-regular font-14" >CostGroupName {{requiedMesssage}}</span>
+											
+
+                                            
+                                                        </div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" [ngClass] =  "getSomeClass('purchase', i)" l10nTranslate>Master.IncoTermLocale.CostName</label>
+									<div class="dropdown">
+                                    <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" (change) = "changeColor('purchase', i, $event.target.value)"
+									[style.border-color]="incotermForm.controls.contractTermsPurchaseDto.controls[i].controls.costId.invalid && isSubmitted && !conditionalPurchase[i] ? invalidColor : validColor"
+                                                                formControlName="costId" name="costId" 
+                                                                > 
+												<option value ="" selected>{{select}}</option>
+												<option *ngFor="let option of cost" value="{{option.pkCostId}}">{{option.costName}}</option>
+                                            </select>
+                                            <!--<span *ngIf= 'colors[i] === "#d43c3c"'  class="colr-red font-regular font-14">Finished Grade Code {{requiedMesssage}}</span>-->
+									<span  *ngIf="incotermForm.controls.contractTermsPurchaseDto.controls[i].controls.costId.invalid && isSubmitted && !conditionalPurchase[i]"  class="colr-red font-regular font-14" >CostName {{requiedMesssage}}</span>
+
+                                            
+                                                        </div>
+								</div>
+						
+<!--radio button						-->
+								<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 pad0">
+									<div class="ovr-flw mart25">
+										<span class="pull-left padr20 padl15 colr-lblue font-regular font-14"l10nTranslate>Master.IncoTermLocale.Budget</span>
+										<span class="radio pricing-details">
+											<input type="radio"  [id]="i" formControlName="budgetInd" value="Y">
+											<label [for]="i" class="font-regular font-14"  l10nTranslate>Master.IncoTermLocale.Yes</label>
+										</span>
+										<span class="radio pricing-details">
+											<input type="radio"  [id]="i +400" formControlName="budgetInd" value="N" checked="checked">
+											<label [for]="i +400" class="font-regular font-14"  l10nTranslate>Master.IncoTermLocale.No</label>
+										</span>								
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" [ngClass] =  "getSomeClass('purchase', i)" l10nTranslate>Master.IncoTermLocale.AddReduce</label>
+									<div class="dropdown">
+                                    <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" (change) = "changeColor('purchase', i, $event.target.value)"
+									[style.border-color]="incotermForm.controls.contractTermsPurchaseDto.controls[i].controls.contrTrmsAddreduceRefId.invalid &&  isSubmitted && !conditionalPurchase[i] ? invalidColor : validColor"
+                                                                formControlName="contrTrmsAddreduceRefId" name="contrTrmsAddreduceRefId" 
+                                                                > 
+												<option value="" selected>{{select}}</option>
+												<option *ngFor="let option of addReduce" value="{{option.contrTrmsAddreduceRefId}}">{{option.addReduceName}}</option>
+                                            </select>
+                                            <!--<span *ngIf= 'colors[i] === "#d43c3c"'  class="colr-red font-regular font-14">Finished Grade Code {{requiedMesssage}}</span>-->
+									<span  *ngIf="incotermForm.controls.contractTermsPurchaseDto.controls[i].controls.contrTrmsAddreduceRefId.invalid && isSubmitted && !conditionalPurchase[i]"  class="colr-red font-regular font-14" >AddReduce {{requiedMesssage}}</span>
+
+                                            
+                                                        </div>
+								</div>
+
+								 <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 pad0 accessories-block external_blck" style="float:right;">
+                                                        <span class="pull-right" *ngIf = "showCrossPurchase[i]"><i class="delete-icn-md" (click)="removeIncoterm('purchase', i)" >&nbsp; </i></span>
+                                                        <span class="pull-right" *ngIf = "showPlusPurchase[i]">  <i class="plus-icn-md" (click)="addIncoterm(1)" > &nbsp; </i></span>
+											
+                                                    </div>
+							</div>
+							</div>
+							</div>
+							<hr/>
+							</div>
+							
+						</accordion-group>
+
+<!--3rd accrodinan-->
+						<accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading class="font-semibold" l10nTranslate>
+								Master.IncoTermLocale.Sales
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div formArrayName="contractTermsSalesDto">
+							<div *ngFor="let contractTermsSalesDto of getcontractTermsSalesDto(incotermForm); let i=index">
+                                        <!--<span style="display: none">  {{i + 1}}</span>-->
+                                        <div [formGroupName]="i">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+
+								<input type='hidden'  formControlName='contractTermsSalesId'  >
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" [ngClass] =  "getSomeClass('sale', i)" l10nTranslate>Master.IncoTermLocale.CostGroupName</label>
+									<div class="dropdown">
+                                    <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" (change) = "changeColor('sale', i, $event.target.value)"
+									[style.border-color]="incotermForm.controls.contractTermsSalesDto.controls[i].controls.costGroupId.invalid && isSubmitted && !conditionalSale[i] ? invalidColor : validColor"
+                                                                formControlName="costGroupId" name="costGroupId" 
+                                                                > 
+												<option value="" selected>{{select}}</option>
+												<option *ngFor="let option of costGroup" value="{{option.costGroupId}}">{{option.costGroupName}}</option>
+                                            </select>
+                                            <!--<span *ngIf= 'colors[i] === "#d43c3c"'  class="colr-red font-regular font-14">Finished Grade Code {{requiedMesssage}}</span>-->
+									<span  *ngIf="incotermForm.controls.contractTermsSalesDto.controls[i].controls.costGroupId.invalid && isSubmitted  && !conditionalSale[i]"  class="colr-red font-regular font-14" >CostGroupName {{requiedMesssage}}</span>
+
+                                            
+                                                        </div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" [ngClass] =  "getSomeClass('sale', i)" l10nTranslate>Master.IncoTermLocale.CostName</label>
+									<div class="dropdown">
+                                    <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" (change) = "changeColor('sale', i, $event.target.value)"
+									[style.border-color]="incotermForm.controls.contractTermsSalesDto.controls[i].controls.costId.invalid && isSubmitted  && !conditionalSale[i] ? invalidColor : validColor"
+                                                                formControlName="costId" name="costId" 
+                                                                > 
+												<option value="" selected>{{select}}</option>
+												<option *ngFor="let option of cost" value="{{option.pkCostId}}">{{option.costName}}</option>
+                                            </select>
+                                            <!--<span *ngIf= 'colors[i] === "#d43c3c"'  class="colr-red font-regular font-14">Finished Grade Code {{requiedMesssage}}</span>-->
+									<span  *ngIf="incotermForm.controls.contractTermsSalesDto.controls[i].controls.costId.invalid && isSubmitted  && !conditionalSale[i] "  class="colr-red font-regular font-14" >CostName {{requiedMesssage}}</span>
+												
+                                            
+                                                        </div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 pad0">
+									<div class="ovr-flw mart25">
+										<span class="pull-left padr20 padl15 colr-lblue font-regular font-14" l10nTranslate>Master.IncoTermLocale.Budget</span>
+										<span class="radio pricing-details">
+											<input type="radio"  [id]="i+ 700" formControlName="budgetInd" value="Y" >
+											<label [for]="i+ 700" class="font-regular font-14" l10nTranslate>Master.IncoTermLocale.Yes</label>
+										</span>
+										<span class="radio pricing-details">
+											<input type="radio"  [id]="i + 500" formControlName="budgetInd" value="N" checked="checked">
+											<label [for]="i + 500" class="font-regular font-14" l10nTranslate>Master.IncoTermLocale.No</label>
+										</span>								
+									</div>
+								</div>
+							</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" [ngClass] =  "getSomeClass('sale', i)" l10nTranslate>Master.IncoTermLocale.AddReduce</label>
+									<div class="dropdown">
+                                    <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" (change) = "changeColor('sale', i, $event.target.value)"
+									[style.border-color]="incotermForm.controls.contractTermsSalesDto.controls[i].controls.contrTrmsAddreduceRefId.invalid && isSubmitted  && !conditionalSale[i] ? invalidColor : validColor"
+                                                                formControlName="contrTrmsAddreduceRefId" name="contrTrmsAddreduceRefId" 
+                                                                > 
+												<option value="" selected>{{select}}</option>
+												<option *ngFor="let option of addReduce" value="{{option.contrTrmsAddreduceRefId}}">{{option.addReduceName}}</option>
+                                            </select>
+                                            <!--<span *ngIf= 'colors[i] === "#d43c3c"'  class="colr-red font-regular font-14">Finished Grade Code {{requiedMesssage}}</span>-->
+									<span  *ngIf="incotermForm.controls.contractTermsSalesDto.controls[i].controls.contrTrmsAddreduceRefId.invalid && isSubmitted  && !conditionalSale[i]"  class="colr-red font-regular font-14" >AddReduce {{requiedMesssage}}</span>
+
+                                            
+                                                        </div>
+								</div>
+
+
+								 <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 accessories-block external_blck" style="float:right;">
+									  <span class="pull-right"  *ngIf = "showCrossSale[i]"><i class="delete-icn-md" (click)="removeIncoterm('sale', i)" >&nbsp; </i></span>
+										<span class="pull-right"  *ngIf = "showPlusSale[i]">  <i class="plus-icn-md" (click)="addIncoterm(2)" > &nbsp; </i></span>
+                                                       
+                                                    </div>
+							</div>
+							</div>
+							</div>
+							</div>
+							
+							
+						</accordion-group>
+					</accordion>
+<!--3rd accrodinan end-->
+				
+
+<!--form submission Buttions -->
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="!isEditPage">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                        <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="resetForm()">Reset</button>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                        <button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+                            (click)="saveOutTurn('Draft')">Save</button>
+                        <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                            (click)="saveOutTurn('Active')">Submit</button>
+                    </div>
+                </div>
+							<!--edit Buttons -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && draft">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                        <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()">Cancel</button>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                        <button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+                            (click)="updateIncoterm(0, incotermForm.value )">Save</button>
+                        <button type="button" id="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                            (click)="updateIncoterm(4, incotermForm.value )">Submit</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && active">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                        <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()">Cancel</button>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                        <button type="button" id="save_party_master-s" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+                            (click)="updateIncoterm(0, incotermForm.value)">Update</button>
+                        <button type="button" id="save_party_master-sd" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                            (click)="updateIncoterm(3, incotermForm.value)">Deactivate</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && inactive">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                        <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()">Cancel</button>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                        <button type="button" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+                            (click)="updateIncoterm(0, incotermForm.value)">Update</button>
+                        <button type="button" id="save_party_master-sr" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+                            (click)="updateIncoterm(0, incotermForm.value)">Reactivate</button>
+                    </div>
+                </div>
+		</form>
+<!-- for submission end-->
+
+<!--Confirm Update with cancel and confirm Button-->
+<div  *ngIf="updatePopupModal" [config]="{backdrop: 'false',show: true}" (onHidden)="onHiddenReset()"
+ bsModal #statusChangePopupModal="bs-modal"  class="modal fade confirm-box delete-popup" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content  del-modal">
+            <div class="modal-header text-center">
+				<img src="../../assets/image/Confirm_Delete.svg" />
+            </div>          
+            <div class="modal-body">
+                    <div class="col-md-12 product_img text-center font-14 font-regular">
+                        <!--Are you sure you want to {{statusName}} the Product {{outturn.outturnRawGradeDto.prodName}}?-->
+						{{updateConfrimMsg}}
+                    </div>
+            </div>
+            <div class="del-btn-group modal-window-footer btn-shodow">
+                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="statusChangePopupModal.hide()">Cancel</button></div>
+                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_update(true)">Confirm</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---->
+
+<!--Vaildation error message  with cancel button -->
+<div  *ngIf="errorPopupModal" [config]="{backdrop: 'false',show: true}" (onHidden)="onHiddenReset()"
+ bsModal #errorChangePopupModal="bs-modal"  class="modal fade confirm-box delete-popup" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content  del-modal">
+            <div class="modal-header text-center">
+				 <img src="../../assets/image/Confirm_Delete.svg" />
+            </div>
+            <div class="modal-body">
+                    <div class="col-md-12 product_img text-center font-14 font-regular">
+                       {{validationError}}
+                    </div>
+            </div>
+            <div class="del-btn-group modal-window-footer btn-shodow">
+            <div class="del-pop-height"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="errorChangePopupModal.hide()">Cancel</button></div>
+            
+          </div>
+
+        </div>
+    </div>
+</div>
+<!---->
+
+<!-- count purpose -->
+	<div *ngIf="countModal" [style.display]="showModal ? 'block' : 'none'" (onHidden) = "onHiddenReset()" class="modal fade something_wrong"  bsModal #invalidCount="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">   
+                    <div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>{{invalidCountMsg}}</div>
+				</div> 
+        </div>
+    </div>
+</div>
+
+  <!-- count purpose end -->
+
+  <!-- DB error Modal -->
+<div class="modal fade in error-modal" [style.display]="errorModal ? 'block' : 'none'" id="errorModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title"><span><img src="../../../assets/image/Confirm_Delete.svg"/></span>Error : {{incotermService.errorMessage}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- error modal end -->
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,28 @@
+<project>
+
+    <target name="clean">
+        <echo>"showing value for custom Ant custom Properties.."</echo>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes"/>
+        <echo>"showing value for custom Ant custom Properties.."</echo>
+		<echo>${var}</echo>
+		<echo>${var2}</echo>
+    </target>
+
+    <target name="jar">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/HelloWorld.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="oata.HelloWorld"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java jar="build/jar/HelloWorld.jar" fork="true"/>
+    </target>
+
+</project>

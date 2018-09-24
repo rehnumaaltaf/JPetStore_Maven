@@ -1,0 +1,12 @@
+version: "3"
+services:
+ location-service:
+    image: ctrmdev.azurecr.io/location-service:latest
+    deploy:
+      replicas: 1
+      resources:
+        restart_policy:
+          condition: on-failure
+    container_name: location-service
+    ports:
+      - "8102:8102"

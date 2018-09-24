@@ -1,0 +1,294 @@
+<div class="container-fluid">   
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">View Product</h4>			 			
+				<form  class="user-detail font-sm">
+					<accordion>
+						 <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<div accordion-heading  class="font-semibold">
+												Basic Details
+								<i class="pull-right float-xs-right glyphicon"
+								[ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Product Code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.prodCode}}</span></div></div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Product Name</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.prodName}}</span></div></div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Product Full Name</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.prodFullName}}</span></div></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Specialty Applicable?</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.specialityApplicable}}</span></div></div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Base product?</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.isBaseProduct}}</span></div></div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Parent Product Name</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.parentProductName}}</span></div></div>
+                    </div>
+                  </div>
+              </div>
+						 </accordion-group>
+              <accordion-group #group1 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                          Processing Type
+                  <i class="pull-right float-xs-right glyphicon"
+                  [ngClass]="{'acc-down': group1?.isOpen, 'acc-up': !group1?.isOpen}"></i>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Processing Code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.processingCode}}</span></div></div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Processing Name</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.processingName}}</span></div></div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Processing Sub Type</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.processingSubType}}</span></div></div>
+                      </div>
+                    </div>
+                  </div>
+              </accordion-group>
+               <accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                          ICO Index
+                  <i class="pull-right float-xs-right glyphicon"
+                  [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.icoCode}}</span></div></div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666"> Name</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.icoName}}</span></div></div>
+                      </div>
+                    </div>
+                  </div>
+              </accordion-group>
+              <accordion-group #group3 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                          Product & Arbitration Mapping  
+                  <i class="pull-right float-xs-right glyphicon"
+                  [ngClass]="{'acc-down': group3?.isOpen, 'acc-up': !group3?.isOpen}"></i>
+                </div>
+                <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Short Name</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.productArbitrationCollection.arbitrationShortName}}</span></div></div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Full Name</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.productArbitrationCollection.arbitrationFullName}}</span></div></div>
+                      </div>
+                    </div>
+                 </div>-->
+                 <div>
+							
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 brdb" style="border-bottom: 1px solid #ccc;padding-bottom: 8px;
+    margin-bottom: 0px;">Short Name</label></div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 brdb" style="border-bottom: 1px solid #ccc;padding-bottom: 8px;
+    margin-bottom: 0px;">Full Name</label></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngFor="let option1 of productdetails.productArbitrationCollection">
+											<label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option1.arbitrationShortName}}</label>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngFor="let option of productdetails.productArbitrationCollection">
+										<label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option.arbitrationFullName}}</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+              </accordion-group>
+
+                <accordion-group #group33 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                          International Product / Grade Code Mapping
+                  <i class="pull-right float-xs-right glyphicon"
+                  [ngClass]="{'acc-down': group33?.isOpen, 'acc-up': !group33?.isOpen}"></i>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                    <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Code Type</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.arbitrationFullName}}</span></div></div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Code</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.arbitrationFullName}}</span></div></div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Code Description</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.arbitrationFullName}}</span></div></div>
+                      </div>
+                    </div>
+                 </div>-->
+                 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 brdb" style="border-bottom: 1px solid #ccc;padding-bottom: 8px;
+    margin-bottom: 0px;">Code Type</label></div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 brdb" style="border-bottom: 1px solid #ccc;padding-bottom: 8px;
+    margin-bottom: 0px;">Code</label></div>
+									</div>
+								</div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 colr-666666"><label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 brdb" style="border-bottom: 1px solid #ccc;padding-bottom: 8px;
+    margin-bottom: 0px;">Code Description</label></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngFor="let option1 of productdetails.gradeCodeMappingCollection">
+											<label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option1.code}}</label>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngFor="let option of productdetails.gradeCodeMappingCollection">
+										<label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option.codeType}}</label>
+										</div>
+									</div>
+								</div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0" *ngFor="let option of productdetails.gradeCodeMappingCollection">
+										<label class="font-regular font-14 col-lg-12 col-md-12 col-sm-12 col-xs-12 padl0 label-val">{{option.codedescription}}</label>
+										</div>
+									</div>
+								</div>
+							</div>
+              </accordion-group>
+
+              <accordion-group #group4 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                <div accordion-heading  class="font-semibold">
+                          External System Mapping 
+                  <i class="pull-right float-xs-right glyphicon"
+                  [ngClass]="{'acc-down': group4?.isOpen, 'acc-up': !group4?.isOpen}"></i>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Destination System</div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.destinationName}}</span></div></div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Attribute 1 </div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.attribute1}}</span></div></div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Attribute 1 </div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span><span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">{{productdetails.attribute2}}</span></div></div>
+                      </div>
+                    </div>
+                 </div>
+              </accordion-group>
+					</accordion>
+          <div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModalDELTE="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                  <img src="../../assets/image/Confirm_Delete.svg" />
+                                                </div>
+                                                               
+                                                                <div class="modal-body">
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     Please confirm to delete
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" type="button" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" type="button" (click)="conf_delete($event)">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!--Delete Success Modal-->
+
+<!-- Delete Success Modal - End -->
+<!--Confirm Update -->
+<div class="modal fade delete-popup" *ngIf="status_change" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #statusChange="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                    <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                  <img src="../../assets/image/Confirm_Delete.svg" />
+                                                </div>
+                                                                
+                                                                <div class="modal-body">                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular" >
+                                                                                                     Please confirm to deactivate {{roleName}}
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_status_change()">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)=backtoPrev1()>Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update13"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="editClick(productMasterService.viewbyIdParam.prodId)" >Edit</button>					
+							<button type="button" id="update14"   class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updatewithStatus('Active')" >Submit</button>					
+							<button type="button" id="update14"   class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="user_delete(productMasterService.viewbyIdParam)">Delete</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)=backtoPrev1()>Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update15"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="editClick(productMasterService.viewbyIdParam.prodId)">Edit</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updatewithStatus('InActive')" >Deactivate</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"  *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)=backtoPrev1()>Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update16" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="editClick(productMasterService.viewbyIdParam.prodId)" >Edit</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updatewithStatus('Active')" >Reactivate</button>					
+						</div>							
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

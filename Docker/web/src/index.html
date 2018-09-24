@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <meta charset="utf-8">
+    <title>OLAM International</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="../../../assets/image/favicon.png">
+
+</head>
+
+<body>
+    <app-root>
+        <div [class.loader-hidden]="!show">
+            <div class="my-loading">
+                <div class="dimmer"></div>
+                <div class="loading-bg">
+                    <i class="fa fa-spinner" id="loaders" aria-hidden="true" style="font-size:30px;"></i>
+                </div>
+            </div>
+        </div>
+    </app-root>
+</body>
+
+</html>

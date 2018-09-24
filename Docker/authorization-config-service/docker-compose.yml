@@ -1,0 +1,12 @@
+version: "3"
+services:
+ authorization-config-service:
+    image: ctrmdev.azurecr.io/authorization-config-service:latest
+    deploy:
+      replicas: 1
+      resources:
+        restart_policy:
+          condition: on-failure
+    container_name: authorization-config-service
+    ports:
+      - "8092:8092"

@@ -1,0 +1,13 @@
+versions: "3"
+services:
+  master-service:
+  image: ctrmdev.azurecr.io/ctrm-registry:latest
+  deploy:
+    replicas: 1
+    resources:
+    restart_policy:
+      condition: on-failure
+  container_name: ctrm-master-service
+  ports:
+    - "8761:8761"
+      

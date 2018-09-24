@@ -1,0 +1,113 @@
+	<!-- ngx bootstrap - Accordion -->
+<div [formGroup]="whCostForm">
+	<accordion>
+	<accordion-group #group4 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+		<div accordion-heading  class="font-semibold" l10nTranslate>
+							Warehouse Cost - Header
+			<i class="pull-right float-xs-right glyphicon"
+			[ngClass]="{'acc-down': group4?.isOpen, 'acc-up': !group4?.isOpen}"></i>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+			<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+				<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.WareHouseLocale.legalEntity</label>
+				<div class="dropdown">
+					<!--<kendo-multiselect  [data]="legalEntityList" formControlName="legalEntity" [textField]="'label'" [valueField]="'value'"></kendo-multiselect>-->
+					<kendo-multiselect name="fkPartyId" formControlName="legalEntity" [ngClass]="{'valred': costMatrixService.reqFkPartyId==true,'val': costMatrixService.reqFkPartyId==false}" [data]="costMatrixService.partyList" [textField]="'fkPartyName'" [valueField]="'fkPartyId'"></kendo-multiselect>
+				</div>
+				<span *ngIf="costMatrixService.reqWhFkLegalEntity[arrIndex]== true" class="font-12 colr-red">* Please select legal entity</span>
+			</div>
+			<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.WareHouseLocale.Product</label>
+					<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkProdId"
+						type="button" data-toggle="dropdown" name="fkProdId" [ngClass]="{'valred': costMatrixService.reqWhFkProdId[arrIndex]== true,'val': costMatrixService.reqWhFkProdId[arrIndex]== false}">
+							<option [ngValue]="undefined" selected>Select</option>
+							<option *ngFor="let prod of costMatrixService.defaultUnitProductList" value="{{prod.prodId}}">{{prod.prodName}}</option>                
+					</select>
+					<span *ngIf="costMatrixService.reqWhFkProdId[arrIndex]== true" class="font-12 colr-red">* Please select Product</span>
+			</div>
+			<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.WareHouseLocale.GDCostLevel</label>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0  font-regular font-14">
+					<span class="radio pricing-details no-margin-left">
+						<input type="radio" name="costIsDetailedInd{{arrIndex}}" id="radio3wh{{arrIndex}}" value="Y" formControlName="costIsDetailedInd{{arrIndex}}">
+						<label for="radio3wh{{arrIndex}}">Group </label>
+					</span>
+					<span class="radio pricing-details">
+						<input type="radio" name="costIsDetailedInd{{arrIndex}}" id="radio4wh{{arrIndex}}" value="N" formControlName="costIsDetailedInd{{arrIndex}}">
+						<label for="radio3wh{{arrIndex}}">Detailed</label>
+					</span>
+				</div>
+			</div>
+			<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.WareHouseLocale.Warehouse</label>
+				<div class="dropdown">
+					<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" id="warehouse" name="wareHouse" formControlName="wareHouse"  [ngClass]="{'valred': costMatrixService.reqWhFkWarehouse[arrIndex]== true,'val': costMatrixService.reqWhFkWarehouse[arrIndex]== false}" >
+						<option [ngValue]="undefined" selected>Select</option>
+						<option value="1">Trader</option>
+						<option value="2">Rosters</option>
+						<option value="3">Service Provider</option>
+						<option value="4">Broker</option>
+						<option value="5">Certification Agency</option>
+						<option value="6">Exchange</option>
+					</select>
+					<span *ngIf="costMatrixService.reqWhFkWarehouse[arrIndex]== true" class="font-12 colr-red">* Please select warehouse</span>
+				</div>
+			</div>
+			<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+				<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.WareHouseLocale.WhLocation</label>
+				<div  class="dropdown"> <!-- dropdown -->
+					<kendo-multiselect [data]="warehouseLoc" formControlName="wareHouseLocation" [textField]="'fkPartyWhStockLocIdName'" [valueField]="'fkPartyWhStockLocId'"></kendo-multiselect>
+				</div>
+			</div>
+			<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.WareHouseLocale.RefNumber</label>
+				<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" formControlName="whCostContrRefNo" name="whCostContrRefNo">
+			</div>
+			<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.WareHouseLocale.FromDate</label>
+				<kendo-datepicker [format]="'dd/MM/yyyy'" formControlName="whCostValidFrom" ></kendo-datepicker>
+				<span *ngIf="costMatrixService.reqWhFromDate[arrIndex]== true" class="font-12 colr-red">* Please select from date</span>
+			</div>
+			<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.WareHouseLocale.ToDate</label>
+				<kendo-datepicker [format]="'dd/MM/yyyy'" formControlName="whCostValidTo"></kendo-datepicker>
+				<span *ngIf="costMatrixService.reqWhToDate[arrIndex]== true" class="font-12 colr-red">* Please select to date</span>
+			</div>
+			<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+				<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.WareHouseLocale.Remarks</label>
+				<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" formControlName="whCostRemarks" name="whCostRemarks">
+			</div>
+			<!--<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.WareHouseLocale.PeriodType</label>
+				<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" formControlName="whCostFreePeriodType" name="whCostFreePeriodType">
+			</div>-->
+			<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.WareHouseLocale.FreeDays</label>
+				<input type="text" class="form-control font-15 font-regular " id="" value="" placeholder="" formControlName="whCostNoOfFreeDays" name="whCostNoOfFreeDays">
+			</div>
+		</div>
+</accordion-group>
+<accordion-group #group5 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+	<div accordion-heading  class="font-semibold" l10nTranslate>
+						Warehouse Cost - Details
+	<i class="pull-right float-xs-right glyphicon"
+	></i>
+	</div>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+		<div formArrayName="whCostDetailArray">
+			<div *ngFor="let wareMapping of getWarehouseMappingList(this.whCostForm); let k=index" class="panel panel-default">
+				<div [formGroupName]="k">
+					<app-warehouse-mapping [group]="whCostForm.controls.whCostDetailArray.controls[k]" [addEditId]=addEditId [wharrayIndex]=k [whMappingList]=whMappingList></app-warehouse-mapping>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 accessories-block">
+						<span class="pull-left add-icon"><i class="plus-icn-md" (click)="addWhMapping()"> &nbsp; </i></span>
+						<span class="pull-left"><i class="delete-icn-md" (click)="removeWarehouseMapping(k)"> &nbsp; </i></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</accordion-group>
+</accordion>
+
+</div>
+            

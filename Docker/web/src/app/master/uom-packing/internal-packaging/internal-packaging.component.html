@@ -1,0 +1,235 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" >Primary Packing List</h4>
+					</div>
+								<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+		
+				
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+                            <!-- Kendo Grid starts-->
+							<div class="party-grade_block">
+									<kendo-grid [kendoGridBinding]="internalPackingService.internalModel" [selectable]="true" [groupable]="true" [group]="state.group"
+										[scrollable]="true" [editable]="true" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [filter]="state.filter"
+										[sortable]="true" [filterable]="true" (dataStateChange)="dataStateChange($event)"  [pageable]="false"
+										(pageChange)="pageChange($event)">
+
+										<ng-template kendoGridToolbarTemplate>
+										 <span class="k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+										<img src="../../assets/image/add.png" (click)="changeShowStatus()" />
+										</ng-template>
+									<!-- Serach Icon pannel-->
+						
+										<kendo-grid-column media="xs" title="internalPackingService.internalModel">
+										<ng-template kendoGridCellTemplate let-dataItem>
+											<!-- template for mobile -->
+											
+											<h4>
+											{{ dataItem.internalPackingTypeCode }}
+											</h4>
+											<dl>
+											<dt>Primary Packing Type Name</dt>
+											<dd>{{ dataItem.internalPackingTypeName }}</dd>
+
+											<dt>Primary Packing Type Description</dt>
+											<dd>{{ dataItem.internalPackingTypeDesc }}</dd>
+
+											<dt>Type Bulk</dt>
+											<dd>{{ dataItem.isBulk }}</dd>
+														
+											<dt>Package Weight</dt>
+											<dd>{{ dataItem.internalPackingWeight }}</dd>
+
+											<dt>Package UOM</dt>
+											<dd>{{ dataItem.internalPackingUomCode}}</dd>
+											</dl>
+											<!-- template for mobile Ends-->
+										</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field='' title='' [width]="40">
+												<ng-template kendoGridHeaderTemplate let-dataItem>
+												<input type="checkbox" id="checkall" class="k-checkbox" ng-model="allItemsChecked" (change)="checkAllClicked($event)" />
+												<label class="k-checkbox-label chk_head" for="checkall"></label>
+											</ng-template> 
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<input type="checkbox" class="k-checkbox" id="dataItem.internalPackingTypeCode " name="dataItem.internalPackingTypeCode " ng-model="dataItem.internalPackingTypeCode "/>
+												<label class="k-checkbox-label" for="dataItem.internalPackingTypeCode"></label>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="sm" field="internalPackingTypeCode" title="Primary Packing Type Code">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<div (click)="viewById(dataItem)"  class="view-all">{{dataItem.internalPackingTypeCode}}</div>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="internalPackingTypeName" title="Primary Packing Type Name">
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="internalPackingTypeDesc" title="Primary Packing Type Description">
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="isBulk" title="Bulk">
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="internalPackingWeight" title="Package Weight">
+										</kendo-grid-column>
+										<kendo-grid-column media="lg" field="selectedUomId" title="Package UOM">
+										</kendo-grid-column>
+										<!--<kendo-grid-column media="lg" field="statusName" title="Status">
+										</kendo-grid-column>-->
+										<kendo-grid-column media="lg" field="status" title="Status">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<label field="status" [ngClass]="{'status-draft': dataItem.status=='Draft','status-active': dataItem.status=='Active','status-inactive': dataItem.status=='InActive'}">{{dataItem.status}}</label>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field="" title="">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<div class="show" style="float:left" (click)="editinternal(dataItem)"><span id="e1" data-attr="draft" >
+													<img src="../../../assets/image/Edit_Icon_Hover.png.svg"><span style="display:none;">draft</span></span></div>
+												<div class=""  [ngClass]="{'displayblock': dataItem.status ==='InActive'}">
+											       <span id="d1" class="confirm-delete"  >
+															<span *ngIf="dataItem.status == 'Draft'"><img class='k-button k-button-wrapper' src="../../../assets/image/Delete icon.svg"  (click)="internal_delete(dataItem.internalPackingTypeId,dataItem.internalPackingTypeCode,dataItem.internalPackingTypeName,dataItem.status)"></span>
+															<span *ngIf="dataItem.status == 'Active'"><img class='k-button'  src="../../../assets/image/Activeicon.svg"  (click)="internal_delete(dataItem.internalPackingTypeId,dataItem.internalPackingTypeCode,dataItem.internalPackingTypeName,dataItem.status)"></span>
+															<span *ngIf="dataItem.status == 'InActive'"><img class='k-button' src="../../../assets/image/Deactiveicon2.svg"  (click)="internal_delete(dataItem.internalPackingTypeId,dataItem.internalPackingTypeCode,dataItem.internalPackingTypeName,dataItem.status)"></span>	
+														</span> </div>
+														</ng-template>
+										</kendo-grid-column>
+									
+										
+										<kendo-grid-excel fileName="PrimaryPacking.xlsx"></kendo-grid-excel>
+									</kendo-grid>
+									</div>
+									<!--Kendo grid Ends-->
+                     </div>
+				</div>
+					
+    <!-- Success Modal -->
+<div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header font-14 font-regular">        
+					<div class="modal-title"><img src="../../assets/image/Ok.jpg"/>Success : Added Internal Packing Code {{uomCode}}</div>
+				</div> 
+		</div>
+	</div>
+</div>
+<!-- Success Modal - End -->
+<!--Update message Modal - start -->
+<div *ngIf="isupdateModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #updateModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-content">
+				<div class="modal-header font-14 font-regular">        
+					<div class="modal-title" *ngIf="isUpdate"><img src="../../assets/image/Ok.jpg"/>Success : Updated UOM Code {{uomCode}}</div>
+					<div class="modal-title" *ngIf="isActivated"><img src="../../assets/image/Ok.jpg"/>Success : Activated UOM Code {{uomCode}}</div>
+					<div class="modal-title" *ngIf="isInActivated"><img src="../../assets/image/Ok.jpg"/>Success : InActivated UOM Code {{uomCode}}</div>
+				</div>       
+			</div>
+		</div>
+	</div>
+</div>
+<!--Update message Modal - end -->
+
+<div class="modal fade in success-modal" [style.display]="UpdateModal ? 'block' : 'none'" id="UpdateModal" role="dialog">
+			<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header font-14 font-regular">        
+					  <!--<div class="modal-title"><span><img src="../../../assets/image/Ok.jpg"/></span>Success : Currency Master Updated</div>-->
+					  <div class="modal-title"><img src="../../../assets/image/Ok.jpg"/>{{message}}</div>
+					</div>       
+				  </div>
+			</div>
+		</div>
+<!--Update Modal End-->
+	<!-- Edit Modal Start-->
+<!--<div class="modal fade in edit-popup" id="edit"
+ *ngIf="openEdit" [style.display]="openEdit ? 'block' : 'none'">-->
+
+ <div  *ngIf="openEdit" [config]="{backdrop:'static',show: true }"
+ (onHidden)="onHideEditModal()" bsModal  #editModal="bs-modal"
+  class="modal fade edit-popup" 
+  tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-edit">
+				<div class="modal-header mod-head"> 
+					<a class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="editModalRemove()"></span></a>
+					<h3 class="modal-title font-semibold">Edit Primary Packing</h3>
+				</div>
+				<div class="modal-edit-body mod-body">
+							<app-add-internal-packaging [PackingDetails]="internaledit" (onSubmit)="closeEditModal($event)" ></app-add-internal-packaging>
+				</div>			
+			</div>
+		</div>
+</div>
+<!-- Edit Modal End-->
+<!-- Edit Success Modal -->
+<div *ngIf="editSuccessModal" (onHidden)="onHidden()" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #editsuccessModal="bs-modal" [config]="{backdrop: true,show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>{{editedSuccessDialog}}</div>
+				</div>   
+				<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular">							
+						{{deactivateSuccessDialog}}
+					</div>							
+				</div>
+		</div>
+	</div>
+</div>
+<!-- Edit Success Modal - End -->
+
+
+<!--Delete Pop up-->
+<div class="modal fade delete-popup"  (onHidden)="onHiddenpopup()" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: true,show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content  del-modal">
+		   <div class="modal-header text-center">
+				<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+				<img src="../../assets/image/Confirm_Delete.svg" />
+			</div>
+			
+			<div class="modal-body">
+					<div class="col-md-12 product_img text-center font-14 font-regular">							
+						{{deactivateSuccessDialog}}
+					</div>
+			</div>
+			<div class="del-btn-group modal-window-footer btn-shodow">
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+				<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete()">Confirm</button></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!---->
+
+<!-- Delete Success Modal -->
+<div *ngIf="deleteSuccessModal" (onHidden)="onHidden()" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: true,show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>{{deactivateSuccessDialog}}</div>
+				</div> 
+		</div>
+	</div>
+</div>
+<!-- Delete Success Modal - End -->
+
+  <!-- Success Modal -->
+	<div class="modal fade in success-modal" [style.display]="addModal ? 'block' : 'none'" id="successModal"  role="dialog">
+			<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">        
+					  <div class="modal-title font-14 font-regular"><img src="../../../assets/image/Ok.jpg"/>{{message}}</div>
+					</div>       
+				  </div>
+			</div>
+		</div>
+		<!--Success Modal -->
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,220 @@
+<div id="wrapper">
+  <app-nav-bar></app-nav-bar>
+  <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">ADD GRADE DETAILS</h4>			 			
+				<form class="user-detail font-sm">
+					<accordion>
+						<accordion-group [isOpen]="status.isFirstOpen">
+                <!-- <div accordion-heading  class="font-semibold">
+                  BASIC DETAILS
+                  <i class="pull-right float-xs-right glyphicon"
+                  [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+                </div -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">							
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                      <label for="usr-field" class="colr-lblue font-regular font-14">Product Grade Code</label>
+                      <input type="text" class="form-control font-14 font-regular " id="productGradeCode" value="" placeholder="">
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <label for="usr-field"  class="colr-red font-regular font-14 ">Product</label>
+                        <div class="dropdown">
+                          <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                              <li><span>Arabica</span></li>
+                              <li><span>Robusta</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <label for="usr-field"  class="colr-red font-regular font-14">Origin</label>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+                              <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                              <li><span>Brazil</span></li>
+                              <li><span>Tanzania</span></li>
+                              <li><span>Jamaica</span></li>
+                            </ul>
+                        </div>
+                    </div>
+							  </div>	
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                  <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <label for="usr-field"  class="colr-red font-regular font-14">Origin Region</label>
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+                        <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><span></span></li>
+                        <li><span>East Brazil</span></li>
+                        <li><span>West Europe</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <label for="usr-field" class="colr-red font-regular font-14">Grade Name</label>
+                    <input type="text" class="form-control font-14 font-regular" id="gradename" value="" placeholder="">
+                  </div>								
+                  <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <label for="usr-field" class="colr-red font-regular font-14">Grade Full Name</label>
+                    <input type="text" class="form-control font-14 font-regular " id="gradefullname" value="" placeholder="">
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 party-radio">
+                    <label for="usr-field" class="colr-red font-regular font-14">Base grade</label>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+                          <span class="radio pricing-details">
+                            <input type="radio" name="radio3" id="radio3" value="option2">
+                            <label for="radio3">Yes</label>
+                          </span>
+                          <span class="radio pricing-details">
+                            <input type="radio" name="radio3" id="radio4" value="option2">
+                            <label for="radio4">No</label>
+                          </span>
+                    </div>
+                  </div>
+                  <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <label for="usr-field"  class="colr-lblue font-regular font-14 ">Base Grade Name</label>
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+                      <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Grade A</a></li>
+                          <li><a href="#">Grade B</a></li>
+                        </ul>
+                      </div>								
+                  </div>
+                  <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <label for="usr-field"  class="font-regular font-14 colr-lblue">Default Grade UOM</label>
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+                      <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">MT</a></li>
+                          <li><a href="#">KG</a></li>
+                          <li><a href="#">LB</a></li>
+                          </ul>
+                    </div>
+                  </div> 							
+                </div>                					
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label for="usr-field"  class="colr-lblue font-regular font-14">Washed / UnWashed</label>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select<span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                          <li><a href="#">Washed</a></li>
+                          <li><a href="#">Unwashed</a></li>
+                     </ul>
+                  </div>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label for="usr-field"  class="colr-lblue font-regular font-14">Washed Type</label>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Columbia</a></li>
+                        <li><a href="#">Other Mild</a></li>
+                        <li><a href="#">Natural</a></li>
+                        <li><a href="#">Semi-Washed</a></li>
+                      </ul>
+                  </div>
+                </div>																
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label for="usr-field"  class="colr-lblue font-regular font-14">Brand</label>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Yes</a></li>
+                        <li><a href="#">No</a></li>	
+                      </ul>
+                  </div>
+                </div>																
+						</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 party-radio">
+                  <label for="usr-field" class="colr-lblue font-regular font-14">Blended Grade</label>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+                      <span class="radio pricing-details">
+                        <input type="radio" name="radio21" id="radio3" value="option2">
+                        <label for="radio3">Yes</label>
+                      </span>
+                      <span class="radio pricing-details">
+                        <input type="radio" name="radio21" id="radio4" value="option2">
+                        <label for="radio4">No</label>
+                      </span>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 party-radio">
+                  <label for="usr-field" class="colr-lblue font-regular font-14">Tenderable</label>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 clr-both font-regular font-14">
+                      <span class="radio pricing-details">
+                        <input type="radio" name="radio5" id="radio5" value="option2">
+                        <label for="radio5">Yes</label>
+                      </span>
+                      <span class="radio pricing-details">
+                        <input type="radio" name="radio5" id="radio6" value="option2">
+                        <label for="radio6">No</label>
+                      </span>
+                  </div>
+                </div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14">Hedge Ratio</label>
+									<input type="text" class="form-control font-14 font-regular  " id="gradehedgeratio" value="80%" placeholder="">
+								</div>			
+						</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <label for="usr-field"  class="colr-lblue font-regular font-14">Include in Position</label>
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Yes</a></li>
+                          <li><a href="#">No</a></li>	
+                          </ul>
+                    </div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <label for="usr-field"  class="colr-lblue font-regular font-14 ">Default Quality Template</label>
+                    <div class="dropdown positionrel">
+                      <button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+                        <span class="caret"></span></button>
+                      <ul class="dropdown-menu positionrel">
+                        <li><a href="#">Good Cup Type 2/4</a></li>
+                        <li><a href="#">Good Cup Type 3/4</a></li>
+                        </ul>
+                    </div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field"  class="colr-lblue font-regular font-14">Cup Profile Name</label>
+									<div class="dropdown positionrel">
+										<button class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown">Select
+											<span class="caret"></span></button>
+										<ul class="dropdown-menu positionrel">
+											<li><a href="#">HCUP</a></li>
+											<li><a href="#">SCUP</a></li>
+											</ul>
+									</div>
+								</div>
+							</div>
+            </accordion-group>
+           </accordion>
+           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+              <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+                <button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18">Reset</button>
+              </div>
+              <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+                <button type="button" id="save_party_master1"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18">Save</button>					
+                <button type="button" id="save_party_master1"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18">Submit</button>					
+              </div>					
+					</div>
+				</form>
+			</div>
+  </div>
+</div>

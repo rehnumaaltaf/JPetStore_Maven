@@ -1,0 +1,31 @@
+export class CalendarSetupInterface {
+    calendarSetupId: number;
+    calendarCode: string;
+    calendarName: string;
+    calendarTypeId: number;
+    calendarTypeName: string;
+    exchangeId: number;
+    exchangeName: string;
+    productId: number;
+    productName: string;
+    status: string;
+    trickerCode: string;
+    phyDlvryStrtDate: Date;
+    phyDlvryEndDate: Date;
+    futursCalendarId: number;
+    futursCalendarName: string;
+    dlvryMonth: string;
+    firstTradeDate: Date;
+    lastTradeDate: Date;
+    firstNoticeDate: Date;
+    lastNoticeDate: Date;
+    firstDlvryDate: Date;
+    lastDlvryDate: Date;
+    finalStlmntDate: Date;
+    spreadMonth1: string;
+    spreadMonth2: string;
+    tenorId: number;
+    tenorName: string;
+    span: string;
+    durationType: string;
+}

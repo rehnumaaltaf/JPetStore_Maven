@@ -1,0 +1,19 @@
+<div [formGroup]="CertificationMappingForm">
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 pad0 plants-detail blend-output-container"> 
+
+      <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <label for="usr-field" class="colr-lblue font-regular font-14"  l10nTranslate>Master.Blend.Certification</label>
+        <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" formControlName="fkProdCertId"
+              type="button" data-toggle="dropdown" name="fkProdCertId" >
+                <option [ngValue]="undefined" selected>Select</option>
+                <option *ngFor="let cer of blendService.blendCertificationList" value="{{cer.pkProdCertId}}">{{cer.prodCertName}}</option>                
+          </select>
+      </div>
+
+      <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <label for="usr-field" class="colr-lblue  font-regular font-14" l10nTranslate>Master.Blend.CertificationPer</label>
+        <input type="text" class="form-control font-15 font-regular"  id="certificationPercentage" value="" placeholder="" formControlName="certificationPercentage" name="certificationPercentage">
+      </div>
+
+  </div>
+</div>

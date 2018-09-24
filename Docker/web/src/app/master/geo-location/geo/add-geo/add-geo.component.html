@@ -1,0 +1,231 @@
+<div class="container-fluid">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<!-- ngx bootstrap - Accordion -->
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div single-block create-view">
+				<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold">{{pagetitle}}</h4>
+				<div class="user-detail font-sm" method="post" >
+						<h3 class="font-semibold" >Basic Details</h3>
+
+						<div class="container-fluid-block marb30">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padt15">
+
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Geo.geoCode</label>
+									<input type="text" class="form-control font-15 font-regular " maxlength="20" [style.border-color]="getStylegeocode()" (focus)="geoCodeSuggestion($event)" name="geoCode"
+									 id="geoCode" [typeahead]="geoCodeList" [(ngModel)]="geo.geoCode" value="" placeholder="">
+									<small *ngIf="req_geocode" class="colr-red font-regular font-14">Enter Geo Code</small>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Geo.geoName</label>
+									<input type="text" class="form-control font-15 font-regular " maxlength="200" [style.border-color]="getStylegeoname()" (focus)="geoNameSuggestion($event)" name="geoName"
+									 id="geoName" [typeahead]="geoNameList" [(ngModel)]="geo.geoName" value="" placeholder="">
+									<small *ngIf="req_geoname" class="colr-red font-regular font-14">Enter Geo Name</small>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.Geo.geoDescription</label>
+									<input type="text" class="form-control font-15 font-regular " maxlength="500" name="geoDescription" id="geoDescription" [(ngModel)]="geo.geoDescription"
+									 value="" placeholder="">
+								</div>
+
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Geo.geoType</label>
+									<div class="dropdown">
+										<select [(ngModel)]="geo.geoTypeId" [style.border-color]="getStylegeotype()" (change)="onchange($event.target.value)" id="geoTypeId"
+										 class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 " name="geoTypeId">
+								    <!--<option  selected>Select</option>-->
+									<option  value="">Select</option>
+									<option *ngFor="let geotype of geoDetails"  [value]=geotype.geoTypeId>
+									{{geotype.geoTypeName}}
+									</option>
+								</select>
+										<small *ngIf="req_geotype" id="" class="colr-red font-regular font-14" l10nTranslate>Master.Geo.select geoType</small>
+									</div>
+								</div>
+
+								<div *ngIf="marketdesk">
+									<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Geo.marketingDesk</label>
+										<div class="dropdown">
+											<select [style.border-color]="getStylemarketdesk()" [(ngModel)]="geo.marketDeskId" id="marketDeskId" class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "
+											 name="marketDeskId">
+											<option  value="">Select</option>
+											 <option *ngFor="let role of marketdata"  [value]=role.pkMarketDeskId>
+											{{role.marketDeskName}}
+											</option>
+										</select>
+											<small *ngIf="req_marketdesk" class="colr-red font-regular font-14" l10nTranslate>Master.Geo.select marketDesk</small>
+										</div>
+									</div>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.Geo.parentGeoCode</label>
+									<div class="dropdown">
+										<select [(ngModel)]="geo.geoParentId" (change)="onchangeparent($event.target.value)" id="geoParentId" class=" btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14 "
+										 name="geoParentId">
+											<option  value="">Select</option>
+											 <option *ngFor="let role of parentGeolist"  [value]=role.label>
+											{{role.value}}
+											</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.Geo.parentGeoName</label>
+									<input type="text" readonly class="form-control font-15 font-regular" [(ngModel)]="geo.geoParentName" id="parGeoaName" value=""
+									 placeholder="">
+								</div>
+							</div>
+				
+			<div>
+				</div>
+					</div>
+					<div *ngIf="errormodal" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHidden()" class="modal fade something_wrong"
+					 bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					 aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">								
+									<div class="modal-header">
+										<div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>This page contains {{counter}} errors.Please
+											correct the highlighted fields.</div>
+									</div>
+							
+							</div>
+						</div>
+					</div>
+					
+					<div *ngIf="errormodal1" [style.display]="showModal ? 'block' : 'none'" (onHidden)="onHidden()" class="modal fade something_wrong"
+					 bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					 aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">								
+									<div class="modal-header">
+										<div class="modal-title font-14 font-regular"><img src="../../assets/image/Error Message_Icon.svg"/>
+										{{errorMsg}}
+											</div>
+									</div>
+							
+							</div>
+						</div>
+					</div>
+
+					<div class="modal fade delete-popup" class="modal fade delete-popup" bsModal #deletesuccessModals="bs-modal" [config]="{backdrop: 'false',show: false}"
+					 tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						<div class="modal-dialog ">
+							<div class="modal-content  del-modal">
+								<div class="modal-header text-center">
+									<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+									<img src="../../assets/image/Confirm_Delete.svg" />
+								</div>
+								<div class="modal-body">
+									<div class="col-md-12 product_img text-center font-14 font-regular">
+										<span *ngFor="let error of geoerror; let i=index">
+
+						{{error}}<br>
+					</span>
+									</div>
+								</div>
+								<div class="del-btn-group modal-window-footer">
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="deletesuccessModals.hide()">Cancel</button></div>
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="deletesuccessModals.hide()">Ok</button></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div *ngIf="addpage">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" name="reset" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="clear()"
+								 l10nTranslate>Master.Geo.Reset</button>
+							</div>
+							<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" name="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+								 (click)="savegeo('Draft',geo.geoCode)" l10nTranslate>Master.Geo.Save</button>
+								<button type="button" name="save_party_master" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+								 (click)="submitgeo('Save',geo.geoCode)" l10nTranslate>Master.Geo.Submit</button>
+							</div>
+						</div>
+					</div>
+					<div *ngIf="editpage">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="draft">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()" l10nTranslate>Cancel</button>
+							</div>
+							<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" id="save_party_mastersaveedit" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+								 (click)="update()" l10nTranslate>Save</button>
+								<button type="button" id="save_party_mastersubmitedit" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+								 (click)="updatewithStatus('Active')" l10nTranslate>Submit</button>
+							</div>
+						</div>
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="active">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()"
+								 l10nTranslate>Cancel</button>
+							</div>
+							<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" (click)="update()" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+								 l10nTranslate>Update</button>
+								<button type="button" (click)="updatewithStatus('InActive')" id="save_party_master1" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+								 l10nTranslate>Deactivate</button>
+							</div>
+						</div>
+
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="inactive">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="backtolist()"
+								 l10nTranslate>Cancel</button>
+							</div>
+							<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" (click)="update()" id="save_party_master" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"
+								 l10nTranslate>Update</button>
+								<button type="button" (click)="updatewithStatus('Active')" id="save_party_master1" class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"
+								 l10nTranslate>Reactivate</button>
+							</div>
+						</div>
+
+					</div>
+					
+					<!--Duplicate UOM code Pop up-->
+					<div class="modal fade delete-popup" *ngIf="ispagebackPopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup"
+					 bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					 aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content  del-modal">
+								<div class="modal-header text-center">
+									<!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+
+									<img src="../../assets/image/Confirm_Delete.svg" />
+
+								</div>
+
+								<div class="modal-body">
+
+									<div class="col-md-12 product_img text-center font-14 font-regular">
+										{{geoService.errorMessage}}
+									</div>
+
+
+								</div>
+								<div class="del-btn-group modal-window-footer btn-shodow">
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="close()">Cancel</button></div>
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="close()">Ok</button></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+			
+			
+		</div>
+	</div>
+</div>

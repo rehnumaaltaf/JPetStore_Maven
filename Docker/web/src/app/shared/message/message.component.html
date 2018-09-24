@@ -1,0 +1,37 @@
+<!--<div  *ngIf="msgs && msgs.length>0" [config]="{backdrop:false,show: true }"
+ (onHidden)="onHidden()" bsModal  #autoShownModal="bs-modal"
+  class="modal fade success-modal" 
+  attr.id="{{msgs[0].severity == 'error' ? 'something_wrong' :''}}" 
+  tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">        
+          <div class="modal-title"  *ngFor="let msg of msgs">
+            <img attr.src="{{msg.severity == 'error' ? '../../../assets/image/Error_Message_Icon.svg' :'../../../assets/image/Ok.jpg'}}"/>
+            <span l10nTranslate>{{ msg.summary }}</span>
+            <button *ngIf="msg.cancel" type="button" (click)="autoShownModal.hide()" class="close pull-right" data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class="glyphicon glyphicon-remove font-14">&nbsp;</i></button>
+            </div>
+        </div>       
+        </div>
+    </div>
+</div>-->
+
+
+<div  *ngIf="msgs && msgs.severity" [config]="{backdrop:false,show: true }"
+ (onHidden)="onHidden()" bsModal  #autoShownModal="bs-modal"
+  class="modal fade success-modal" 
+  attr.id="{{msgs.severity == 'error' ? 'something_wrong' :''}}" 
+  tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">        
+          <div class="modal-title font-14 font-regular">
+            <img attr.src="{{msgs.severity == 'error' ? '../../../assets/image/Error_Message_Icon.svg' :'../../../assets/image/Ok.jpg'}}"/>
+            {{ msgs.summary }}
+            <!-- *ngIf="msgs.cancel" -->
+            <!--button  type="button" (click)="autoShownModal.hide()" class="close pull-right" data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class="glyphicon glyphicon-remove font-14">&nbsp;</i></button-->
+            </div>
+        </div>       
+        </div>
+    </div>
+</div>

@@ -1,0 +1,346 @@
+<div class="container-fluid">
+  <div class="row row-background">
+    <app-nav-bar></app-nav-bar>
+    <!-- ngx bootstrap - Accordion -->
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12  right-side-content pad0">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+        <h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate> Master.ProductGrade.viewTitle</h4>
+        <form class="user-detail font-sm">
+          <accordion>
+            <accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+              <div accordion-heading class="font-semibold" l10nTranslate> Master.ProductGrade.subtitle1
+               <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+              </div>
+              <div class="panel-body origin_region_block">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate >Master.ProductGrade.gradecode</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                           {{gradeCode}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.gradename</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                         {{gradeName}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.gradefullname</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          {{gradeFullName}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.product</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          {{productName}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.gradegrouping</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                        {{gradeGroupName}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+               
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.origin</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+                        <span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          <span *ngFor="let item of gradeViewData.originList; let isLast=last">
+														{{item.originName}}{{isLast ? '' : ', '}}
+													</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.isblend</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          {{isBlended}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.isbrand</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          {{isBrand}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                <div *ngIf="brandcheck" >
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.brandname</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+                        <span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          {{brandName}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                   <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate> Master.ProductGrade.isbase</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+                        <span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          {{isBase}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                <div *ngIf="basecheck">
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.basegradname</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+                        <span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          {{baseGradeName}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.processingtype</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          {{processingName}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+             
+                </div>
+
+
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                       <div *ngIf="processingcheck">
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.processingsubtype</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          {{processingSubType}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.icoindex</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          {{icoIndexName}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.rawfinishedgrad </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          {{gradeIsRaw}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+               
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                   
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.istenderable</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          {{isTenderable}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.hedgeratio</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+                        <span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                         {{hedgeRatio}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                   <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666" l10nTranslate>Master.ProductGrade.discount</div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0"><span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+                        <span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+                          {{premiumOrDiscount}} {{currencyName}} {{uomName}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                            
+              </div>
+            </accordion-group>
+          
+            <accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+              <div accordion-heading class="font-semibold" l10nTranslate>
+                Master.ProductGrade.subtitle2
+                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+              </div>
+              <div class="panel-body">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 ">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666">
+                    <label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.ProductGrade.intlcodetype </label>
+                    <label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.ProductGrade.intlcode</label>
+                    <label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.ProductGrade.intldesc</label>
+                  </div>
+                  <div *ngFor="let intlgrade of intlGradeList">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15">
+                        <label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{intlgrade.intlName}}</label>
+                        <label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val">{{intlgrade.intlCode}}</label>
+                        <label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val">{{intlgrade.intlDesc}}</label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </accordion-group>
+            <accordion-group #group3 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+              <div accordion-heading class="font-semibold" l10nTranslate>
+               Master.ProductGrade.subtitle3
+                <i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group3?.isOpen, 'acc-up': !group3?.isOpen}"></i>
+              </div>
+              <div class="panel-body">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 ">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colr-666666">
+                    <label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 brdb" l10nTranslate>Master.ProductGrade.dessystem</label>
+                    <label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.ProductGrade.attribute1</label>
+                    <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-2 col-xs-12 brdb" l10nTranslate>Master.ProductGrade.attribute2</label>
+                  </div>
+                   <div *ngFor="let externalSystem of externalSystemList">
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mart15">
+                         <label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 padl0 label-val">{{externalSystem.externalSystemName}}</label>
+                         <label class="font-regular font-14 col-lg-2 col-md-2 col-sm-2 col-xs-12 label-val">{{externalSystem.attribute1}}</label>
+                         <label class="font-regular font-14 col-lg-3 col-md-3 col-sm-2 col-xs-12 label-val">{{externalSystem.attribute2}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </accordion-group>
+
+
+
+
+
+          </accordion>
+         
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer e-draft " *ngIf="draft" >
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)= "backtoPrev()" l10nTranslate> Master.ProductGrade.backbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-12 col-xs-8 pull-right text-right pad0">
+							 <a href="javascript:void(0)" [routerLink]="['edit',gradeViewData.gradeId]"><button type="button" id="e-draft"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" l10nTranslate>Master.ProductGrade.editbutton</button></a>					
+							<button type="button" id="update1"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="conf_status_change_draft()"  l10nTranslate>Master.ProductGrade.submitbutton</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="conf_delete(gradeViewData.gradeId)"  l10nTranslate>Master.ProductGrade.deltebutton</button>					
+						</div>							
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)= "backtoPrev()" l10nTranslate>Master.ProductGrade.backbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+				 <a href="javascript:void(0)" [routerLink]="['edit',gradeViewData.gradeId]"><button type="button" id="e-draft"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" l10nTranslate>Master.ProductGrade.editbutton</button></a>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="conf_status_change_deactivate()" l10nTranslate>Master.ProductGrade.deactivebutton</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"  *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)= "backtoPrev()" l10nTranslate>Master.ProductGrade.backbutton</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+						 <a href="javascript:void(0)" [routerLink]="['edit',gradeViewData.gradeId]"><button type="button" id="e-draft"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18"  l10nTranslate>Master.ProductGrade.editbutton</button></a>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="conf_status_change_to_active()" l10nTranslate>Master.ProductGrade.reactivebutton</button>					
+						</div>							
+					</div>
+
+          
+        </form>
+      </div>
+    </div>
+
+    <div class="modal fade delete-popup" *ngIf="isDeletePopupModal" (onHidden) ="hide()" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #deletePopUpModal="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog ">
+		<div class="modal-content  del-modal">
+			<div class="modal-header text-center">
+               <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a> -->
+               <img src="../../assets/image/Confirm_Delete.svg" />
+			</div>
+			<div class="modal-body">
+								
+					<div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="deactiveStatus" >
+							{{statusmsg}} {{gradeName}}  
+					</div>
+
+                     <div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isActiveStatus" >
+                           {{statusmsg}} {{gradeName}}   
+                    </div>
+			</div>
+				<div class="del-btn-group modal-window-footer btn-shodow">
+					<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="deletePopUpModal.hide()">Cancel</button></div>
+					<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_deactive_reactive($event)">Confirm</button></div>
+				</div>
+		</div>
+	</div>
+</div>
+  </div>
+</div>

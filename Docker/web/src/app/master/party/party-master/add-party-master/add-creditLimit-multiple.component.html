@@ -1,0 +1,87 @@
+<div [formGroup]="creditLimit">  
+	<input type='hidden' formControlName='uniqueMapping' [ngModel]="data0 || 'null'" ng-init="data0=null">
+	
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Party Code</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="credit_limit.internalPartyCode" (change)="onchangePartyCode()" formControlName="internalPartyCode"
+												 name="baseCode">
+												   <option value="">Select</option>
+												   <!--*ngFor="let option of basecodeOption" (change)="onchangePartyCode(i)" value="{{option.value}}" == {{option.label}}-->
+												   <option *ngFor="let option of partyCodeList" value="{{option.partyId}}">{{option.partyName}}</option>
+										</select>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12"  *ngIf="credit_partyname">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Internal Party Name</label>
+											<span ><input type="text" class="form-control font-15 font-regular" readonly id="45" [(ngModel)]="partyNamedefault" formControlName="internalPartyName" id="" value=""
+												placeholder=""></span>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Product</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="credit_limit.creditLimitProduct" formControlName="creditLimitProduct"
+												name="baseCode">
+												   <option value="">Select</option>
+												   <option *ngFor="let option of productList" value="{{option.prodId}}" >{{option.prodName}}</option>
+												   <!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+										</select>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Unit</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="credit_limit.unit" formControlName="unit" name="baseCode">
+												   <option value="">Select</option>
+												   <option *ngFor="let option of unitList" value="{{option.unitId}}">{{option.unitName}}</option>
+										</select>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Limit Alert Level</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="credit_limit.limitAlertLevel" formControlName="limitAlertLevel"
+												name="baseCode">
+												   <option value="">Select</option>
+												   <option *ngFor="let option of limitAlertLevel" value="{{option.pkLimitAlertLevelId}}">{{option.limitAlertLevelName}} </option>
+										</select>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Currency</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="credit_limit.creditCurrency" formControlName="creditCurrency"
+												name="baseCode">
+												   <option value="">Select</option>
+												   <option *ngFor="let option of currencyList" value="{{option.pkCurrencyId}}">{{option.currencyName}} </option>
+										</select>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">BG / CI / Factoring</label>
+											<input type="text" class="form-control font-15 font-regular" [(ngModel)]="credit_limit.Factoring" (keypress) = "numberonly($event)" formControlName="Factoring" id="" value="" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-red font-regular font-14">BG / CI / Factoring End Date</label>
+											<kendo-datepicker [(value)]="factoringEndDate" [format]="'dd-MM-yyyy'" [(ngModel)]="data1" formControlName="FactoringEndDate" [ngClass]="{'valred': FactoringEndDatevalid(this.titleCredit),'val': FactoringEndDatevalid(!this.titleCredit)}"></kendo-datepicker>
+
+											<span *ngIf="FactoringEndDatevalid(this.titleCredit)" class="font-12 colr-red">* Factoring End Date is required</span>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Net Limit</label>
+											<input type="number" class="form-control font-15 font-regular " formControlName="netLimit" id="" [(ngModel)]="credit_limit.netLimit" value="" (keypress) = "numberonly($event)" placeholder="">
+										</div>
+									<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Valid From</label>
+										<!--	<input type="text" class="form-control font-15 font-regular " formControlName="validFrom" id="" value="" placeholder="">-->
+										<kendo-datepicker [(value)]="validFrom" [format]="'dd-MM-yyyy'" [(ngModel)]="data15" formControlName="validFrom"></kendo-datepicker>
+										</div>
+									          <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Valid To</label>
+											<!--<input type="text" class="form-control font-15 font-regular " formControlName="validTo" id="" value="" placeholder="">-->
+										<kendo-datepicker [(value)]="validTo" [format]="'dd-MM-yyyy'" formControlName="validTo" [(ngModel)]="data16"></kendo-datepicker>
+										</div>
+										<div class="form-group col-lg-2 col-md-2 col-sm-4 col-xs-12">
+											<label for="usr-field" class="colr-red font-regular font-14">Limit Type</label>
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14"  [(ngModel)]="credit_limit.limitType" formControlName="limitType"
+												name="baseCode">
+												   <!--<option value="">Select</option>
+												   <option *ngFor="let option of limitTypeDrop" value="{{option.limitTypename}}">{{option.limitTypename}} </option>-->
+									    	<option value="">Select</option>
+											<option value="Y">Permanent</option>
+											<option value="N">Temporary</option>
+										</select>
+											<span *ngIf="limitType(this.titleCredit)" class="font-12 colr-red">* Limit Type is required</span>
+										</div>
+
+</div>

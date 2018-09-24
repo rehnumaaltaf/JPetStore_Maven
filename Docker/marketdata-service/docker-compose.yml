@@ -1,0 +1,12 @@
+version: "3"
+services:
+ marketdata-service:
+    image: ctrmdev.azurecr.io/marketdata-service:latest
+    deploy:
+      replicas: 1
+      resources:
+        restart_policy:
+          condition: on-failure
+    container_name: marketdata-service
+    ports:
+      - "8099:8099"

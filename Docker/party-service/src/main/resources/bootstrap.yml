@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: party-service
+  cloud:
+    config:
+      uri: http://ctrm-config:8888/
+      fail-fast: true
+      password: bda5245f-10fc-4dc1-8e88-bbea687de3fb
+      username: user

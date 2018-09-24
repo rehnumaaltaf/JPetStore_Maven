@@ -1,0 +1,23 @@
+<div [formGroup]="documentMultiple">  
+	<input type='hidden' formControlName='uniqueMapping' [ngModel]="data0 || 'null'" ng-init="data0=null">
+											<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Document Name</label>
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="docList.fkDocumentRefId" formControlName="fkDocumentRefId" name="baseCode">
+													<option value="">Select</option>
+													<!--*ngFor="let option of basecodeOption"[selected]="userRoleDataList.destinationSystemId === option.externalSystemRefId" value="{{option.value}}" == {{option.label}}-->
+											<option *ngFor="let option of docItem" value="{{option.documentId}}" >{{option.documentName}}</option>
+											</select>
+											</div>
+											<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">Document Type</label>
+												<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="docList.fkDocumentTypeRefId" formControlName="fkDocumentTypeRefId" name="baseCode">
+													<option value="">Select</option>
+													<option *ngFor="let option of docItemType" value="{{option.documentTypeId}}" >{{option.documentTypeName}}</option>
+											</select>
+											</div>
+											<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+												<label for="usr-field" class="colr-lblue font-regular font-14">No. of Copies</label>
+												<input type="text" class="form-control font-15 font-regular " id="GeoCode" (keypress) = "numberonly($event)" [(ngModel)]="docList.documentNumber" formControlName="documentNumber" placeholder="" maxlength="4">
+											</div>
+	
+</div>

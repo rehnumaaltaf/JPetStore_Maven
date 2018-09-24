@@ -1,0 +1,6 @@
+<suite name="P1637RegressionSuite">
+	 <test name="P1637_CREATE_03_TC0001_FTTBINCVldtForBPVTest" allow-return-values="true">
+		<classes>
+			<class name="com.selenium.tests.OrderManagement.ORderManagementTest" />
+		</classes>
+	</test>

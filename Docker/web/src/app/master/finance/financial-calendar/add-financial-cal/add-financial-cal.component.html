@@ -1,0 +1,184 @@
+<div class="container-fluid">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 right-side-content pad0 createforex add-financial-calendar holiday_calendar">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">
+				<!--<h4 class="padb10 padt10  colr-1e2f4d font-18 font-bold head-show" l10nTranslate>Master.FinancialCal.AddTitle</h4>			-->
+				<h4 class="padb10 padt10  colr-1e2f4d font-18 font-bold head-show" l10nTranslate>{{pageTitle}}</h4>
+				<!--method="post"-->
+				<form class="user-detail font-sm" [formGroup]="financialcalForm" method="post" autocomplete="off" novalidate>
+					<accordion>
+						<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+							<!--<div accordion-heading  class="font-semibold"     l10nTranslate>Master.FinancialCal.Header-->
+							<div accordion-heading class="font-semibold" l10nTranslate>Financial Calendar Setup Header
+								<!--(change)="selectYear(this.financialcalForm)" -->
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+							</div>
+							<div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<!--<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.FinancialCal.FiscalYear</label>-->
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Fiscal Year</label>
+										<input type="text" class="form-control font-15 font-regular " [typeahead]="financialService.fiscalyearData" [ngClass]="{'valred': val_fiscalyear==true,'val': val_fiscalyear==false}"
+										 formControlName="fiscalYear" id="fiscalYear" name="fiscalYear" placeholder="" required>
+										 <span *ngIf="val_fiscalyear" class="font-12 colr-red">* Fiscal Year is required</span>
+										<!--<div class="dropdown" *ngIf="suggestions?.fiscalYearFinCal?.length>0"><div *ngFor="let suggestion of suggestions.fiscalYearFinCal"><div>{{suggestion}}</div></div></div>-->
+									</div>
+
+									<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<!--<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.FinancialCal.StartYear</label>-->
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Start Year</label>
+										<div class="dropdown positionrel">
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown"
+											 formControlName="startYear" id="startYear" name="startYear" (focusin)="fillYears(this.financialcalForm)" [ngClass]="{'valred': val_startyear==true,'val': val_startyear==false}">
+                             					<option *ngFor="let startyr of startyear" value="{{startyr}}">{{startyr}}</option>
+                             				</select>
+											 <span *ngIf="val_startyear" class="font-12 colr-red">* Start Year is required</span>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<!--<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.FinancialCal.StartMonth</label>-->
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Start Month</label>
+										<div class="dropdown positionrel">
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown"
+											 formControlName="startMonth" id="startMonth" name="startMonth" [ngClass]="{'valred': val_startmonth==true,'val': val_startmonth==false}">
+												<option *ngFor="let startmonth of monthList" value="{{startmonth}}">{{startmonth}}</option>
+											</select>
+											<span *ngIf="val_startmonth" class="font-12 colr-red">* Start Month is required</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+									<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<!--<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.FinancialCal.EndYear</label>-->
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>End Year</label>
+										<div class="dropdown positionrel">
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown"
+											 formControlName="endYear" id="endYear" name="endYear" [ngClass]="{'valred': val_endyear==true,'val': val_endyear==false}">
+												<option *ngFor="let endyear of endyear" value="{{endyear}}">{{endyear}}</option>
+											</select>
+											<span *ngIf="val_endyear" class="font-12 colr-red">* End Year is required</span>
+										</div>
+									</div>
+
+
+									<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<!--<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.FinancialCal.EndMonth</label>-->
+										<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>End Month</label>
+										<div class="dropdown positionrel">
+											<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" type="button" data-toggle="dropdown"
+											 formControlName="endMonth" id="endMonth" name="endMonth" [ngClass]="{'valred': val_endmonth==true,'val': val_endmonth==false}">
+												<option *ngFor="let endMonth of monthList" value="{{endMonth}}">{{endMonth}}</option>
+											</select>
+											<span *ngIf="val_endmonth" class="font-12 colr-red">* End Month is required</span>
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+						</accordion-group>
+					</accordion>
+					<accordion>
+						<accordion-group #group2>
+							<!--<div accordion-heading  class="font-semibold"  l10nTranslate>
+                            Master.FinancialCal.SubHeader-->
+							<div accordion-heading class="font-semibold" l10nTranslate>Financial Calendar
+								<i class="pull-right float-xs-right glyphicon" [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+							</div>
+							<div class="party-grade_block">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 party-grade-def">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+										<div class="plants-detail-Stp financial-cal-container">
+											<div formArrayName="tenorFinancialArray">
+												<div *ngFor="let tenor of getFinancialList(financialcalForm); let i=index" class="panel panel-default">
+													<div [formGroupName]="i">
+														<app-financial-mapping [group]="financialcalForm.controls.tenorFinancialArray.controls[i]" [AddEditId]=AddEditFinancialId
+														 [ArrayIndex]=i [financialCalendarModel]=financialCalendarModel></app-financial-mapping>
+														<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 accessories-block">
+															<span class="pull-left"><i class="plus-icn-md" (click)="addTenor()" > &nbsp; </i></span>
+															<span class="pull-left"><i class="delete-icn-md" (click)="removeTenor(i) " > &nbsp; </i></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</accordion-group>
+					</accordion>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf=!isEditPage>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="formReset()" l10nTranslate >Reset</button>
+						</div>
+						<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="save()" l10nTranslate >Save</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="submit()" l10nTranslate >Submit</button>					
+						</div>							
+					</div>						
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()" l10nTranslate >Cancel</button>
+						</div>
+						<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updateFC('save')" l10nTranslate >Save</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updateFC('submit')" l10nTranslate >Submit</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()" l10nTranslate >Cancel</button>
+						</div>
+						<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updateFC('update')" l10nTranslate >Update</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updateFC('InActive')" l10nTranslate >Deactivate</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()" l10nTranslate >Cancel</button>
+						</div>
+						<div class="col-lg-l0 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updateFC('update')" l10nTranslate >Update</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="updateFC('Active')" l10nTranslate >Reactivate</button>					
+						</div>							
+					</div>
+
+					<div class="modal fade in error-modal" [style.display]="errorModal ? 'block' : 'none'" id="errorModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title font-14 font-regular"><img src="../../../assets/image/Confirm_Delete.svg"/>Error : {{errorMessage}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div *ngIf="isReset" [config]="{backdrop:'static',show: true }" (onHidden)="onHiddenReset()" bsModal #resetModal="bs-modal"
+					 class="modal fade confirm-box delete-popup" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content  del-modal">
+								<!-- *ngClass="{'confirmation-comment': config?.isCommentPresent}" -->
+								<div class="modal-header text-center">
+									<img src="../../assets/image/Confirm_Delete.svg" />
+								</div>
+								<div class="modal-body">
+										<div class="col-md-12 product_img text-center font-14 font-regular">
+											Do you really want to reset?
+										</div>
+								</div>
+								<div class="del-btn-group modal-window-footer btn-shodow">
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="resetCancel()">Cancel</button></div>
+									<div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="resetConfirm()">Confirm</button></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,66 @@
+<div [formGroup]="plantMapping">  
+   	 <input type='hidden' formControlName='uniqueMapping' [ngModel]="data0 || 'null'" ng-init="data0=null">
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Plant Code</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="plant_edit.plantCode" formControlName="plantCode" id="plantCode" name="plantCode"
+												value="" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Plant Name</label> 
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="plant_edit.plantName" formControlName="plantName" id="" value="" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Plant Full Name</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="plant_edit.plantFullName" formControlName="plantFullName" id="" value="" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Tax Registration No</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="plant_edit.taxRegistrationNumber"  formControlName="taxRegistrationNumber" id="" value="" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Tax Registration Date</label>
+											<!--<input type="text" class="form-control font-15 font-regular " formControlName="taxRegistrationDate" id="" value="" placeholder="">-->
+										<kendo-datepicker [(value)]="taxregdate11" [format]="'dd-MM-yyyy'"  [(ngModel)]="dateTax" formControlName="taxRegistrationDate"></kendo-datepicker>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Address 1</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="plant_edit.address1" formControlName="address1" id="" value="" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Address 2</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="plant_edit.address2" formControlName="address2" id="" value="" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Zip Code</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="plant_edit.zipCode" formControlName="zipCode" id="" value="" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Country</label>
+											<!--<input type="text" class="form-control font-15 font-regular " formControlName="countryDefault" id="" value="" placeholder="">-->
+								          <select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="plant_edit.countryDefault" formControlName="countryDefault" name="baseCode" [ngClass]="{'valred': pcode==true,'val': pcode==false}">
+												<option value="">Select</option>
+													<option *ngFor="let option of countryList" value="{{option.pkGeoId}}" > {{option.geoName}} </option>
+												<!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+										<!--<option *ngFor="let option of countryList" value="{{option.pkGeoId}}" > {{option.geoName}} </option>-->
+										</select>
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Phone</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="plant_edit.phoneDefault" formControlName="phoneDefault" id="" value="" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Email</label>
+											<input type="text" class="form-control font-15 font-regular "  [(ngModel)]="plant_edit.emailDefault" formControlName="emailDefault" id="" value="" placeholder="">
+										<!--<span *ngIf="emailvalidation" class="font-12 colr-red">* Enter a valid email address</span>-->
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Fax</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="plant_edit.faxDefault" formControlName="faxDefault" id="" value="" placeholder="">
+										</div>
+										<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+											<label for="usr-field" class="colr-lblue font-regular font-14">Website</label>
+											<input type="text" class="form-control font-15 font-regular " [(ngModel)]="plant_edit.websiteDefault" formControlName="websiteDefault" id="" value="" placeholder="">
+										</div>
+										
+								
+</div>

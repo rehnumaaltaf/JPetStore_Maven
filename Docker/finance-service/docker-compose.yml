@@ -1,0 +1,12 @@
+version: "3"
+services:
+ finance-service:
+    image: ctrmdev.azurecr.io/finance-service:latest
+    deploy:
+      replicas: 1
+      resources:
+        restart_policy:
+          condition: on-failure
+    container_name: finance-service
+    ports:
+      - "8093:8093"

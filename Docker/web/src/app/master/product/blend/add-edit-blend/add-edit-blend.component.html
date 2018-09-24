@@ -1,0 +1,172 @@
+<div class="container-fluid">
+  <div class="row">
+    <app-nav-bar></app-nav-bar>
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div create-view">	
+	      <h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate *ngIf="!isEditPage">Master.Blend.addTitle</h4>
+		  <h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate *ngIf="isEditPage">Master.Blend.editTitle</h4>
+			  <form class="user-detail font-sm" [formGroup]="blendForm" novalidate autocomplete="off">			
+				 <accordion>
+					<accordion-group #group [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+						<div accordion-heading  class="font-semibold" l10nTranslate>
+							Master.Blend.BasicListTitle
+							<i class="pull-right float-xs-right"
+								[ngClass]="{'acc-down': group?.isOpen, 'acc-up': !group?.isOpen}"></i>
+						</div>					  
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+							<div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Blend.BlendCode</label>
+									<input type="text"  class="form-control font-15 font-regular "  id="templateCode" value="" placeholder="" formControlName="templateCode" name="templateCode"  maxlength="20" [ngClass]="{'valred': reqBlendCode == true,'':reqBlendCode == false}" (focusout)="validateCode()" [typeahead]="blendService.blendCodeList" (keyup)="onCodeSuggestion($event)">
+									<span *ngIf="reqBlendCode" class="font-12 colr-red">* Please fill Blend Code</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12"><!--Master.AddForex.Name-->
+									<label for="usr-field" class="colr-red font-regular font-14" l10nTranslate>Master.Blend.BlendName</label>
+									<input type="text" class="form-control font-15 font-regular"  id="templateName" value="" placeholder="" formControlName="templateName" name="templateName" [ngClass]="{'valred': reqBlendName}" (focusout)="validateName()" [typeahead]="blendService.blendNameList" (keyup)="onNameSuggestion($event)">
+									<span *ngIf="reqBlendName" class="font-12 colr-red">* Please fill Blend Name</span>
+								</div>
+								<div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<label for="usr-field" class="colr-lblue font-regular font-14" l10nTranslate>Master.Blend.BlendDescription</label>
+									<input type="text" class="form-control font-15" id="templateDesc" value="" placeholder="" formControlName="templateDesc" name="templateDesc" maxlength="500" >
+								</div>
+							</div>
+						</div>	
+					
+            
+                    </accordion-group>
+                  
+
+                    <!--Blending Output-->
+                 
+                        <accordion-group #group2 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                            <div accordion-heading class="font-semibold" l10nTranslate>
+                              Master.Blend.OutputListTitle
+                              <i class="pull-right float-xs-right"
+                                 [ngClass]="{'acc-down': group2?.isOpen, 'acc-up': !group2?.isOpen}"></i>
+                            </div>
+
+							<div class="plants-detail-Stp ">	
+									<div formArrayName="blendOutputList">
+										<div *ngFor="let outputList of getOutputList(blendForm); let i=index" class="panel panel-default">
+											<div [formGroupName]="i">
+												 <app-output-mapping [group]="blendForm.controls.blendOutputList.controls[i]" [arrOutIndex] = i [addEditId]=editId [outMapList]=outMapList></app-output-mapping>
+												<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 accessories-block">
+														<span class="pull-left"><i class="plus-icn-md" (click)="addBlendOutput()" > &nbsp; </i></span>
+														<span class="pull-left"><i class="delete-icn-md" (click)="removeOutput(i) " > &nbsp; </i></span>
+												</div>
+											</div>
+										</div>
+								</div>
+							</div>
+                       </accordion-group>
+					
+				<!--end of output-->
+
+				<!--Blending Input-->
+                    
+                        <accordion-group #group3 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                            <div accordion-heading  class="font-semibold" l10nTranslate>
+                              Master.Blend.InputListTitle
+                              <i class="pull-right float-xs-right"
+                                 [ngClass]="{'acc-down': group3?.isOpen, 'acc-up': !group3?.isOpen}"></i>
+                            </div>
+
+							<div class="plants-detail-Stp ">	
+									<div formArrayName="blendInputList">
+										<div *ngFor="let inputList of getInputList(blendForm); let j=index" class="panel panel-default">
+											<div [formGroupName]="j">
+												 <app-input-mapping [group]="blendForm.controls.blendInputList.controls[j]" [arrInIndex]= j [addEditId]=editId [inMapList]=inMapList></app-input-mapping>
+												<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 accessories-block">
+														<span class="pull-left"><i class="plus-icn-md" (click)="addBlendInput()" > &nbsp; </i></span>
+														<span class="pull-left"><i class="delete-icn-md" (click)="removeInput(j) " > &nbsp; </i></span>
+												</div>
+											</div>
+										</div>
+								</div>
+							</div>
+                       </accordion-group>
+				
+				<!--end of Input-->
+
+				<!--Blending Certification-->
+                  
+                        <accordion-group #group4 [isOpen]="status.isFirstOpen" [isDisabled]="status.isFirstDisabled">
+                            <div accordion-heading  class="font-semibold" l10nTranslate>
+                              Master.Blend.CertificationTitle
+                              <i class="pull-right float-xs-right"
+                                 [ngClass]="{'acc-down': group4?.isOpen, 'acc-up': !group4?.isOpen}"></i>
+                            </div>
+
+							<div class="plants-detail-Stp ">	
+									<div formArrayName="blendInputCertificationList">
+										<div *ngFor="let certificationList of getCertificationList(blendForm); let k=index" class="panel panel-default">
+											<div [formGroupName]="k">
+												 <app-certification-mapping [group]="blendForm.controls.blendInputCertificationList.controls[k]" [arrCerIndex]= k [addEditId]=editId [cerMapList]=cerMapList></app-certification-mapping>
+												<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 accessories-block">
+														<span class="pull-left"><i class="plus-icn-md" (click)="addBlendCertification()" > &nbsp; </i></span>
+														<span class="pull-left"><i class="delete-icn-md" (click)="removeCertification(k) " > &nbsp; </i></span>
+												</div>
+											</div>
+										</div>
+								</div>
+							</div>
+                       </accordion-group>
+					</accordion>
+				<!--end of Input-->
+					
+					<!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer default-btn">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn btn-default navbar-btn cancel-btn font-regular font-14 font-semibold" (click)="reset()" l10nTranslate>RESET</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0 primary-btn">
+							<button [disabled]="disableSaveBtn" type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-regular font-14 font-semibold" (click)="saveBlend('SAVE')" l10nTranslate>SAVE</button>				
+							<button [disabled]="disableSubmitBtn" type="button" id="save_party_master" class="btn btn-default navbar-btn save-btn edit-form font-regular font-14 font-semibold" (click)="saveBlend('SUBMIT')" l10nTranslate>SUBMIT</button>	
+							<button [disabled]="disableUpdateBtn" type="button" class="btn btn-default navbar-btn save-btn edit-form font-regular font-14 font-semibold" (click)="updatForex('UPDATE')" l10nTranslate *ngIf="editDraft">UPDATE</button>	
+							<button [disabled]="disableUpdateBtn" type="button" class="btn btn-default navbar-btn save-btn edit-form font-regular font-14 font-semibold" (click)="updatForex('UPDATEINACIVE')" l10nTranslate *ngIf="editActivate">UPDATE & REACTIVATE</button> 
+							<button [disabled]="disableUpdateBtn" type="button" class="btn btn-default navbar-btn save-btn edit-form font-regular font-14 font-semibold" (click)="updatForex('UPDATEACIVE')" l10nTranslate *ngIf="editDeactivate">UPDATE & DEACTIVATE</button>
+						</div>							
+					</div>-->
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"  *ngIf="!isEditPage">
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" class="btn btn-default tertiary-btn singlebtn-width font-semibold font-18" (click)="reset()">RESET</button>
+							</div>
+							<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="saveBlend()">SAVE</button>					
+								<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="submitBlend()">SUBMIT</button>					
+							</div>							
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer " *ngIf="isEditPage && draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()">CANCEL</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="saveBlend()">SAVE</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"  (click)="submitBlend()" >SUBMIT</button>
+						</div>				               
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"  *ngIf="isEditPage && active" > 
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+									<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()">CANCEL</button>
+								</div>
+								<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0">
+									<button type="button" id="save_party_master-s"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updateBlend()">UPDATE</button>																									  
+									<button type="button" id="save_party_master-sd"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="openConfirmAction()">DEACTIVATE</button>
+								</div>				
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="isEditPage && inactive" >
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+								<button type="button" class="btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)="onCancel()">CANCEL</button>
+							</div>
+							<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0">
+								<button type="button" id="save_party_master"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="updateBlend()">UPDATE</button>					
+							<button type="button" id="save_party_master-sr"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18"  (click)="openConfirmAction()">REACTIVATE</button>
+							</div>
+						</div>
+				</form>				
+			</div>
+
+    </div>
+
+  </div>
+</div>
+<app-message [(msgs)]="blendService.messages"></app-message>

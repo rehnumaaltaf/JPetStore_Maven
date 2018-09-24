@@ -1,0 +1,255 @@
+ <div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+ <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+	 <!--<span *ngIf="errorMessage" style="color:red">{{errorMessage}}</span>-->
+ <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div view-page">			
+				<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padt10 padb10">
+							<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+							<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 padr0">
+							</div>
+						</div>
+					</div>
+          <form class="user-detail font-sm">
+            <div class="accordion  no-accordion">
+						<h3 class="font-semibold colr-lblue">BASIC DETAILS</h3>
+						<div class="accordion-content">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Currency Code</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: 
+											</span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+												{{currencyService.currencyDetail.currencyCode}}
+											</span>
+											</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Currency Name</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+												{{currencyService.currencyDetail.currencyName}}
+											</span>											
+											</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Currency Description</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">: </span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+												{{currencyService.currencyDetail.currencyDesc}}
+											</span>											
+											</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padl0">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 font-14 font-regular marb20">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0 colr-666666">Currency Symbol</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad0">
+											<span class="col-lg-1 col-md-1 col-sm-6 col-xs-12 pad0">:</span>
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+											<span class="displaytable col-11 col-md-11 col-sm-6 col-xs-12 pad0">
+												{{currencyService.currencyDetail.currencySymbol}}
+											</span>
+											</span>
+											</div>
+									</div>
+								</div>
+							</div>	
+						</div>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer" *ngIf="draft">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-18" (click)='backtoPrev()'>Back</button>
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update13"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-18" (click)="editCurrency(currencyService.currencyDetail.pkCurrencyId, currencyService.currencyDetail.fkStatusId)">Edit</button>										
+							<button type="button" id="update14"   class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form font-semibold font-18" (click)="confirm()">Submit</button>				
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-18" (click)="delete()">Delete</button>					
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"   *ngIf="active">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-14" (click)='backtoPrev()'>Back</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update15"  class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-14" (click)="editCurrency(currencyService.currencyDetail.pkCurrencyId, currencyService.currencyDetail.fkStatusId)">Edit</button>															
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-14" (click)="updateCurrency('DEACTIVATE')">Deactivate</button>
+						</div>							
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clr-both btn-footer"  *ngIf="inactive">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 pad0">
+							<button type="button" id="" class="back btn default-btn tertiary-btn singlebtn-width font-semibold font-14" (click)='backtoPrev()'>Back</button>
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-8 col-xs-8 pull-right text-right pad0">
+							<button type="button" id="update16" class="btn default-btn secondary-btn multiplebtn-width marr20 edit-form1 font-semibold font-14" (click)="editCurrency(currencyService.currencyDetail.pkCurrencyId, currencyService.currencyDetail.fkStatusId)">Edit</button>					
+							<button type="button" id="save_party_master"  class="btn default-btn primary-btn multiplebtn-width edit-form font-semibold font-14" (click)="updateCurrency('ACTIVATE')">Reactivate</button>
+						</div>							
+					</div>
+          </form>
+			
+			</div>	
+
+
+      <!--Duplicate UOM code Pop up-->
+      <div class="modal fade delete-popup" *ngIf="isCannotDeletePopup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog " style="height:440px !important; color:white !important;">
+                                                      <div class="modal-content  del-modal">
+                                                      <div class="modal-header">
+                                                                                    <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                                      </div>
+                                                                      <div class="col-md-12 product_img text-center" style="padding-top:15px;">
+                                                                                      <img src="../../assets/image/Confirm_Delete.svg" />
+                                                                      </div>
+                                                                      <div class="modal-body">
+                                                                                      <div class="row">
+                                                                                                      
+                                                                                                      <div class="col-md-12 product_img text-center">
+                                                                                                         <!-- {{currencyService.errorMessage}}-->
+                                                                                                      </div>
+                                                                                                      <div class="col-md-12 product_img text-center"></div>
+                                                                                                      
+                                                                                      </div>
+                                                                      </div>
+                                                                      <div class="del-btn-group">
+                                                                                      <div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="close()">Cancel</button></div>
+                                                                                      <div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="close()">Ok</button></div>
+                                                                      </div>
+                                                      </div>
+                                      </div>
+      </div>
+      <!---->
+
+
+          <!-- Success Updated Modal -->
+      <div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-content">
+              <div class="modal-header">        
+                <div class="modal-title"><span><img src="../../assets/image/Ok.jpg"/></span>Success : {{statusMsg}} UOM Code {{uomCode}}</div>
+              </div>       
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Success Modal - End -->
+      <!-- Delete Success Modal - End -->
+
+      <!--Confirm Update -->
+      <div class="modal fade delete-popup" *ngIf="status_change" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #statusChange="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog " style="height:440px !important; color:white !important;">
+                                                      <div class="modal-content  del-modal">
+                                                      <div class="modal-header">
+                                                                                    <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                                      </div>
+                                                                      <div class="col-md-12 product_img text-center" style="padding-top:15px;">
+                                                                                      <img src="../../assets/image/Confirm_Delete.svg" />
+                                                                      </div>
+                                                                      <div class="modal-body">
+                                                                                      <div class="row">
+                                                                                                      
+                                                                                                      <div class="col-md-12 product_img text-center" >
+                                                                                                          Are you sure you want to {{statusMsg}} the UOM Code {{currencyData.uomCode}} in {{status}} status ?
+                                                                                                      </div>
+                                                                                                      <div class="col-md-12 product_img text-center"></div>
+                                                                                                      
+                                                                                      </div>
+                                                                      </div>
+                                                                      <div class="del-btn-group">
+                                                                                      <div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                      <div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="conf_status_change()">Confirm</button></div>
+                                                                      </div>
+                                                      </div>
+                                      </div>
+      </div>
+      <!---->
+
+      <!--Delete Pop up-->
+      <div class="modal fade delete-popup" *ngIf="deletebyid" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #delete="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog " style="height:440px !important; color:white !important;">
+                                                      <div class="modal-content  del-modal">
+                                                      <div class="modal-header">
+                                                                                    <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                                      </div>
+                                                                      <div class="col-md-12 product_img text-center" style="padding-top:15px;">
+                                                                                      <img src="../../assets/image/Confirm_Delete.svg" />
+                                                                      </div>
+                                                                      <div class="modal-body">
+                                                                                      <div class="row">
+                                                                                                      
+                                                                                                      <div class="col-md-12 product_img text-center" >
+                                                                                                          Are you sure you want to {{statusMsg}} the UOM Code {{currencyData.uomCode}} in {{status}} status ?
+                                                                                                      </div>
+                                                                                                      <div class="col-md-12 product_img text-center"></div>
+                                                                                                      
+                                                                                      </div>
+                                                                      </div>
+                                                                      <div class="del-btn-group">
+                                                                                      <div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                      <div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="conf_delete(currencyData.uomId)">Confirm</button></div>
+                                                                      </div>
+                                                      </div>
+                                      </div>
+      </div>
+      <!---->
+
+
+      <!-- UOM code Cannot be delted Pop up-->
+      <div class="modal fade delete-popup" *ngIf="isCannotDeletePopup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog " style="height:440px !important; color:white !important;">
+                                                      <div class="modal-content  del-modal">
+                                                      <div class="modal-header">
+                                                                                    <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                                      </div>
+                                                                      <div class="col-md-12 product_img text-center" style="padding-top:15px;">
+                                                                                      <img src="../../assets/image/Confirm_Delete.svg" />
+                                                                      </div>
+                                                                      <div class="modal-body">
+                                                                                      <div class="row">
+                                                                                                      
+                                                                                                      <div class="col-md-12 product_img text-center">
+                                                                                                         <!-- {{unitMeasurementService.errorMessage}}-->
+                                                                                                      </div>
+                                                                                                      <div class="col-md-12 product_img text-center"></div>
+                                                                                                      
+                                                                                      </div>
+                                                                      </div>
+                                                                      <div class="del-btn-group">
+                                                                                      <div class="del-pop-btn"><button class="del-cancel del-cancel-button btn btn-default btn-lg font-semibold" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                      <div class="del-pop-btn"><button class="del-confirm del-button btn btn-default btn-lg confirm-delete  font-semibold" (click)="closedeletepopup()">Ok</button></div>
+                                                                      </div>
+                                                      </div>
+                                      </div>
+      </div>
+      <!---->
+   </div>
+</div> 
+</div>
+
+<div class="modal fade edit-popup" id="edit" (onHidden)="hideEdit()" *ngIf="iseditModal" [style.display]="editModal ? 'block' : 'none'" bsModal #edit="bs-modal" [config]="{backdrop: 'static',show: true}" tabindex="-1" role="dialog" aria-labelledby="Edit UOM" aria-hidden="true">
+		<div class="modal-dialog">
+			<app-add-edit-currency [editId]="id" [editStatusId]="statusId" (onECancel)="close($event)"></app-add-edit-currency>
+	</div>
+</div>
+
+<div class="modal fade in success-modal" [style.display]="UpdateModal ? 'block' : 'none'" id="UpdateModal" role="dialog">
+  <div class="modal-dialog">
+	<div class="modal-content">
+			<div class="modal-header">        
+			  <div class="modal-title"><span><img src="../../../assets/image/Ok.jpg"/></span>Success : Currency Master Updated</div>
+			</div>       
+		  </div>
+	</div>
+</div>

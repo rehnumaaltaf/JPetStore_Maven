@@ -1,0 +1,17 @@
+{
+	"Master": {
+		"Unit": {
+			"Title": "Add Unit Details",
+			"Code": "UOM Code",
+			"Name": "UOM Name",
+			"FullName": "UOM Full Name",
+			"Base": "Base UOM Code",
+			"Conversion": "Conversion Factor",
+			"Satus": "Status",
+			"Reset": "Reset",
+			"Save": "Save",
+			"Submit": "Submit",
+			"AddTitle": "Add UOM"
+		}
+	}
+}

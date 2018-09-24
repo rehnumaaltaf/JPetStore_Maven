@@ -1,0 +1,19 @@
+{
+	"Master": {
+		"HolidayCalendarLocale": {
+			"Title": "Holiday Calendar List",
+			"Code": "Calendar Code",
+			"Name": "Calendar Name",
+			"Description": "Description",
+			"Country": "Country",
+			"HolidayName": "Holiday Name",
+			"Date": "Date",
+			"Satus": "Status",
+			"Reset": "RESET",
+			"Save": "SAVE",
+			"Submit": "SUBMIT",
+			"AddTitle": "Add Holiday Calendar Details"
+		}
+		
+	}
+}

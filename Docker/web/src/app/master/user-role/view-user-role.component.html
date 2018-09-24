@@ -1,0 +1,180 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>User Role List</h4>
+
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+			
+				
+
+
+				</div>
+		
+                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+                                  <div class="accordion">
+                                              <!-- Kendo Grid starts-->
+                                  <div class="party-grade_block">
+                                 <kendo-grid [kendoGridBinding]="userRoleService.userRole12" [selectable]="true" [groupable]="true" [group]="state.group"
+                                      [scrollable]="true" [editable]="true" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [filter]="state.filter"
+                                   [sortable]="true" [filterable]="true" (dataStateChange)="dataStateChange($event)" [height]="600" [pageable]="false"
+                                   (pageChange)="pageChange($event)">
+
+                                            <ng-template kendoGridToolbarTemplate>
+                                      <span class="k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" class="excel-img"/></span>
+                                        	<img src="../../assets/image/add.png" (click)="redirectToAddUserRole()" />
+                                          </ng-template>
+                                                                                                                                                
+                                         <kendo-grid-column media="xs" title="Role Name">
+                                                  <ng-template kendoGridCellTemplate let-dataItem>
+                                                                                  <!-- template for mobile -->                                                               
+                                                        	                                  <h4>
+                                                                                             {{ dataItem.roleName}}
+                                                                                            </h4>
+                                                                                            <dl>
+                                                                                            <dt>Description</dt>
+                                                                                             <dd>{{ dataItem.roleDesc }}</dd>
+                                                                                            </dl>
+                                                                                     <!-- template for mobile Ends-->
+                                                                            </ng-template>
+                                                                                  </kendo-grid-column>
+                                                                     <kendo-grid-column field='' title='' [width]="40">
+                                                                <ng-template kendoGridHeaderTemplate let-dataItem>
+                                               <input type="checkbox" id="checkall" class="k-checkbox" ng-model="allItemsChecked" (change)="checkAllClicked($event)" />
+                                                                                                    <label class="k-checkbox-label chk_head" for="checkall"></label>
+                                                                                                     </ng-template> 
+                                                                                    <ng-template kendoGridCellTemplate let-dataItem>
+                                                                                         <input type="checkbox" class="k-checkbox" id="dataItem.roleName" name="dataItem.roleName" ng-model="dataItem.roleName"/>
+                                                                              <label class="k-checkbox-label" for="dataItem.roleName"></label>
+                                                                     </ng-template>
+                                                      </kendo-grid-column>                                                                                   
+                                                                                          <kendo-grid-column media="sm" field="roleName" title="Role Name">
+                                                                                             <ng-template kendoGridCellTemplate let-dataItem>
+                                                                                                        <div (click)=viewById(dataItem)  class="view-all">{{dataItem.roleName}}</div>
+                                                                                            </ng-template>
+                                                                                          </kendo-grid-column>
+                                                                                          <kendo-grid-column media="sm" field="roleDesc" title="Description">
+                                                                                          </kendo-grid-column>
+                                                                                      <kendo-grid-column media="lg" field="statusName" title="Status">
+                                                                                      <ng-template kendoGridCellTemplate let-dataItem>
+                                                                                       <label field="statusName" [ngClass]="{'status-draft': dataItem.roleStatusName=='Draft','status-active': dataItem.roleStatusName=='Active','status-inactive': dataItem.roleStatusName=='InActive'}">{{dataItem.roleStatusName}}</label>
+                                                                                     </ng-template>
+                                                                        </kendo-grid-column>
+                                                                                 <kendo-grid-column field="" title="">
+                                                                                                                <ng-template kendoGridCellTemplate let-dataItem>
+                                                                           <div class="show" style="float:left" (click) = "editClick(dataItem)"><span id="e1" data-attr="draft">
+                                                                                      <img src="../../../assets/image/Edit_Icon_Hover.png.svg"><span style="display:none;">draft</span></span></div>
+                                                                               <div class=""  (click)="user_delete(dataItem.roleId,dataItem.roleName,dataItem.roleDesc,dataItem.roleStatusName)"  *ngIf='dataItem.statusName=="Draft"'><span id="d1" class="confirm-delete">
+                                                                                     <img src="../../../assets/image/Delete icon.svg"></span></div>
+                                                                                              </ng-template>
+                                                                            </kendo-grid-column>
+                                                                            <kendo-grid-excel fileName="USERROLE.xlsx"></kendo-grid-excel>
+                                                                             </kendo-grid>
+                                                                      </div>
+                                                                                                                                              
+                     </div>
+                                                                </div>
+
+
+
+        
+
+<div *ngIf="isRoleAdded" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : {{roleNameToShow}} User Role added</div>
+				</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModalDELTE="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                   <img src="../../assets/image/Confirm_Delete.svg" />
+                                                </div>
+                                                                
+                                                                <div class="modal-body">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isDraftStatus" >
+                                                                                                     Are you sure you want to delete the record {{roleName}} in {{status}} status ?
+                                                                                                </div>
+                                                                                                			
+					                                                                                         <div class="col-md-12 product_img text-center font-14 font-regular" *ngIf="isActiveStatus" >
+                                                                                                          Are you sure you want to De-Activate the User Role {{roleName}} in {{status}} status ?
+                                                                                                  </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" type="button" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" type="button" (click)="conf_delete($event)">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!-- User role Cannot be delted Pop up-->
+<div class="modal fade delete-popup" *ngIf="isCannotDeletePopup" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #pagebackModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog ">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                   <img src="../../assets/image/Confirm_Delete.svg" />
+                                                   <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                </div>                                                                
+                                                                <div class="modal-body">
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     {{errorMessage}}
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="closedeletepopup()">Ok</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+<!-- Delete Success Modal -->
+<div *ngIf="deleteSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                                <div class="modal-content">
+                                                                <div class="modal-header">        
+                                                                              <div class="modal-title font-14 font-regular" *ngIf="isDraftStatus" ><img src="../../assets/image/Ok.jpg"/>Success :  Deleted User Role Name: {{roleName}} </div>
+                                                                              <div class="modal-title font-14 font-regular" *ngIf="isActiveStatus"><img src="../../assets/image/Ok.jpg"/>Success : InActivated User Role Name {{roleName}}</div>
+                                                                </div>
+                                </div>
+                </div>
+</div>
+<div *ngIf="viewByIddelete" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                                <div class="modal-content">
+                                                                <div class="modal-header">        
+                                                                              <div class="modal-title font-14 font-regular" ><img src="../../assets/image/Ok.jpg"/>Success : Deleted User Role Name: {{roleName}} </div>
+                                        
+                                                                </div>
+                                </div>
+                </div>
+</div>
+<!-- Delete Success Modal - End -->
+<div *ngIf="isupdateModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #updateModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-header">        
+					<div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Updated UserRole {{roleNameToShow}}</div>
+				</div> 
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</div>
+</div>

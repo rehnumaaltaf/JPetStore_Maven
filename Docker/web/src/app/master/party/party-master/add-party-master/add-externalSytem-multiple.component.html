@@ -1,0 +1,28 @@
+<div [formGroup]="externalMapping">  
+	 <input type='hidden' formControlName='uniqueMapping' [ngModel]="data0 || 'null'" ng-init="data0=null">
+  									<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Destination System</label>
+										<!--<input type="text" class="form-control font-15 font-regular " formControlName="destinationSystem" id="" value="" placeholder="">-->
+									<select class="btn btn-primary dropdown-toggle width-full txt-lft font-regular font-14" [(ngModel)]="exterSystem.destinationSystem" formControlName="destinationSystem"
+												name="baseCode">
+												   <option value="">Select</option>
+												   <!--*ngFor="let option of basecodeOption" value="{{option.value}}" == {{option.label}}-->
+												   <option *ngFor="let option of destinationList" value="{{option.externalSystemRefId}}">{{option.externalSystemRefName}}</option>
+										</select>
+									</div>
+									<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Type</label>
+										<input type="text" class="form-control font-15 font-regular " [(ngModel)]="exterSystem.externalSystemMappingType"  formControlName="externalSystemMappingType" id="" value=""
+											placeholder="">
+									</div>
+									<div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Vendor Code</label>
+										<input type="text" class="form-control font-15 font-regular " [(ngModel)]="exterSystem.externalSystemMappingVendor"  formControlName="externalSystemMappingVendor" id="" value=""
+											placeholder="">
+									</div>
+									<div class="form-group col-lg-2 col-md-4 col-sm-3 col-xs-12">
+										<label for="usr-field" class="colr-lblue font-regular font-14">Customer Code</label>
+										<input type="text" class="form-control font-15 font-regular " [(ngModel)]="exterSystem.externalSystemMappingCustomerCode" formControlName="externalSystemMappingCustomerCode" id="" value=""
+											placeholder="">
+									</div>
+									</div>

@@ -1,0 +1,34 @@
+.mastermenu{height:150px;width:14%;display:inline-block;cursor:pointer;text-align:center;}
+/*.mastermenu:hover{background:#253746}*/
+.marl25{margin-left:25px;}
+.pay_term{background-image:url(../../../assets/image/Primary_Contact_Icon.png.svg);width:14px; height:14px;display: inline-block;background-position: 0px 0px;background-repeat: no-repeat;}
+/*.head{padding-top:30px;}*/
+.foot{font-family:Roboto-regular; font-size:14px;color:#253746;}
+.mastermenu:hover .foot{color:#9fc800;}
+.pay-icon{background-image:url(../../../assets/image/MasterSetup_icons/Payment_Term_default.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;height:48%;}
+.tax-icon{background-image:url(../../../assets/image/MasterSetup_icons/Tax_Rate_Default.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;height:48%;}
+.product-icon{background-image:url(../../../assets/image/MasterSetup_icons/Product_Master_default.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;height:48%;}
+.origin-icon{background-image:url(../../../assets/image/MasterSetup_icons/Origin_default.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;height:48%;}
+.quality-icon{background-image:url(../../../assets/image/MasterSetup_icons/Unit_Master_default.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;height:48%;}
+.grade-icon{background-image:url(../../../assets/image/MasterSetup_icons/Grade_default.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;height:48%;}
+.party-icon{background-image:url(../../../assets/image/MasterSetup_icons/Party_Master_default.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;height:48%;}
+.security-icon{background-image:url(../../../assets/image/MasterSetup_icons/securityconfig_gray.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;height:48%;}
+.more-icon{background-image:url(../../../assets/image/MasterSetup_icons/more_default.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;height:35%;}
+.mastermenu:hover .pay-icon{background-image:url(../../../assets/image/MasterSetup_icons/Payment_Term_highlight.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;}
+.mastermenu:hover .tax-icon{background-image:url(../../../assets/image/MasterSetup_icons/Tax_Rate_highlight.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;}
+.mastermenu:hover .product-icon{background-image:url(../../../assets/image/MasterSetup_icons/Product_Master_highlight.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;}
+.mastermenu:hover .origin-icon{background-image:url(../../../assets/image/MasterSetup_icons/Origin_highlight.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;}
+.mastermenu:hover .quality-icon{background-image:url(../../../assets/image/MasterSetup_icons/Unit_Master_highlight.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;}
+.mastermenu:hover .grade-icon{background-image:url(../../../assets/image/MasterSetup_icons/Grade_highlight.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;}
+.mastermenu:hover .party-icon{background-image:url(../../../assets/image/MasterSetup_icons/Party_Master_highlight.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;}
+.mastermenu:hover .security-icon{background-image:url(../../../assets/image/MasterSetup_icons/securityconfig_white.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;}
+.mastermenu:hover .more-icon{background-image:url(../../../assets/image/MasterSetup_icons/more_highlight.svg);background-position: 50%;background-repeat: no-repeat;vertical-align: middle;}
+.marb25{margin-bottom:25px;}
+.more-txt{
+    text-align: center;
+}
+.top-align{
+    position: absolute;
+    top: -20px;
+    left: 40%;
+}

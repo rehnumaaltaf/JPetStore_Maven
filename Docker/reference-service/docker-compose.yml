@@ -1,0 +1,12 @@
+version: "3"
+services:
+ reference-service:
+    image: ctrmdev.azurecr.io/reference-service:latest
+    deploy:
+      replicas: 1
+      resources:
+        restart_policy:
+          condition: on-failure
+    container_name: reference-service
+    ports:
+      - "8090:8090"

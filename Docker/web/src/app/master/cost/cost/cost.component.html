@@ -1,0 +1,123 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt15 create-view">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" >Cost Master List</h4>
+					</div>
+								<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<!--<a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a>-->
+					<!--<img src="../../assets/image/add.png" (click)="goToAddCost()" />-->
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+					<div class="accordion">
+                            <!-- Kendo Grid starts-->
+							<div class="party-grade_block">
+								<kendo-grid [kendoGridBinding]="costmasterService.costMasterList" [selectable]="true" [groupable]="true" [group]="state.group"
+										[scrollable]="true" [editable]="true" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [filter]="state.filter"
+										[sortable]="true" [filterable]="true" (dataStateChange)="dataStateChange($event)" [height]="640" [pageable]="false"
+										[sortable]="true" [filterable]="true" [height]="500" [pageable]="false"
+										(pageChange)="pageChange($event)">
+
+										<ng-template kendoGridToolbarTemplate>
+										<span class="k-icon k-i-file-excel"  kendoGridExcelCommand>	<img src="../../assets/image/Excel.svg" style="padding-right: 5px;"/></span>
+										<img src="../../assets/image/add.png" (click)="goToAddCost()" />
+										</ng-template>
+									<!-- Serach Icon pannel-->
+						
+										<kendo-grid-column media="xs" title="costmasterService.costMasterList">
+										<ng-template kendoGridCellTemplate let-dataItem>
+											<!-- template for mobile -->
+											
+											<h4>
+											{{ dataItem.costCode }}
+											</h4>
+											<dl>
+											<dt>Cost Name</dt>
+											<dd>{{ dataItem.costName }}</dd>
+
+											<dt>Cost Description</dt>
+											<dd>{{ dataItem.costFullName }}</dd>
+
+											<dt>Cost Group</dt>
+											<dd>{{ dataItem.fkCostGroupName }}</dd>
+											<dt>Matrix Applicable</dt>
+											<dd>{{dataItem.matrixApplicableInd}}</dd>
+											</dl>
+											<!-- template for mobile Ends-->
+										</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field='' title='' >
+												<ng-template kendoGridHeaderTemplate let-dataItem>
+												<input type="checkbox" id="checkall" class="k-checkbox" ng-model="allItemsChecked" (change)="checkAllClicked($event)" />
+												<label class="k-checkbox-label chk_head" for="checkall"></label>
+											</ng-template> 
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<input type="checkbox" class="k-checkbox" id="dataItem.costCode " name="dataItem.costCode " ng-model="dataItem.costCode "/>
+												<label class="k-checkbox-label" for="dataItem.costCode"></label>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="sm" field="costCode" title="Cost Code">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<div (click)="viewById(dataItem)" title="{{dataItem.costCode}}" class="view-all">{{dataItem.costCode}}</div>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="costName" title="Cost Name">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<span title="{{dataItem?.costName}}">{{dataItem.costName}}</span>
+											</ng-template>											
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="costFullName" title="Cost Description">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<span title="{{dataItem?.costFullName}}">{{dataItem.costFullName}}</span>
+											</ng-template>	
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="fkCostGroupName" title="Cost Group">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<span title="{{dataItem?.fkCostGroupName}}">{{dataItem.fkCostGroupName}}</span>
+											</ng-template>	
+										</kendo-grid-column>
+										<kendo-grid-column media="md" field="matrixApplicableInd" title="Matrix Applicable">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<span title="{{dataItem?.matrixApplicableInd}}">{{ dataItem.matrixApplicableInd }}</span>
+											</ng-template>
+										</kendo-grid-column>
+										
+										<kendo-grid-column media="lg" field="fkStatusName" title="Status">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<label title="{{dataItem.fkStatusName}}" field="status"
+												 [ngClass]="{'status-draft': dataItem.fkStatusName=='Draft','status-active': dataItem.fkStatusName=='Active','status-inactive': dataItem.fkStatusName=='InActive'}">
+													{{dataItem.fkStatusName}}</label>
+											</ng-template>
+										</kendo-grid-column>
+										<kendo-grid-column field="" title="">
+											<ng-template kendoGridCellTemplate let-dataItem>
+												<div class="show" style="float:left"><a href="javascript:void(0)" [routerLink]="['edit-cost',dataItem.pkCostId]"><span id="e1" data-attr="draft" style="font-size:8px !important;">
+													<img title="Edit" alt="Edit" src="../../../assets/image/Edit_Icon_Hover.png.svg"></span></a></div>
+												<div class=""  [ngClass]="{'displayblock': dataItem.fkStatusName ==='InActive'}">
+											       <span id="d1" class="confirm-delete" >
+															<span *ngIf="dataItem.fkStatusName == 'Draft'"><img title="Delete" alt="Delete" 
+															class='k-button k-button-wrapper' src="../../../assets/image/Delete icon.svg" 
+															 (click)="cost_delete(dataItem.pkCostId,dataItem.costCode,dataItem.costName,dataItem.fkStatusName)"></span>
+															<!--<span *ngIf="dataItem.fkStatusName == 'Active'"><img class='k-button'  src="../../../assets/image/Activeicon.svg"  (click)="cost_delete(dataItem.pkCostId,dataItem.costCode,dataItem.costName,dataItem.fkStatusName)"></span>
+															<span *ngIf="dataItem.fkStatusName == 'InActive'"><img class='k-button' src="../../../assets/image/Deactiveicon2.svg"  (click)="cost_delete(dataItem.pkCostId,dataItem.costCode,dataItem.costName,dataItem.fkStatusName)"></span>	-->
+														</span> </div>
+														</ng-template>
+										</kendo-grid-column>
+									
+										
+										<kendo-grid-excel fileName="CostMaster.xlsx"></kendo-grid-excel>
+									</kendo-grid>
+									</div>
+									<!--Kendo grid Ends-->
+                     </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<app-message [(msgs)]="costmasterService.messages"></app-message>

@@ -1,0 +1,159 @@
+<div class="container-fluid ">
+	<!--<loading-animation [loadingData]="loadingData"></loading-animation>-->
+	<div class="row row-background">
+		<app-nav-bar></app-nav-bar>
+
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 right-side-content pad0">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 usr-div data_table padt30 create-view">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " style="padding-left:0px;">
+					<h4 class="padb10 padt10 colr-1e2f4d font-18 font-bold" l10nTranslate>Master.OriginLocale.Title</h4>
+
+				</div>
+
+				<!-- Serach Icon pannel -->
+				<div class="padb10 padt10 colr-1e2f4d font-18 add-icon-index font-bold col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right padr0">
+					<a href="#"><img src="../../assets/image/filter.png"/></a>
+					<a href="#"><img src="../../assets/image/search.png"/></a>
+					<img src="../../assets/image/add.png" (click)="changeShowStatus()" />
+
+
+				</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0 uom-grid">
+<div class="accordion">
+ <div id="grid" data-role="grid" class="k-grid k-widget k-display-block k-editable" style="height: 100%;">
+   <div class="k-grid-header" style="padding-right: 17px;">
+      <div class="k-grid-header-wrap k-auto-scrollable">
+         <table role="grid">
+            <thead role="rowgroup">
+               <tr role="row">
+                  <th style="width:5%;" align="center" scope="col" role="columnheader" aria-haspopup="true" rowspan="1" data-title="Select All" data-index="0" id="e181d774-5a99-4cab-8d5f-6a152a3a959c" class="k-header"><input type="checkbox" id="header-chb" class="k-checkbox"><label class="k-checkbox-label" for="header-chb"></label></th>
+                  <th scope="col" role="columnheader" data-field="ref" aria-haspopup="true" rowspan="1" data-title="REFERENCE" data-index="1" id="86f9254c-6e46-4a26-8517-119acdf79faf" class="k-header" data-role="columnsorter"><a class="k-link" >ORIGIN CODE</a></th>
+                  <th scope="col" role="columnheader" data-field="p_code" aria-haspopup="true" rowspan="1" data-title="ORIGIN NAME" data-index="2" id="3c83b705-9e92-4bf3-9534-63b35ac8f326" class="k-header" data-role="columnsorter"><a class="k-link" >ORIGIN NAME</a></th>
+                  <th scope="col" role="columnheader" data-field="p_name" aria-haspopup="true" rowspan="1" data-title="ORIGIN FULLNAME" data-index="3" id="8e58fe48-c6b3-4524-b0b9-1124bef39fe3" class="k-header" data-role="columnsorter"><a class="k-link" >ORIGIN FULLNAME</a></th>
+                  <th scope="col" role="columnheader" data-field="p_group" aria-haspopup="true" rowspan="1" data-title="COUNTRY" data-index="4" id="f8c31cbc-bd25-4ae3-89de-776988d17957" class="k-header" data-role="columnsorter"><a class="k-link" >COUNTRY</a></th>    
+                  <th scope="col" role="columnheader" aria-haspopup="true" rowspan="1" data-title="STATUS" data-index="8" id="3c939252-1ed7-4099-8e98-9356b645dda4" class="k-header">STATUS</th>
+                  <th scope="col" role="columnheader" aria-haspopup="true" rowspan="1" data-title="SELECT ALL" data-index="9" id="d4c9174a-41ac-44fd-838c-9e2b29c4a0d9" class="k-header"></th>
+               </tr>
+            </thead>
+         </table>
+      </div>
+   </div>
+   <div class="k-grid-content k-auto-scrollable">
+      <table role="grid" style="height: auto;">
+         <tbody role="rowgroup" *ngFor="let originDefinitionDetails of origin">		
+        <tr  role="row">
+		<td class="displaynone">{{originDefinitionDetails.originDto.pkOriginId}}</td>																
+				<td style="width:3%;" align="center" role="gridcell"><input type="checkbox" class="k-checkbox"><label class="k-checkbox-label"></label></td>								
+				<td role="gridcell" style="padding-left:3%;" class="view-all" style="padding-left:3%;color:#0000EE !important;cursor: pointer;"  (click)="viewById(originDefinitionDetails)" >{{originDefinitionDetails.originDto.originCode}}</td>
+				<td role="gridcell" style="padding-left:3%;">{{originDefinitionDetails.originDto.originName}}</td>
+				<td role="gridcell" style="padding-left:3%;">{{originDefinitionDetails.originDto.originFullName}}</td>
+				<td role="gridcell" style="padding-left:3%;">{{originDefinitionDetails.originDto.geoName}}</td>				
+				<td role="gridcell" style="padding-left:2%;"><label class="text-center" [ngClass]="{'status-draft': originDefinitionDetails.originDto.statusName=='Draft','status-active': originDefinitionDetails.originDto.statusName=='Active','status-inactive': originDefinitionDetails.originDto.statusName=='InActive'}">{{originDefinitionDetails.originDto.statusName}}</label></td>	
+				<td role="gridcell" style="padding-left:3%;">
+					<div><span id="e1"><img src="../../assets/image/Edit_Icon_Hover.png.svg"></span>
+					<span class="confirm-delete" data-toggle="modal" (click)="origin_delete(originDefinitionDetails)" data-target="#product_view" id="d1"><img [ngClass]="{'displaynone': originDefinitionDetails.originDto.statusName=='InActive'}"  src="../../assets/image/Delete%20icon.svg"></span></div>
+				</td>
+				</tr>   
+         </tbody>
+      </table>
+   </div>
+</div>
+</div>
+</div>
+
+
+<!-- Delete Success Modal -->
+<div *ngIf="deleteSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                                <div class="modal-content">
+                                                                <div class="modal-header">        
+                                                                                <div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Deleted Origin Name :{{origin_Name}}</div>
+                                                                </div>  
+                                </div>
+                </div>
+</div>
+<!-- Delete Success Modal - End -->
+
+<!-- Deactivate Success Modal -->
+<div *ngIf="deactivateSuccessModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #deletesuccessModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                                <div class="modal-content">
+                                                
+                                                                <div class="modal-header">        
+                                                                                <div class="modal-title font-14 font-regular"><img src="../../assets/image/Ok.jpg"/>Success : Deactivated Origin Name :{{origin_Name}}</div>
+                                                                </div>    
+                                </div>
+                </div>
+</div>
+<!-- Deactivate Success Modal - End -->
+
+<!--Delete Pop up-->
+<div class="modal fade delete-popup" *ngIf="isDeletePopupModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog ">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                      <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                      <img src="../../assets/image/Confirm_Delete.svg" />
+                                                </div>
+                                                                
+                                                                <div class="modal-body">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                     Are you sure you want to delete {{origin_Name}} ?
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+                                                                    <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+
+<!--Deactivate Pop up-->
+<div class="modal fade delete-popup" *ngIf="isDeactivatePopupModal" [style.display]="isDeactivatePopupModal ? 'block' : 'none'" class="modal fade delete-popup" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                                <div class="modal-content  del-modal">
+                                                <div class="modal-header text-center">
+                                                     <!-- <a data-dismiss="modal" class="class pull-right"><span style="color:grey !important;" class="glyphicon glyphicon-remove" (click)="cancel()"></span></a>                                                                               -->
+                                                     <img src="../../assets/image/Confirm_Delete.svg" />
+                                               </div>
+                                                 
+                                                                <div class="modal-body">
+                                                                                                
+                                                                                                <div class="col-md-12 product_img text-center font-14 font-regular">
+                                                                                                       Are you sure you want to deactivate {{origin_Name}} ?
+                                                                                                </div>
+                                                                </div>
+                                                                <div class="del-btn-group modal-window-footer btn-shodow">
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-cancel del-cancel-button btn btn-default font-14 font-regular bw-cancel" (click)="closedeletepopup()">Cancel</button></div>
+                                                                                <div class="del-pop-btn col-lg-6 col-md-6 col-sm-6 pad0 pull-left"><button class="width-full del-confirm del-button btn btn-default confirm-delete  font-14 font-regular primary" (click)="conf_delete($event)">Confirm</button></div>
+                                                                </div>
+                                                </div>
+                                </div>
+</div>
+<!---->
+
+
+ <!-- Success Modal -->
+<div *ngIf="isShowModal" [style.display]="showModal ? 'block' : 'none'" class="modal fade success-modal" bsModal #successModal="bs-modal" [config]="{backdrop: 'false',show: true}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+ 		<div class="modal-content">
+     			<div class="modal-header">        
+					<div class="modal-title  font-14 font-regular">
+		                    <img src="../../assets/image/Ok.jpg"/>Success: Origin Name Added {{origin_Name}}</div>
+   				 </div> 
+        </div>
+    </div>
+</div> 
+
+<!-- Success Modal - End -->
+
+
+			</div>
+		</div>
+	</div>
+</div>

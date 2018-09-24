@@ -1,0 +1,13 @@
+.k-multiselect-wrap .k-input{
+    display:none !important;
+}
+.k-list{
+    margin-top:0px !important;
+}
+.k-multiselect-wrap.k-floatwrap {
+    border:0px;
+    border-bottom:1px solid #cfdee7;
+}
+.k-animation-container {
+    background-color: #fff !important;
+}

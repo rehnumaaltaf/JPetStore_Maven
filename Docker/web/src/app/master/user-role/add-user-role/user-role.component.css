@@ -1,0 +1,18 @@
+.save-btn{color:#ffffff; background-color:#a0c800;/*background-color:#ffffff;*/border-color:#a0c800 ;width: 33.12%;padding: 15px 0px;font-size: 1.4em;font-weight: 500;margin: 0px 10px;}
+.add-btn{margin-left:0px;}
+.save-btn:hover{background-color:#86b000;border-color:#86b000; color:#ffffff;}
+
+.user-detail .accordion .ui-accordion-content { border: 0px !important; padding: 0px 15px 24px 15px;}
+.cancel-btn{color:#a1a1a1; background-color:transparent;border-color:#a1a1a1; border-width:1px;width: 82.78%;padding: 15px 0px;font-size: 1.4em;font-weight: 500;margin: 0px;}
+.modal.right.fade .modal-dialog {
+		right: -320px;
+		-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+		   -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+		     -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+		        transition: opacity 0.3s linear, right 0.3s ease-out;
+	}
+	
+	.modal.right.fade.in .modal-dialog {
+		right: 0;
+	}
+	.update-view-btn{position: fixed;bottom: 0 !important;}

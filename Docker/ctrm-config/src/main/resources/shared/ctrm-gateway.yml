@@ -1,0 +1,90 @@
+zuul:
+   host:
+    connect-timeout-millis: 60000 # starting the connection 
+    socket-timeout-millis: 60000  # monitor the continuous incoming data flow
+   routes:
+    reference-service:
+        path: /reference/**
+        serviceId: reference-service
+        stripPrefix: false
+        sensitiveHeaders:
+    cost-service:
+        path: /cost/**
+        serviceId: cost-service
+        stripPrefix: false
+        sensitiveHeaders:
+    authorization-config-service:
+        path: /authorization/**
+        serviceId: authorization-config-service
+        stripPrefix: false
+        sensitiveHeaders:
+    finance-service:
+        path: /finance/**
+        serviceId: finance-service
+        stripPrefix: false
+        sensitiveHeaders:
+    limit-service:
+        path: /limit/**
+        serviceId: limit-service
+        stripPrefix: false
+        sensitiveHeaders:
+    packing-service:
+        path: /packing/**
+        serviceId: packing-service
+        stripPrefix: false
+        sensitiveHeaders:
+    party-service:
+        path: /party/**
+        serviceId: party-service
+        stripPrefix: false
+        sensitiveHeaders:
+    product-service:
+        path: /product/**
+        serviceId: product-service
+        stripPrefix: false
+        sensitiveHeaders:
+    terms-service:
+        path: /terms/**
+        serviceId: terms-service
+        stripPrefix: false
+        sensitiveHeaders:
+    marketdata-service:
+        path: /marketdata/**
+        serviceId: marketdata-service
+        stripPrefix: false
+        sensitiveHeaders:
+    forex-service:
+        path: /forex/**
+        serviceId: forex-service
+        stripPrefix: false
+        sensitiveHeaders:
+    location-service:
+        path: /location/**
+        serviceId: location-service
+        stripPrefix: false
+        sensitiveHeaders:
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000         
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 443
+  ssl:
+    key-alias: selfsigned
+    key-password: olamctrm
+    key-store: classpath:olam.jks
+    key-store-provider: SUN
+    key-store-type: JKS
